@@ -1,0 +1,204 @@
+<section class=" " id="home">
+    <div class="con mt-5">
+
+
+        <div class="text-center py-4  ">
+            <h2 class="header header-h4">Mapping definition</h2>
+        </div>
+
+        <form action="" [formGroup]="form" (ngSubmit)="PreviewData()" class=" pb-3 ">
+            <div class="row py-1 d-flex" *ngIf="disable==false" [hidden]="false" >
+                <div class="col-md-4 d-flex justify-content-center">
+                    <div class="input-group ">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Mapping Code</span>
+                        </div>
+                        <input formControlName="MappingCode"  name="" id="" class="form-control"
+                            value="" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+
+                    </div>
+
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Description</span>
+                        </div>
+                        <input formControlName="Description" name="" id="" class="form-control"
+                            value="" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                </div>
+            </div>
+            <div class="row py-1 d-flex ">
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Mapping Type</span>
+                        </div>
+                        <select title="type" formControlName="mapp" id="" (change)="type($event)" class="form-control">
+                            <option [selected]="true" value="default"> -- </option>
+                            <option value="Account">Account</option>
+                            <option value="Analysis">Analysis</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Table Name</span>
+                        </div>
+                        <select formControlName="table" id="" (change)="enter($event)" class="form-control">
+                            <option [selected]="true" value="default"> -- </option>
+                            <option *ngFor="let i of tableNames" [value]="i">{{i}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Column Name</span>
+                        </div>
+                        <select class="CN_S" formControlName="column" (change)="rows($event)" id="" class="form-control">
+                            <option [selected]="true" value="default"> -- </option>
+                            <option *ngFor="let c of ColumnNames" [value]='c["name"]'>{{c["name"]}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row py-1 d-flex ">
+                <div class="col-md-4">
+                    <div class="input-group">
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Data</span>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input form-control" type="checkbox" (change)="switch($event)"
+                                id="flexSwitchCheckDefault" value="Data">
+                        </div>
+                        
+                        <input [hidden]="toggle" formControlName="value" value="" class="form-control">
+                        <select [hidden]="!toggle" class="D_S form-control" formControlName="value" id="">
+                            <option [selected]="true" value="default"> -- </option>
+                            <option *ngFor="let i of values" [value]="i[input2]">{{i[input2]}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Mapping To</span>
+                        </div>
+                        <input formControlName="input" value="" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div *ngIf="types" class="d-flex justify-content-center">
+                        <div class="input-group">
+
+                            <div class="input-group-prepend">
+                                <span class="input-group-text " id="inputGroup-sizing-default">Revenue Center</span>
+                            </div>
+                            <select formControlName="Revenue" id="" class="form-control">
+                                <option [selected]="true" value="default"> -- </option>
+                                <option *ngFor="let i of revenue" [value]='i["num"]'>{{i.num}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+              
+            </div>
+
+            <div class="row py-1 d-flex ">
+               
+                <div class="col-md-4">
+                    <div *ngIf="types" class="d-flex ">
+                        <div class="input-group">
+
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Analysis Level</span>
+                            </div>
+                            <select class="level form-control" formControlName="level" id="">
+                                <option [selected]="true" value="default"> -- </option>
+                                <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" [value]="i">{{i}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row py-1">
+                <div class="col-md-12">
+
+            <button type="submit" class="btn btn-dark text-white w-100" [disabled]="form.status=='INVALID'">Add</button>
+        </div>
+    </div>
+        </form>
+
+        <div class="d-flex justify-content-between by-3">
+
+            <div class="card w-100">
+
+                <table class="table mx-2 text-center mt-5">
+                    <thead class="">
+                        <tr>
+                            <th scope="col">Mapping Code</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">MappingType</th>
+                            <th scope="col">Source</th>
+                            <th scope="col">Revenue Center</th>
+                            <th scope="col">level</th>
+                            <th scope="col"> Mapping value</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="mappingData">
+                         
+                    </tbody>
+                    <button (click)="subm()" class="btn sub btn-dark d-none ">Submit</button>
+                </table>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <div class="position-fixed bottom-0   text-white text-center right-0  " style="z-index: 5; right: 0; bottom: 0;">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header ">
+                <button type="button" class="btn-close  m-0" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body bg-dark text-white">
+                Submitted successfully <i class=" pl-2 fa-solid fa-circle-check"></i>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-black">
+                <h5 class="modal-title  text-white" id="exampleModalLabel">
+                    Delete
+                </h5>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this record!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary bg-black" data-bs-dismiss="modal">Close</button>
+                <button type="submit" (click)="del()" data-bs-dismiss="modal"
+                    class="btn btn btn-danger  px-5">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

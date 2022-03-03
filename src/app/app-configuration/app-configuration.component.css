@@ -1,0 +1,33 @@
+#home{
+    background-color: #343a40!important;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.con
+{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    width: 65%;
+}
+
+
+.header-h4{
+    color: cadetblue;
+    font-weight: 600;
+}
+
+.b{
+    color: #4392A4;
+}

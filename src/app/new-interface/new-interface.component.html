@@ -1,0 +1,342 @@
+<section id="home">
+
+    <div class="con mt-5">
+        <div class="text-center py-3 ">
+            <h2 class="header header-h4">New Interface Definition</h2>
+        </div>
+        <form action="" [formGroup]="form2" class=" mb-2  " (ngSubmit)="authorization()">
+            <div class="text-center bg-dark">
+                <p class="text text-white py-2">Api Definition</p>
+            </div>
+            <div class="row justify-content-center ">
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">User Name</span>
+                        </div>
+                        <input formControlName="userName" name="" class="form-control" value="" id="">
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+                        </div>
+                        <input formControlName="password" name="" id="" class="form-control" value=""
+                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+                        </div>
+                        <input formControlName="email" name="" id="" class="form-control" value=""
+                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+
+                    </div>
+                </div>
+            </div>
+            <div class="row pt-2">
+                <div class="col-md-4 ">
+                    <div *ngIf="form2.get('userName')?.invalid && form2.get('userName')?.touched">
+                        <small class="btn btn-danger px-5 " *ngIf="form2.get('userName')?.errors?.required"> userName is
+                            required</small>
+                    </div>
+
+                </div>
+                <div class="col-md-4 ">
+                    <div *ngIf="form2.get('password')?.invalid && form2.get('password')?.touched">
+                        <small class="btn btn-danger px-5 " *ngIf="form2.get('password')?.errors?.required"> password is
+                            required</small>
+
+                    </div>
+
+                </div>
+                <div class="col-md-4 ">
+                    <div *ngIf="form2.get('email')?.invalid && form2.get('email')?.touched">
+                        <small class="btn btn-danger px-5 " *ngIf="form2.get('email')?.errors?.required"> email is
+                            required</small>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="row pt-2">
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Enterprise Short Name</span>
+                        </div>
+                        <input formControlName="enterpriseShortName" name="" class="form-control" value="" id="">
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Client Id</span>
+                        </div>
+                        <input formControlName="clientId" name="" id="" class="form-control" value=""
+                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">LockRef</span>
+                        </div>
+                        <input formControlName="lockRef" name="" id="" class="form-control" value=""
+                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+
+                    </div>
+                </div>
+            </div>
+            <div class="row pt-2">
+                <div class="col-md-4 ">
+                    <div *ngIf="form2.get('enterpriseShortName')?.invalid && form2.get('enterpriseShortName')?.touched">
+                        <small class="btn btn-danger px-5 " *ngIf="form2.get('enterpriseShortName')?.errors?.required">
+                            Enterprise Short Name is
+                            required</small>
+                    </div>
+
+                </div>
+                <div class="col-md-4 ">
+                    <div *ngIf="form2.get('clientId')?.invalid && form2.get('clientId')?.touched">
+                        <small class="btn btn-danger px-5 " *ngIf="form2.get('clientId')?.errors?.required"> Client Id
+                            is
+                            required</small>
+
+                    </div>
+
+                </div>
+                <div class="col-md-4 ">
+                    <div *ngIf="form2.get('lockRef')?.invalid && form2.get('lockRef')?.touched">
+                        <small class="btn btn-danger px-5 " *ngIf="form2.get('lockRef')?.errors?.required"> LockRef is
+                            required</small>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="row py-2 align-items-center ">
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <div class="input-group-prepend  ">
+                            <span class="input-group-text text-center " id="inputGroup-sizing-default">Api
+                                Schedule</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+
+                    <div class="form-check form-check-inline ">
+                        <input class="form-check-input" formControlName="ApiSchedule" type="radio" name="ApiSchedule"
+                            id="inlineRadio1" value="1">
+                        <label class="form-check-label text-white" for="inlineRadio1">Every Day</label>
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" formControlName="ApiSchedule" name="ApiSchedule"
+                            id="inlineRadio2" value="30">
+                        <label class="form-check-label text-white" for="inlineRadio2">Every Month</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" formControlName="ApiSchedule" name="ApiSchedule"
+                            id="inlineRadio2" value="365">
+                        <label class="form-check-label text-white" for="inlineRadio2">Every Year</label>
+                    </div>
+                </div>
+
+            </div>
+            <div class="text-center  bg-dark">
+                <p class="text-white py-2">Sun Definition</p>
+            </div>
+            <div class="row ">
+                <div class="col-md-3">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">User</span>
+                        </div>
+                        <input formControlName="SunUser" name="" class="form-control" value="" id="">
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+                        </div>
+                        <input formControlName="SunPassword" name="" id="" class="form-control" value=""
+                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Server</span>
+                        </div>
+                        <input formControlName="Sunserver" name="" id="" class="form-control" value=""
+                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Database</span>
+                        </div>
+                        <input formControlName="SunDatabase" name="" class="form-control" value="" id="">
+
+                    </div>
+                </div>
+            </div>
+            <div class="row pt-2">
+                <div class="col-md-3 ">
+                    <div *ngIf="form2.get('SunUser')?.invalid && form2.get('SunUser')?.touched">
+                        <small class="btn btn-danger px-5 " *ngIf="form2.get('SunUser')?.errors?.required"> User is
+                            required</small>
+                    </div>
+
+                </div>
+                <div class="col-md-3 ">
+                    <div *ngIf="form2.get('SunPassword')?.invalid && form2.get('SunPassword')?.touched">
+                        <small class="btn btn-danger px-5 " *ngIf="form2.get('SunPassword')?.errors?.required"> Password
+                            is
+                            required</small>
+
+                    </div>
+
+                </div>
+                <div class="col-md-3 ">
+                    <div *ngIf="form2.get('Sunserver')?.invalid && form2.get('Sunserver')?.touched">
+                        <small class="btn btn-danger px-5 " *ngIf="form2.get('Sunserver')?.errors?.required"> Server is
+                            required</small>
+
+                    </div>
+                </div>
+                <div class="col-md-3 ">
+                    <div *ngIf="form2.get('SunDatabase')?.invalid && form2.get('SunDatabase')?.touched">
+                        <small class="btn btn-danger px-5 " *ngIf="form2.get('SunDatabase')?.errors?.required"> Database
+                            is
+                            required</small>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="row pt-2 align-items-center">
+                <div class="col-md-3">
+                    <div class="input-group ">
+                        <div class="input-group-prepend w-100 ">
+                            <span class="input-group-text text-center " id="inputGroup-sizing-default">Sun
+                                Schedule</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+
+                    <div class="form-check form-check-inline ">
+                        <input class="form-check-input" formControlName="SunSchedule" type="radio" name="SunSchedule"
+                            id="inlineRadio1" value="0 0 0 * * *">
+                        <label class="form-check-label text-white" for="inlineRadio1">Every Day</label>
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" formControlName="SunSchedule" name="SunSchedule"
+                            id="inlineRadio2" value="0 0 0 0 * *">
+                        <label class="form-check-label text-white" for="inlineRadio2">Every Month</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" formControlName="SunSchedule" name="SunSchedule"
+                            id="inlineRadio2" value="0 0 0 0 0 *">
+                        <label class="form-check-label text-white" for="inlineRadio2">Every Year</label>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+            <div class="col-12 my-2">
+                <ul class="list-unstyled">
+                    <li class="sideli2">
+                        <div class=" minili2 d-flex">
+                            <i class="fas fa-ellipsis-h ellipsis"></i>Every day
+                            <i class="fas fa-chevron-down my-auto ml-auto down"><span class="d-none">0</span></i>
+                        </div>
+                    <input name="everyDay" class="list-unstyled hiddenul2" type="time">
+    
+                    </input>
+                    </li>
+                    <li class="sideli2 border-top-0">
+                        <div class=" minili2 d-flex">
+                        <i class="fas fa-ellipsis-h ellipsis"></i>Every Month
+                            <i class="fas fa-chevron-down my-auto ml-auto down"><span class="d-none">0</span></i>
+                        </div>
+                        <input name="everyMonth" type="datetime-local" class="list-unstyled hiddenul2">
+                    </li>
+                    <li class="sideli2 border-top-0">
+                        <div class=" minili2 d-flex">
+                            <i class="fas fa-ellipsis-h ellipsis"></i>Every Year
+                            <i class="fas fa-chevron-down my-auto ml-auto down"><span class="d-none">0</span></i>
+                        </div>
+                        <input name="everyYear" type="datetime-local" class="list-unstyled hiddenul2">
+    
+                    </li>
+                    <li class="sideli2 border-top-0">
+                        <div class=" minili2 d-flex">
+                            <i class="fas fa-ellipsis-h ellipsis"></i>Every week
+                            <i class="fas fa-chevron-down my-auto ml-auto down"><span class="d-none">0</span></i>
+                        </div>
+                          <select  class="list-unstyled hiddenul2" name="weekday" class="right">
+                            <option value="0">Sunday</option>
+                            <option value="1">Monday</option>
+                            <option value="2">Tuesday</option>
+                            <option value="3">Wednesday</option>
+                            <option value="4">Thursday</option>
+                            <option value="5">Friday</option>
+                            <option value="6">Saturday</option>
+                          </select>
+                    </li>
+                </ul>
+            </div>
+            <div class="row justify-content-center">
+
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-dark text-white w-100 "
+                        [disabled]="form2.status=='INVALID'">submit</button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+    <div class="position-fixed bottom-0   text-white text-center right-0  " style="z-index: 5; right: 0; bottom: 0;">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header ">
+                <button type="button" class="btn-close  m-0" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body btn-danger text-white">
+            </div>
+        </div>
+    </div>
+
+</section>

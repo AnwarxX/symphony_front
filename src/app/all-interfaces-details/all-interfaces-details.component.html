@@ -1,0 +1,95 @@
+<button type="submit" (click)="start()">start</button>
+<button type="submit" (click)="stop()">Stop</button>
+<!-- Button trigger modal -->
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">import</button>
+
+<!-- Import Modal -->
+<div class="modal " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">import</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row py-1 d-flex ">
+                    <div class="col-md-4">
+                        <div class="input-group">
+
+                            <div class="input-group-prepend">
+                                <span class="input-group-text " id="inputGroup-sizing-default">Data</span>
+                            </div>
+                            <input type="text" name="daterange" value="01/01/2018 - 01/15/2018" />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+
+                            <div class="input-group-prepend">
+                                <span class="input-group-text " id="inputGroup-sizing-default">Interface Code</span>
+                            </div>
+                            <select formControlName="Revenue" id="" class="form-control">
+                                <option [selected]="true" value="default"> -- </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+
+                            <div class="input-group-prepend">
+                                <span class="input-group-text " id="inputGroup-sizing-default">Api</span>
+                            </div>
+                            <select formControlName="Revenue" id="" class="form-control">
+                                <option [selected]="true" value="default"> -- </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex justify-content-between by-3">
+
+    <div class="card w-100">
+
+        <table class="table mx-2 text-center mt-5">
+            <thead class="">
+                <tr>
+                    <th scope="col">Interface code</th>
+                    <th scope="col">BU Code </th>
+                    <th scope="col">Mapping Code</th>
+                    <th scope="col"> import</th>
+                    <th scope="col"> Edit</th>
+                    <th scope="col"> Delete</th>
+
+                </tr>
+            </thead>
+            <tbody id="">
+                <tr>
+                    <td>123</td>
+                    <td>123</td>
+                    <td>123</td>
+                    <td><button>Import</button></td>
+                    <td><button>Edit</button></td>
+                    <td><button>Delete</button></td>
+
+                </tr>
+
+
+
+
+            </tbody>
+        </table>
+    </div>
+
+
+</div>

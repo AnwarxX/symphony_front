@@ -1,0 +1,204 @@
+<section id="home">
+
+    <div class="con mt-5">
+        <div class="text-center py-3 ">
+            <h2 class="header header-h4">Business Unit Configuration</h2>
+        </div>
+
+        <form action="" [formGroup]="form2" (ngSubmit)="PropertySettings()" class=" mb-2 ">
+            <div class="row justify-content-center pt-1">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">BU</span>
+                        </div>
+                        <input formControlName="BU" name="BU" id="BU" class="form-control" value=""
+                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Journal Type</span>
+                        </div>
+                        <input formControlName="JournalType" name="" id="" class="form-control" value=""
+                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+
+                    </div>
+                </div>
+            </div>
+            <div class="row  pt-1">
+                <div class="col-md-6  ">
+                    <div *ngIf="form2.get('BU')?.invalid && form2.get('BU')?.touched">
+
+                        <small class="btn btn-danger form-control" *ngIf="form2.get('BU')?.errors?.maxlength">You exedet BU
+                            Maxlength which is 3 letters</small>
+                        <small class="btn btn-danger px-5 form-control " *ngIf="form2.get('BU')?.errors?.required"> BU is
+                            required</small>
+
+                    </div>
+
+                </div>
+                <div class="col-md-6 ">
+                    <div *ngIf="form2.get('JournalType')?.invalid && form2.get('JournalType')?.touched">
+
+                        <small class="btn btn-danger form-control" *ngIf="form2.get('JournalType')?.errors?.maxlength">You exedet
+                            JournalType Maxlength which is 5 letters </small>
+                        <small class="btn btn-danger px-5 form-control" *ngIf="form2.get('JournalType')?.errors?.required">Journal Type is required</small>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row justify-content-center pt-1">
+
+                <div class="col-md-6 ">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text form-control" id="inputGroup-sizing-default">Suspense Account</span>
+                        </div>
+                        <input formControlName="SuspenseAccount" name="" id="" class="form-control" value=""
+                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+
+
+                    </div>
+                </div>
+                <div class="col-md-6 ">
+                    <div class="input-group mr-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text " id="inputGroup-sizing-default">Currency :</span>
+                        </div>
+                        <select class="d-block pt-1  form-control" formControlName="Currencycode" id="">
+                            <option value="EGP">EGP</option>
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="GBP">GBP</option>
+                            <option value="AED">AED</option>
+                            <option value="SAR">SAR</option>
+                        </select>
+                    </div>
+                </div>
+           
+
+            </div>
+            <div class="row justify-content-center pt-1">
+                <div class="col-md-6 ">
+                    <div *ngIf="form2.get('SuspenseAccount')?.invalid && form2.get('SuspenseAccount')?.touched">
+                        <small class="btn btn-danger form-control" *ngIf="form2.get('SuspenseAccount')?.errors?.required">
+                            Suspense Account is required</small>
+                    </div>
+
+                </div>
+                <div class="col-md-3 ">
+                    <div *ngIf="form2.get('Currencycode')?.invalid && form2.get('Currencycode')?.touched">
+                        <small class="btn btn-danger  form-control" *ngIf="form2.get('Currencycode')?.errors?.required">
+                            Currency code is required</small>
+                    </div>
+
+                </div>
+                <div class="col-md-3 ">
+                    <div *ngIf="form2.get('ConnectionCode')?.invalid && form2.get('ConnectionCode')?.touched">
+                        <small class="btn btn-danger form-control  " *ngIf="form2.get('ConnectionCode')?.errors?.required">Connection Code is
+                            required</small>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row justify-content-center pt-1">
+
+                <div class="col-md-6 ml-5">
+                    <div class="input-group ">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text " id="inputGroup-sizing-default">Mapping Code:</span>
+                        </div>
+                        <select class="d-block  pt-1  form-control" formControlName="MappingCode" id="">
+                            <option value="1234">1234</option>
+
+                        </select>
+                    </div>
+                </div>
+              
+                <div class="col-md-6 ml-5">
+                    <div class="input-group ">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text " id="inputGroup-sizing-default">Connection Code:</span>
+                        </div>
+                        <select class="d-block    form-control" formControlName="ConnectionCode" id="">
+                            <option value="1234">1234</option>
+
+                        </select>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="row justify-content-center pt-1">
+                <div class="col-md-6 ">
+                    <div *ngIf="form2.get('MappingCode')?.invalid && form2.get('MappingCode')?.touched">
+                        <small class="btn btn-danger form-control" *ngIf="form2.get('MappingCode')?.errors?.required">
+                            Mapping Code is required</small>
+                    </div>
+
+                </div>
+               
+                <div class="col-md-6 ">
+                    <div *ngIf="form2.get('ConnectionCode')?.invalid && form2.get('ConnectionCode')?.touched">
+                        <small class="btn btn-danger form-control  " *ngIf="form2.get('ConnectionCode')?.errors?.required">Connection Code is
+                            required</small>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row justify-content-center pt-1">
+
+                <div class="col-md-12">
+                    <div class="input-group ">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text form-control " id="inputGroup-sizing-default">Ledger Import
+                                Description</span>
+                        </div>
+                        <input formControlName="LedgerImportDescription" name="" id="" class="form-control" value=""
+                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center pt-1">
+                
+                <div class="col-md-12">
+                    <div
+                        *ngIf="form2.get('LedgerImportDescription')?.invalid && form2.get('LedgerImportDescription')?.touched">
+                        <small class="btn btn-danger px-5 form-control"
+                            *ngIf="form2.get('LedgerImportDescription')?.errors?.required"> Ledger Import Description is
+                            required</small>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row justify-content-center pt-1">
+
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-dark text-white w-100 " 
+                        [disabled]="form2.status=='INVALID'">submit</button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+    <div class="position-fixed bottom-0   text-white text-center right-0  " style="z-index: 5; right: 0; bottom: 0;" >
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" >
+          <div class="toast-header ">           
+            <button type="button" class="btn-close  m-0" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body bg-dark text-white">
+               Submitted successfully <i class=" pl-2 fa-solid fa-circle-check"></i>
+        </div>
+        </div>
+      </div>
+
+     
+      
+</section>

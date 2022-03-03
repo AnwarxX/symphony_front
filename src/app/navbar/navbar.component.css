@@ -1,0 +1,23 @@
+img{
+    width: 120px;
+}
+
+#home2{
+
+    max-height: 4rem ;
+    background-color: black!important;
+
+}
+
+
+    .con  
+{
+    position: absolute;
+    top: 4%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+}

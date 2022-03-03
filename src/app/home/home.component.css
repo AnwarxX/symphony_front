@@ -1,0 +1,54 @@
+.Header {
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.header-h4{
+    color: cadetblue;
+    font-weight: 600;
+}
+
+a{
+    color: white;
+}
+
+.w{
+background-color: white;
+}
+.g{
+    background-color:cadetblue ;
+}
+.gr{
+    color:cadetblue ;
+}
+#home{
+    min-height: 100vh;
+    background-color: #343a40!important;
+}
+.con  
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+}
+
+.box {
+    width: 150px;
+    height: 130px;
+    background-color: white;
+}
+
+.prod-logo {
+    width: 120px;
+    transition: transform .2s; 
+}
+
+
+.prod-logo:hover {
+    transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
