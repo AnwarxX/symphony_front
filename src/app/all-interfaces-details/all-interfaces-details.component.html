@@ -1,11 +1,12 @@
-<button type="submit" (click)="start()">start</button>
-<button type="submit" (click)="stop()">Stop</button>
+
+<div class="startend w-100 text-center my-2 ">
+<button class="btn btn-success me-2" type="submit " (click)="start()">start</button>
+<button class="me-4 btn btn-danger" type="submit" (click)="stop()">Stop</button>
+</div>
 <!-- Button trigger modal -->
 
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">import</button>
-
 <!-- Import Modal -->
-<div class="modal " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal " id="importmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
@@ -66,6 +67,58 @@
         </div>
     </div>
 </div>
+<!-- Edit Modal -->
+<div class="modal " id="editmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row py-1 d-flex ">
+                    <div class="col-md-4">
+                        <div class="input-group">
+
+                            <div class="input-group-prepend">
+                                <span class="input-group-text " id="inputGroup-sizing-default">Data</span>
+                            </div>
+                            <input type="text" name="daterange" value="01/01/2018 - 01/15/2018" />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+
+                            <div class="input-group-prepend">
+                                <span class="input-group-text " id="inputGroup-sizing-default">Interface Code</span>
+                            </div>
+                            <select formControlName="Revenue" id="" class="form-control">
+                                <option [selected]="true" value="default"> -- </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+
+                            <div class="input-group-prepend">
+                                <span class="input-group-text " id="inputGroup-sizing-default">Api</span>
+                            </div>
+                            <select formControlName="Revenue" id="" class="form-control">
+                                <option [selected]="true" value="default"> -- </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="d-flex justify-content-between by-3">
 
@@ -88,9 +141,9 @@
                     <td>123</td>
                     <td>123</td>
                     <td>123</td>
-                    <td><button>Import</button></td>
-                    <td><button>Edit</button></td>
-                    <td><button>Delete</button></td>
+                    <td><button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#importmodal" >Import</button></td>
+                    <td><button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editmodal">Edit</button></td>
+                    <td><button class="btn btn-danger">Delete</button></td>
 
                 </tr>
 
