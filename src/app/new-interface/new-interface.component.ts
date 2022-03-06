@@ -18,15 +18,24 @@ export class NewInterfaceComponent implements OnInit {
   clientId:new FormControl("",Validators.compose([Validators.required])),
   lockRef:new FormControl("",Validators.compose([Validators.required])),
   ApiSchedule:new FormControl("",Validators.compose([Validators.required])),
+  ApiScheduleStatue:new FormControl("",Validators.compose([Validators.required])),
   SunUser:new FormControl("",Validators.compose([Validators.required])),
   SunPassword:new FormControl("",Validators.compose([Validators.required])),
   Sunserver:new FormControl("",Validators.compose([Validators.required])),
   SunDatabase:new FormControl("",Validators.compose([Validators.required])),
   SunSchedule:new FormControl("",Validators.compose([Validators.required])),
-
+  SunScheduleStatue:new FormControl("",Validators.compose([Validators.required])),
 })
 authData:any;
-constructor(public httpClient:HttpClient) { }
+dis:any;
+x:any;
+
+
+
+constructor(public httpClient:HttpClient) { 
+  console.log(this.getDaysArray("2022-02-20","2022-02-23")[0].toISOString().split("T")[0]);
+  this.import();
+}
 
   ngOnInit(): void {
     $('#home').particleground({
@@ -34,6 +43,10 @@ constructor(public httpClient:HttpClient) { }
       lineColor: 'white '
   });
 
+  }
+  diss(event:any){
+    this.dis=(<HTMLInputElement>event.target).value;
+ 
   }
 authorization()
 {
@@ -47,5 +60,17 @@ authorization()
   
   })
 }
+import()
+{
+  this.x=[]
+  for (let i = 0; i < this.getDaysArray("2022-02-20","2022-02-23").length; i++) {
+    this.httpClient.post<any>('http://localhost:5000/import',{date:this.getDaysArray("2022-02-20","2022-02-23")[i].toISOString().split("T")[0]}).subscribe(data => {
+      this.x.push(data)
+      console.log(this.x);
+    })
+  }
+}
+
+getDaysArray(s:any,e:any) {for(var a=[],d=new Date(s);d<=new Date(e);d.setDate(d.getDate()+1)){ a.push(new Date(d));}return a;};
 
 }

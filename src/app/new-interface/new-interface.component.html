@@ -122,40 +122,43 @@
 
                 </div>
             </div>
-            <div class="row py-2 align-items-center ">
-                <div class="col-md-2">
-                    <div class="input-group">
-                        <div class="input-group-prepend  ">
-                            <span class="input-group-text text-center " id="inputGroup-sizing-default">Api
+            <div class="row py-2 align-items-center  text-center">
+                <div class="col-md-3 ">
+                    <div class="input-group ">
+                        <div class="input-group-prepend w-100">
+                            <span class="input-group-text text-center py-3 " id="inputGroup-sizing-default">Api
                                 Schedule</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-3">
-
-                    <div class="form-check form-check-inline ">
-                        <input class="form-check-input" formControlName="ApiSchedule" type="radio" name="ApiSchedule"
-                            id="inlineRadio1" value="1">
-                        <label class="form-check-label text-white" for="inlineRadio1">Every Day</label>
-
-                    </div>
+                    <div class="form-check text-white bg-dark text-center w-100">
+                        <input class="form-check-input  " type="radio" name="exampleRadios" id="exampleRadios1" formControlName="ApiScheduleStatue" value="day" checked>
+                        <label class="form-check-label" for="exampleRadios1">
+                            Every day
+                         </label>
+                      </div>
+                    <input name="everyDay" formControlName="ApiSchedule" class="list-unstyled hiddenul2 form-control" type="time">
                 </div>
                 <div class="col-md-3">
-
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" formControlName="ApiSchedule" name="ApiSchedule"
-                            id="inlineRadio2" value="30">
-                        <label class="form-check-label text-white" for="inlineRadio2">Every Month</label>
-                    </div>
+                    <div class="form-check text-white bg-dark text-center w-100">
+                        <input class="form-check-input  "  type="radio" name="exampleRadios" id="exampleRadios1"  formControlName="ApiScheduleStatue" value="month" checked>
+                        <label class="form-check-label" for="exampleRadios1">
+                            Every Month
+                        </label>
+                    </div> 
+                    <input name="everyMonth" type="datetime-local"  formControlName="ApiSchedule"  class="list-unstyled hiddenul2 form-control">
                 </div>
                 <div class="col-md-3">
+                    <div class="form-check text-white bg-dark text-center w-100">
+                        <input class="form-check-input  "  type="radio" name="exampleRadios" formControlName="ApiScheduleStatue" id="exampleRadios1" value="year" checked>
+                        <label class="form-check-label" for="exampleRadios1">
+                            Every Year
+                        </label>
+                    </div> 
+                    <input name="everyYear" type="datetime-local"   formControlName="ApiSchedule" class="list-unstyled hiddenul2 form-control">
 
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" formControlName="ApiSchedule" name="ApiSchedule"
-                            id="inlineRadio2" value="365">
-                        <label class="form-check-label text-white" for="inlineRadio2">Every Year</label>
-                    </div>
                 </div>
 
             </div>
@@ -236,86 +239,48 @@
 
                 </div>
             </div>
-            <div class="row pt-2 align-items-center">
-                <div class="col-md-3">
+            <div class="row pt-2 align-items-center text-center">
+                <div class="col-md-3 text-center ">
                     <div class="input-group ">
-                        <div class="input-group-prepend w-100 ">
-                            <span class="input-group-text text-center " id="inputGroup-sizing-default">Sun
+                        <div class="input-group-prepend w-100">
+                            <span class="input-group-text text-center py-3 w-100" id="inputGroup-sizing-default">Sun
                                 Schedule</span>
                         </div>
                     </div>
                 </div>
+                <div class="col-md-3 text-center">
+                    <div class="form-check text-white bg-dark text-center w-100">
+                        <input class="form-check-input  " type="radio" (click)="diss($event)" name="exampleRadios2" id="exampleRadios2"  formControlName="SunScheduleStatue" value="day" checked>
+                        <label class="form-check-label" for="exampleRadios2">
+                            Every day
+                         </label>
+                      </div> 
+                    <p class="text-white">{{dis != 'day'}}</p>
+                    <input name="everyDay" formControlName="SunSchedule"   disabled  class="list-unstyled hiddenul2 form-control" type="time">
 
-                <div class="col-md-3">
-
-                    <div class="form-check form-check-inline ">
-                        <input class="form-check-input" formControlName="SunSchedule" type="radio" name="SunSchedule"
-                            id="inlineRadio1" value="0 0 0 * * *">
-                        <label class="form-check-label text-white" for="inlineRadio1">Every Day</label>
-
-                    </div>
+                </div>
+                <div class="col-md-3 ">
+                    <div class="form-check text-white bg-dark text-center w-100">
+                        <input class="form-check-input  " type="radio" (click)="diss($event)" name="exampleRadios2" formControlName="SunScheduleStatue"  id="exampleRadios2" value="month" checked>
+                        <label class="form-check-label" for="exampleRadios2">
+                            Every Month
+                        </label>
+                      </div> 
+                   
+                    <input name="everyMonth" formControlName="SunSchedule" disabled  type="datetime-local" class="list-unstyled hiddenul2 form-control">
                 </div>
                 <div class="col-md-3">
+                    <div class="form-check text-white bg-dark text-center w-100">
+                        <input class="form-check-input  " type="radio" (click)="diss($event)" name="exampleRadios2" id="exampleRadios2" formControlName="SunScheduleStatue"  value="year" checked>
+                        <label class="form-check-label" for="exampleRadios2">
+                            Every Year
+                        </label>
+                      </div> 
+                    
+                    <input name="everyYear" type="datetime-local" disabled formControlName="SunSchedule" class="list-unstyled hiddenul2 form-control">
 
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" formControlName="SunSchedule" name="SunSchedule"
-                            id="inlineRadio2" value="0 0 0 0 * *">
-                        <label class="form-check-label text-white" for="inlineRadio2">Every Month</label>
-                    </div>
-                </div>
-                <div class="col-md-3">
-
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" formControlName="SunSchedule" name="SunSchedule"
-                            id="inlineRadio2" value="0 0 0 0 0 *">
-                        <label class="form-check-label text-white" for="inlineRadio2">Every Year</label>
-                    </div>
                 </div>
 
-            </div>
-            <div class="row">
-            <div class="col-12 my-2">
-                <ul class="list-unstyled">
-                    <li class="sideli2">
-                        <div class=" minili2 d-flex">
-                            <i class="fas fa-ellipsis-h ellipsis"></i>Every day
-                            <i class="fas fa-chevron-down my-auto ml-auto down"><span class="d-none">0</span></i>
-                        </div>
-                    <input name="everyDay" class="list-unstyled hiddenul2" type="time">
-    
-                    </input>
-                    </li>
-                    <li class="sideli2 border-top-0">
-                        <div class=" minili2 d-flex">
-                        <i class="fas fa-ellipsis-h ellipsis"></i>Every Month
-                            <i class="fas fa-chevron-down my-auto ml-auto down"><span class="d-none">0</span></i>
-                        </div>
-                        <input name="everyMonth" type="datetime-local" class="list-unstyled hiddenul2">
-                    </li>
-                    <li class="sideli2 border-top-0">
-                        <div class=" minili2 d-flex">
-                            <i class="fas fa-ellipsis-h ellipsis"></i>Every Year
-                            <i class="fas fa-chevron-down my-auto ml-auto down"><span class="d-none">0</span></i>
-                        </div>
-                        <input name="everyYear" type="datetime-local" class="list-unstyled hiddenul2">
-    
-                    </li>
-                    <li class="sideli2 border-top-0">
-                        <div class=" minili2 d-flex">
-                            <i class="fas fa-ellipsis-h ellipsis"></i>Every week
-                            <i class="fas fa-chevron-down my-auto ml-auto down"><span class="d-none">0</span></i>
-                        </div>
-                          <select  class="list-unstyled hiddenul2" name="weekday" class="right">
-                            <option value="0">Sunday</option>
-                            <option value="1">Monday</option>
-                            <option value="2">Tuesday</option>
-                            <option value="3">Wednesday</option>
-                            <option value="4">Thursday</option>
-                            <option value="5">Friday</option>
-                            <option value="6">Saturday</option>
-                          </select>
-                    </li>
-                </ul>
             </div>
             <div class="row justify-content-center">
 
