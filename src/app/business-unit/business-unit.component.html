@@ -112,7 +112,7 @@
                             <span class="input-group-text " id="inputGroup-sizing-default">Mapping Code:</span>
                         </div>
                         <select class="d-block  pt-1  form-control" formControlName="MappingCode" id="">
-                            <option value="1234"></option>
+                            <option *ngFor="let i of mapp" [value]="i.MappingCode">{{i.MappingCode}}</option>
 
                         </select>
                     </div>
@@ -123,8 +123,8 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text " id="inputGroup-sizing-default">Interface Code:</span>
                         </div>
-                        <select class="d-block    form-control" formControlName="ConnectionCode" id="">
-                            <option value="1234"></option>
+                        <select class="d-block form-control" formControlName="ConnectionCode" id="">
+                            <option *ngFor="let i of interfaces" [value]="i.interfaceCode">{{i.interfaceCode}}</option>
 
                         </select>
                     </div>

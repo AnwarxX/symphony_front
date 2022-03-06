@@ -56,10 +56,12 @@ export class MappingComponent implements OnInit {
   
   async getData(){
     //send a get request to the backend to retrive all the data in this endpoit
-    await this.httpClient.get<any>('http://192.168.1.78:5000/SysData').subscribe(
+    await this.httpClient.get<any>('http://localhost:5000/SysData').subscribe(
       response => {
         this.data = response;//response variable holds all the data retrived then asign them to a variable cold data
         //loop that iterates over the objects in the data and returns only the table name then push it in an array called tableNames
+        console.log(this.data);
+        
         for (let i = 0; i < this.data.length; i++) {
           this.tableNames.push(this.data[i]["TableName"])
         }

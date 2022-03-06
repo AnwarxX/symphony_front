@@ -10,8 +10,18 @@ declare var $:any //declear $ to use jquery
 })
 export class AllInterfacesDetailsComponent implements OnInit {
   reply:any;
+  x:any;
+  interfaces:any;
+  apis:any;
+  form = new FormGroup({
+    startDate:new FormControl("",Validators.compose([Validators.required])),
+    endDate:new FormControl("",Validators.compose([Validators.required])),
+    interfaceCode: new FormControl("",Validators.compose([Validators.required])),
+    api:new FormControl("",Validators.compose([Validators.required]))
+  })
   constructor(public httpClient:HttpClient) { 
-    
+    console.log(this.getDaysArray("2022-02-20","2022-02-23")[0].toISOString().split("T")[0]);
+    this.imports()
   
   }
 
@@ -20,14 +30,15 @@ export class AllInterfacesDetailsComponent implements OnInit {
         dotColor: 'cadetblue',
         lineColor: 'white '
     });
-    $(function() {
-      $('input[name="daterange"]').daterangepicker({
-        opens: 'left'
-      }, function(start:any, end:any, label:any) {
-        console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-      });
-    });
     
+  }
+  imports(){
+    this.httpClient.get<any>('http://localhost:5000/interfaceCode').subscribe(data => {
+      this.apis=data.apidata;//data variable holds all the data retrived then asign them to a variable cold value
+      this.interfaces=data.interfacedata;//data variable holds all the data retrived then asign them to a variable cold value
+      console.log(this.apis);
+      console.log(this.interfaces);
+    })
   }
   start(){
     this.httpClient.get<any>('http://localhost:5000/start').subscribe(data => {
@@ -40,5 +51,20 @@ export class AllInterfacesDetailsComponent implements OnInit {
     this.reply=data;//data variable holds all the data retrived then asign them to a variable cold value
     //this.getmapp()//then call this function again to render the new submitted data
     })
+  }
+  getDaysArray(s:any,e:any) {for(var a=[],d=new Date(s);d<=new Date(e);d.setDate(d.getDate()+1)){ a.push(new Date(d));}return a;};
+  import()
+  {
+    let start=this.form.get('startDate')?.value;
+    let end=this.form.get('endDate')?.value;
+    this.x=[]
+    for (let i = 0; i < this.getDaysArray(start,end).length; i++) {
+      this.httpClient.post<any>('http://localhost:5000/import',{date:this.getDaysArray(start,end)[i].toISOString().split("T")[0],api:"getTenderMediaDailyTotals"}).subscribe(data => {
+        this.x.push(data)
+        if (this.x.length==this.getDaysArray(start,end).length) {
+          console.log(this.x);
+        }
+      })
+    }
   }
 }

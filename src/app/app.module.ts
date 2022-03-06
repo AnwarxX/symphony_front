@@ -11,9 +11,7 @@ import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { SympDbComponent } from './symp-db/symp-db.component';
 import { HomeComponent } from './home/home.component';
 import { BusinessUnitComponent } from './business-unit/business-unit.component';
-import { ApiConfigurationComponent } from './api-configuration/api-configuration.component';
 import { AppConfigurationComponent } from './app-configuration/app-configuration.component';
-import { MappingDefinitionComponent } from './mapping-definition/mapping-definition.component';
 import { HomeConfigComponent } from './home-config/home-config.component';
 import { AllInterfacesComponent } from './all-interfaces/all-interfaces.component';
 import { NewInterfaceComponent } from './new-interface/new-interface.component';
@@ -27,9 +25,7 @@ import { AllInterfacesDetailsComponent } from './all-interfaces-details/all-inte
     SympDbComponent,
     HomeComponent,
     BusinessUnitComponent,
-    ApiConfigurationComponent,
     AppConfigurationComponent,
-    MappingDefinitionComponent,
     HomeConfigComponent,
     AllInterfacesComponent,
     NewInterfaceComponent,

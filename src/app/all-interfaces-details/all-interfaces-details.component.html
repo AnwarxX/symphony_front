@@ -12,6 +12,7 @@
                 <h5 class="modal-title" id="exampleModalLabel">import</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <form action="" [formGroup]="form" (ngSubmit)="import()" class=" pb-3 ">
             <div class="modal-body">
                 <div class="row py-1 d-flex ">
                     <div class="col-md-4">
@@ -20,17 +21,25 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text " id="inputGroup-sizing-default">Data</span>
                             </div>
-                            <input type="text" name="daterange" value="01/01/2018 - 01/15/2018" />
+                            <div class="row w-75">
+                                <div class="col-6">
+                                    <input formControlName="startDate" type="date" class="w-100">
+                                </div>
+                                <div class="col-6">
+                                    <input formControlName="endDate" type="date" class="w-100">
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="input-group">
-
                             <div class="input-group-prepend">
                                 <span class="input-group-text " id="inputGroup-sizing-default">Interface Code</span>
                             </div>
-                            <select formControlName="Revenue" id="" class="form-control">
+                            <select formControlName="interfaceCode" id="" class="form-control">
                                 <option [selected]="true" value="default"> -- </option>
+                                <option *ngFor="let i of interfaces" [value]="i.interfaceCode">{{i.interfaceCode}}</option>
+
                             </select>
                         </div>
                     </div>
@@ -40,8 +49,8 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text " id="inputGroup-sizing-default">Api</span>
                             </div>
-                            <select formControlName="Revenue" id="" class="form-control">
-                                <option [selected]="true" value="default"> -- </option>
+                            <select formControlName="api" id="" class="form-control">
+                                <option *ngFor="let i of apis" [value]="i.name">{{i.name}}</option>
                             </select>
                         </div>
                     </div>
@@ -51,8 +60,9 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
             </div>
+            </form>
         </div>
     </div>
 </div>
