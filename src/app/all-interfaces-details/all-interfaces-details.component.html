@@ -137,19 +137,14 @@
                 </tr>
             </thead>
             <tbody id="">
-                <tr>
-                    <td>123</td>
-                    <td>123</td>
-                    <td>123</td>
-                    <td><button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#importmodal" >Import</button></td>
+                <tr *ngFor="let i of interfaceData" >
+                    <td>{{i.interfaceCode}}</td>
+                    <td>{{i['BU']}}</td>
+                    <td>{{i.MappingCode}}</td>
+                    <td><button class="btn btn-success icBtn" data-bs-toggle="modal" (click)="importBtn(i.interfaceCode)" data-bs-target="#importmodal" >Import</button></td>
                     <td><button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editmodal">Edit</button></td>
                     <td><button class="btn btn-danger">Delete</button></td>
-
                 </tr>
-
-
-
-
             </tbody>
         </table>
     </div>

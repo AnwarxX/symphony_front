@@ -13,6 +13,7 @@ export class AllInterfacesDetailsComponent implements OnInit {
   x:any;
   interfaces:any;
   apis:any;
+  interfaceData:any;
   form = new FormGroup({
     startDate:new FormControl("",Validators.compose([Validators.required])),
     endDate:new FormControl("",Validators.compose([Validators.required])),
@@ -22,7 +23,7 @@ export class AllInterfacesDetailsComponent implements OnInit {
   constructor(public httpClient:HttpClient) { 
     console.log(this.getDaysArray("2022-02-20","2022-02-23")[0].toISOString().split("T")[0]);
     this.imports()
-  
+    this.getInterfaceData()
   }
 
     ngOnInit(): void {
@@ -31,6 +32,22 @@ export class AllInterfacesDetailsComponent implements OnInit {
         lineColor: 'white '
     });
     
+  }
+  getInterfaceData(){
+
+    this.httpClient.get<any>('http://localhost:5000/importInterface').subscribe(data => {
+
+      this.interfaceData=data;//data variable holds all the data retrived then asign them to a variable cold value      
+
+      console.log(this.interfaceData[1].BU);      
+
+ 
+
+    })
+
+  }
+  importBtn(text:any){
+    console.log(text);
   }
   imports(){
     this.httpClient.get<any>('http://localhost:5000/interfaceCode').subscribe(data => {
