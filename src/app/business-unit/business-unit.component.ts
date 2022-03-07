@@ -19,7 +19,7 @@ export class BusinessUnitComponent implements OnInit {
     Currencycode:new FormControl("",Validators.compose([Validators.required])),
     LedgerImportDescription:new FormControl("",Validators.compose([Validators.required])),
     SuspenseAccount:new FormControl("",Validators.compose([Validators.required])),
-    ConnectionCode:new FormControl("",Validators.compose([Validators.required])),
+    interfaceCode:new FormControl("",Validators.compose([Validators.required])),
     MappingCode:new FormControl("",Validators.compose([Validators.required])),
   })
   value:any;
@@ -35,7 +35,6 @@ export class BusinessUnitComponent implements OnInit {
         this.value=data;//data variable holds all the data retrived then asign them to a variable cold value
       })
       $('#liveToast').toast('show')
-
     } 
     imports(){
       this.httpClient.get<any>('http://localhost:5000/codes').subscribe(data => {
@@ -50,11 +49,7 @@ export class BusinessUnitComponent implements OnInit {
       dotColor: 'cadetblue',
       lineColor: 'white'
   });
- 
-
   }
 
-  
- 
 
 }
