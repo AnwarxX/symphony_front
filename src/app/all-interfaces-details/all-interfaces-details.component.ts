@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+  import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl,Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 declare var $:any //declear $ to use jquery
@@ -26,28 +26,23 @@ export class AllInterfacesDetailsComponent implements OnInit {
     this.imports()
     this.getInterfaceData()
   }
-
     ngOnInit(): void {
       $('#home').particleground({
         dotColor: 'cadetblue',
         lineColor: 'white '
     });
-    
   }
   getInterfaceData(){
-
     this.httpClient.get<any>('http://localhost:5000/importInterface').subscribe(data => {
-
       this.interfaceData=data;//data variable holds all the data retrived then asign them to a variable cold value      
-
       console.log(this.interfaceData[1].BU);      
-
- 
-
     })
-
   }
-  importBtn(text:any){
+  importApiBtn(text:any){
+    this.interfaceCod=text;
+    console.log(this.interfaceCod);
+  }
+  importSunBtn(text:any){
     this.interfaceCod=text;
     console.log(this.interfaceCod);
   }
