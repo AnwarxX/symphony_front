@@ -14,6 +14,7 @@ export class AllInterfacesDetailsComponent implements OnInit {
   interfaces:any;
   apis:any;
   interfaceData:any;
+  interfaceCod:any;
   form = new FormGroup({
     startDate:new FormControl("",Validators.compose([Validators.required])),
     endDate:new FormControl("",Validators.compose([Validators.required])),
@@ -47,7 +48,8 @@ export class AllInterfacesDetailsComponent implements OnInit {
 
   }
   importBtn(text:any){
-    console.log(text);
+    this.interfaceCod=text;
+    console.log(this.interfaceCod);
   }
   imports(){
     this.httpClient.get<any>('http://localhost:5000/interfaceCode').subscribe(data => {
@@ -76,7 +78,7 @@ export class AllInterfacesDetailsComponent implements OnInit {
     let end=this.form.get('endDate')?.value;
     this.x=[]
     for (let i = 0; i < this.getDaysArray(start,end).length; i++) {
-      this.httpClient.post<any>('http://localhost:5000/import',{date:this.getDaysArray(start,end)[i].toISOString().split("T")[0],api:"getTenderMediaDailyTotals"}).subscribe(data => {
+      this.httpClient.post<any>('http://localhost:5000/import',{interface:this.interfaceCod,date:this.getDaysArray(start,end)[i].toISOString().split("T")[0],api:this.form.get('api')?.value}).subscribe(data => {
         this.x.push(data)
         if (this.x.length==this.getDaysArray(start,end).length) {
           console.log(this.x);
