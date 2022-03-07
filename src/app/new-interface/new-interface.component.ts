@@ -44,7 +44,37 @@ constructor(public httpClient:HttpClient) {
   }
   diss(event:any){
     this.dis=(<HTMLInputElement>event.target).value;
- 
+    console.log(this.dis);
+    if (this.dis=="day") {
+      $(".sunEveryDay").removeAttr('disabled');
+      $(".sunEveryMonth").attr('disabled', 'disabled');
+      $(".sunEveryYear").attr('disabled', 'disabled');
+    }
+    else if(this.dis=="month"){
+      $(".sunEveryMonth").removeAttr('disabled');
+      $(".sunEveryYear").attr('disabled', 'disabled');
+      $(".sunEveryDay").attr('disabled', 'disabled');
+    }
+    else if(this.dis=="year"){
+      $(".sunEveryYear").removeAttr('disabled');
+      $(".sunEveryMonth").attr('disabled', 'disabled');
+      $(".sunEveryDay").attr('disabled', 'disabled');
+    }
+    if (this.dis=="apiday") {
+      $(".apiEveryDay").removeAttr('disabled');
+      $(".apiEveryMonth").attr('disabled', 'disabled');
+      $(".apiEveryYear").attr('disabled', 'disabled');
+    }
+    else if(this.dis=="apimonth"){
+      $(".apiEveryMonth").removeAttr('disabled');
+      $(".apiEveryYear").attr('disabled', 'disabled');
+      $(".apiEveryDay").attr('disabled', 'disabled');
+    }
+    else if(this.dis=="apiyear"){
+      $(".apiEveryYear").removeAttr('disabled');
+      $(".apiEveryMonth").attr('disabled', 'disabled');
+      $(".apiEveryDay").attr('disabled', 'disabled');
+    }
   }
 authorization()
 {
