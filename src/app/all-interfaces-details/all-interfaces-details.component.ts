@@ -40,10 +40,7 @@ export class AllInterfacesDetailsComponent implements OnInit {
     this.httpClient.get<any>('http://localhost:5000/importInterface').subscribe(data => {
 
       this.interfaceData=data;//data variable holds all the data retrived then asign them to a variable cold value      
-
       console.log(this.interfaceData[1].BU);      
-
- 
 
     })
 
