@@ -15,6 +15,7 @@ export class AllInterfacesDetailsComponent implements OnInit {
   apis:any;
   interfaceData:any;
   interfaceCod:any;
+  rowInput:any;
   form = new FormGroup({
     startDate:new FormControl("",Validators.compose([Validators.required])),
     endDate:new FormControl("",Validators.compose([Validators.required])),
@@ -49,7 +50,16 @@ export class AllInterfacesDetailsComponent implements OnInit {
   }
   importBtn(text:any){
     this.interfaceCod=text;
-    console.log(this.interfaceCod);
+  }
+  deleteBtn(row:any){
+    this.rowInput=row;
+
+  }
+  confirmDelete(){
+    this.httpClient.post<any>('http://localhost:5000/deleteInterface',this.rowInput).subscribe(data => {
+      console.log(data);
+      this.getInterfaceData()
+    })
   }
   imports(){
     this.httpClient.get<any>('http://localhost:5000/interfaceCode').subscribe(data => {
