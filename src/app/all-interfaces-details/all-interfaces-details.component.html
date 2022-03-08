@@ -107,6 +107,47 @@
         </div>
     </div>
 </div>
+<!-- PostSun Modal -->
+<div class="modal " id="sunPost" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">SunPost</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" [formGroup]="form" (ngSubmit)="import()" class=" pb-3 ">
+            <div class="modal-body">
+                <div class="row py-1 d-flex ">
+                    <div class="col-md-12 ">
+                        <div class="input-group justify-content-center align-items-center">
+
+                            <div class="input-group-prepend ">
+                                <span class="input-group-text " id="inputGroup-sizing-default">Date</span>
+                            </div>
+                            <div class="row w-50 ">
+                                <div class="col-6">
+                                    <input formControlName="startDate" type="date" class="w-100">
+                                </div>
+                                <div class="col-6">
+                                    <input formControlName="endDate" type="date" class="w-100">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 
 <div class="d-flex justify-content-between by-3">
 
@@ -119,6 +160,7 @@
                     <th scope="col">BU Code </th>
                     <th scope="col">Mapping Code</th>
                     <th scope="col"> import</th>
+                    <th scope="col"> Sun Post</th>
                     <th scope="col"> Edit</th>
                     <th scope="col"> Delete</th>
 
@@ -130,6 +172,7 @@
                     <td>{{i['BU']}}</td>
                     <td>{{i.MappingCode}}</td>
                     <td><button class="btn btn-success icBtn" data-bs-toggle="modal" (click)="importBtn(i.interfaceCode)" data-bs-target="#importmodal" >Import</button></td>
+                    <td><button class="btn btn-success icBtn" data-bs-toggle="modal" (click)="importBtn(i.interfaceCode)" data-bs-target="#sunPost" >Post</button></td>
                     <td><button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editmodal">Edit</button></td>
                     <td><button class="btn btn-danger">Delete</button></td>
                 </tr>
