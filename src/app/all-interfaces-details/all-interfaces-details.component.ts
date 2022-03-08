@@ -15,6 +15,8 @@ export class AllInterfacesDetailsComponent implements OnInit {
   apis:any;
   interfaceData:any;
   interfaceCod:any;
+  rowInput:any;
+  dateDisable=false;
   form = new FormGroup({
     startDate:new FormControl("",Validators.compose([Validators.required])),
     endDate:new FormControl("",Validators.compose([Validators.required])),
@@ -36,6 +38,10 @@ export class AllInterfacesDetailsComponent implements OnInit {
     this.httpClient.get<any>('http://localhost:5000/importInterface').subscribe(data => {
       this.interfaceData=data;//data variable holds all the data retrived then asign them to a variable cold value      
       console.log(this.interfaceData[1].BU);      
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
     })
   }
   importApiBtn(text:any){
@@ -44,7 +50,25 @@ export class AllInterfacesDetailsComponent implements OnInit {
   }
   importSunBtn(text:any){
     this.interfaceCod=text;
-    console.log(this.interfaceCod);
+  }
+  deleteBtn(row:any){
+    this.rowInput=row;
+
+  }
+  confirmDelete(){
+    this.httpClient.post<any>('http://localhost:5000/deleteInterface',this.rowInput).subscribe(data => {
+      console.log(data);
+      this.getInterfaceData()
+    })
+  }
+  disableDate(event:any){
+    console.log((<HTMLInputElement>event.target).value);
+    if((<HTMLInputElement>event.target).value.includes("Daily")||(<HTMLInputElement>event.target).value=="getGuestChecks"){
+      this.dateDisable=true;
+    }
+    else{
+      this.dateDisable=false;
+    }
   }
   imports(){
     this.httpClient.get<any>('http://localhost:5000/interfaceCode').subscribe(data => {
