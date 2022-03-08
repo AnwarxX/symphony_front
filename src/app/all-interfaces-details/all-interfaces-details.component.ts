@@ -16,6 +16,7 @@ export class AllInterfacesDetailsComponent implements OnInit {
   interfaceData:any;
   interfaceCod:any;
   rowInput:any;
+  dateDisable=false;
   form = new FormGroup({
     startDate:new FormControl("",Validators.compose([Validators.required])),
     endDate:new FormControl("",Validators.compose([Validators.required])),
@@ -57,6 +58,15 @@ export class AllInterfacesDetailsComponent implements OnInit {
       console.log(data);
       this.getInterfaceData()
     })
+  }
+  disableDate(event:any){
+    console.log((<HTMLInputElement>event.target).value);
+    if((<HTMLInputElement>event.target).value.includes("Daily")||(<HTMLInputElement>event.target).value=="getGuestChecks"){
+      this.dateDisable=true;
+    }
+    else{
+      this.dateDisable=false;
+    }
   }
   imports(){
     this.httpClient.get<any>('http://localhost:5000/interfaceCode').subscribe(data => {

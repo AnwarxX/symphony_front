@@ -16,7 +16,18 @@
             <form action="" [formGroup]="form" (ngSubmit)="import()" class=" pb-3 ">
             <div class="modal-body">
                 <div class="row py-1 d-flex ">
-                    <div class="col-md-6">
+                    <div class="col-md-6 ">
+                        <div class="input-group">
+
+                            <div class="input-group-prepend">
+                                <span class="input-group-text " id="inputGroup-sizing-default">Api</span>
+                            </div>
+                            <select formControlName="api" id="" (click)="disableDate($event)" class="form-control">
+                                <option *ngFor="let i of apis"  [value]="i.name">{{i.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6"  *ngIf="dateDisable==true">
                         <div class="input-group">
 
                             <div class="input-group-prepend">
@@ -32,17 +43,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="input-group">
 
-                            <div class="input-group-prepend">
-                                <span class="input-group-text " id="inputGroup-sizing-default">Api</span>
-                            </div>
-                            <select formControlName="api" id="" class="form-control">
-                                <option *ngFor="let i of apis" [value]="i.name">{{i.name}}</option>
-                            </select>
-                        </div>
-                    </div>
                 </div>
 
 
