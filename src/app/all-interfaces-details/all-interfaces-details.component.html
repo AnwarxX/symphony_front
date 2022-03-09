@@ -50,7 +50,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save changes</button>
+                <button type="submit" class="btn btn-primary">IMPORT</button>
             </div>
             </form>
         </div>
@@ -116,7 +116,7 @@
                 <h5 class="modal-title" id="exampleModalLabel">SunPost</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="" [formGroup]="form" (ngSubmit)="import()" class=" pb-3 ">
+            <form action="" [formGroup]="form3" (ngSubmit)="importSun()" class=" pb-3 ">
             <div class="modal-body">
                 <div class="row py-1 d-flex ">
                     <div class="col-md-12 ">
@@ -126,11 +126,8 @@
                                 <span class="input-group-text " id="inputGroup-sizing-default">Date</span>
                             </div>
                             <div class="row w-50 ">
-                                <div class="col-6">
-                                    <input formControlName="startDate" type="date" class="w-100">
-                                </div>
-                                <div class="col-6">
-                                    <input formControlName="endDate" type="date" class="w-100">
+                                <div class="col-12">
+                                    <input formControlName="date" type="date" class="w-100">
                                 </div>
                             </div>
                         </div>
@@ -142,7 +139,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save changes</button>
+                <button type="submit" class="btn btn-primary">POST</button>
             </div>
             </form>
         </div>

@@ -21,6 +21,9 @@ export class AllInterfacesDetailsComponent implements OnInit {
     interfaceCode: new FormControl("",Validators.compose([Validators.required])),
     api:new FormControl("",Validators.compose([Validators.required]))
   })
+  form3 = new FormGroup({
+    date:new FormControl("",Validators.compose([Validators.required]))
+  })
   constructor(public httpClient:HttpClient) { 
     console.log(this.getDaysArray("2022-02-20","2022-02-23")[0].toISOString().split("T")[0]);
     this.imports()
@@ -42,9 +45,37 @@ export class AllInterfacesDetailsComponent implements OnInit {
     this.interfaceCod=text;
     console.log(this.interfaceCod);
   }
+<<<<<<< HEAD
   importSunBtn(text:any){
     this.interfaceCod=text;
     console.log(this.interfaceCod);
+=======
+  importSun(){
+    console.log("asfujhasfikju");
+    
+    this.httpClient.post<any>('http://localhost:5000/importSun',{interfaceCod:parseInt(this.interfaceCod),date:this.form3.get('date')?.value}).subscribe(data => {
+      console.log(data);      
+    })
+  }
+  deleteBtn(row:any){
+    this.rowInput=row;
+
+  }
+  confirmDelete(){
+    this.httpClient.post<any>('http://localhost:5000/deleteInterface',this.rowInput).subscribe(data => {
+      console.log(data);
+      this.getInterfaceData()
+    })
+  }
+  disableDate(event:any){
+    console.log((<HTMLInputElement>event.target).value);
+    if((<HTMLInputElement>event.target).value.includes("Daily")||(<HTMLInputElement>event.target).value=="getGuestChecks"){
+      this.dateDisable=true;
+    }
+    else{
+      this.dateDisable=false;
+    }
+>>>>>>> main
   }
   imports(){
     this.httpClient.get<any>('http://localhost:5000/interfaceCode').subscribe(data => {
