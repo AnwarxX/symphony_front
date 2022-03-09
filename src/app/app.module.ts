@@ -16,6 +16,7 @@ import { HomeConfigComponent } from './home-config/home-config.component';
 import { AllInterfacesComponent } from './all-interfaces/all-interfaces.component';
 import { NewInterfaceComponent } from './new-interface/new-interface.component';
 import { AllInterfacesDetailsComponent } from './all-interfaces-details/all-interfaces-details.component';
+import { NgxUiLoaderHttpModule, NgxUiLoaderModule, NgxUiLoaderService } from 'ngx-ui-loader';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,12 @@ import { AllInterfacesDetailsComponent } from './all-interfaces-details/all-inte
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxUiLoaderModule,
+    NgxUiLoaderHttpModule.forRoot({
+      showForeground: true,
+    }),
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
