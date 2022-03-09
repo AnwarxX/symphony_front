@@ -15,6 +15,8 @@ export class AllInterfacesDetailsComponent implements OnInit {
   apis:any;
   interfaceData:any;
   interfaceCod:any;
+  rowInput:any;
+  dateDisable=false
   form = new FormGroup({
     startDate:new FormControl("",Validators.compose([Validators.required])),
     endDate:new FormControl("",Validators.compose([Validators.required])),
@@ -41,15 +43,10 @@ export class AllInterfacesDetailsComponent implements OnInit {
       console.log(this.interfaceData[1].BU);      
     })
   }
-  importApiBtn(text:any){
+  importBtn(text:any){
     this.interfaceCod=text;
     console.log(this.interfaceCod);
   }
-<<<<<<< HEAD
-  importSunBtn(text:any){
-    this.interfaceCod=text;
-    console.log(this.interfaceCod);
-=======
   importSun(){
     console.log("asfujhasfikju");
     
@@ -75,7 +72,6 @@ export class AllInterfacesDetailsComponent implements OnInit {
     else{
       this.dateDisable=false;
     }
->>>>>>> main
   }
   imports(){
     this.httpClient.get<any>('http://localhost:5000/interfaceCode').subscribe(data => {

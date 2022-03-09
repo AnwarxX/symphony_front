@@ -175,13 +175,8 @@
                     <th scope="col">Interface code</th>
                     <th scope="col">BU Code </th>
                     <th scope="col">Mapping Code</th>
-<<<<<<< HEAD
-                    <th scope="col"> import api</th>
-                    <th scope="col"> import sun</th>
-=======
                     <th scope="col"> import</th>
                     <th scope="col"> Sun Post</th>
->>>>>>> main
                     <th scope="col"> Edit</th>
                     <th scope="col"> Delete</th>
                 </tr>
@@ -191,13 +186,8 @@
                     <td>{{i.interfaceCode}}</td>
                     <td>{{i['BU']}}</td>
                     <td>{{i.MappingCode}}</td>
-<<<<<<< HEAD
-                    <td><button class="btn btn-success icBtn" data-bs-toggle="modal" (click)="importApiBtn(i.interfaceCode)" data-bs-target="#importmodal" >Import</button></td>
-                    <td><button class="btn btn-success icBtn" data-bs-toggle="modal" (click)="importSunBtn(i.interfaceCode)" data-bs-target="#importsunmodal" >Import</button></td>
-=======
                     <td><button class="btn btn-success icBtn" data-bs-toggle="modal" (click)="importBtn(i.interfaceCode)" data-bs-target="#importmodal" >Import</button></td>
                     <td><button class="btn btn-success icBtn" data-bs-toggle="modal" (click)="importBtn(i.interfaceCode)" data-bs-target="#sunPost" >Post</button></td>
->>>>>>> main
                     <td><button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editmodal">Edit</button></td>
                     <td><button class="btn btn-danger" data-bs-toggle="modal" (click)="deleteBtn(i)" data-bs-target="#delete">Delete</button></td>
                 </tr>
