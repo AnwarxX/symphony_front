@@ -56,7 +56,7 @@ export class MappingComponent implements OnInit {
   
   async getData(){
     //send a get request to the backend to retrive all the data in this endpoit
-    await this.httpClient.get<any>('http://localhost:5000/SysData').subscribe(
+    await this.httpClient.get<any>('http://192.168.1.78:5000/SysData').subscribe(
       response => {
         this.data = response;//response variable holds all the data retrived then asign them to a variable cold data
         //loop that iterates over the objects in the data and returns only the table name then push it in an array called tableNames
@@ -94,7 +94,7 @@ export class MappingComponent implements OnInit {
     console.log("djosiu");
     $('#liveToast').toast('show')
     //send a post request with all the inputs values to the backend to retrive all the data in this endpoit
-    this.httpClient.post<any>('http://localhost:5000/mapping',this.tbvalue).subscribe(data => {
+    this.httpClient.post<any>('http://192.168.1.78:5000/mapping',this.tbvalue).subscribe(data => {
       this.tbvalue=data;//data variable holds all the data retrived then asign them to a variable cold value
       //this.getmapp()//then call this function again to render the new submitted data
     this.tbvalue=[]
