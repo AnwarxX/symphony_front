@@ -57,6 +57,7 @@
     </div>
 </div>
 <!-- Edit Modal -->
+<form action="" [formGroup]="form2" class=" mb-2  " (ngSubmit)="authorization()">
 <div class="modal " id="editmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
@@ -66,48 +67,299 @@
             </div>
             <div class="modal-body">
                 <div class="row py-1 d-flex ">
-                    <div class="col-md-4">
-                        <div class="input-group">
-
-                            <div class="input-group-prepend">
-                                <span class="input-group-text " id="inputGroup-sizing-default">Data</span>
-                            </div>
-                            <input type="text" name="daterange" value="01/01/2018 - 01/15/2018" />
+                        <div class="text-center bg-dark mb-2">
+                            <p class="text text-white">Api Definition</p>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="input-group">
-
-                            <div class="input-group-prepend">
-                                <span class="input-group-text " id="inputGroup-sizing-default">Interface Code</span>
+                        <div class="row justify-content-center ">
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"  id="inputGroup-sizing-default">User Name</span>
+                                    </div>
+                                    <input formControlName="username" name="" class="form-control" [value]="reviewInput.username"  id="">
+            
+                                </div>
                             </div>
-                            <select formControlName="Revenue" id="" class="form-control">
-                                <option [selected]="true" value="default"> -- </option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="input-group">
-
-                            <div class="input-group-prepend">
-                                <span class="input-group-text " id="inputGroup-sizing-default">Api</span>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+                                    </div>
+                                    <input formControlName="password" name="" id="" class="form-control" [value]="reviewInput.password"
+                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            
+                                </div>
                             </div>
-                            <select formControlName="Revenue" id="" class="form-control">
-                                <option [selected]="true" value="default"> -- </option>
-                            </select>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+                                    </div>
+                                    <input formControlName="email" name="" id="" class="form-control" [value]="reviewInput.email"
+                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                        <div class="row pt-2">
+                            <div class="col-md-4 ">
+                                <div *ngIf="form2.get('userName')?.invalid && form2.get('userName')?.touched">
+                                    <small class="btn btn-danger px-5 " *ngIf="form2.get('userName')?.errors?.required"> userName is
+                                        required</small>
+                                </div>
+            
+                            </div>
+                            <div class="col-md-4 ">
+                                <div *ngIf="form2.get('password')?.invalid && form2.get('password')?.touched">
+                                    <small class="btn btn-danger px-5 " *ngIf="form2.get('password')?.errors?.required"> password is
+                                        required</small>
+            
+                                </div>
+            
+                            </div>
+                            <div class="col-md-4 ">
+                                <div *ngIf="form2.get('email')?.invalid && form2.get('email')?.touched">
+                                    <small class="btn btn-danger px-5 " *ngIf="form2.get('email')?.errors?.required"> email is
+                                        required</small>
+            
+                                </div>
+            
+                            </div>
+                        </div>
+                        <div class="row pt-2">
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-default">Enterprise Short Name</span>
+                                    </div>
+                                    <input formControlName="enterpriseShortName" name="" class="form-control" [value]="reviewInput.enterpriseShortName" id="">
+            
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-default">Client Id</span>
+                                    </div>
+                                    <input formControlName="clientId" name="" id="" class="form-control" [value]="reviewInput.clientId"
+                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-default">LockRef</span>
+                                    </div>
+                                    <input formControlName="lockRef" name="" id="" class="form-control" [value]="reviewInput.lockRef"
+                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row pt-2">
+                            <div class="col-md-4 ">
+                                <div *ngIf="form2.get('enterpriseShortName')?.invalid && form2.get('enterpriseShortName')?.touched">
+                                    <small class="btn btn-danger px-5 " *ngIf="form2.get('enterpriseShortName')?.errors?.required">
+                                        Enterprise Short Name is
+                                        required</small>
+                                </div>
+            
+                            </div>
+                            <div class="col-md-4 ">
+                                <div *ngIf="form2.get('clientId')?.invalid && form2.get('clientId')?.touched">
+                                    <small class="btn btn-danger px-5 " *ngIf="form2.get('clientId')?.errors?.required"> Client Id
+                                        is
+                                        required</small>
+            
+                                </div>
+            
+                            </div>
+                            <div class="col-md-4 ">
+                                <div *ngIf="form2.get('lockRef')?.invalid && form2.get('lockRef')?.touched">
+                                    <small class="btn btn-danger px-5 " *ngIf="form2.get('lockRef')?.errors?.required"> LockRef is
+                                        required</small>
+            
+                                </div>
+            
+                            </div>
+                        </div>
+                        <div class="row py-2 align-items-center  text-center">
+                            <div class="col-md-3 ">
+                                <div class="input-group ">
+                                    <div class="input-group-prepend w-100">
+                                        <span class="input-group-text text-center py-3 " id="inputGroup-sizing-default">Api
+                                            Schedule</span>
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <div class="col-md-3">
+                                <div class="form-check text-white bg-dark text-center w-100">
+                                    <input class="form-check-input  " type="radio" name="exampleRadios" (click)="diss($event)" id="exampleRadios1" formControlName="ApiScheduleStatue" value="apiday" checked>
+                                    <label class="form-check-label" for="exampleRadios1">
+                                        Every day
+                                     </label>
+                                  </div>
+                                <input name="everyDay" id="dateApi1" formControlName="ApiSchedule" class="list-unstyled hiddenul2 form-control apiEveryDay" type="time">
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-check text-white bg-dark text-center w-100">
+                                    <input class="form-check-input  "  type="radio" name="exampleRadios" (click)="diss($event)" id="exampleRadios2"  formControlName="ApiScheduleStatue" value="apimonth" checked>
+                                    <label class="form-check-label" for="exampleRadios1">
+                                        Every Month
+                                    </label>
+                                </div> 
+                                <input id="dateApi2" name="everyMonth" type="datetime-local" [value]="invdable" formControlName="ApiSchedule"  class="list-unstyled hiddenul2 form-control apiEveryMonth">
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-check text-white bg-dark text-center w-100">
+                                    <input class="form-check-input  "  type="radio" name="exampleRadios" (click)="diss($event)" formControlName="ApiScheduleStatue" id="exampleRadios3" value="apiyear" checked>
+                                    <label class="form-check-label" for="exampleRadios1">
+                                        Every Year
+                                    </label>
+                                </div> 
+                                <input name="everyYear" type="datetime-local"   formControlName="ApiSchedule" class="list-unstyled hiddenul2 form-control apiEveryYear">
+            
+                            </div>
+            
+                        </div>
+                        <div class="text-center mb-2 bg-dark">
+                            <p class="text-white">Sun Definition</p>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-3">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-default">User</span>
+                                    </div>
+                                    <input formControlName="SunUser" name="" class="form-control" [value]="reviewInput.SunUser" id="">
+            
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+                                    </div>
+                                    <input formControlName="SunPassword" name="" id="" class="form-control" [value]="reviewInput.SunPassword"
+                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-default">Server</span>
+                                    </div>
+                                    <input formControlName="Sunserver" name="" id="" class="form-control" [value]="reviewInput.Sunserver"
+                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-default">Database</span>
+                                    </div>
+                                    <input formControlName="SunDatabase" name="" class="form-control" [value]="reviewInput.SunDatabase" id="">
+            
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row pt-2">
+                            <div class="col-md-3 ">
+                                <div *ngIf="form2.get('SunUser')?.invalid && form2.get('SunUser')?.touched">
+                                    <small class="btn btn-danger px-5 " *ngIf="form2.get('SunUser')?.errors?.required"> User is
+                                        required</small>
+                                </div>
+            
+                            </div>
+                            <div class="col-md-3 ">
+                                <div *ngIf="form2.get('SunPassword')?.invalid && form2.get('SunPassword')?.touched">
+                                    <small class="btn btn-danger px-5 " *ngIf="form2.get('SunPassword')?.errors?.required"> Password
+                                        is
+                                        required</small>
+            
+                                </div>
+            
+                            </div>
+                            <div class="col-md-3 ">
+                                <div *ngIf="form2.get('Sunserver')?.invalid && form2.get('Sunserver')?.touched">
+                                    <small class="btn btn-danger px-5 " *ngIf="form2.get('Sunserver')?.errors?.required"> Server is
+                                        required</small>
+            
+                                </div>
+                            </div>
+                            <div class="col-md-3 ">
+                                <div *ngIf="form2.get('SunDatabase')?.invalid && form2.get('SunDatabase')?.touched">
+                                    <small class="btn btn-danger px-5 " *ngIf="form2.get('SunDatabase')?.errors?.required"> Database
+                                        is
+                                        required</small>
+            
+                                </div>
+            
+                            </div>
+                        </div>
+                        <div class="row pt-2 align-items-center text-center">
+                            <div class="col-md-3 text-center ">
+                                <div class="input-group ">
+                                    <div class="input-group-prepend w-100">
+                                        <span class="input-group-text text-center py-3 w-100" id="inputGroup-sizing-default">Sun
+                                            Schedule</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center"> 
+                                <div class="form-check text-white bg-dark text-center w-100">
+                                    <input class="form-check-input" type="radio" (click)="diss($event)" name="exampleRadios2" id="exampleRadiosSun1"  formControlName="SunScheduleStatue" value="day" checked>
+                                    <label class="form-check-label" for="exampleRadios2">
+                                        Every day
+                                     </label>
+                                  </div> 
+                                <input name="everyDay" id="dateSun1" formControlName="SunSchedule" class="list-unstyled hiddenul2 form-control sunEveryDay" type="time">
+            
+                            </div>
+                            <div class="col-md-3 ">
+                                <div class="form-check text-white bg-dark text-center w-100">
+                                    <input class="form-check-input  " type="radio" (click)="diss($event)" name="exampleRadios2" formControlName="SunScheduleStatue"  id="exampleRadiosSun2" value="month" checked>
+                                    <label class="form-check-label" for="exampleRadios2">
+                                        Every Month
+                                    </label>
+                                  </div> 
+                               
+                                <input name="everyMonth" formControlName="SunSchedule"   type="datetime-local" class="list-unstyled hiddenul2 form-control sunEveryMonth">
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-check text-white bg-dark text-center w-100">
+                                    <input class="form-check-input  " type="radio" (click)="diss($event)" name="exampleRadios2" id="exampleRadiosSun3" formControlName="SunScheduleStatue"  value="year" checked>
+                                    <label class="form-check-label" for="exampleRadios2">
+                                        Every Year
+                                    </label>
+                                  </div> 
+                                
+                                <input name="everyYear" type="datetime-local"  formControlName="SunSchedule" class="list-unstyled hiddenul2 form-control sunEveryYear">
+            
+                            </div>
+            
+                        </div>
+                        <div class="row justify-content-center">
+
+                        </div>
+            
                 </div>
 
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary">Apply Edit</button>
             </div>
         </div>
     </div>
 </div>
+</form>
+
 <!-- PostSun Modal -->
 <div class="modal " id="sunPost" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
@@ -189,7 +441,7 @@
                     <td>{{i.MappingCode}}</td>
                     <td><button class="btn btn-success icBtn" data-bs-toggle="modal" (click)="importBtn(i.interfaceCode)" data-bs-target="#importmodal" >Import</button></td>
                     <td><button class="btn btn-success icBtn" data-bs-toggle="modal" (click)="importBtn(i.interfaceCode)" data-bs-target="#sunPost" >Post</button></td>
-                    <td><button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editmodal">Edit</button></td>
+                    <td><button class="btn btn-warning" data-bs-toggle="modal" (click)="editBtn(i)" data-bs-target="#editmodal">Edit</button></td>
                     <td><button class="btn btn-danger" data-bs-toggle="modal" (click)="deleteBtn(i)" data-bs-target="#delete">Delete</button></td>
                 </tr>
             </tbody>

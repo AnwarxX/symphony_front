@@ -9,6 +9,22 @@ declare var $:any //declear $ to use jquery
   styleUrls: ['./all-interfaces-details.component.css']
 })
 export class AllInterfacesDetailsComponent implements OnInit {
+  form2 = new FormGroup({
+    username:new FormControl("",Validators.compose([Validators.required])),
+    password:new FormControl("",Validators.compose([Validators.required])),
+    email:new FormControl("",Validators.compose([Validators.required])),
+    enterpriseShortName:new FormControl("",Validators.compose([Validators.required])),
+    clientId:new FormControl("",Validators.compose([Validators.required])),
+    lockRef:new FormControl("",Validators.compose([Validators.required])),
+    ApiSchedule:new FormControl("",Validators.compose([Validators.required])),
+    ApiScheduleStatue:new FormControl("",Validators.compose([Validators.required])),
+    SunUser:new FormControl("",Validators.compose([Validators.required])),
+    SunPassword:new FormControl("",Validators.compose([Validators.required])),
+    Sunserver:new FormControl("",Validators.compose([Validators.required])),
+    SunDatabase:new FormControl("",Validators.compose([Validators.required])),
+    SunSchedule:new FormControl("",Validators.compose([Validators.required])),
+    SunScheduleStatue:new FormControl("",Validators.compose([Validators.required])),
+  })
   reply:any;
   x:any;
   interfaces:any;
@@ -16,7 +32,28 @@ export class AllInterfacesDetailsComponent implements OnInit {
   interfaceData:any;
   interfaceCod:any;
   rowInput:any;
+  invdable="2022-02-02T02:33:00.000Z"
+  reviewInput=
+  {ApiSchedule: "",
+ApiScheduleStatue: "",
+SunDatabase: "",
+SunPassword: "",
+SunSchedule: "",
+SunScheduleStatue: "",
+SunUser: "",
+Sunserver: "",
+clientId: "",
+email: "",
+enterpriseShortName: "",
+interfaceCode: 0,
+lockRef: "",
+password: "",
+refreshToken: ""
+,token: ""
+,username: ""};
   dateDisable=false;
+  authData:any;
+  dis:any;
   form = new FormGroup({
     startDate:new FormControl("",Validators.compose([Validators.required])),
     endDate:new FormControl("",Validators.compose([Validators.required])),
@@ -31,7 +68,88 @@ export class AllInterfacesDetailsComponent implements OnInit {
     this.imports()
     this.getInterfaceData()
   }
+  diss(event:any){
+    this.dis=(<HTMLInputElement>event.target).value;
+    if (this.dis=="day") {
+      $(".sunEveryDay").removeAttr('disabled');
+      $(".sunEveryMonth").attr('disabled', 'disabled');
+      $(".sunEveryYear").attr('disabled', 'disabled');
+    }
+    else if(this.dis=="month"){
+      $(".sunEveryMonth").removeAttr('disabled');
+      $(".sunEveryYear").attr('disabled', 'disabled');
+      $(".sunEveryDay").attr('disabled', 'disabled');
+    }
+    else if(this.dis=="year"){
+      $(".sunEveryYear").removeAttr('disabled');
+      $(".sunEveryMonth").attr('disabled', 'disabled');
+      $(".sunEveryDay").attr('disabled', 'disabled');
+    }
+    if (this.dis=="apiday") {
+      $(".apiEveryDay").removeAttr('disabled');
+      $(".apiEveryMonth").attr('disabled', 'disabled');
+      $(".apiEveryYear").attr('disabled', 'disabled');
+    }
+    else if(this.dis=="apimonth"){
+      $(".apiEveryMonth").removeAttr('disabled');
+      $(".apiEveryYear").attr('disabled', 'disabled');
+      $(".apiEveryDay").attr('disabled', 'disabled');
+    }
+    else if(this.dis=="apiyear"){
+      $(".apiEveryYear").removeAttr('disabled');
+      $(".apiEveryMonth").attr('disabled', 'disabled');
+      $(".apiEveryDay").attr('disabled', 'disabled');
+    }
+  }
+  
+  dissEdit(){
+    if (this.reviewInput.SunScheduleStatue=="day") {
+      $(".sunEveryDay").removeAttr('disabled');
+      $(".sunEveryMonth").attr('disabled', 'disabled');
+      $(".sunEveryYear").attr('disabled', 'disabled');
+      $("#exampleRadiosSun1").prop('checked',true);
+      $("#dateApi1").val('03:25');
+      
+    }
+    else if(this.reviewInput.SunScheduleStatue=="month"){
+      $(".sunEveryMonth").removeAttr('disabled');
+      $(".sunEveryYear").attr('disabled', 'disabled');
+      $(".sunEveryDay").attr('disabled', 'disabled');
+      $("#exampleRadiosSun2").prop('checked',true);
 
+    }
+    else if(this.reviewInput.SunScheduleStatue=="year"){
+      $(".sunEveryYear").removeAttr('disabled');
+      $(".sunEveryMonth").attr('disabled', 'disabled');
+      $(".sunEveryDay").attr('disabled', 'disabled');
+      $("#exampleRadiosSun3").prop('checked',true);
+
+    }
+    if (this.reviewInput.ApiScheduleStatue=="apiday") {
+      $(".apiEveryDay").removeAttr('disabled');
+      $(".apiEveryMonth").attr('disabled', 'disabled');
+      $(".apiEveryYear").attr('disabled', 'disabled');
+      $("#exampleRadios1").prop('checked',true);
+
+    }
+    else if(this.reviewInput.ApiScheduleStatue=="apimonth"){
+      $(".apiEveryMonth").removeAttr('disabled');
+      $(".apiEveryYear").attr('disabled', 'disabled');
+      $(".apiEveryDay").attr('disabled', 'disabled');
+      $("#exampleRadios2").prop('checked',true);
+      var now = new Date();
+      $('.apiEveryMonth').val("2022-02-02T02:33:00.000Z"); 
+      $('#dateApi2').val("2022-02-02T02:33:00.000Z"); 
+
+    }
+    else if(this.reviewInput.ApiScheduleStatue=="apiyear"){
+      $(".apiEveryYear").removeAttr('disabled');
+      $(".apiEveryMonth").attr('disabled', 'disabled');
+      $(".apiEveryDay").attr('disabled', 'disabled');
+      $("#exampleRadios3").prop('checked',true);
+
+    }
+  }
     ngOnInit(): void {
       $('#home').particleground({
         dotColor: 'cadetblue',
@@ -63,6 +181,15 @@ export class AllInterfacesDetailsComponent implements OnInit {
     this.rowInput=row;
 
   }
+  editBtn(row:any){
+    this.reviewInput=row;
+    this.httpClient.post<any>('http://localhost:5000/reviewInterface',this.reviewInput).subscribe(data => {
+      this.reviewInput=data;
+      console.log(this.reviewInput);
+      this.dissEdit()
+      
+    })
+  }
   confirmDelete(){
     this.httpClient.post<any>('http://192.168.1.78:5000/deleteInterface',this.rowInput).subscribe(data => {
       console.log(data);
@@ -78,6 +205,21 @@ export class AllInterfacesDetailsComponent implements OnInit {
       this.dateDisable=false;
     }
   }
+  authorization()
+{
+  //send a post request with the table name and column to this endpoit in the backend to retrive all the distinct values in that column
+  this.httpClient.post<any>('http://192.168.1.78:5000/authorization',this.form2.value).subscribe(data => {
+  // this.authData=data;//data variable holds all the data retrived then asign them to a variable cold value
+  console.log(data);
+  this.authData=""
+  for (let i = 0; i < data.length; i++) {
+    this.authData+=data[i]+" "
+  }
+  $('#liveToast').toast('show')
+  $('.toast-body').html(this.authData)
+  
+  })
+}
   imports(){
     this.httpClient.get<any>('http://192.168.1.78:5000/interfaceCode').subscribe(data => {
       this.apis=data.apidata;//data variable holds all the data retrived then asign them to a variable cold value
@@ -92,6 +234,7 @@ export class AllInterfacesDetailsComponent implements OnInit {
     //this.getmapp()//then call this function again to render the new submitted data
     })
   }
+  
   stop(){
     this.httpClient.get<any>('http://192.168.1.78:5000/stop').subscribe(data => {
     this.reply=data;//data variable holds all the data retrived then asign them to a variable cold value
