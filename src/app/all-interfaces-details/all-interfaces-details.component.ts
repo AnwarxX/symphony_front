@@ -198,7 +198,7 @@ refreshToken: ""
   }
   disableDate(event:any){
     console.log((<HTMLInputElement>event.target).value);
-    if((<HTMLInputElement>event.target).value.includes("Daily")||(<HTMLInputElement>event.target).value=="getGuestChecks"){
+    if((<HTMLInputElement>event.target).value.includes("Daily")||(<HTMLInputElement>event.target).value.includes("all")||(<HTMLInputElement>event.target).value=="getGuestChecks"){
       this.dateDisable=true;
     }
     else{
