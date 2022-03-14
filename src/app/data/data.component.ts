@@ -19,7 +19,7 @@ export class DataComponent implements OnInit {
   ngOnInit(): void { 
   }
   getData(){
-    this.httpClient.get<any>('http://localhost:5000/SysData'+this.input).subscribe(
+    this.httpClient.get<any>('http://192.168.1.78:5000/SysData'+this.input).subscribe(
       response=>{
         this.data=response
         console.log(response);

@@ -31,13 +31,13 @@ export class BusinessUnitComponent implements OnInit {
     PropertySettings(){
       let value= this.form2.value//this.form2.value holds all the values of the input in the interfacce then asign them to a vriable called value
       //send a post request with all the inputs values to the backend to retrive all the data in this endpoit
-      this.httpClient.post<any>('http://localhost:5000/PropertySettings',value).subscribe(data => {
+      this.httpClient.post<any>('http://192.168.1.78:5000/PropertySettings',value).subscribe(data => {
         this.value=data;//data variable holds all the data retrived then asign them to a variable cold value
       })
       $('#liveToast').toast('show')
     } 
     imports(){
-      this.httpClient.get<any>('http://localhost:5000/codes').subscribe(data => {
+      this.httpClient.get<any>('http://192.168.1.78:5000/codes').subscribe(data => {
         this.mapp=data.mapping;//data variable holds all the data retrived then asign them to a variable cold value
         this.interfaces=data.intreface;//data variable holds all the data retrived then asign them to a variable cold value
         console.log(this.mapp);
