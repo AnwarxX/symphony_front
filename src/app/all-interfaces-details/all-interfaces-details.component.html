@@ -23,6 +23,7 @@
                                 <span class="input-group-text " id="inputGroup-sizing-default">Api</span>
                             </div>
                             <select formControlName="api" id="" (click)="disableDate($event)" class="form-control">
+                                <option value="all">All</option>
                                 <option *ngFor="let i of apis"  [value]="i.name">{{i.name}}</option>
                             </select>
                         </div>
