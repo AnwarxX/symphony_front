@@ -46,7 +46,6 @@
 
                 </div>
 
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -179,6 +178,7 @@
                     <th scope="col"> Sun Post</th>
                     <th scope="col"> Edit</th>
                     <th scope="col"> Delete</th>
+
                 </tr>
             </thead>
             <tbody id="">
@@ -194,42 +194,17 @@
             </tbody>
         </table>
     </div>
+
+  
+
 </div>
-<!-- Import Modal -->
-<div class="modal " id="importsunmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">import</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="" [formGroup]="form" (ngSubmit)="import()" class=" pb-3 ">
-            <div class="modal-body">
-                <div class="row py-1 d-flex ">
-                    <div class="col-md-12 d-flex">
-                        <div class="input-group my-auto">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text " id="inputGroup-sizing-default">Date</span>
-                            </div>
-                            <div class="row w-75 ">
-                                <div class="col-6">
-                                    <input formControlName="startDate" type="date" class="w-100">
-                                </div>
-                                <div class="col-6">
-                                    <input formControlName="endDate" type="date" class="w-100">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save changes</button>
-            </div>
-            </form>
+<div class="position-fixed bottom-0   text-white text-center right-0  " style="z-index: 5; right: 0; bottom: 0;">
+    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header ">
+            <button type="button" class="btn-close  m-0" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body btn-dark text-white">
         </div>
     </div>
 </div>

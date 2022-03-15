@@ -17,6 +17,8 @@ import { AllInterfacesComponent } from './all-interfaces/all-interfaces.componen
 import { NewInterfaceComponent } from './new-interface/new-interface.component';
 import { AllInterfacesDetailsComponent } from './all-interfaces-details/all-interfaces-details.component';
 import { NgxUiLoaderHttpModule, NgxUiLoaderModule, NgxUiLoaderService } from 'ngx-ui-loader';
+import { MappingViewComponent } from './mapping-view/mapping-view.component';
+import { MappingDetailComponent } from './mapping-detail/mapping-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +32,9 @@ import { NgxUiLoaderHttpModule, NgxUiLoaderModule, NgxUiLoaderService } from 'ng
     HomeConfigComponent,
     AllInterfacesComponent,
     NewInterfaceComponent,
-    AllInterfacesDetailsComponent
+    AllInterfacesDetailsComponent,
+    MappingViewComponent,
+    MappingDetailComponent
   ],
   imports: [
     BrowserModule,
