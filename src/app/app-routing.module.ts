@@ -6,6 +6,8 @@ import { BusinessUnitComponent } from './business-unit/business-unit.component';
 import { DataComponent } from './data/data.component';
 import { HomeConfigComponent } from './home-config/home-config.component';
 import { HomeComponent } from './home/home.component';
+import { MappingDetailComponent } from './mapping-detail/mapping-detail.component';
+import { MappingViewComponent } from './mapping-view/mapping-view.component';
 import { MappingComponent } from './mapping/mapping.component';
 import { NewInterfaceComponent } from './new-interface/new-interface.component';
 import { SympDbComponent } from './symp-db/symp-db.component';
@@ -22,6 +24,8 @@ const routes: Routes = [
   {path:"homeConfig",component:HomeConfigComponent},
   {path:"NewInterface",component:NewInterfaceComponent},
   {path:"allInterfacesDetails",component:AllInterfacesDetailsComponent},
+  {path:"MappingDetails",component:MappingDetailComponent},
+  {path:"MappingView",component:MappingViewComponent}
 
 ];
 
