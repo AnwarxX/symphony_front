@@ -138,8 +138,8 @@ refreshToken: ""
       $(".apiEveryDay").attr('disabled', 'disabled');
       $("#exampleRadios2").prop('checked',true);
       var now = new Date();
-      $('.apiEveryMonth').val("2022-02-02T02:33:00.000Z"); 
-      $('#dateApi2').val("2022-02-02T02:33:00.000Z"); 
+      $('.apiEveryMonth').val("2022-02-02T02:33"); 
+      $('.apiEveryMonth').val("yyyy-MM-ddThh:mm"); 
 
     }
     else if(this.reviewInput.ApiScheduleStatue=="apiyear"){
@@ -159,7 +159,7 @@ refreshToken: ""
   }
   getInterfaceData(){
 
-    this.httpClient.get<any>('http://192.168.1.78:5000/importInterface').subscribe(data => {
+    this.httpClient.get<any>('http://localhost:5000/importInterface').subscribe(data => {
 
       this.interfaceData=data;//data variable holds all the data retrived then asign them to a variable cold value      
       console.log(this.interfaceData[1].BU);      
@@ -174,10 +174,7 @@ refreshToken: ""
     console.log("asfujhasfikju");
     
     this.httpClient.post<any>('http://localhost:5000/importSun',{interfaceCod:parseInt(this.interfaceCod),date:this.form3.get('date')?.value}).subscribe(data => {
-      console.log(data);   
-      $('#liveToast').toast('show')
-      $('.toast-body').html(data)
-      
+      console.log(data);      
     })
   }
   deleteBtn(row:any){
@@ -194,19 +191,14 @@ refreshToken: ""
     })
   }
   confirmDelete(){
-    this.httpClient.post<any>('http://192.168.1.78:5000/deleteInterface',this.rowInput).subscribe(data => {
+    this.httpClient.post<any>('http://localhost:5000/deleteInterface',this.rowInput).subscribe(data => {
       console.log(data);
-    
-      $('#liveToast').toast('show')
-      $('.toast-body').html(data)
-
       this.getInterfaceData()
-      
     })
   }
   disableDate(event:any){
     console.log((<HTMLInputElement>event.target).value);
-    if((<HTMLInputElement>event.target).value.includes("Daily")||(<HTMLInputElement>event.target).value=="getGuestChecks"){
+    if((<HTMLInputElement>event.target).value.includes("Daily")||(<HTMLInputElement>event.target).value.includes("all")||(<HTMLInputElement>event.target).value=="getGuestChecks"){
       this.dateDisable=true;
     }
     else{
@@ -216,7 +208,7 @@ refreshToken: ""
   authorization()
 {
   //send a post request with the table name and column to this endpoit in the backend to retrive all the distinct values in that column
-  this.httpClient.post<any>('http://192.168.1.78:5000/authorization',this.form2.value).subscribe(data => {
+  this.httpClient.post<any>('http://localhost:5000/authorization',this.form2.value).subscribe(data => {
   // this.authData=data;//data variable holds all the data retrived then asign them to a variable cold value
   console.log(data);
   this.authData=""
@@ -229,29 +221,24 @@ refreshToken: ""
   })
 }
   imports(){
-    this.httpClient.get<any>('http://192.168.1.78:5000/interfaceCode').subscribe(data => {
+    this.httpClient.get<any>('http://localhost:5000/interfaceCode').subscribe(data => {
       this.apis=data.apidata;//data variable holds all the data retrived then asign them to a variable cold value
       this.interfaces=data.interfacedata;//data variable holds all the data retrived then asign them to a variable cold value
       console.log(this.apis);
       console.log(this.interfaces);
-     
     })
   }
   start(){
-    this.httpClient.get<any>('http://192.168.1.78:5000/start').subscribe(data => {
+    this.httpClient.get<any>('http://localhost:5000/start').subscribe(data => {
     this.reply=data;//data variable holds all the data retrived then asign them to a variable cold value
     //this.getmapp()//then call this function again to render the new submitted data
-    $('#liveToast').toast('show')
-    $('.toast-body').html(data)
     })
   }
   
   stop(){
-    this.httpClient.get<any>('http://192.168.1.78:5000/stop').subscribe(data => {
+    this.httpClient.get<any>('http://localhost:5000/stop').subscribe(data => {
     this.reply=data;//data variable holds all the data retrived then asign them to a variable cold value
     //this.getmapp()//then call this function again to render the new submitted data
-    $('#liveToast').toast('show')
-    $('.toast-body').html(data)
     })
   }
   getDaysArray(s:any,e:any) {for(var a=[],d=new Date(s);d<=new Date(e);d.setDate(d.getDate()+1)){ a.push(new Date(d));}return a;};
@@ -261,12 +248,10 @@ refreshToken: ""
     let end=this.form.get('endDate')?.value;
     this.x=[]
     for (let i = 0; i < this.getDaysArray(start,end).length; i++) {
-      this.httpClient.post<any>('http://192.168.1.78:5000/import',{interface:this.interfaceCod,date:this.getDaysArray(start,end)[i].toISOString().split("T")[0],api:this.form.get('api')?.value}).subscribe(data => {
+      this.httpClient.post<any>('http://localhost:5000/import',{interface:this.interfaceCod,date:this.getDaysArray(start,end)[i].toISOString().split("T")[0],api:this.form.get('api')?.value}).subscribe(data => {
         this.x.push(data)
         if (this.x.length==this.getDaysArray(start,end).length) {
-          console.log(this.x); 
-          $('#liveToast').toast('show')
-          $('.toast-body').html(data.stats)
+          console.log(this.x);
         }
       })
     }
