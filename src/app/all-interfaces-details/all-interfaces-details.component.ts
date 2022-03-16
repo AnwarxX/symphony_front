@@ -174,14 +174,7 @@ refreshToken: ""
     console.log("asfujhasfikju");
     
     this.httpClient.post<any>('http://localhost:5000/importSun',{interfaceCod:parseInt(this.interfaceCod),date:this.form3.get('date')?.value}).subscribe(data => {
-<<<<<<< HEAD
       console.log(data);      
-=======
-      console.log(data);   
-      $('#liveToast').toast('show')
-      $('.toast-body').html(data)
-      
->>>>>>> main
     })
   }
   deleteBtn(row:any){
@@ -200,17 +193,12 @@ refreshToken: ""
   confirmDelete(){
     this.httpClient.post<any>('http://localhost:5000/deleteInterface',this.rowInput).subscribe(data => {
       console.log(data);
-    
-      $('#liveToast').toast('show')
-      $('.toast-body').html(data)
-
       this.getInterfaceData()
-      
     })
   }
   disableDate(event:any){
     console.log((<HTMLInputElement>event.target).value);
-    if((<HTMLInputElement>event.target).value.includes("Daily")||(<HTMLInputElement>event.target).value=="getGuestChecks"){
+    if((<HTMLInputElement>event.target).value.includes("Daily")||(<HTMLInputElement>event.target).value.includes("all")||(<HTMLInputElement>event.target).value=="getGuestChecks"){
       this.dateDisable=true;
     }
     else{
@@ -238,15 +226,12 @@ refreshToken: ""
       this.interfaces=data.interfacedata;//data variable holds all the data retrived then asign them to a variable cold value
       console.log(this.apis);
       console.log(this.interfaces);
-     
     })
   }
   start(){
     this.httpClient.get<any>('http://localhost:5000/start').subscribe(data => {
     this.reply=data;//data variable holds all the data retrived then asign them to a variable cold value
     //this.getmapp()//then call this function again to render the new submitted data
-    $('#liveToast').toast('show')
-    $('.toast-body').html(data)
     })
   }
   
@@ -254,8 +239,6 @@ refreshToken: ""
     this.httpClient.get<any>('http://localhost:5000/stop').subscribe(data => {
     this.reply=data;//data variable holds all the data retrived then asign them to a variable cold value
     //this.getmapp()//then call this function again to render the new submitted data
-    $('#liveToast').toast('show')
-    $('.toast-body').html(data)
     })
   }
   getDaysArray(s:any,e:any) {for(var a=[],d=new Date(s);d<=new Date(e);d.setDate(d.getDate()+1)){ a.push(new Date(d));}return a;};
@@ -268,9 +251,7 @@ refreshToken: ""
       this.httpClient.post<any>('http://localhost:5000/import',{interface:this.interfaceCod,date:this.getDaysArray(start,end)[i].toISOString().split("T")[0],api:this.form.get('api')?.value}).subscribe(data => {
         this.x.push(data)
         if (this.x.length==this.getDaysArray(start,end).length) {
-          console.log(this.x); 
-          $('#liveToast').toast('show')
-          $('.toast-body').html(data.stats)
+          console.log(this.x);
         }
       })
     }
