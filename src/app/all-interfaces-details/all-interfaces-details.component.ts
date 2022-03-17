@@ -24,6 +24,7 @@ export class AllInterfacesDetailsComponent implements OnInit {
     SunDatabase:new FormControl("",Validators.compose([Validators.required])),
     SunSchedule:new FormControl("",Validators.compose([Validators.required])),
     SunScheduleStatue:new FormControl("",Validators.compose([Validators.required])),
+    interfaceCode:new FormControl(),
   })
   reply:any;
   x:any;
@@ -34,7 +35,6 @@ export class AllInterfacesDetailsComponent implements OnInit {
   rowInput:any;
   apiDate:any;
   sunDate:any;
-  invdable="2022-02-02T02:33:00.000Z"
   reviewInput=
   {ApiSchedule: "",
 ApiScheduleStatue: "",
@@ -50,9 +50,7 @@ enterpriseShortName: "",
 interfaceCode: 0,
 lockRef: "",
 password: "",
-refreshToken: ""
-,token: ""
-,username: ""};
+username: ""};
   dateDisable=false;
   authData:any;
   dis:any;
@@ -133,9 +131,7 @@ refreshToken: ""
       $("#exampleRadiosSun1").prop('checked',true);
       $('.sunEveryDay').val( 
       ((this.sunDate[2] < 10) ? "0" :'')+this.sunDate[2] + ":" + 
-      ((this.sunDate[1] < 10) ? "0" :'')+this.sunDate[1]); 
-
-  
+      ((this.sunDate[1] < 10) ? "0" :'')+this.sunDate[1]);   
     }
     else if(this.reviewInput.SunScheduleStatue=="month"){
       $(".sunEveryMonth").removeAttr('disabled');
@@ -147,9 +143,6 @@ refreshToken: ""
       ((this.sunDate[3] < 10) ? "0" :'')+this.sunDate[3] + "T" +  
       ((this.sunDate[2] < 10) ? "0" :'')+this.sunDate[2] + ":" + 
       ((this.sunDate[1] < 10) ? "0" :'')+this.sunDate[1]); 
-
-
-
     }
     else if(this.reviewInput.SunScheduleStatue=="year"){
       $(".sunEveryYear").removeAttr('disabled');
@@ -198,7 +191,6 @@ refreshToken: ""
       ((this.apiDate[3] < 10) ? "0" :'')+this.apiDate[3] + "T" +  
       ((this.apiDate[2] < 10) ? "0" :'')+this.apiDate[2] + ":" + 
       ((this.apiDate[1] < 10) ? "0" :'')+this.apiDate[1]); 
-      $('.apiEveryYear').val("yyyy-MM-ddThh:mm");
 
 
 
@@ -237,11 +229,33 @@ refreshToken: ""
   }
   editBtn(row:any){
     this.reviewInput=row;
+
     this.httpClient.post<any>('http://localhost:5000/reviewInterface',this.reviewInput).subscribe(data => {
+      delete data.refreshToken;
+      delete data.token;
+
+    console.log(data);
+      
+      this.form2.setValue(data);
       this.reviewInput=data;
       console.log(this.reviewInput);
       this.dissEdit()
       
+    })
+  }
+  update()
+  {
+    //send a post request with the table name and column to this endpoit in the backend to retrive all the distinct values in that column
+    this.httpClient.post<any>('http://localhost:5000/update',this.form2.value).subscribe(data => {
+    // this.authData=data;//data variable holds all the data retrived then asign them to a variable cold value
+    console.log(data);
+    this.authData=""
+    for (let i = 0; i < data.length; i++) {
+      this.authData+=data[i]+" "
+    }
+    $('#liveToast').toast('show')
+    $('.toast-body').html(this.authData)
+    
     })
   }
   confirmDelete(){

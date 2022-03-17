@@ -58,7 +58,7 @@
     </div>
 </div>
 <!-- Edit Modal -->
-<form action="" [formGroup]="form2" class=" mb-2  " (ngSubmit)="authorization()">
+<form action="" [formGroup]="form2" class=" mb-2  " (ngSubmit)="update()">
 <div class="modal " id="editmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
@@ -211,7 +211,7 @@
                                         Every Month
                                     </label>
                                 </div> 
-                                <input id="dateApi2" name="everyMonth" type="datetime-local" [value]="invdable" formControlName="ApiSchedule"  class="list-unstyled hiddenul2 form-control apiEveryMonth">
+                                <input id="dateApi2" name="everyMonth" type="datetime-local" formControlName="ApiSchedule"  class="list-unstyled hiddenul2 form-control apiEveryMonth">
                             </div>
                             <div class="col-md-3">
                                 <div class="form-check text-white bg-dark text-center w-100">
@@ -354,7 +354,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Apply Edit</button>
+                <button type="submit" class="btn btn-primary">Apply Edit</button>
             </div>
         </div>
     </div>
