@@ -24,6 +24,7 @@ export class AllInterfacesDetailsComponent implements OnInit {
     SunDatabase:new FormControl("",Validators.compose([Validators.required])),
     SunSchedule:new FormControl("",Validators.compose([Validators.required])),
     SunScheduleStatue:new FormControl("",Validators.compose([Validators.required])),
+    interfaceCode:new FormControl(),
   })
   reply:any;
   x:any;
@@ -32,7 +33,8 @@ export class AllInterfacesDetailsComponent implements OnInit {
   interfaceData:any;
   interfaceCod:any;
   rowInput:any;
-  invdable="2022-02-02T02:33:00.000Z"
+  apiDate:any;
+  sunDate:any;
   reviewInput=
   {ApiSchedule: "",
 ApiScheduleStatue: "",
@@ -48,9 +50,7 @@ enterpriseShortName: "",
 interfaceCode: 0,
 lockRef: "",
 password: "",
-refreshToken: ""
-,token: ""
-,username: ""};
+username: ""};
   dateDisable=false;
   authData:any;
   dis:any;
@@ -74,62 +74,97 @@ refreshToken: ""
       $(".sunEveryDay").removeAttr('disabled');
       $(".sunEveryMonth").attr('disabled', 'disabled');
       $(".sunEveryYear").attr('disabled', 'disabled');
+      $('.sunEveryMonth').val("yyyy-MM-ddThh:mm");
+      $('.sunEveryYear').val("yyyy-MM-ddThh:mm");
+
     }
     else if(this.dis=="month"){
       $(".sunEveryMonth").removeAttr('disabled');
       $(".sunEveryYear").attr('disabled', 'disabled');
       $(".sunEveryDay").attr('disabled', 'disabled');
+      $('.sunEveryYear').val("yyyy-MM-ddThh:mm");
+      $('.sunEveryDay').val("hh:mm");
     }
     else if(this.dis=="year"){
       $(".sunEveryYear").removeAttr('disabled');
       $(".sunEveryMonth").attr('disabled', 'disabled');
       $(".sunEveryDay").attr('disabled', 'disabled');
+      $('.sunEveryMonth').val("yyyy-MM-ddThh:mm");
+      $('.sunEveryDay').val("hh:mm");
     }
     if (this.dis=="apiday") {
       $(".apiEveryDay").removeAttr('disabled');
       $(".apiEveryMonth").attr('disabled', 'disabled');
       $(".apiEveryYear").attr('disabled', 'disabled');
+      $('.apiEveryYear').val("yyyy-MM-ddThh:mm");
+      $('.apiEveryMonth').val("yyyy-MM-ddThh:mm");
+
+
+      
     }
     else if(this.dis=="apimonth"){
       $(".apiEveryMonth").removeAttr('disabled');
       $(".apiEveryYear").attr('disabled', 'disabled');
       $(".apiEveryDay").attr('disabled', 'disabled');
+      $('.apiEveryYear').val("yyyy-MM-ddThh:mm");
+      $('.apiEveryDay').val("hh:mm");
     }
     else if(this.dis=="apiyear"){
       $(".apiEveryYear").removeAttr('disabled');
       $(".apiEveryMonth").attr('disabled', 'disabled');
       $(".apiEveryDay").attr('disabled', 'disabled');
+      $('.apiEveryMonth').val("yyyy-MM-ddThh:mm");
+      $('.apiEveryDay').val("hh:mm");
+
+
     }
   }
   
   dissEdit(){
+    this.apiDate = this.reviewInput.ApiSchedule.split(" ")
+    this.sunDate = this.reviewInput.SunSchedule.split(" ")
+
     if (this.reviewInput.SunScheduleStatue=="day") {
       $(".sunEveryDay").removeAttr('disabled');
       $(".sunEveryMonth").attr('disabled', 'disabled');
       $(".sunEveryYear").attr('disabled', 'disabled');
       $("#exampleRadiosSun1").prop('checked',true);
-      $("#dateApi1").val('03:25');
-      
+      $('.sunEveryDay').val( 
+      ((this.sunDate[2] < 10) ? "0" :'')+this.sunDate[2] + ":" + 
+      ((this.sunDate[1] < 10) ? "0" :'')+this.sunDate[1]);   
     }
     else if(this.reviewInput.SunScheduleStatue=="month"){
       $(".sunEveryMonth").removeAttr('disabled');
       $(".sunEveryYear").attr('disabled', 'disabled');
       $(".sunEveryDay").attr('disabled', 'disabled');
       $("#exampleRadiosSun2").prop('checked',true);
-
+      $('.sunEveryMonth').val(new Date().getFullYear() + "-" +  
+      (((new Date().getMonth()+1) < 10) ? "0" :'')  +(new Date().getMonth()+ 1)+ "-" + 
+      ((this.sunDate[3] < 10) ? "0" :'')+this.sunDate[3] + "T" +  
+      ((this.sunDate[2] < 10) ? "0" :'')+this.sunDate[2] + ":" + 
+      ((this.sunDate[1] < 10) ? "0" :'')+this.sunDate[1]); 
     }
     else if(this.reviewInput.SunScheduleStatue=="year"){
       $(".sunEveryYear").removeAttr('disabled');
       $(".sunEveryMonth").attr('disabled', 'disabled');
       $(".sunEveryDay").attr('disabled', 'disabled');
       $("#exampleRadiosSun3").prop('checked',true);
-
+      $('.sunEveryYear').val(new Date().getFullYear() + "-" +  
+      ((this.sunDate[4] < 10) ? "0" :'')+this.sunDate[4] + "-" + 
+      ((this.sunDate[3] < 10) ? "0" :'')+this.sunDate[3] + "T" +  
+      ((this.sunDate[2] < 10) ? "0" :'')+this.sunDate[2] + ":" + 
+      ((this.sunDate[1] < 10) ? "0" :'')+this.sunDate[1]); 
     }
     if (this.reviewInput.ApiScheduleStatue=="apiday") {
       $(".apiEveryDay").removeAttr('disabled');
       $(".apiEveryMonth").attr('disabled', 'disabled');
       $(".apiEveryYear").attr('disabled', 'disabled');
       $("#exampleRadios1").prop('checked',true);
+      $('.apiEveryDay').val( 
+      ((this.apiDate[2] < 10) ? "0" :'')+this.apiDate[2] + ":" + 
+      ((this.apiDate[1] < 10) ? "0" :'')+this.apiDate[1]); 
+ 
+
 
     }
     else if(this.reviewInput.ApiScheduleStatue=="apimonth"){
@@ -137,16 +172,27 @@ refreshToken: ""
       $(".apiEveryYear").attr('disabled', 'disabled');
       $(".apiEveryDay").attr('disabled', 'disabled');
       $("#exampleRadios2").prop('checked',true);
-      var now = new Date();
-      $('.apiEveryMonth').val("2022-02-02T02:33"); 
-      $('.apiEveryMonth').val("yyyy-MM-ddThh:mm"); 
+      $('.apiEveryMonth').val(new Date().getFullYear() + "-" +  
+      (((new Date().getMonth()+1) < 10) ? "0" :'')  +(new Date().getMonth()+ 1)+ "-" + 
+      ((this.apiDate[3] < 10) ? "0" :'')+this.apiDate[3] + "T" +  
+      ((this.apiDate[2] < 10) ? "0" :'')+this.apiDate[2] + ":" + 
+      ((this.apiDate[1] < 10) ? "0" :'')+this.apiDate[1]); 
 
+
+      
     }
     else if(this.reviewInput.ApiScheduleStatue=="apiyear"){
       $(".apiEveryYear").removeAttr('disabled');
       $(".apiEveryMonth").attr('disabled', 'disabled');
       $(".apiEveryDay").attr('disabled', 'disabled');
       $("#exampleRadios3").prop('checked',true);
+      $('.apiEveryYear').val(new Date().getFullYear() + "-" +  
+      ((this.apiDate[4] < 10) ? "0" :'')+this.apiDate[4] + "-" + 
+      ((this.apiDate[3] < 10) ? "0" :'')+this.apiDate[3] + "T" +  
+      ((this.apiDate[2] < 10) ? "0" :'')+this.apiDate[2] + ":" + 
+      ((this.apiDate[1] < 10) ? "0" :'')+this.apiDate[1]); 
+
+
 
     }
   }
@@ -183,11 +229,33 @@ refreshToken: ""
   }
   editBtn(row:any){
     this.reviewInput=row;
+
     this.httpClient.post<any>('http://localhost:5000/reviewInterface',this.reviewInput).subscribe(data => {
+      delete data.refreshToken;
+      delete data.token;
+
+    console.log(data);
+      
+      this.form2.setValue(data);
       this.reviewInput=data;
       console.log(this.reviewInput);
       this.dissEdit()
       
+    })
+  }
+  update()
+  {
+    //send a post request with the table name and column to this endpoit in the backend to retrive all the distinct values in that column
+    this.httpClient.post<any>('http://localhost:5000/update',this.form2.value).subscribe(data => {
+    // this.authData=data;//data variable holds all the data retrived then asign them to a variable cold value
+    console.log(data);
+    this.authData=""
+    for (let i = 0; i < data.length; i++) {
+      this.authData+=data[i]+" "
+    }
+    $('#liveToast').toast('show')
+    $('.toast-body').html(this.authData)
+    
     })
   }
   confirmDelete(){
