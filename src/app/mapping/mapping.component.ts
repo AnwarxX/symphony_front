@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { APIsService } from "../services/apis.service";
 import { FormGroup,FormControl,Validators } from '@angular/forms';
 declare var $:any //declear $ to use jquery
 
@@ -40,7 +40,7 @@ export class MappingComponent implements OnInit {
   tbvalue:any;
   disable=false;
   toggle=true;
-  constructor(public httpClient:HttpClient) {
+  constructor(public apiService:APIsService) {
     this.tbvalue=[];
    this.getData();//returns all the table names 
    this.getmapp();//returns all the data for the home page to view
@@ -56,7 +56,7 @@ export class MappingComponent implements OnInit {
   
   async getData(){
     //send a get request to the backend to retrive all the data in this endpoit
-    await this.httpClient.get<any>('http://192.168.1.78:5000/SysData').subscribe(
+    await this.apiService.getFun('SysData').subscribe(
       response => {
         this.data = response;//response variable holds all the data retrived then asign them to a variable cold data
         //loop that iterates over the objects in the data and returns only the table name then push it in an array called tableNames
@@ -94,7 +94,7 @@ export class MappingComponent implements OnInit {
     console.log("djosiu");
     $('#liveToast').toast('show')
     //send a post request with all the inputs values to the backend to retrive all the data in this endpoit
-    this.httpClient.post<any>('http://192.168.1.78:5000/mapping',this.tbvalue).subscribe(data => {
+    this.apiService.postFun('mapping',this.tbvalue).subscribe(data => {
       this.tbvalue=data;//data variable holds all the data retrived then asign them to a variable cold value
       //this.getmapp()//then call this function again to render the new submitted data
     this.tbvalue=[]
@@ -149,7 +149,7 @@ export class MappingComponent implements OnInit {
   {
     this.input2=(<HTMLInputElement>event.target).value;//retrive the value choosen from theb dropdown
     //send a post request with the table name and column to this endpoit in the backend to retrive all the distinct values in that column
-    this.httpClient.post<any>('http://192.168.1.78:5000/SysDataHandler', { column:this.input2 ,table:this.input }).subscribe(data => {
+    this.apiService.postFun('SysDataHandler', { column:this.input2 ,table:this.input }).subscribe(data => {
     this.values=data;//data variable holds all the data retrived then asign them to a variable cold value
     })
   }
@@ -179,7 +179,7 @@ export class MappingComponent implements OnInit {
 console.log($("#for").value);
 
     //send a get request to the backend to retrive all the mapping data from the database
-    await this.httpClient.get<any>('http://192.168.1.78:5000/mapping').subscribe(
+    await this.apiService.getFun('mapping').subscribe(
       response => {
         this.mapping = response;//response variable holds all the data retrived then asign them to a variable cold data
       }
@@ -188,7 +188,7 @@ console.log($("#for").value);
   
 async revenueCenter(){
   //send a get request to the backend to retrive all the revenue centers data from the database
-  await this.httpClient.get<any>('http://192.168.1.78:5000/revenue').subscribe(
+  await this.apiService.getFun('revenue').subscribe(
     response => {
       this.revenue = response;//response variable holds all the data retrived then asign them to a variable cold data
     }
@@ -198,7 +198,7 @@ del()
 {
   console.log(this.row);
   //send a post request with the table name and column to this endpoit in the backend to retrive all the distinct values in that column
-  this.httpClient.post<any>('http://192.168.1.78:5000/delete',{ MappingType:this.row.MappingType,Source:this.row.Source,Target:this.row.Target}).subscribe(data => {
+  this.apiService.postFun('delete',{ MappingType:this.row.MappingType,Source:this.row.Source,Target:this.row.Target}).subscribe(data => {
   this.deleteV=data;//data variable holds all the data retrived then asign them to a variable cold value
   this.getmapp()
   })

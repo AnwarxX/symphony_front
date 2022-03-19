@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl,Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { APIsService } from "../services/apis.service";
 declare var $:any //declear $ to use jquery
 
 @Component({
@@ -63,7 +63,7 @@ username: ""};
   form3 = new FormGroup({
     date:new FormControl("",Validators.compose([Validators.required]))
   })
-  constructor(public httpClient:HttpClient) { 
+  constructor(public apiService:APIsService) { 
     console.log(this.getDaysArray("2022-02-20","2022-02-23")[0].toISOString().split("T")[0]);
     this.imports()
     this.getInterfaceData()
@@ -204,13 +204,18 @@ username: ""};
     
   }
   getInterfaceData(){
+    this.apiService.getFun("importInterface").subscribe(data => {
 
-    this.httpClient.get<any>('http://localhost:5000/importInterface').subscribe(data => {
+        this.interfaceData=data;//data variable holds all the data retrived then asign them to a variable cold value      
+        console.log(this.interfaceData[1].BU);      
+  
+      });//data variable holds all the data retrived then asign them to a variable cold value     
+    // this.httpClient.get<any>('http://localhost:5000/importInterface').subscribe(data => {
 
-      this.interfaceData=data;//data variable holds all the data retrived then asign them to a variable cold value      
-      console.log(this.interfaceData[1].BU);      
+    //   this.interfaceData=data;//data variable holds all the data retrived then asign them to a variable cold value      
+    //   console.log(this.interfaceData[1].BU);      
 
-    })
+    // })
 
   }
   importBtn(text:any){
@@ -219,7 +224,7 @@ username: ""};
   importSun(){
     console.log("asfujhasfikju");
     
-    this.httpClient.post<any>('http://localhost:5000/importSun',{interfaceCod:parseInt(this.interfaceCod),date:this.form3.get('date')?.value}).subscribe(data => {
+    this.apiService.postFun('importSun',{interfaceCod:parseInt(this.interfaceCod),date:this.form3.get('date')?.value}).subscribe(data => {
       console.log(data);      
     })
   }
@@ -230,7 +235,7 @@ username: ""};
   editBtn(row:any){
     this.reviewInput=row;
 
-    this.httpClient.post<any>('http://localhost:5000/reviewInterface',this.reviewInput).subscribe(data => {
+    this.apiService.postFun('reviewInterface',this.reviewInput).subscribe(data => {
       delete data.refreshToken;
       delete data.token;
 
@@ -246,7 +251,7 @@ username: ""};
   update()
   {
     //send a post request with the table name and column to this endpoit in the backend to retrive all the distinct values in that column
-    this.httpClient.post<any>('http://localhost:5000/update',this.form2.value).subscribe(data => {
+    this.apiService.postFun('update',this.form2.value).subscribe(data => {
     // this.authData=data;//data variable holds all the data retrived then asign them to a variable cold value
     console.log(data);
     this.authData=""
@@ -259,7 +264,7 @@ username: ""};
     })
   }
   confirmDelete(){
-    this.httpClient.post<any>('http://localhost:5000/deleteInterface',this.rowInput).subscribe(data => {
+    this.apiService.postFun('deleteInterface',this.rowInput).subscribe(data => {
       console.log(data);
       this.getInterfaceData()
     })
@@ -273,10 +278,9 @@ username: ""};
       this.dateDisable=false;
     }
   }
-  authorization()
-{
+  authorization(){
   //send a post request with the table name and column to this endpoit in the backend to retrive all the distinct values in that column
-  this.httpClient.post<any>('http://localhost:5000/authorization',this.form2.value).subscribe(data => {
+  this.apiService.postFun('authorization',this.form2.value).subscribe(data => {
   // this.authData=data;//data variable holds all the data retrived then asign them to a variable cold value
   console.log(data);
   this.authData=""
@@ -289,7 +293,7 @@ username: ""};
   })
 }
   imports(){
-    this.httpClient.get<any>('http://localhost:5000/interfaceCode').subscribe(data => {
+    this.apiService.getFun('interfaceCode').subscribe(data => {
       this.apis=data.apidata;//data variable holds all the data retrived then asign them to a variable cold value
       this.interfaces=data.interfacedata;//data variable holds all the data retrived then asign them to a variable cold value
       console.log(this.apis);
@@ -297,14 +301,14 @@ username: ""};
     })
   }
   start(){
-    this.httpClient.get<any>('http://localhost:5000/start').subscribe(data => {
+    this.apiService.getFun('start').subscribe(data => {
     this.reply=data;//data variable holds all the data retrived then asign them to a variable cold value
     //this.getmapp()//then call this function again to render the new submitted data
     })
   }
   
   stop(){
-    this.httpClient.get<any>('http://localhost:5000/stop').subscribe(data => {
+    this.apiService.getFun('stop').subscribe(data => {
     this.reply=data;//data variable holds all the data retrived then asign them to a variable cold value
     //this.getmapp()//then call this function again to render the new submitted data
     })
@@ -315,8 +319,11 @@ username: ""};
     let start=this.form.get('startDate')?.value;
     let end=this.form.get('endDate')?.value;
     this.x=[]
+    console.log("ASfasf");
     for (let i = 0; i < this.getDaysArray(start,end).length; i++) {
-      this.httpClient.post<any>('http://localhost:5000/import',{interface:this.interfaceCod,date:this.getDaysArray(start,end)[i].toISOString().split("T")[0],api:this.form.get('api')?.value}).subscribe(data => {
+      console.log("asgasg");
+      
+      this.apiService.postFun("import",{interface:this.interfaceCod,date:this.getDaysArray(start,end)[i].toISOString().split("T")[0],api:this.form.get('api')?.value}).subscribe(data => {
         this.x.push(data)
         if (this.x.length==this.getDaysArray(start,end).length) {
           console.log(this.x);
