@@ -14,7 +14,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default">User Name</span>
                         </div>
-                        <input formControlName="username" name="" class="form-control" value="" id="">
+                        <input formControlName="username" pattern="^[a-zA-Z \-\']+" name="" class="form-control" value="" id="">
 
                     </div>
                 </div>
@@ -23,7 +23,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
                         </div>
-                        <input formControlName="password" name="" id="" class="form-control" value=""
+                        <input formControlName="password" name="password" id="" class="form-control" value=""
                             aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 
                     </div>
@@ -40,9 +40,10 @@
                 </div>
             </div>
             <div class="row pt-2">
+                
                 <div class="col-md-4 ">
-                    <div *ngIf="form2.get('userName')?.invalid && form2.get('userName')?.touched">
-                        <small class="btn btn-danger px-5 " *ngIf="form2.get('userName')?.errors?.required"> userName is
+                    <div *ngIf="form2.get('username')?.invalid && form2.get('username')?.touched">
+                        <small class="btn btn-danger px-5 " > userName is
                             required</small>
                     </div>
 
@@ -70,7 +71,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default">Enterprise Short Name</span>
                         </div>
-                        <input formControlName="enterpriseShortName" name="" class="form-control" value="" id="">
+                        <input formControlName="enterpriseShortName" pattern="^[a-zA-Z \-\']+" name="" class="form-control" value="" id="">
 
                     </div>
                 </div>
@@ -89,7 +90,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default">LockRef</span>
                         </div>
-                        <input formControlName="lockRef" name="" id="" class="form-control" value=""
+                        <input formControlName="lockRef" name="" pattern="^[a-zA-Z \-\']+" id="" class="form-control" value=""
                             aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 
                     </div>
@@ -98,7 +99,7 @@
             <div class="row pt-2">
                 <div class="col-md-4 ">
                     <div *ngIf="form2.get('enterpriseShortName')?.invalid && form2.get('enterpriseShortName')?.touched">
-                        <small class="btn btn-danger px-5 " *ngIf="form2.get('enterpriseShortName')?.errors?.required">
+                        <small class="btn btn-danger px-5 ">
                             Enterprise Short Name is
                             required</small>
                     </div>
@@ -115,7 +116,7 @@
                 </div>
                 <div class="col-md-4 ">
                     <div *ngIf="form2.get('lockRef')?.invalid && form2.get('lockRef')?.touched">
-                        <small class="btn btn-danger px-5 " *ngIf="form2.get('lockRef')?.errors?.required"> LockRef is
+                        <small class="btn btn-danger px-5 "> LockRef is
                             required</small>
 
                     </div>
@@ -171,7 +172,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default">User</span>
                         </div>
-                        <input formControlName="SunUser" name="" class="form-control" value="" id="">
+                        <input formControlName="SunUser" pattern="^[a-zA-Z \-\']+" name="" class="form-control" value="" id="">
 
                     </div>
                 </div>
@@ -198,7 +199,7 @@
                 <div class="col-md-3">
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroup-sizing-default">Database</span>
+                            <span class="input-group-text" pattern="^[a-zA-Z \-\']+" id="inputGroup-sizing-default">Database</span>
                         </div>
                         <input formControlName="SunDatabase" name="" class="form-control" value="" id="">
 

@@ -10,7 +10,7 @@ declare var $:any //declear $ to use jquery
 })
 export class AllInterfacesDetailsComponent implements OnInit {
   form2 = new FormGroup({
-    username:new FormControl("",Validators.compose([Validators.required])),
+    username:new FormControl("",Validators.compose([Validators.required,Validators.pattern('/^[A-Za-z]+$/')])),
     password:new FormControl("",Validators.compose([Validators.required])),
     email:new FormControl("",Validators.compose([Validators.required])),
     enterpriseShortName:new FormControl("",Validators.compose([Validators.required])),
