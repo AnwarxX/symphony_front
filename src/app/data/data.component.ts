@@ -1,4 +1,4 @@
-import { APIsService } from "../services/apis.service";
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -12,14 +12,14 @@ export class DataComponent implements OnInit {
   input=""
   data:any;
   dataFilter=[]
-  constructor(public apiService:APIsService) {
+  constructor(private httpClient:HttpClient) {
     this.getData();
     console.log(this.data);
   }
   ngOnInit(): void { 
   }
   getData(){
-    this.apiService.getFun('SysData'+this.input).subscribe(
+    this.httpClient.get<any>('http://192.168.1.78:5000/SysData'+this.input).subscribe(
       response=>{
         this.data=response
         console.log(response);

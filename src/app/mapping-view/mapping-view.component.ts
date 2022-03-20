@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { APIsService } from "../services/apis.service";
+import { HttpClient } from '@angular/common/http';
+import { log } from 'console';
 
 declare var $:any
 
@@ -14,7 +15,7 @@ export class MappingViewComponent implements OnInit {
   mapp:any;
   row:any;
   deleteV:any;
-  constructor(public apiService:APIsService) { 
+  constructor(public httpClient:HttpClient) { 
   this.getmapp();
   }
 
@@ -26,10 +27,9 @@ export class MappingViewComponent implements OnInit {
   }
 
   async getmapp(){
-    console.log($("lklkl").value);
     
         //send a get request to the backend to retrive all the mapping data from the database
-        await this.apiService.getFun('mapping').subscribe(
+        await this.httpClient.get<any>('http://192.168.1.78:5000/mapping').subscribe(
           response => {
             this.mapping = response;//response variable holds all the data retrived then asign them to a variable cold data
 
@@ -38,24 +38,39 @@ export class MappingViewComponent implements OnInit {
         )
       } 
       
-      delete(row:any){
-        this.mapp=row;
-        console.log(row);
+      delete(mapp:any){
+        this.row=mapp;
+        console.log(this.row);
         
       }
       
-      edit(text:any){
-        this.mappCode=text;
-      }
+      // edit(text:any){
+      //   this.mappCode=text;
+      //   console.log(this.mappCode);
+      //   let tbody=`  
+      //   <form class="d-flex">
+      //   <input class="MappingCode in form-control"  value="${this.mappCode.MappingCode}">
+      //   <input class="Description in form-control"   value="${this.mappCode.Source}"  >
+      //   <input class="mapp in form-control" value="${this.mappCode.MappingType}">
+      //   <input class="value in form-control" value="${this.mappCode.Target}">
+      //   <form>
+      //   `
+      //   $("#mappingData").html($("#mappingData").html()+tbody);
+
+      // }
 
 del()
 {
   console.log(this.row);
   //send a post request with the table name and column to this endpoit in the backend to retrive all the distinct values in that column
-  this.apiService.postFun('delete',{ MappingType:this.row.MappingType,Source:this.row.Source,Target:this.row.Target}).subscribe(data => {
+  this.httpClient.post<any>('http://192.168.1.78:5000/delete',{ MappingType:this.row.MappingType,Source:this.row.Source,Target:this.row.Target}).subscribe(data => {
   this.deleteV=data;//data variable holds all the data retrived then asign them to a variable cold value
   this.getmapp()
   })
 }
+// ed(){
+//   console.log(this.row);
+
+// }
 
 }

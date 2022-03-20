@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl,Validators } from '@angular/forms';
-import { APIsService } from "../services/apis.service";
+import { HttpClient } from '@angular/common/http';
 declare var $:any //declear $ to use jquery
 
 @Component({
@@ -32,7 +32,7 @@ x:any;
 
 
 
-constructor(public apiService:APIsService) { 
+constructor(public httpClient:HttpClient) { 
 }
 
   ngOnInit(): void {
@@ -49,49 +49,37 @@ constructor(public apiService:APIsService) {
       $(".sunEveryDay").removeAttr('disabled');
       $(".sunEveryMonth").attr('disabled', 'disabled');
       $(".sunEveryYear").attr('disabled', 'disabled');
-      $('.sunEveryMonth').val("yyyy-MM-ddThh:mm"); 
-      $('.sunEveryYear').val("yyyy-MM-ddThh:mm"); 
     }
     else if(this.dis=="month"){
       $(".sunEveryMonth").removeAttr('disabled');
       $(".sunEveryYear").attr('disabled', 'disabled');
       $(".sunEveryDay").attr('disabled', 'disabled');
-      $('.sunEveryYear').val("yyyy-MM-ddThh:mm"); 
-      $('.sunEveryDay').val("yyyy-MM-ddThh:mm"); 
     }
     else if(this.dis=="year"){
       $(".sunEveryYear").removeAttr('disabled');
       $(".sunEveryMonth").attr('disabled', 'disabled');
       $(".sunEveryDay").attr('disabled', 'disabled');
-      $('.sunEveryMonth').val("yyyy-MM-ddThh:mm"); 
-      $('.sunEveryDay').val("yyyy-MM-ddThh:mm"); 
     }
     if (this.dis=="apiday") {
       $(".apiEveryDay").removeAttr('disabled');
       $(".apiEveryMonth").attr('disabled', 'disabled');
       $(".apiEveryYear").attr('disabled', 'disabled');
-      $('.apiEveryMonth').val("yyyy-MM-ddThh:mm"); 
-      $('.apiEveryYear').val("yyyy-MM-ddThh:mm"); 
     }
     else if(this.dis=="apimonth"){
       $(".apiEveryMonth").removeAttr('disabled');
       $(".apiEveryYear").attr('disabled', 'disabled');
       $(".apiEveryDay").attr('disabled', 'disabled');
-      $('.apiEveryYear').val("yyyy-MM-ddThh:mm"); 
-      $('.apiEveryDay').val("yyyy-MM-ddThh:mm"); 
     }
     else if(this.dis=="apiyear"){
       $(".apiEveryYear").removeAttr('disabled');
       $(".apiEveryMonth").attr('disabled', 'disabled');
       $(".apiEveryDay").attr('disabled', 'disabled');
-      $('.apiEveryMonth').val("yyyy-MM-ddThh:mm"); 
-      $('.apiEveryDay').val("yyyy-MM-ddThh:mm"); 
     }
   }
 authorization()
 {
   //send a post request with the table name and column to this endpoit in the backend to retrive all the distinct values in that column
-  this.apiService.postFun('authorization',this.form2.value).subscribe(data => {
+  this.httpClient.post<any>('http://192.168.1.78:5000/authorization',this.form2.value).subscribe(data => {
   // this.authData=data;//data variable holds all the data retrived then asign them to a variable cold value
   console.log(data);
   this.authData=""

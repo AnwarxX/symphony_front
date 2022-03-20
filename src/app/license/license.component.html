@@ -1,0 +1,25 @@
+
+<section id="home">
+
+    <div class="con mt-5">
+        <div class="text-center py-3 ">
+            <h2 class="header header-h4">License</h2>
+        </div>
+
+<form action="" [formGroup]="form" (ngSubmit)="fileChanged($event)" class=" pb-3 ">
+    <input formControlName="inputFile" type='file' class="form-control" >
+    <button type="submit" [disabled]="form.status=='INVALID'" class="btn btn-dark w-100">submit</button>
+  </form>
+
+    </div>
+
+    <div class="position-fixed bottom-0   text-white text-center right-0  " style="z-index: 5; right: 0; bottom: 0;">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header ">
+                <button type="button" class="btn-close  m-0" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body btn-dark text-white">
+            </div>
+        </div>
+    </div>
+</section>
