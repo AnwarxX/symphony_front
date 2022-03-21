@@ -1,3 +1,4 @@
+
 img{
     width: 120px;
 }
@@ -8,7 +9,11 @@ img{
     background-color: black!important;
 
 }
-
+.navss {
+    text-decoration: none;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
 
     .con  
 {

@@ -19,7 +19,11 @@ import { AllInterfacesDetailsComponent } from './all-interfaces-details/all-inte
 import { NgxUiLoaderHttpModule, NgxUiLoaderModule, NgxUiLoaderService } from 'ngx-ui-loader';
 import { MappingViewComponent } from './mapping-view/mapping-view.component';
 import { MappingDetailComponent } from './mapping-detail/mapping-detail.component';
+<<<<<<< HEAD
 import { LicenseComponent } from './license/license.component';
+=======
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+>>>>>>> main
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +52,7 @@ import { LicenseComponent } from './license/license.component';
     NgxUiLoaderHttpModule.forRoot({
       showForeground: true,
     }),
+    NgbModule,
     
   ],
   providers: [],
