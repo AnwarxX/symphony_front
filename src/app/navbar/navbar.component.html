@@ -9,8 +9,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
 
-          <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
-
+          <div *ngIf="isShown" class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
               <div ngbDropdown >
                 <button class="btn btn-link dropdown-toggle navss" id="dropdownBasic1" ngbDropdownToggle>Mapping Details</button>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
@@ -18,19 +17,15 @@
                   <button ngbDropdownItem><a href="#/MappingView">View Mapping details</a></button>
                 </div>
               </div>
-              
-                <button class="btn btn-link navss " id="dropdownBasic1" ><a href="#/BU" class="text-white">Bussiness Unit Configuration</a></button>
-              
+              <button class="btn btn-link navss " id="dropdownBasic1" ><a href="#/BU" class="text-white">Bussiness Unit Configuration</a></button>
               <div ngbDropdown >
                 <button class="btn btn-link dropdown-toggle navss" id="dropdownBasic1" ngbDropdownToggle>API Configuration</button>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                   <button ngbDropdownItem><a href="#/NewInterface"> New Interface</a></button>
                   <button ngbDropdownItem><a href="#/allInterfacesDetails"> All interface detail</a></button>
               </div>
-              </div>
-              
+              </div> 
               <button class="btn btn-link navss " id="dropdownBasic1" ><a href="#/APPConfig" class="text-white">Bussiness Unit Configuration</a></button>
-
             <!-- <form class="d-flex">
               <input class="form-control me-2"  type="date" placeholder="Search" aria-label="Search">
             </form> -->

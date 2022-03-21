@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 declare var $:any //declear $ to use jquery
 
 @Component({
@@ -7,8 +8,24 @@ declare var $:any //declear $ to use jquery
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  isShown: boolean = false ;
 
-  constructor() { }
+  
+  constructor(private router: Router) {
+    this.router.events.subscribe((ev) => {
+      if (ev instanceof NavigationEnd) {
+      if (this.router.url != "/home") {
+        this.isShown = true  
+      }  else {
+        this.isShown = false  
+
+      }
+            
+      }
+    });
+  }
+
+  
 
   ngOnInit(): void {
     //add the  background to home id
