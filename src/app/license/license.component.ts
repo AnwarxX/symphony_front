@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl,Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { APIsService } from "../services/apis.service";
 import { log } from 'console';
 declare var $:any //declear $ to use jquery
 @Component({
@@ -21,7 +21,7 @@ export class LicenseComponent implements OnInit {
       fileReader.readAsText(this.file);
       fileReader.onload = (e) => {
         this.text=fileReader.result;    
-       this.httpClient.post<any>('http://localhost:5000/uploadLicense',{license:this.text}).subscribe(data => {
+        this.apiService.postFun('uploadLicense',{license:this.text}).subscribe(data => {
           this.data=data; //data variable holds all the data retrived then asign them to a variable cold value
           $('#liveToast').toast('show')
           $('.toast-body').html(this.data)
@@ -29,7 +29,7 @@ export class LicenseComponent implements OnInit {
           })
       }
   }
-  constructor(public httpClient:HttpClient) { 
+  constructor(public apiService:APIsService) { 
 
   
   }

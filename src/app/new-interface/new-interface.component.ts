@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl,Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { APIsService } from "../services/apis.service";
 declare var $:any //declear $ to use jquery
 
 @Component({
@@ -32,7 +32,7 @@ x:any;
 
 
 
-constructor(public httpClient:HttpClient) { 
+constructor(public apiService:APIsService) { 
 }
 
   ngOnInit(): void {
@@ -79,7 +79,7 @@ constructor(public httpClient:HttpClient) {
 authorization()
 {
   //send a post request with the table name and column to this endpoit in the backend to retrive all the distinct values in that column
-  this.httpClient.post<any>('http://192.168.1.78:5000/authorization',this.form2.value).subscribe(data => {
+  this.apiService.postFun('authorization',this.form2.value).subscribe(data => {
   // this.authData=data;//data variable holds all the data retrived then asign them to a variable cold value
   console.log(data);
   this.authData=""

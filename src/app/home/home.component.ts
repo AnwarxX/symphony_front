@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { log } from 'console';
 import { FormGroup,FormControl,Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { APIsService } from "../services/apis.service";
 declare var $:any
 @Component({
   selector: 'app-home',
@@ -10,7 +10,7 @@ declare var $:any
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public httpClient:HttpClient) { 
+  constructor(public apiService:APIsService) { 
 
   }
 
@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
   async getLicense(){
     
     //send a get request to the backend to retrive all the mapping data from the database
-    await this.httpClient.get<any>('http://localhost:5000/License').subscribe(
+    await this.apiService.getFun('License').subscribe(
       response => {
         this.getLicense= response;//response variable holds all the data retrived then asign them to a variable cold data
 
