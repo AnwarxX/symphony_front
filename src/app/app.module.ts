@@ -19,6 +19,7 @@ import { AllInterfacesDetailsComponent } from './all-interfaces-details/all-inte
 import { NgxUiLoaderHttpModule, NgxUiLoaderModule, NgxUiLoaderService } from 'ngx-ui-loader';
 import { MappingViewComponent } from './mapping-view/mapping-view.component';
 import { MappingDetailComponent } from './mapping-detail/mapping-detail.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +47,7 @@ import { MappingDetailComponent } from './mapping-detail/mapping-detail.componen
     NgxUiLoaderHttpModule.forRoot({
       showForeground: true,
     }),
+    NgbModule,
     
   ],
   providers: [],
