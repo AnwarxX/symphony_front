@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl,Validators } from '@angular/forms';
 import { APIsService } from "../services/apis.service";
-import { log } from 'console';
+import * as cryptoJS from 'crypto-js';
+
+
+
 declare var $:any //declear $ to use jquery
 @Component({
   selector: 'app-license',
@@ -24,13 +27,21 @@ export class LicenseComponent implements OnInit {
         this.apiService.postFun('uploadLicense',{license:this.text}).subscribe(data => {
           this.data=data; //data variable holds all the data retrived then asign them to a variable cold value
           $('#liveToast').toast('show')
-          $('.toast-body').html(this.data)
+          $('.toast-body').html(data.massage)
+          if(data.massage =="License Submited"){  
+              console.log(data.token);
+              var bytes  = cryptoJS.AES.decrypt(data.token, 'lamiaa');
+              var originalText = bytes.toString(cryptoJS.enc.Utf8);
+              console.log(originalText);
+              localStorage.setItem('token',data.token)
+    
+      
+          }
           
           })
       }
   }
   constructor(public apiService:APIsService) { 
-
   
   }
 
@@ -39,6 +50,12 @@ export class LicenseComponent implements OnInit {
       dotColor: 'cadetblue',
       lineColor: 'white'
   });
+  let tok =  localStorage.getItem('token');
+    if(tok == null || tok==""){
+      $('#liveToast').toast('show')
+      $('.toast-body').html("Please Uplode License")
+    }
+ 
   }
 
   

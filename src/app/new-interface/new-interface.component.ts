@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl,Validators } from '@angular/forms';
 import { APIsService } from "../services/apis.service";
+import * as cryptoJS from 'crypto-js';
+import { log } from 'console';
+
 declare var $:any //declear $ to use jquery
 
 @Component({
@@ -76,8 +79,20 @@ constructor(public apiService:APIsService) {
       $(".apiEveryDay").attr('disabled', 'disabled');
     }
   }
+
 authorization()
 {
+  let tok =  localStorage.getItem('token');
+  var bytes  = cryptoJS.AES.decrypt(tok||"", 'lamiaa');
+  var originalText = bytes.toString(cryptoJS.enc.Utf8);
+  let x=JSON.parse(originalText)
+  console.log(x);
+
+  console.log(this.form2.get("lockRef")?.value ,x[0].LockRef,x[0].EnterpriseShortName ,this.form2.get("enterpriseShortName")?.value);
+  
+  if(x[0].LockRef == this.form2.get("lockRef")?.value && x[0].EnterpriseShortName == this.form2.get("enterpriseShortName")?.value){
+
+   
   //send a post request with the table name and column to this endpoit in the backend to retrive all the distinct values in that column
   this.apiService.postFun('authorization',this.form2.value).subscribe(data => {
   // this.authData=data;//data variable holds all the data retrived then asign them to a variable cold value
@@ -88,8 +103,12 @@ authorization()
   }
   $('#liveToast').toast('show')
   $('.toast-body').html(this.authData)
-  
   })
+}else{
+  $('#liveToast').toast('show')
+  $('.toast-body').html("License and configuration doesn't match")
+
+}
 }
 
 

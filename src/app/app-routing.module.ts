@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
+import { Injectable, NgModule } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { RouterModule, Routes, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { RouterModule, Routes, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AllInterfacesDetailsComponent } from './all-interfaces-details/all-interfaces-details.component';
 import { AppConfigurationComponent } from './app-configuration/app-configuration.component';
@@ -14,32 +14,61 @@ import { MappingViewComponent } from './mapping-view/mapping-view.component';
 import { MappingComponent } from './mapping/mapping.component';
 import { NewInterfaceComponent } from './new-interface/new-interface.component';
 import { SympDbComponent } from './symp-db/symp-db.component';
-
+import * as cryptoJS from 'crypto-js';
+import { APIsService } from "./services/apis.service";
+@Injectable()
 export class alwaysAuthGuard implements CanActivate{
+  constructor(public router:Router,public apiService:APIsService){
+
+  }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    let x=["NewInterface","mapping"]
-    for (let i = 0; i < x.length; i++) {
-      if (route.routeConfig?.path==x[i]) {
-        return false;
+    let tok =  localStorage.getItem('token');
+    console.log(tok);
+    if(tok==null|| tok==""){
+      console.log("jkjk");
+      this.apiService.getFun('stop').subscribe(data => {})
+      this.apiService.getFun('stopSun').subscribe(data => {})
+      this.router.navigate(['/License']);
+      return false;
+
+    }
+    var bytes  = cryptoJS.AES.decrypt(tok||"", 'lamiaa');
+    var originalText = bytes.toString(cryptoJS.enc.Utf8);
+    console.log("jhj");
+    let x=JSON.parse(originalText)
+    console.log(x);
+    
+    var date1 = new Date();
+    var date2 = new Date(x[0].EndDate);
+    if(date1.getTime() > date2.getTime()){
+      let tok =  localStorage.setItem('token',"");
+      this.apiService.getFun('stop').subscribe(data => {})
+      this.apiService.getFun('stopSun').subscribe(data => {})
+      return false;
+    }
+    for (let i = 0; i < x[0].product.length; i++) {
+      if (route.routeConfig?.path?.includes(x[0].product[i])||route.routeConfig?.path=="home") {
+        return true;
       }
     }
-    return true;
+    return false;
   }
 }
 const routes: Routes = [
   {path:"",redirectTo:"home",pathMatch:"full"},
   {path:"data",component: DataComponent,canActivate:[alwaysAuthGuard]},
-  {path:"mapping",component: MappingComponent,canActivate:[alwaysAuthGuard]},
-  {path:"sympdb",component: SympDbComponent,canActivate:[alwaysAuthGuard]},
+  {path:"Symphonymapping",component: MappingComponent,canActivate:[alwaysAuthGuard]},
+  {path:"Symphonysympdb",component: SympDbComponent,canActivate:[alwaysAuthGuard]},
   {path:"home",component: HomeComponent,canActivate:[alwaysAuthGuard]},
-  {path:"BU",component:BusinessUnitComponent,canActivate:[alwaysAuthGuard]},
-  {path:"APPConfig",component:AppConfigurationComponent,canActivate:[alwaysAuthGuard]},
-  {path:"homeConfig",component:HomeConfigComponent,canActivate:[alwaysAuthGuard]},
-  {path:"NewInterface",component:NewInterfaceComponent,canActivate:[alwaysAuthGuard]},
-  {path:"allInterfacesDetails",component:AllInterfacesDetailsComponent,canActivate:[alwaysAuthGuard]},
-  {path:"MappingDetails",component:MappingDetailComponent,canActivate:[alwaysAuthGuard]},
-  {path:"MappingView",component:MappingViewComponent,canActivate:[alwaysAuthGuard]},
-  {path:"License",component:LicenseComponent}
+  {path:"SymphonyBU",component:BusinessUnitComponent,canActivate:[alwaysAuthGuard]},
+  {path:"SymphonyAPPConfig",component:AppConfigurationComponent,canActivate:[alwaysAuthGuard]},
+  {path:"SymphonyhomeConfig",component:HomeConfigComponent,canActivate:[alwaysAuthGuard]},
+  {path:"SymphonyNewInterface",component:NewInterfaceComponent,canActivate:[alwaysAuthGuard]},
+  {path:"SymphonyallInterfacesDetails",component:AllInterfacesDetailsComponent,canActivate:[alwaysAuthGuard]},
+  {path:"SymphonyMappingDetails",component:MappingDetailComponent,canActivate:[alwaysAuthGuard]},
+  {path:"SymphonyMappingView",component:MappingViewComponent,canActivate:[alwaysAuthGuard]},
+  {path:"License",component:LicenseComponent},
+  {path: '**', component: HomeComponent }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes,{useHash:true})],
