@@ -10,7 +10,7 @@ declare var $:any //declear $ to use jquery
 })
 export class AllInterfacesDetailsComponent implements OnInit {
   form2 = new FormGroup({
-    username:new FormControl("",Validators.compose([Validators.required,Validators.pattern('/^[A-Za-z]+$/')])),
+    username:new FormControl("",Validators.compose([Validators.required])),
     password:new FormControl("",Validators.compose([Validators.required])),
     email:new FormControl("",Validators.compose([Validators.required])),
     enterpriseShortName:new FormControl("",Validators.compose([Validators.required])),
@@ -67,6 +67,7 @@ username: ""};
     console.log(this.getDaysArray("2022-02-20","2022-02-23")[0].toISOString().split("T")[0]);
     this.imports()
     this.getInterfaceData()
+    
   }
   diss(event:any){
     this.dis=(<HTMLInputElement>event.target).value;
@@ -124,16 +125,17 @@ username: ""};
     this.apiDate = this.reviewInput.ApiSchedule.split(" ")
     this.sunDate = this.reviewInput.SunSchedule.split(" ")
     console.log(this.reviewInput.SunScheduleStatue);
+    console.log(this.reviewInput.ApiScheduleStatue);
     if (this.reviewInput.SunScheduleStatue=="day") {
       $(".sunEveryDay").removeAttr('disabled');
       $(".sunEveryMonth").attr('disabled', 'disabled');
       $(".sunEveryYear").attr('disabled', 'disabled');
       $("#exampleRadiosSun1").prop('checked',true);
-      $('.sunEveryDay').val(((this.sunDate[2] < 10) ? "0" :'')+this.sunDate[2] + ":" + 
-        ((this.sunDate[1] < 10) ? "0" :'')+this.sunDate[1]);
         this.form2.patchValue({SunSchedule:
         ((this.sunDate[2] < 10) ? "0" :'')+this.sunDate[2] + ":" + 
         ((this.sunDate[1] < 10) ? "0" :'')+this.sunDate[1]})
+        $('.sunEveryMonth').val("yyyy-MM-ddThh:mm");
+        $('.sunEveryYear').val("yyyy-MM-ddThh:mm");
     }
     else if(this.reviewInput.SunScheduleStatue=="month"){
       this.form2.patchValue({SunSchedule:new Date().getFullYear() + "-" +  
@@ -145,11 +147,8 @@ username: ""};
       $(".sunEveryYear").attr('disabled', 'disabled');
       $(".sunEveryDay").attr('disabled', 'disabled');
       $("#exampleRadiosSun2").prop('checked',true);
-      $('.sunEveryMonth').val(new Date().getFullYear() + "-" +  
-      (((new Date().getMonth()+1) < 10) ? "0" :'')  +(new Date().getMonth()+ 1)+ "-" + 
-      ((this.sunDate[3] < 10) ? "0" :'')+this.sunDate[3] + "T" +  
-      ((this.sunDate[2] < 10) ? "0" :'')+this.sunDate[2] + ":" + 
-      ((this.sunDate[1] < 10) ? "0" :'')+this.sunDate[1]); 
+      $('.sunEveryYear').val("yyyy-MM-ddThh:mm");
+      $('.sunEveryDay').val("hh:mm");
 
     }
     else if(this.reviewInput.SunScheduleStatue=="year"){
@@ -157,29 +156,24 @@ username: ""};
       $(".sunEveryMonth").attr('disabled', 'disabled');
       $(".sunEveryDay").attr('disabled', 'disabled');
       $("#exampleRadiosSun3").prop('checked',true);
-      $('.sunEveryYear').val(new Date().getFullYear() + "-" +  
-      ((this.sunDate[4] < 10) ? "0" :'')+this.sunDate[4] + "-" + 
-      ((this.sunDate[3] < 10) ? "0" :'')+this.sunDate[3] + "T" +  
-      ((this.sunDate[2] < 10) ? "0" :'')+this.sunDate[2] + ":" + 
-      ((this.sunDate[1] < 10) ? "0" :'')+this.sunDate[1]); 
       this.form2.patchValue({SunSchedule:new Date().getFullYear() + "-" +  
-      (((new Date().getMonth()+1) < 10) ? "0" :'')  +(new Date().getMonth()+ 1)+ "-" + 
       ((this.sunDate[4] < 10) ? "0" :'')+this.sunDate[4] + "-" + 
       ((this.sunDate[3] < 10) ? "0" :'')+this.sunDate[3] + "T" +  
       ((this.sunDate[2] < 10) ? "0" :'')+this.sunDate[2] + ":" + 
       ((this.sunDate[1] < 10) ? "0" :'')+this.sunDate[1]})
+      $('.sunEveryMonth').val("yyyy-MM-ddThh:mm");
+      $('.sunEveryDay').val("hh:mm");
     }
     if (this.reviewInput.ApiScheduleStatue=="apiday") {
       $(".apiEveryDay").removeAttr('disabled');
       $(".apiEveryMonth").attr('disabled', 'disabled');
       $(".apiEveryYear").attr('disabled', 'disabled');
       $("#exampleRadios1").prop('checked',true);
-      $('.apiEveryDay').val( 
-      ((this.apiDate[2] < 10) ? "0" :'')+this.apiDate[2] + ":" + 
-      ((this.apiDate[1] < 10) ? "0" :'')+this.apiDate[1]); 
       this.form2.patchValue({ApiSchedule:
       ((this.apiDate[2] < 10) ? "0" :'')+this.apiDate[2] + ":" + 
       ((this.apiDate[1] < 10) ? "0" :'')+this.apiDate[1]})
+      $('.apiEveryMonth').val("yyyy-MM-ddThh:mm");
+      $('.apiEveryYear').val("yyyy-MM-ddThh:mm");
       
     }
     else if(this.reviewInput.ApiScheduleStatue=="apimonth"){
@@ -187,33 +181,26 @@ username: ""};
       $(".apiEveryYear").attr('disabled', 'disabled');
       $(".apiEveryDay").attr('disabled', 'disabled');
       $("#exampleRadios2").prop('checked',true);
-      $('.apiEveryMonth').val(new Date().getFullYear() + "-" +  
+      this.form2.patchValue({ApiSchedule:new Date().getFullYear() + "-" +  
       (((new Date().getMonth()+1) < 10) ? "0" :'')  +(new Date().getMonth()+ 1)+ "-" + 
       ((this.apiDate[3] < 10) ? "0" :'')+this.apiDate[3] + "T" +  
       ((this.apiDate[2] < 10) ? "0" :'')+this.apiDate[2] + ":" + 
-      ((this.apiDate[1] < 10) ? "0" :'')+this.apiDate[1]); 
-      this.form2.patchValue({ApiSchedule:new Date().getFullYear() + "-" +  
-      ((this.apiDate[3] < 10) ? "0" :'')+this.apiDate[3] + "T" +  
-      ((this.apiDate[2] < 10) ? "0" :'')+this.apiDate[2] + ":" + 
       ((this.apiDate[1] < 10) ? "0" :'')+this.apiDate[1]})
-
-      
+      $('.apiEveryDay').val("hh:mm");
+      $('.apiEveryYear').val("yyyy-MM-ddThh:mm");
     }
     else if(this.reviewInput.ApiScheduleStatue=="apiyear"){
       $(".apiEveryYear").removeAttr('disabled');
       $(".apiEveryMonth").attr('disabled', 'disabled');
       $(".apiEveryDay").attr('disabled', 'disabled');
       $("#exampleRadios3").prop('checked',true);
-      $('.apiEveryYear').val(new Date().getFullYear() + "-" +  
-      ((this.apiDate[4] < 10) ? "0" :'')+this.apiDate[4] + "-" + 
-      ((this.apiDate[3] < 10) ? "0" :'')+this.apiDate[3] + "T" +  
-      ((this.apiDate[2] < 10) ? "0" :'')+this.apiDate[2] + ":" + 
-      ((this.apiDate[1] < 10) ? "0" :'')+this.apiDate[1]); 
       this.form2.patchValue({ApiSchedule:new Date().getFullYear() + "-" +  
       ((this.apiDate[4] < 10) ? "0" :'')+this.apiDate[4] + "-" + 
       ((this.apiDate[3] < 10) ? "0" :'')+this.apiDate[3] + "T" +  
       ((this.apiDate[2] < 10) ? "0" :'')+this.apiDate[2] + ":" + 
       ((this.apiDate[1] < 10) ? "0" :'')+this.apiDate[1]})
+      $('.apiEveryMonth').val("yyyy-MM-ddThh:mm");
+      $('.apiEveryDay').val("hh:mm");
     }
   }
     ngOnInit(): void {
