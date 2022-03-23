@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule,alwaysAuthGuard} from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DataComponent } from './data/data.component';
