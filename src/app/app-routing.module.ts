@@ -18,40 +18,76 @@ import * as cryptoJS from 'crypto-js';
 import { APIsService } from "./services/apis.service";
 @Injectable()
 export class alwaysAuthGuard implements CanActivate{
-  constructor(public router:Router,public apiService:APIsService){
+  // data:any
+  // async getLicense(){
+  //   //send a get request to the backend to retrive all the data in this endpoit
+  //   await this.apiService.getFun('getLisence').subscribe(
+  //     response => {
+  //       this.data = response;//response variable holds all the data retrived then asign them to a variable cold data
+  //       //loop that iterates over the objects in the data and returns only the table name then push it in an array called tableNames
+  //       console.log(this.data,"skjkjkjs",response);
 
+  //       if(this.data == null || this.data=="" || this.data == "please uplode license"){
+  //         this.router.navigate(['/License']);
+
+  //       }
+  //       else{
+  //         let tokn =  localStorage.getItem('token');
+
+  //         if(tokn == null || tokn ==""){
+  //         localStorage.setItem('token',this.data);
+  //         }
+  //         this.router.navigate(['/home']);
+
+  //       }
+  //     }
+  //   )
+  // }
+  constructor(public router:Router,public apiService:APIsService){
   }
+  
+  
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+   try {
     let tok =  localStorage.getItem('token');
-    console.log(tok);
     if(tok==null|| tok==""){
-      console.log("jkjk");
       this.apiService.getFun('stop').subscribe(data => {})
       this.apiService.getFun('stopSun').subscribe(data => {})
       this.router.navigate(['/License']);
       return false;
-
     }
+  
     var bytes  = cryptoJS.AES.decrypt(tok||"", 'lamiaa');
     var originalText = bytes.toString(cryptoJS.enc.Utf8);
-    console.log("jhj");
     let x=JSON.parse(originalText)
     console.log(x);
     
     var date1 = new Date();
     var date2 = new Date(x[0].EndDate);
+
     if(date1.getTime() > date2.getTime()){
       let tok =  localStorage.setItem('token',"");
       this.apiService.getFun('stop').subscribe(data => {})
       this.apiService.getFun('stopSun').subscribe(data => {})
+      this.router.navigate(['/License']);
+
       return false;
     }
     for (let i = 0; i < x[0].product.length; i++) {
       if (route.routeConfig?.path?.includes(x[0].product[i])||route.routeConfig?.path=="home") {
+
         return true;
       }
     }
+    
     return false;
+  } catch (error) {
+     
+    this.apiService.getFun('stop').subscribe(data => {})
+    this.apiService.getFun('stopSun').subscribe(data => {})
+    this.router.navigate(['/License']);
+    return false;
+  }
   }
 }
 const routes: Routes = [

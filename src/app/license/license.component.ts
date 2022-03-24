@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl,Validators } from '@angular/forms';
 import { APIsService } from "../services/apis.service";
 import * as cryptoJS from 'crypto-js';
-
-
+import { Router } from '@angular/router';
 
 declare var $:any //declear $ to use jquery
 @Component({
@@ -29,20 +28,38 @@ export class LicenseComponent implements OnInit {
           $('#liveToast').toast('show')
           $('.toast-body').html(data.massage)
           if(data.massage =="License Submited"){  
-              console.log(data.token);
               var bytes  = cryptoJS.AES.decrypt(data.token, 'lamiaa');
               var originalText = bytes.toString(cryptoJS.enc.Utf8);
-              console.log(originalText);
-              localStorage.setItem('token',data.token)
-    
-      
+              localStorage.setItem('token',data.token);
+              this.router.navigate(['/home']);
           }
           
           })
       }
   }
-  constructor(public apiService:APIsService) { 
-  
+  constructor(public router:Router,public apiService:APIsService) { 
+    this.getLicense()
+  }
+  tok:any
+ async  getLicense(){
+    //send a get request to the backend to retrive all the data in this endpoit
+     await this.apiService.getFun('getLisence').subscribe(
+      response => {
+        this.tok = response;//response variable holds all the data retrived then asign them to a variable cold data
+        //loop that iterates over the objects in the data and returns only the table name then push it in an array called tableNames
+        if(this.tok == null || this.tok=="" || this.tok == "please uplode license"){
+          
+          localStorage.setItem('token',"");
+          $('#liveToast').toast('show')
+          $('.toast-body').html("Please Uplode License")
+        }
+        else{
+          localStorage.setItem('token',this.tok);
+          this.router.navigate(['/home']);
+
+        }
+      }
+    )
   }
 
   ngOnInit(): void {
@@ -50,11 +67,7 @@ export class LicenseComponent implements OnInit {
       dotColor: 'cadetblue',
       lineColor: 'white'
   });
-  let tok =  localStorage.getItem('token');
-    if(tok == null || tok==""){
-      $('#liveToast').toast('show')
-      $('.toast-body').html("Please Uplode License")
-    }
+    
  
   }
 
