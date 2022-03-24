@@ -76,7 +76,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"  id="inputGroup-sizing-default">User Name</span>
                                         </div>
-                                        <input formControlName="username" name="" class="form-control" [value]="reviewInput.username"  id="">
+                                        <input formControlName="username" name="" pattern="^[a-zA-Z0-9_]*$" class="form-control" [value]="reviewInput.username"  id="">
                 
                                     </div>
                                 </div>
@@ -96,7 +96,7 @@
                                             <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
                                         </div>
                                         <input formControlName="email" name="" id="" class="form-control" [value]="reviewInput.email"
-                                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" email>
                 
                                     </div>
                                 </div>
@@ -106,15 +106,16 @@
                                     <div *ngIf="form2.get('userName')?.invalid && form2.get('userName')?.touched">
                                         <small class="btn btn-danger px-5 " *ngIf="form2.get('userName')?.errors?.required"> userName is
                                             required</small>
-                                    </div>
+                                            <small class="btn btn-danger px-5 " *ngIf="form2.get('username')?.errors?.pattern"> Only Alphabet</small>
+                                        </div>
                 
                                 </div>
                                 <div class="col-md-4 ">
                                     <div *ngIf="form2.get('password')?.invalid && form2.get('password')?.touched">
                                         <small class="btn btn-danger px-5 " *ngIf="form2.get('password')?.errors?.required"> password is
                                             required</small>
-                
-                                    </div>
+                                            <small class="btn btn-danger px-5 " *ngIf="form2.get('email')?.errors?.email"> Please enter a valid email</small>
+                                        </div>
                 
                                 </div>
                                 <div class="col-md-4 ">
@@ -132,7 +133,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="inputGroup-sizing-default">Enterprise Short Name</span>
                                         </div>
-                                        <input formControlName="enterpriseShortName" name="" class="form-control" [value]="reviewInput.enterpriseShortName" id="">
+                                        <input formControlName="enterpriseShortName" name="" pattern="^[a-zA-Z0-9_]*$" class="form-control" [value]="reviewInput.enterpriseShortName" id="">
                 
                                     </div>
                                 </div>
@@ -152,7 +153,7 @@
                                             <span class="input-group-text" id="inputGroup-sizing-default">LockRef</span>
                                         </div>
                                         <input formControlName="lockRef" name="" id="" class="form-control" [value]="reviewInput.lockRef"
-                                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                            aria-label="Sizing example input" pattern="^[a-zA-Z0-9_]*$" aria-describedby="inputGroup-sizing-default">
                 
                                     </div>
                                 </div>
@@ -163,6 +164,7 @@
                                         <small class="btn btn-danger px-5 " *ngIf="form2.get('enterpriseShortName')?.errors?.required">
                                             Enterprise Short Name is
                                             required</small>
+                                            <small class="btn btn-danger px-5 " *ngIf="form2.get('enterpriseShortName')?.errors?.pattern"> Only Alphabet</small>
                                     </div>
                 
                                 </div>
@@ -179,7 +181,7 @@
                                     <div *ngIf="form2.get('lockRef')?.invalid && form2.get('lockRef')?.touched">
                                         <small class="btn btn-danger px-5 " *ngIf="form2.get('lockRef')?.errors?.required"> LockRef is
                                             required</small>
-                
+                                            <small class="btn btn-danger px-5 " *ngIf="form2.get('lockRef')?.errors?.pattern"> Only Alphabet</small>
                                     </div>
                 
                                 </div>
@@ -233,7 +235,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="inputGroup-sizing-default">User</span>
                                         </div>
-                                        <input formControlName="SunUser" name="" class="form-control" [value]="reviewInput.SunUser" id="">
+                                        <input formControlName="SunUser" name="" class="form-control" pattern="^[a-zA-Z0-9_]*$" [value]="reviewInput.SunUser" id="">
                 
                                     </div>
                                 </div>
@@ -272,6 +274,7 @@
                                     <div *ngIf="form2.get('SunUser')?.invalid && form2.get('SunUser')?.touched">
                                         <small class="btn btn-danger px-5 " *ngIf="form2.get('SunUser')?.errors?.required"> User is
                                             required</small>
+                                            <small class="btn btn-danger px-5 " *ngIf="form2.get('SunUser')?.errors?.pattern"> Only Alphabet</small>
                                     </div>
                 
                                 </div>
