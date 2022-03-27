@@ -16,6 +16,7 @@ import { NewInterfaceComponent } from './new-interface/new-interface.component';
 import { SympDbComponent } from './symp-db/symp-db.component';
 import * as cryptoJS from 'crypto-js';
 import { APIsService } from "./services/apis.service";
+import { AboutComponent } from './about/about.component';
 @Injectable()
 export class alwaysAuthGuard implements CanActivate{
   // data:any
@@ -104,6 +105,7 @@ const routes: Routes = [
   {path:"SymphonyMappingDetails",component:MappingDetailComponent,canActivate:[alwaysAuthGuard]},
   {path:"SymphonyMappingView",component:MappingViewComponent,canActivate:[alwaysAuthGuard]},
   {path:"License",component:LicenseComponent},
+  {path:"About",component:AboutComponent},
   {path: '**', component: HomeComponent }
 ];
 @NgModule({

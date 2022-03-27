@@ -20,6 +20,7 @@ import { MappingViewComponent } from './mapping-view/mapping-view.component';
 import { MappingDetailComponent } from './mapping-detail/mapping-detail.component';
 import { LicenseComponent } from './license/license.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AllInterfacesDetailsComponent,
     MappingViewComponent,
     MappingDetailComponent,
-    LicenseComponent
+    LicenseComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
