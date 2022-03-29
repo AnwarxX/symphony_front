@@ -55,9 +55,9 @@ username: ""};
   authData:any;
   dis:any;
   form = new FormGroup({
-    startDate:new FormControl("",Validators.compose([Validators.required])),
-    endDate:new FormControl("",Validators.compose([Validators.required])),
-    interfaceCode: new FormControl("",Validators.compose([Validators.required])),
+    startDate:new FormControl(""),
+    endDate:new FormControl(""),
+    interfaceCode: new FormControl(""),
     api:new FormControl("",Validators.compose([Validators.required]))
   })
   form3 = new FormGroup({
@@ -120,7 +120,17 @@ username: ""};
 
     }
   }
-  
+  test(event:any){
+    let date=(<HTMLInputElement>event.target).value
+    $(".apiDate").attr("min",date)
+    $(".apiDate").attr("max",new Date(new Date(date).setDate(new Date(date).getDate()+6)).toISOString().split("T")[0])
+    console.log(new Date(new Date(date).setDate(new Date(date).getDate()+6)).toISOString().split("T")[0]);
+  }
+  test2(event:any){
+    let date=(<HTMLInputElement>event.target).value
+    console.log(date);
+    
+  }
   dissEdit(){
     this.apiDate = this.reviewInput.ApiSchedule.split(" ")
     this.sunDate = this.reviewInput.SunSchedule.split(" ")
@@ -278,12 +288,21 @@ username: ""};
   }
   disableDate(event:any){
     console.log((<HTMLInputElement>event.target).value);
+    console.log(this.dateDisable);
     if((<HTMLInputElement>event.target).value.includes("Daily")||(<HTMLInputElement>event.target).value.includes("all")||(<HTMLInputElement>event.target).value=="getGuestChecks"){
       this.dateDisable=true;
+      this.form.get('startDate')?.setValidators([Validators.required])
+      this.form.get('endDate')?.setValidators([Validators.required])
     }
     else{
       this.dateDisable=false;
+      this.removeValidators(this.form,'startDate')
+      this.removeValidators(this.form,'endDate')
     }
+  }
+  public removeValidators(form: FormGroup,str:any) {
+    this.form.get(str)?.clearValidators();
+    this.form.get(str)?.updateValueAndValidity();
   }
   authorization(){
   //send a post request with the table name and column to this endpoit in the backend to retrive all the distinct values in that column

@@ -33,21 +33,25 @@
                             </div>
                             <div class="row w-75 align-items-center">
                                 <div class="col-6">
-                                    <input formControlName="startDate" type="date" class="w-100">
+                                    <input formControlName="startDate" (change)="test($event)" type="date" class="w-100">
                                 </div>
                                 <div class="col-6">
-                                    <input formControlName="endDate" type="date" class="w-100">
+                                    <input formControlName="endDate" (change)="test2($event)" type="date" class="w-100 apiDate">
                                 </div>
                             </div>
                         </div>
                     </div>
-
+                    <div class="col-md-12 ">
+                        <div *ngIf="form.get('startDate')?.invalid && form.get('startDate')?.touched">
+                            <small class="btn btn-danger px-5 w-100" > please enter all input</small>
+                        </div>
+                    </div>
                 </div>
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">IMPORT</button>
+                <button type="submit" [disabled]="form.status=='INVALID'" class="btn btn-primary">IMPORT</button>
             </div>
             </form>
         </div>
