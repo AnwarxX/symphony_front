@@ -14,7 +14,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default">User Name</span>
                         </div>
-                        <input formControlName="username" pattern="^[a-zA-Z0-9_]*$" name="username" class="form-control" value="" id="">
+                        <input formControlName="username" pattern="^[a-zA-Z0-9_ ]*$" name="username" class="form-control" value="" id="">
 
                     </div>
                 </div>
@@ -44,7 +44,7 @@
                     <div *ngIf="form2.get('username')?.invalid && form2.get('username')?.touched">
                         <small class="btn btn-danger px-5 " *ngIf="form2.get('username')?.errors?.required"> userName is
                             required</small>
-                        <small class="btn btn-danger px-5 " *ngIf="form2.get('username')?.errors?.pattern"> Only Alphabet</small>
+                        <small class="btn btn-danger px-5 " *ngIf="form2.get('username')?.errors?.pattern"> Only Alphabet without</small>
                     </div>
 
                 </div>
@@ -70,7 +70,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default">Enterprise Short Name</span>
                         </div>
-                        <input formControlName="enterpriseShortName" pattern="^[a-zA-Z0-9_]*$" name="" class="form-control" value="" id="">
+                        <input formControlName="enterpriseShortName" pattern="^[a-zA-Z0-9_ ]*$" name="" class="form-control" value="" id="">
 
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                             <span class="input-group-text" id="inputGroup-sizing-default">LockRef</span>
                         </div>
                         <input formControlName="lockRef" name="" id="" class="form-control" value=""
-                            aria-label="Sizing example input" pattern="^[a-zA-Z0-9_]*$" aria-describedby="inputGroup-sizing-default">
+                            aria-label="Sizing example input" pattern="^[a-zA-Z0-9_ ]*$" aria-describedby="inputGroup-sizing-default">
 
                     </div>
                 </div>
@@ -172,7 +172,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default">User</span>
                         </div>
-                        <input formControlName="SunUser" name="" pattern="^[a-zA-Z0-9_]*$" class="form-control" value="" id="">
+                        <input formControlName="SunUser" name="" pattern="^[a-zA-Z0-9_ ]*$" class="form-control" value="" id="">
 
                     </div>
                 </div>
@@ -211,7 +211,7 @@
                     <div *ngIf="form2.get('SunUser')?.invalid && form2.get('SunUser')?.touched">
                         <small class="btn btn-danger px-5 " *ngIf="form2.get('SunUser')?.errors?.required"> User is
                             required</small>
-                            <small class="btn btn-danger px-5 " *ngIf="form2.get('SunUser')?.errors?.pattern"> Only Alphabet</small>
+                            <small class="btn btn-danger px-5 " *ngIf="form2.get('SunUser')?.errors?.pattern"> Only Alphabet without spaces</small>
                     </div>
 
                 </div>

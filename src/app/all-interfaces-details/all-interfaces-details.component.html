@@ -1,8 +1,5 @@
 
-<div class="startend w-100 text-center my-2 ">
-<button class="btn btn-success me-2" type="submit " (click)="start()">start</button>
-<button class="me-4 btn btn-danger" type="submit" (click)="stop()">Stop</button>
-</div>
+
 <!-- Button trigger modal -->
 
 <!-- Import Modal -->
@@ -76,7 +73,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"  id="inputGroup-sizing-default">User Name</span>
                                         </div>
-                                        <input formControlName="username" name="" pattern="^[a-zA-Z0-9_]*$" class="form-control" [value]="reviewInput.username"  id="">
+                                        <input formControlName="username" name="" pattern="^[a-zA-Z0-9_ ]*$" class="form-control" [value]="reviewInput.username"  id="">
                 
                                     </div>
                                 </div>
@@ -114,7 +111,6 @@
                                     <div *ngIf="form2.get('password')?.invalid && form2.get('password')?.touched">
                                         <small class="btn btn-danger px-5 " *ngIf="form2.get('password')?.errors?.required"> password is
                                             required</small>
-                                            <small class="btn btn-danger px-5 " *ngIf="form2.get('email')?.errors?.email"> Please enter a valid email</small>
                                         </div>
                 
                                 </div>
@@ -122,6 +118,8 @@
                                     <div *ngIf="form2.get('email')?.invalid && form2.get('email')?.touched">
                                         <small class="btn btn-danger px-5 " *ngIf="form2.get('email')?.errors?.required"> email is
                                             required</small>
+                                            <small class="btn btn-danger px-5 " *ngIf="form2.get('email')?.errors?.email"> Please enter a valid email</small>
+
                 
                                     </div>
                 
@@ -133,7 +131,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="inputGroup-sizing-default">Enterprise Short Name</span>
                                         </div>
-                                        <input formControlName="enterpriseShortName" name="" pattern="^[a-zA-Z0-9_]*$" class="form-control" [value]="reviewInput.enterpriseShortName" id="">
+                                        <input formControlName="enterpriseShortName" name="" pattern="^[a-zA-Z0-9_ ]*$" class="form-control" [value]="reviewInput.enterpriseShortName" id="">
                 
                                     </div>
                                 </div>
@@ -153,7 +151,7 @@
                                             <span class="input-group-text" id="inputGroup-sizing-default">LockRef</span>
                                         </div>
                                         <input formControlName="lockRef" name="" id="" class="form-control" [value]="reviewInput.lockRef"
-                                            aria-label="Sizing example input" pattern="^[a-zA-Z0-9_]*$" aria-describedby="inputGroup-sizing-default">
+                                            aria-label="Sizing example input" pattern="^[a-zA-Z0-9_ ]*$" aria-describedby="inputGroup-sizing-default">
                 
                                     </div>
                                 </div>
@@ -235,7 +233,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="inputGroup-sizing-default">User</span>
                                         </div>
-                                        <input formControlName="SunUser" name="" class="form-control" pattern="^[a-zA-Z0-9_]*$" [value]="reviewInput.SunUser" id="">
+                                        <input formControlName="SunUser" name="" class="form-control" pattern="^[a-zA-Z0-9_ ]*$" [value]="reviewInput.SunUser" id="">
                 
                                     </div>
                                 </div>
@@ -426,6 +424,7 @@
         <table class="table mx-2 text-center mt-5">
             <thead class="">
                 <tr>
+                    <th scope="col">Schedule</th>
                     <th scope="col">Interface code</th>
                     <th scope="col">BU Code </th>
                     <th scope="col">Mapping Code</th>
@@ -438,6 +437,10 @@
             </thead>
             <tbody id="">
                 <tr *ngFor="let i of interfaceData" >
+                    <td><div class="startend w-100 text-center my-2 ">
+                        <button class="btn btn-success me-2" type="submit " (click)="start()">start</button>
+                        <button class="me-4 btn btn-danger" type="submit" (click)="stop()">Stop</button>
+                    </div></td>
                     <td>{{i.interfaceCode}}</td>
                     <td>{{i['BU']}}</td>
                     <td>{{i.MappingCode}}</td>

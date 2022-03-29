@@ -11,7 +11,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default">Mapping Code</span>
                         </div>
-                        <input formControlName="MappingCode"  name="" id="" class="form-control"
+                        <input formControlName="MappingCode"  name="" id=""  pattern="^[a-zA-Z0-9_]*$" class="form-control"
                             value="" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 
                     </div>
@@ -22,11 +22,39 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default">Description</span>
                         </div>
-                        <input formControlName="Description" name="" id="" class="form-control"
+                        <input formControlName="Description" pattern="^[a-zA-Z0-9_ ]*$" name="" id="" class="form-control"
                             value="" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                     </div>
                 </div>
             </div>
+
+
+            
+            <div class="row  pt-1">
+                <div class="col-md-4  ">
+                    <div *ngIf="form.get('MappingCode')?.invalid && form.get('MappingCode')?.touched">
+
+
+                        <small class="btn btn-danger px-5 form-control " *ngIf="form.get('MappingCode')?.errors?.required"> Mapping Code is
+                            required</small>
+                            <small class="btn btn-danger px-5 " *ngIf="form.get('MappingCode')?.errors?.pattern"> Only Alphabet without spaces</small>
+
+
+                    </div>
+
+                </div>
+                <div class="col-md-4 ">
+                    <div *ngIf="form.get('Description')?.invalid && form.get('Description')?.touched">
+
+                        <small class="btn btn-danger px-5 form-control" *ngIf="form.get('Description')?.errors?.required">Description Type is required</small>
+                        <small class="btn btn-danger px-5 " *ngIf="form.get('Description')?.errors?.pattern"> Only Alphabet</small>
+
+                    </div>
+
+                </div>
+            </div>
+
+
             <div class="row py-1 d-flex ">
                 <div class="col-md-4">
                     <div class="input-group">
@@ -66,6 +94,31 @@
                     </div>
                 </div>
             </div>
+            <div class="row justify-content-center pt-1">
+                <div class="col-md-4 ">
+                    <div *ngIf="form.get('mapp')?.invalid && form.get('mapp')?.touched">
+                        <small class="btn btn-danger form-control" *ngIf="form.get('mapp')?.errors?.required">
+                            Mapping Type is required</small>
+
+                    </div>
+
+                </div>
+                <div class="col-md-4 ">
+                    <div *ngIf="form.get('table')?.invalid && form.get('table')?.touched">
+                        <small class="btn btn-danger  form-control" *ngIf="form.get('table')?.errors?.required">
+                            table name is required</small>
+                    </div>
+
+                </div>
+                <div class="col-md-4 ">
+                    <div *ngIf="form.get('column')?.invalid && form.get('column')?.touched">
+                        <small class="btn btn-danger form-control  " *ngIf="form.get('column')?.errors?.required">column name is
+                            required</small>
+                    </div>
+
+                </div>
+            </div>
+
             <div class="row py-1 d-flex ">
                 <div class="col-md-4">
                     <div class="input-group">
@@ -110,6 +163,35 @@
               
             </div>
 
+            <div class="row justify-content-end pt-1">
+                <div class="col-md-4 ">
+                    <div *ngIf="form.get('Revenue')?.invalid && form.get('Revenue')?.touched">
+                        <small class="btn btn-danger form-control" *ngIf="form.get('Revenue')?.errors?.required">
+                            Revenue Center is required</small>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="row justify-content-center pt-1">
+                <div class="col-md-4 ">
+                    <div *ngIf="form.get('level')?.invalid && form.get('level')?.touched">
+                        <small class="btn btn-danger form-control" *ngIf="form.get('level')?.errors?.required">
+                            Analysis level is required</small>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+            
+
             <div class="row py-1 d-flex ">
                
                 <div class="col-md-4">
@@ -127,7 +209,18 @@
                     </div>
                 </div>
             </div>
-            
+            <div class="row justify-content-center pt-1">
+                <div class="col-md-4 ">
+                    <div *ngIf="form.get('level')?.invalid && form.get('level')?.touched">
+                        <small class="btn btn-danger form-control" *ngIf="form.get('level')?.errors?.required">
+                            Analysis level is required</small>
+
+                    </div>
+
+                </div>
+
+
+            </div>
             
             <div class="row py-1">
                 <div class="col-md-12">

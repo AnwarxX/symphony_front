@@ -12,7 +12,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default">BU</span>
                         </div>
-                        <input formControlName="BU" name="BU" id="BU" class="form-control" value=""
+                        <input formControlName="BU" name="BU" id="BU" pattern="^[a-zA-Z0-9_]*$" class="form-control" value=""
                             aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 
                     </div>
@@ -22,7 +22,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default">Journal Type</span>
                         </div>
-                        <input formControlName="JournalType" name="" id="" class="form-control" value=""
+                        <input formControlName="JournalType" pattern="^[a-zA-Z0-9_]*$" name="" id="" class="form-control" value=""
                             aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 
                     </div>
@@ -36,6 +36,8 @@
                             Maxlength which is 3 letters</small>
                         <small class="btn btn-danger px-5 form-control " *ngIf="form2.get('BU')?.errors?.required"> BU is
                             required</small>
+                            <small class="btn btn-danger px-5 " *ngIf="form2.get('BU')?.errors?.pattern"> Only Alphabet without spaces</small>
+
 
                     </div>
 
@@ -46,6 +48,8 @@
                         <small class="btn btn-danger form-control" *ngIf="form2.get('JournalType')?.errors?.maxlength">You exedet
                             JournalType Maxlength which is 5 letters </small>
                         <small class="btn btn-danger px-5 form-control" *ngIf="form2.get('JournalType')?.errors?.required">Journal Type is required</small>
+                        <small class="btn btn-danger px-5 " *ngIf="form2.get('JournalType')?.errors?.pattern"> Only Alphabet without spaces</small>
+
                     </div>
 
                 </div>
@@ -57,7 +61,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text form-control" id="inputGroup-sizing-default">Suspense Account</span>
                         </div>
-                        <input formControlName="SuspenseAccount" name="" id="" class="form-control" value=""
+                        <input formControlName="SuspenseAccount" name="" id="" pattern="^[a-zA-Z0-9_]*$" class="form-control" value=""
                             aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 
 
@@ -86,17 +90,19 @@
                     <div *ngIf="form2.get('SuspenseAccount')?.invalid && form2.get('SuspenseAccount')?.touched">
                         <small class="btn btn-danger form-control" *ngIf="form2.get('SuspenseAccount')?.errors?.required">
                             Suspense Account is required</small>
+                            <small class="btn btn-danger px-5 " *ngIf="form2.get('SuspenseAccount')?.errors?.pattern"> Only Alphabet without spaces</small>
+
                     </div>
 
                 </div>
-                <div class="col-md-3 ">
+                <div class="col-md-6 ">
                     <div *ngIf="form2.get('Currencycode')?.invalid && form2.get('Currencycode')?.touched">
                         <small class="btn btn-danger  form-control" *ngIf="form2.get('Currencycode')?.errors?.required">
                             Currency code is required</small>
                     </div>
 
                 </div>
-                <div class="col-md-3 ">
+                <div class="col-md-6 ">
                     <div *ngIf="form2.get('ConnectionCode')?.invalid && form2.get('ConnectionCode')?.touched">
                         <small class="btn btn-danger form-control  " *ngIf="form2.get('ConnectionCode')?.errors?.required">Connection Code is
                             required</small>
@@ -140,14 +146,14 @@
                     </div>
 
                 </div>
-               
                 <div class="col-md-6 ">
-                    <div *ngIf="form2.get('ConnectionCode')?.invalid && form2.get('ConnectionCode')?.touched">
-                        <small class="btn btn-danger form-control  " *ngIf="form2.get('ConnectionCode')?.errors?.required">Connection Code is
+                    <div *ngIf="form2.get('interfaceCode')?.invalid && form2.get('interfaceCode')?.touched">
+                        <small class="btn btn-danger form-control  " *ngIf="form2.get('interfaceCode')?.errors?.required">interface Code is
                             required</small>
                     </div>
 
                 </div>
+
             </div>
             <div class="row justify-content-center pt-1">
 
@@ -157,7 +163,7 @@
                             <span class="input-group-text form-control " id="inputGroup-sizing-default">Ledger Import
                                 Description</span>
                         </div>
-                        <input formControlName="LedgerImportDescription" name="" id="" class="form-control" value=""
+                        <input formControlName="LedgerImportDescription" name="" id="" pattern="^[a-zA-Z0-9_ ]*$" class="form-control" value=""
                             aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 
 
@@ -172,6 +178,9 @@
                         <small class="btn btn-danger px-5 form-control"
                             *ngIf="form2.get('LedgerImportDescription')?.errors?.required"> Ledger Import Description is
                             required</small>
+                            <small class="btn btn-danger px-5 " *ngIf="form2.get('LedgerImportDescription')?.errors?.pattern"> Only Alphabet</small>
+
+
                     </div>
 
                 </div>
