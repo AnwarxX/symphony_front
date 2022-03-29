@@ -16,6 +16,9 @@ export class APIsService {
    
 
   }
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
   getFun(endPoint:any){
     return this.http.get<any>(this.baseURL+endPoint)
