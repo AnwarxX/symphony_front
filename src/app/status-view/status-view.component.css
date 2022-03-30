@@ -1,0 +1,43 @@
+.Header {
+    font-family: 'Poppins', sans-serif;
+}
+
+.POS-IMG{
+    width: 25PX;
+
+}
+.header-h4{
+    color: cadetblue;
+    font-size: 20px !important;
+}
+
+a{
+    color: white;
+}
+
+#home{
+    min-height: 100vh;
+    background-color: #343a40!important;
+}
+.con 
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+}
+
+.h2{
+    color: cadetblue;
+    font-weight: 600;
+}
+
+.card{
+    height: 500px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}

@@ -174,9 +174,9 @@ export class MappingComponent implements OnInit {
 
   //this function is used to clear all the validation of an input
   public removeValidators(form: FormGroup,str:any) {
-        this.form.get(str)?.clearValidators();
-        this.form.get(str)?.updateValueAndValidity();
-    }
+    this.form.get(str)?.clearValidators();
+    this.form.get(str)?.updateValueAndValidity();
+  }
 
   async getmapp(){
 console.log($("#for").value);

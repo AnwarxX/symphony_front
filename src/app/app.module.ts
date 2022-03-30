@@ -22,6 +22,7 @@ import { LicenseComponent } from './license/license.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AboutComponent } from './about/about.component';
 import { FooterComponent } from './footer/footer.component';
+import { StatusViewComponent } from './status-view/status-view.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { FooterComponent } from './footer/footer.component';
     MappingDetailComponent,
     LicenseComponent,
     AboutComponent,
-    FooterComponent
+    FooterComponent,
+    StatusViewComponent
   ],
   imports: [
     BrowserModule,
