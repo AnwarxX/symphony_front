@@ -326,15 +326,15 @@ username: ""};
       console.log(this.interfaces);
     })
   }
-  start(){
-    this.apiService.getFun('start').subscribe(data => {
+  start(interfaceCode:any){
+    this.apiService.postFun('start',{interfaceCode}).subscribe(data => {
     this.reply=data;//data variable holds all the data retrived then asign them to a variable cold value
     //this.getmapp()//then call this function again to render the new submitted data
     })
   }
   
-  stop(){
-    this.apiService.getFun('stop').subscribe(data => {
+  stop(interfaceCode:any){
+    this.apiService.postFun('stop',{interfaceCode}).subscribe(data => {
     this.reply=data;//data variable holds all the data retrived then asign them to a variable cold value
     //this.getmapp()//then call this function again to render the new submitted data
     })
