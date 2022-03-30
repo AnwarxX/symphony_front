@@ -33,8 +33,12 @@ export class BusinessUnitComponent implements OnInit {
       //send a post request with all the inputs values to the backend to retrive all the data in this endpoit
       this.apiService.postFun('PropertySettings',value).subscribe(data => {
         this.value=data;//data variable holds all the data retrived then asign them to a variable cold value
+        $('#liveToast').toast('show')
+        $('.toast-body').html(this.value)
       })
-      $('#liveToast').toast('show')
+     
+
+
     } 
     imports(){
       this.apiService.getFun('codes').subscribe(data => {
