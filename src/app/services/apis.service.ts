@@ -5,17 +5,9 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class APIsService {
-<<<<<<< HEAD
-  baseURL="http://localhost:5000/"
-  constructor(private http:HttpClient) { 
-   
 
-  }
-
-=======
   baseURL="http://localhost:5000/";
   constructor(private http:HttpClient) {}
->>>>>>> main
   getFun(endPoint:any){
     return this.http.get<any>(this.baseURL+endPoint)
   }
