@@ -442,8 +442,8 @@
             <tbody id="">
                 <tr *ngFor="let i of interfaceData" >
                     <td><div class="startend w-100 text-center my-2 ">
-                        <button class="btn btn-success me-2" type="submit " (click)="start(i.interfaceCode)">start</button>
-                        <button class="me-4 btn btn-danger" type="submit" (click)="stop(i.interfaceCode)">Stop</button>
+                        <button class="btn btn-success me-2" type="submit " (click)="start(i.BU)">start</button>
+                        <button class="me-4 btn btn-danger" type="submit" (click)="stop(i.BU)">Stop</button>
                     </div></td>
                     <td>{{i.interfaceCode}}</td>
                     <td>{{i['BU']}}</td>

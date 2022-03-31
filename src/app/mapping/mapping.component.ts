@@ -108,7 +108,7 @@ export class MappingComponent implements OnInit {
     this.ColumnNames=[]
     this.values=[]
     // this.tbvalue=[]
-    this.form.setValue({MappingCode:"",Description:"",mapp:'',table:'',column:'',value:'',level:'',Revenue:'',input:''})
+    // this.form.setValue({MappingCode:"",Description:"",mapp:'',table:'',column:'',value:'',level:'',Revenue:'',input:''})
     // // this.form.value['value']=""
    
     
