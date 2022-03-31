@@ -69,8 +69,8 @@ export class alwaysAuthGuard implements CanActivate{
 
     if(date1.getTime() > date2.getTime()){
       let tok =  localStorage.setItem('token',"");
-      this.apiService.getFun('stop').subscribe(data => {})
-      this.apiService.getFun('stopSun').subscribe(data => {})
+      this.apiService.postFun('stop',"").subscribe(data => {})
+      this.apiService.postFun('stopSun',"").subscribe(data => {})
       this.router.navigate(['/License']);
 
       return false;
