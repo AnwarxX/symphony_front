@@ -77,11 +77,11 @@ export class MappingComponent implements OnInit {
     <tr class='tr'>
         <td><input class="MappingCode in form-control" aria-label="Disabled input example" disabled readonly value="${value.MappingCode}"></td>
         <td><input class="Description in form-control"   " value="${value.Description}" aria-label="Disabled input example" disabled readonly></td>
-        <td><input class="mapp in form-control" value="${value.mapp}"></td>
-        <td><input class="value in form-control" value="${value.value}"></td>
-        <td><input class="Revenue in form-control" value="${value.Revenue}"></td>
-        <td><input class="level in form-control" value="${value.level}"></td>
-        <td><input class="input in form-control" value="${value.input}"></td>
+        <td><input class="mapp in form-control" value="${value.mapp}" aria-label="Disabled input example" disabled readonly></td>
+        <td><input class="value in form-control" value="${value.value}" ></td>
+        <td><input class="Revenue in form-control" value="${value.Revenue}" aria-label="Disabled input example" disabled readonly></td>
+        <td><input class="level in form-control" value="${value.level}" aria-label="Disabled input example" disabled readonly></td>
+        <td><input class="input in form-control" value="${value.input}" ></td>
     </tr>
     `
     

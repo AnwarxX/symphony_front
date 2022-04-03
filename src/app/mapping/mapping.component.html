@@ -62,7 +62,6 @@
                             <span class="input-group-text" id="inputGroup-sizing-default">Mapping Type</span>
                         </div>
                         <select title="type" formControlName="mapp" id="" (change)="type($event)" class="form-control">
-                            <option [selected]="true" value="default"> -- </option>
                             <option value="Account">Account</option>
                             <option value="Analysis">Analysis</option>
                         </select>
@@ -76,7 +75,6 @@
                             <span class="input-group-text" id="inputGroup-sizing-default">Table Name</span>
                         </div>
                         <select formControlName="table" id="" (change)="enter($event)" class="form-control">
-                            <option [selected]="true" value="default"> -- </option>
                             <option *ngFor="let i of tableNames" [value]="i">{{i}}</option>
                         </select>
                     </div>
@@ -88,7 +86,6 @@
                             <span class="input-group-text" id="inputGroup-sizing-default">Column Name</span>
                         </div>
                         <select class="CN_S" formControlName="column" (change)="rows($event)" id="" class="form-control">
-                            <option [selected]="true" value="default"> -- </option>
                             <option *ngFor="let c of ColumnNames" [value]='c["name"]'>{{c["name"]}}</option>
                         </select>
                     </div>
@@ -133,7 +130,6 @@
                         
                         <input [hidden]="toggle" formControlName="value" value="" class="form-control">
                         <select [hidden]="!toggle" class="D_S form-control" formControlName="value" id="">
-                            <option [selected]="true" value="default"> -- </option>
                             <option *ngFor="let i of values" [value]="i[input2]">{{i[input2]}}</option>
                         </select>
                     </div>
@@ -154,7 +150,6 @@
                                 <span class="input-group-text " id="inputGroup-sizing-default">Revenue Center</span>
                             </div>
                             <select formControlName="Revenue" id="" class="form-control">
-                                <option [selected]="true" value="default"> -- </option>
                                 <option *ngFor="let i of revenue" [value]='i["num"]'>{{i.num}}</option>
                             </select>
                         </div>
@@ -202,7 +197,6 @@
                                 <span class="input-group-text" id="inputGroup-sizing-default">Analysis Level</span>
                             </div>
                             <select class="level form-control" formControlName="level" id="">
-                                <option [selected]="true" value="default"> -- </option>
                                 <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" [value]="i">{{i}}</option>
                             </select>
                         </div>
@@ -232,9 +226,9 @@
 
         <div class="d-flex justify-content-between by-3">
 
-            <div class="card w-100">
+            <div class="card w-100 px-5">
 
-                <table class="table mx-2 text-center mt-5">
+                <table class="table px-5 text-center mt-5 ">
                     <thead class="">
                         <tr>
                             <th scope="col">Mapping Code</th>
@@ -250,7 +244,9 @@
                     <tbody id="mappingData">
                          
                     </tbody>
-                    <button (click)="subm()" class="btn sub btn-dark d-none ">Submit</button>
+                    <div class=" d-flex justify-content-center">
+                    <button (click)="subm()" class="btn sub btn-dark d-none w-100 ">Submit</button>
+                </div>
                 </table>
             </div>
 
