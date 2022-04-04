@@ -14,6 +14,7 @@ export class MappingComponent implements OnInit {
   form = new FormGroup({
     MappingCode:new FormControl("",Validators.compose([Validators.required])),
     Description:new FormControl("",Validators.compose([Validators.required])),
+    locRef:new FormControl("",Validators.compose([Validators.required])),
     mapp: new FormControl("",Validators.compose([Validators.required])),
     table:new FormControl("",Validators.compose([Validators.required])),
     column:new FormControl("",Validators.compose([Validators.required])),
@@ -73,10 +74,11 @@ export class MappingComponent implements OnInit {
   //this function is used to send a post request with a specific data from the inputs to the backend to insert this data in the databsae
   PreviewData(){
     let value= this.form.value//this.form.value holds all the values of the input in the interfacce then asign them to a vriable called value
-    let tbody=`
+    let tbody=`locRef
     <tr class='tr'>
         <td><input class="MappingCode in form-control" aria-label="Disabled input example" disabled readonly value="${value.MappingCode}"></td>
         <td><input class="Description in form-control"   " value="${value.Description}" aria-label="Disabled input example" disabled readonly></td>
+        <td><input class="locRef in form-control"   " value="${value.locRef}" aria-label="Disabled input example"></td>
         <td><input class="mapp in form-control" value="${value.mapp}" aria-label="Disabled input example" disabled readonly></td>
         <td><input class="value in form-control" value="${value.value}" ></td>
         <td><input class="Revenue in form-control" value="${value.Revenue}" aria-label="Disabled input example" disabled readonly></td>
@@ -86,7 +88,7 @@ export class MappingComponent implements OnInit {
     `
     
     console.log(tbody);
-    this.tbvalue.push({MappingCode:value.MappingCode,Description:value.Description,MappingType:value.mapp,Source:value.value,RevenuCenter:value.Revenue,Level:value.level,input:value.input});
+    this.tbvalue.push({MappingCode:value.MappingCode,Description:value.Description,locRef:value.locRef,MappingType:value.mapp,Source:value.value,RevenuCenter:value.Revenue,Level:value.level,input:value.input});
     $("#mappingData").html($("#mappingData").html()+tbody);
     $(".sub").removeClass("d-none")
     this.disable=true;
@@ -94,12 +96,13 @@ export class MappingComponent implements OnInit {
   subm(){
     this.disable=false;
     console.log("djosiu");
-    $('#liveToast').toast('show')
     //send a post request with all the inputs values to the backend to retrive all the data in this endpoit
     this.apiService.postFun('mapping',this.tbvalue).subscribe(data => {
       this.tbvalue=data;//data variable holds all the data retrived then asign them to a variable cold value
       //this.getmapp()//then call this function again to render the new submitted data
     this.tbvalue=[]
+    $('#liveToast').toast('show')
+    $('.toast-body').text(data)
       })
       
     console.log(this.tbvalue);

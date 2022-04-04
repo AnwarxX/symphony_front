@@ -26,6 +26,15 @@
                             value="" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                     </div>
                 </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Locatione Refernce</span>
+                        </div>
+                        <input formControlName="locRef" pattern="^[a-zA-Z0-9_ ]*$" name="" id="" class="form-control"
+                            value="" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                </div>
             </div>
 
 
@@ -48,6 +57,15 @@
 
                         <small class="btn btn-danger px-5 form-control" *ngIf="form.get('Description')?.errors?.required">Description Type is required</small>
                         <small class="btn btn-danger px-5 " *ngIf="form.get('Description')?.errors?.pattern"> Only Alphabet</small>
+
+                    </div>
+
+                </div>
+                <div class="col-md-4 ">
+                    <div *ngIf="form.get('locRef')?.invalid && form.get('locRef')?.touched">
+
+                        <small class="btn btn-danger px-5 form-control" *ngIf="form.get('locRef')?.errors?.required">Locatione Refernce Type is required</small>
+                        <small class="btn btn-danger px-5 " *ngIf="form.get('locRef')?.errors?.pattern"> Only Alphabet</small>
 
                     </div>
 
@@ -233,6 +251,7 @@
                         <tr>
                             <th scope="col">Mapping Code</th>
                             <th scope="col">Description</th>
+                            <th scope="col">Location Refrence</th>
                             <th scope="col">MappingType</th>
                             <th scope="col">Source</th>
                             <th scope="col">Revenue Center</th>
