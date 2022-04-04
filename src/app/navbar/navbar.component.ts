@@ -15,9 +15,9 @@ export class NavbarComponent implements OnInit {
     this.router.events.subscribe((ev) => {
       if (ev instanceof NavigationEnd) {
       if (this.router.url != "/home" && this.router.url != "/License") {
-        this.isShown = true  
+        this.isShown = true
       }  else {
-        this.isShown = false  
+        this.isShown = false
 
       }
             

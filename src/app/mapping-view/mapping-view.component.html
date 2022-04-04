@@ -1,42 +1,76 @@
-<section id="home mt-5">
-    <div class="con w-100 mt-5">
-        <div class="row text-center mt-3">
-            <div class="Header my-3 ">
+<section id="home">
+    <div class="con w-100">
+        <div class="row text-center mb-5">
+            <div class="Header">
                 <h1 class=" h2"> Mapping View</h1>
             </div>
         </div>
-        <div class="d-flex justify-content-between by-3 w-100">
-
-        <div class="card w-100 mx-2">
-
-        <table class="table mx-2 text-center mt-5 w-100 ">
-            <thead>
-              <tr>
-                <th scope="col">Code </th>
-                <th scope="col">Type</th>
-                <th scope="col">Source</th>
-                <th scope="col">Revenu</th>
-                <th scope="col">Target</th>
-                <th scope="col">Level</th>
-                <!-- <th scope="col">Edit</th> -->
-                <th scope="col">Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let i of mapping" >
-                <td>{{i.MappingCode}}</td>
-                <td>{{i.MappingType}}</td>
-                <td>{{i.Source}}</td>
-                <td>{{i.RevenuCenter}}</td>
-                <td>{{i.Target}}</td>
-                <td>{{i.ALevel}}</td>
-                <!-- <td><button class="btn btn-success" (click)="edit(i)" data-bs-target="#edit" data-bs-toggle="modal" >Edit</button></td> -->
-                <td><button class="btn btn-danger" data-bs-target="#delete" data-bs-toggle="modal"   (click)="delete(i)" >Delete</button></td>
-              </tr>     
-            </tbody> 
-          </table>
+        <div class="input-group px-2 w-25 mx-auto mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-dark text-white px-5" id="inputGroup-sizing-default">Search</span>
+            </div>
+            <input type="text" (input)="search($event)" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
         </div>
-    </div>
+        <div *ngIf="all==true" class="d-flex justify-content-between by-3 w-100">
+            <div class="card w-100 mx-2">
+                <table class="table mx-2 text-center mt-5 w-100 ">
+                <thead>
+                <tr>
+                    <th scope="col">Code </th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Source</th>
+                    <th scope="col">Revenu</th>
+                    <th scope="col">Target</th>
+                    <th scope="col">Level</th>
+                    <!-- <th scope="col">Edit</th> -->
+                    <th scope="col">Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let i of mapping" >
+                    <td>{{i.MappingCode}}</td>
+                    <td>{{i.MappingType}}</td>
+                    <td>{{i.Source}}</td>
+                    <td>{{i.RevenuCenter}}</td>
+                    <td>{{i.Target}}</td>
+                    <td>{{i.ALevel}}</td>
+                    <!-- <td><button class="btn btn-success" (click)="edit(i)" data-bs-target="#edit" data-bs-toggle="modal" >Edit</button></td> -->
+                    <td><button class="btn btn-danger" data-bs-target="#delete" data-bs-toggle="modal"   (click)="delete(i)" >Delete</button></td>
+                </tr>     
+                </tbody> 
+                </table>
+            </div>
+        </div>
+        <div *ngIf="all==false" class="d-flex justify-content-between by-3 w-100">
+            <div class="card w-100 mx-2">
+                <table class="table mx-2 text-center mt-5 w-100 ">
+                <thead>
+                <tr>
+                    <th scope="col">Code </th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Source</th>
+                    <th scope="col">Revenu</th>
+                    <th scope="col">Target</th>
+                    <th scope="col">Level</th>
+                    <!-- <th scope="col">Edit</th> -->
+                    <th scope="col">Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let i of seaMapping" >
+                    <td>{{i.MappingCode}}</td>
+                    <td>{{i.MappingType}}</td>
+                    <td>{{i.Source}}</td>
+                    <td>{{i.RevenuCenter}}</td>
+                    <td>{{i.Target}}</td>
+                    <td>{{i.ALevel}}</td>
+                    <!-- <td><button class="btn btn-success" (click)="edit(i)" data-bs-target="#edit" data-bs-toggle="modal" >Edit</button></td> -->
+                    <td><button class="btn btn-danger" data-bs-target="#delete" data-bs-toggle="modal"   (click)="delete(i)" >Delete</button></td>
+                </tr>     
+                </tbody> 
+                </table>
+            </div>
+        </div>
     </div>
 </section>
 

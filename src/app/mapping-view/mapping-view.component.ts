@@ -11,6 +11,8 @@ declare var $:any
 })
 export class MappingViewComponent implements OnInit {
   mapping:any;
+  seaMapping:any;
+  all=true;
   mappCode:any;
   mapp:any;
   row:any;
@@ -37,11 +39,25 @@ export class MappingViewComponent implements OnInit {
           }
         )
       } 
-      
+      search(event:any){
+        console.log((<HTMLInputElement>event.target).value);
+        if ((<HTMLInputElement>event.target).value=="") {
+          this.all=true
+          console.log("true",this.all);
+        }
+        else {
+          this.all=false
+          this.seaMapping=[]
+          for (let i = 0; i < this.mapping.length; i++) {
+            console.log(this.mapping[i].mappCode);
+            if(this.mapping[i].MappingCode.toLowerCase().includes((<HTMLInputElement>event.target).value))
+              this.seaMapping.push(this.mapping[i])
+          }
+        }
+      }
       delete(mapp:any){
         this.row=mapp;
         console.log(this.row);
-        
       }
       
       // edit(text:any){
