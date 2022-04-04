@@ -8,20 +8,24 @@ import { APIsService } from '../services/apis.service';
 })
 export class StatusViewComponent implements OnInit {
   statData:any;
-  constructor(public apiService:APIsService) {this.statusData()}
-
+  constructor(public apiService:APIsService) {
+    this.statusData()
+  }
+  
   ngOnInit(): void {
   }
   async statusData(){
-    await this.apiService.getFun('statusData').subscribe(data => {
-      this.statData=data
+    this.apiService.getFun('statusData').subscribe(data => {
+      this.statData = data;
       console.log(data);
-      
+
     })
   }
   async importFailed(api:any,date:any,interfaceCode:any){
-    await this.apiService.postFun('import',{api,date,interface:interfaceCode}).subscribe(data => {
-      this.statusData()
+    this.apiService.postFun('import', { api,date: date.split("T")[0], interface: interfaceCode }).subscribe(data => {
+      setTimeout(() => {
+        this.statusData()
+      }, 2000);
     })
   }
 }
