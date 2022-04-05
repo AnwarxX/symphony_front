@@ -78,6 +78,8 @@ export class MappingViewComponent implements OnInit {
 del()
 {
   console.log(this.row);
+  this.all=true
+  $(".searchInp").val("")
   //send a post request with the table name and column to this endpoit in the backend to retrive all the distinct values in that column
   this.apiService.postFun('delete',{ MappingType:this.row.MappingType,Source:this.row.Source,Target:this.row.Target}).subscribe(data => {
   this.deleteV=data;//data variable holds all the data retrived then asign them to a variable cold value

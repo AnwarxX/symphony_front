@@ -74,7 +74,7 @@ export class MappingComponent implements OnInit {
   //this function is used to send a post request with a specific data from the inputs to the backend to insert this data in the databsae
   PreviewData(){
     let value= this.form.value//this.form.value holds all the values of the input in the interfacce then asign them to a vriable called value
-    let tbody=`locRef
+    let tbody=`
     <tr class='tr'>
         <td><input class="MappingCode in form-control" aria-label="Disabled input example" disabled readonly value="${value.MappingCode}"></td>
         <td><input class="Description in form-control"   " value="${value.Description}" aria-label="Disabled input example" disabled readonly></td>
@@ -94,6 +94,22 @@ export class MappingComponent implements OnInit {
     this.disable=true;
   }
   subm(){
+    var arrlocRef = $('.locRef').map((i:any, e:any) => e.value).get();
+    var arrvalue = $('.value').map((i:any, e:any) => e.value).get();
+    var arrinput = $('.input').map((i:any, e:any) => e.value).get();
+    for (let i = 0; i < this.tbvalue.length; i++) {
+      for (let j = 0; j < Object.keys(this.tbvalue[i]).length; j++) {
+        if (Object.keys(this.tbvalue[i])[j]=="locRef") {
+          this.tbvalue[i].locRef=arrlocRef[i]
+        }
+        if (Object.keys(this.tbvalue[i])[j]=="value") {
+          this.tbvalue[i].value=arrvalue[i]
+        }
+        if (Object.keys(this.tbvalue[i])[j]=="input") {
+          this.tbvalue[i].input=arrinput[i]
+        }
+      }
+    }
     this.disable=false;
     console.log("djosiu");
     //send a post request with all the inputs values to the backend to retrive all the data in this endpoit
