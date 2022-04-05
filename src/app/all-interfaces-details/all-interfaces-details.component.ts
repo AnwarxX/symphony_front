@@ -354,6 +354,8 @@ username: ""};
         if (this.x.length==this.getDaysArray(start,end).length) {
           console.log(this.x);
         }
+        $('#liveToast').toast('show')
+        $('.toast-body').text(data)
       })
     }
   }
