@@ -262,7 +262,17 @@
                         </tr>
                     </thead>
                     <tbody id="mappingData">
-  
+                        <tr class='tr' *ngFor="let i of tbvalue">
+                            <td><input class="MappingCode in form-control" aria-label="Disabled input example" disabled readonly [value]="i['MappingCode']"></td>
+                            <td><input class="Description in form-control" [value]="i['Description']" aria-label="Disabled input example" disabled readonly></td>
+                            <td><input class="locRef in form-control" [value]="i['locRef']" aria-label="Disabled input example"></td>
+                            <td><input class="mapp in form-control" [value]="i['MappingType']" aria-label="Disabled input example" disabled readonly></td>
+                            <td><input class="value in form-control" [value]="i['Source']"></td>
+                            <td><input class="Revenue in form-control" [value]="i['RevenuCenter']" aria-label="Disabled input example" disabled readonly></td>
+                            <td><input class="level in form-control" [value]="i['level']" aria-label="Disabled input example" disabled readonly></td>
+                            <td><input class="input in form-control" [value]="i['input']" ></td>
+                            <td><button class="btn btn-danger" data-bs-target="#delete" data-bs-toggle="modal" (click)="delete(i)" >Delete</button></td>
+                        </tr>
                     </tbody>
                     <div class=" d-flex justify-content-center">
 

@@ -42,7 +42,7 @@ export class MappingComponent implements OnInit {
   disable=false;
   toggle=true;
   fileToUpload: File | null = null;
-  i:any;
+  myValue:any;
   de:any;
 
   constructor(public apiService:APIsService) {
@@ -78,23 +78,23 @@ export class MappingComponent implements OnInit {
     let value= this.form.value//this.form.value holds all the values of the input in the interfacce then asign them to a vriable called value
     console.log(value);
     
-    let tbody=`
-    <tr class='tr'>
-        <td><input class="MappingCode in form-control" aria-label="Disabled input example" disabled readonly value="${value.MappingCode}"></td>
-        <td><input class="Description in form-control"   " value="${value.Description}" aria-label="Disabled input example" disabled readonly></td>
-        <td><input class="locRef in form-control"   " value="${value.locRef}" aria-label="Disabled input example"></td>
-        <td><input class="mapp in form-control" value="${value.mapp}" aria-label="Disabled input example" disabled readonly></td>
-        <td><input class="value in form-control" value="${value.value}" ></td>
-        <td><input class="Revenue in form-control" value="${value.Revenue}" aria-label="Disabled input example" disabled readonly></td>
-        <td><input class="level in form-control" value="${value.level}" aria-label="Disabled input example" disabled readonly></td>
-        <td><input class="input in form-control" value="${value.input}" ></td>
-        <td><button class="btn btn-danger" data-bs-target="#delete" data-bs-toggle="modal"   (click)="delete(${value})" >Delete</button></td>
-
-    </tr>
-    `
+    // let tbody=`
+    // <tr class='tr'>
+    //     <td><input class="MappingCode in form-control" aria-label="Disabled input example" disabled readonly value="${value.MappingCode}"></td>
+    //     <td><input class="Description in form-control"   " value="${value.Description}" aria-label="Disabled input example" disabled readonly></td>
+    //     <td><input class="locRef in form-control"   " value="${value.locRef}" aria-label="Disabled input example"></td>
+    //     <td><input class="mapp in form-control" value="${value.mapp}" aria-label="Disabled input example" disabled readonly></td>
+    //     <td><input class="value in form-control" value="${value.value}" ></td>
+    //     <td><input class="Revenue in form-control" value="${value.Revenue}" aria-label="Disabled input example" disabled readonly></td>
+    //     <td><input class="level in form-control" value="${value.level}" aria-label="Disabled input example" disabled readonly></td>
+    //     <td><input class="input in form-control" value="${value.input}" ></td>
+    //     <td><button class="btn btn-danger" data-bs-target="#delete" data-bs-toggle="modal" (click)="delete(${value})" >Delete</button></td>
+    // </tr>
+    // `
     
     this.tbvalue.push({MappingCode:value.MappingCode,Description:value.Description,locRef:value.locRef,MappingType:value.mapp,Source:value.value,RevenuCenter:value.Revenue,Level:value.level,input:value.input});
-    $("#mappingData").html($("#mappingData").html()+tbody);
+    // $("#mappingData").html($("#mappingData").html()+tbody);
+    
     $(".sub").removeClass("d-none")
     this.disable=true;
   }
@@ -223,12 +223,10 @@ async revenueCenter(){
 } 
 del()
 {
-  console.log(this.i);
+  console.log(this.myValue);
   //send a post request with the table name and column to this endpoit in the backend to retrive all the distinct values in that column
-  // this.apiService.postFun('delete',{ MappingType:this.row.MappingType,Source:this.row.Source,Target:this.row.Target}).subscribe(data => {
-  // this.deleteV=data;//data variable holds all the data retrived then asign them to a variable cold value
-  // this.getmapp()
-  // })
+  this.tbvalue.splice(this.tbvalue.indexOf(this.myValue),1)
+  console.log(this.tbvalue);
 }
 handleFileInput(event: any) {
   this.fileToUpload = event.target.files;
@@ -236,7 +234,7 @@ handleFileInput(event: any) {
 }
 
 delete(i:any){
-  this.i=i;
-  console.log(this.i,"sss");
+  this.myValue=i;
+  console.log(this.myValue,"sss");
 }
 }
