@@ -257,13 +257,15 @@
                             <th scope="col">Revenue Center</th>
                             <th scope="col">level</th>
                             <th scope="col"> Mapping value</th>
+                            <th scope="col">Delete</th>
 
                         </tr>
                     </thead>
                     <tbody id="mappingData">
-                         
+  
                     </tbody>
                     <div class=" d-flex justify-content-center">
+
                     <button (click)="subm()" class="btn sub btn-dark d-none w-100 ">Submit</button>
                 </div>
                 </table>
@@ -287,3 +289,24 @@
 </section>
 
 
+
+ <!-- delete Modal -->
+ <div class="modal fade" id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-black">
+                <h5 class="modal-title  text-white" id="exampleModalLabel">
+                    Delete
+                </h5>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this record!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary bg-black" data-bs-dismiss="modal">Close</button>
+                <button type="submit" (click)="del()" data-bs-dismiss="modal"
+                    class="btn btn btn-dark  px-5">submit</button>
+            </div>
+        </div>
+    </div>
+</div>

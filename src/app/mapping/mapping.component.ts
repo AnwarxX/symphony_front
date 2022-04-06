@@ -42,6 +42,8 @@ export class MappingComponent implements OnInit {
   disable=false;
   toggle=true;
   fileToUpload: File | null = null;
+  i:any;
+  de:any;
 
   constructor(public apiService:APIsService) {
     this.tbvalue=[];
@@ -74,6 +76,8 @@ export class MappingComponent implements OnInit {
   //this function is used to send a post request with a specific data from the inputs to the backend to insert this data in the databsae
   PreviewData(){
     let value= this.form.value//this.form.value holds all the values of the input in the interfacce then asign them to a vriable called value
+    console.log(value);
+    
     let tbody=`
     <tr class='tr'>
         <td><input class="MappingCode in form-control" aria-label="Disabled input example" disabled readonly value="${value.MappingCode}"></td>
@@ -84,10 +88,11 @@ export class MappingComponent implements OnInit {
         <td><input class="Revenue in form-control" value="${value.Revenue}" aria-label="Disabled input example" disabled readonly></td>
         <td><input class="level in form-control" value="${value.level}" aria-label="Disabled input example" disabled readonly></td>
         <td><input class="input in form-control" value="${value.input}" ></td>
+        <td><button class="btn btn-danger" data-bs-target="#delete" data-bs-toggle="modal"   (click)="delete(${value})" >Delete</button></td>
+
     </tr>
     `
     
-    console.log(tbody);
     this.tbvalue.push({MappingCode:value.MappingCode,Description:value.Description,locRef:value.locRef,MappingType:value.mapp,Source:value.value,RevenuCenter:value.Revenue,Level:value.level,input:value.input});
     $("#mappingData").html($("#mappingData").html()+tbody);
     $(".sub").removeClass("d-none")
@@ -218,18 +223,20 @@ async revenueCenter(){
 } 
 del()
 {
-  console.log(this.row);
+  console.log(this.i);
   //send a post request with the table name and column to this endpoit in the backend to retrive all the distinct values in that column
-  this.apiService.postFun('delete',{ MappingType:this.row.MappingType,Source:this.row.Source,Target:this.row.Target}).subscribe(data => {
-  this.deleteV=data;//data variable holds all the data retrived then asign them to a variable cold value
-  this.getmapp()
-  })
+  // this.apiService.postFun('delete',{ MappingType:this.row.MappingType,Source:this.row.Source,Target:this.row.Target}).subscribe(data => {
+  // this.deleteV=data;//data variable holds all the data retrived then asign them to a variable cold value
+  // this.getmapp()
+  // })
 }
 handleFileInput(event: any) {
   this.fileToUpload = event.target.files;
   console.log(this.fileToUpload);
 }
+
 delete(i:any){
-  this.row = i
+  this.i=i;
+  console.log(this.i,"sss");
 }
 }
