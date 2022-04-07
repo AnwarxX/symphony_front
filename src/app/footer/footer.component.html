@@ -1,11 +1,15 @@
 
 <section id="">
 
-    <nav class=" navbar-dark bg-dark my-0 text-center ">
-        <div class="text-center text-white  d-flex justify-content-center align-items-center w-100">
-      <p> © ACT 2022 | All Rights Reserved</p> 
+  <nav class=" navbar-dark bg-dark my-0 text-center ">
+      <div class="text-center text-white  d-flex justify-content-center align-items-center w-100">
+    <p> © ACT 2022 | All Rights Reserved</p> 
 
-        </div>
-      </nav>
-  
-  </section>
+      </div>
+      
+  <div *ngIf="showTimer==true"    class="ms-5 position-absolute text-success py-1 px-3" style="border:1px rgba(var(--bs-success-rgb),var(--bs-text-opacity)) solid;right:3%;bottom: 7%;">
+    <p class="mb-0">{{remainingTime}}<i class="fa-solid fa-stopwatch ps-2 fa-shake"></i></p>
+  </div>
+    </nav>
+
+</section>

@@ -1,56 +1,69 @@
 
 <section id="">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+   
 
-    <div class="container d-flex justify-content-center ">
-      <div class="row text-center ">
+    <div class="px-5">
+      <a  href="#/home"><img src="../../assets/LOGO.png" class="navbar-brand img-fluid w-50 "></a> 
+    </div>
 
-      <div *ngIf="isShown" class="collapse navbar-collapse justify-content-center col-md-5" id="navbarSupportedContent">
-          <div ngbDropdown class="w-25 me-5">
-            <button class="btn btn-link dropdown-toggle navss" id="dropdownBasic1" ngbDropdownToggle>Mapping Details</button>
-            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-              <button ngbDropdownItem><a href="#/Symphonymapping"> New Mapping</a></button>
-              <button ngbDropdownItem><a href="#/SymphonyMappingView">View Mapping details</a></button>
-            </div>
-          </div>
-            <button class="btn btn-link navss w-75 ms-3" id="dropdownBasic1" ><a href="#/SymphonyBU" class="text-white ">BU Configuration</a></button>
+    <div class="container">
+     
+        
+      <div  class="collapse navbar-collapse " id="navbarSupportedContent">
+        
+            <ul class="navbar-nav ms-auto  " *ngIf="isShown">
+              <li class="nav-item active">
+
+              <button class="btn btn-link navss " id="dropdownBasic1" ><a href="#/SymphonyAPPConfig" class="text-white">About</a></button>
+            </li>
+
+              <li class="nav-item active">
+
+                  <button class="btn btn-link navss w-100 " id="dropdownBasic1" ><a href="#/SymphonyBU" class="text-white ">BU Configuration</a></button>
+                </li>
+                <li class="nav-item dropdown">
+                  <div ngbDropdown class="w-25 ">
+                    <button class="btn btn-link dropdown-toggle navss" id="dropdownBasic1" ngbDropdownToggle>Mapping Details</button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                      <button ngbDropdownItem><a href="#/Symphonymapping"> New Mapping</a></button>
+                      <button ngbDropdownItem><a href="#/SymphonyMappingView">View Mapping details</a></button>
+                    </div>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                <div ngbDropdown class="w-25 ms-0">
+                  <button class="btn btn-link dropdown-toggle navss" id="dropdownBasic1" ngbDropdownToggle>API Configuration</button>
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem><a href="#/SymphonyNewInterface"> New Interface</a></button>
+                    <button ngbDropdownItem><a href="#/SymphonyallInterfacesDetails"> All interface detail</a></button>
+                  </div>
+               </div>
+              </li>
+
+              </ul>
+
 
         <!-- <form class="d-flex">
           <input class="form-control me-2"  type="date" placeholder="Search" aria-label="Search">
         </form> -->
 
-        
+       
       </div>
 
-    <div class="col-md-2">
-      <a class="" href="#/home"><img src="../../assets/LOGO.png" class="nav-logo img-fluid "></a>  
-    </div>
-    <div class="col-md-5">
-
-      <div *ngIf="isShown" class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
-
-        <div ngbDropdown >
-          <button class="btn btn-link dropdown-toggle navss" id="dropdownBasic1" ngbDropdownToggle>API Configuration</button>
-          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <button ngbDropdownItem><a href="#/SymphonyNewInterface"> New Interface</a></button>
-            <button ngbDropdownItem><a href="#/SymphonyallInterfacesDetails"> All interface detail</a></button>
-        </div>
-        </div>
         
-        <button class="btn btn-link navss " id="dropdownBasic1" ><a href="#/SymphonyAPPConfig" class="text-white">About</a></button>
       <!-- <form class="d-flex">
         <input class="form-control me-2"  type="date" placeholder="Search" aria-label="Search">
       </form> -->
+    </div>
 
       
-    </div>
-  </div>
-  </div>
-    </div>
+  
     <!-- <i class="fa-solid fa-hourglass-clock"></i> -->
-    <div *ngIf="showTimer==true" class="me-5 position-absolute text-success py-1 px-3" style="border:1px rgba(var(--bs-success-rgb),var(--bs-text-opacity)) solid;right:2%">
-      <p class="mb-0">{{remainingTime}}<i class="fa-solid fa-stopwatch ps-2 fa-shake"></i></p>
-    </div>
+
   </nav>
 
+  
+   
+   
 </section>
