@@ -35,7 +35,7 @@ Enterprise:any;
     var bytes  = cryptoJS.AES.decrypt(tok||"", 'lamiaa');
     var originalText = bytes.toString(cryptoJS.enc.Utf8);
     this.data=JSON.parse(originalText)
-    this.value =new Date(this.data[0].EndDate.split("GMT"))
+    this.value =new Date(this.data[0].EndDate).toString().split("GMT")[0]
     
     this.proud =this.data[0].product
     this.LockRef =this.data[0].LockRef 
