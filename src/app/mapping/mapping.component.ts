@@ -65,7 +65,6 @@ export class MappingComponent implements OnInit {
       response => {
         this.data = response;//response variable holds all the data retrived then asign them to a variable cold data
         //loop that iterates over the objects in the data and returns only the table name then push it in an array called tableNames
-        console.log(this.data);
         
         for (let i = 0; i < this.data.length; i++) {
           this.tableNames.push(this.data[i]["TableName"])
@@ -76,7 +75,6 @@ export class MappingComponent implements OnInit {
   //this function is used to send a post request with a specific data from the inputs to the backend to insert this data in the databsae
   PreviewData(){
     let value= this.form.value//this.form.value holds all the values of the input in the interfacce then asign them to a vriable called value
-    console.log(value);
     
     // let tbody=`
     // <tr class='tr'>
@@ -116,7 +114,6 @@ export class MappingComponent implements OnInit {
       }
     }
     this.disable=false;
-    console.log("djosiu");
     //send a post request with all the inputs values to the backend to retrive all the data in this endpoit
     this.apiService.postFun('mapping',this.tbvalue).subscribe(data => {
       this.tbvalue=data;//data variable holds all the data retrived then asign them to a variable cold value
@@ -126,8 +123,6 @@ export class MappingComponent implements OnInit {
     $('.toast-body').text(data)
       })
       
-    console.log(this.tbvalue);
-    console.log("djosiu");
     this.form.reset;
     this.ColumnNames=[]
     this.values=[]
@@ -149,7 +144,6 @@ export class MappingComponent implements OnInit {
     else{
       this.toggle=true;
     }
-    console.log((<HTMLInputElement>event.target).value);
     
   }
   //this function is only called when you change the value from the table names dropdown and retrive all the column names for the choosen table name
@@ -166,7 +160,6 @@ export class MappingComponent implements OnInit {
         break;
        }
      }
-     console.log(this.ColumnNames);
      
      this.form.value['value']=""//clear the value of the value drop down so the user can choose again if he decid to change the table name after he chose the value
   }
@@ -203,7 +196,6 @@ export class MappingComponent implements OnInit {
   }
 
   async getmapp(){
-console.log($("#for").value);
 
     //send a get request to the backend to retrive all the mapping data from the database
     await this.apiService.getFun('mapping').subscribe(
@@ -223,18 +215,14 @@ async revenueCenter(){
 } 
 del()
 {
-  console.log(this.myValue);
   //send a post request with the table name and column to this endpoit in the backend to retrive all the distinct values in that column
   this.tbvalue.splice(this.tbvalue.indexOf(this.myValue),1)
-  console.log(this.tbvalue);
 }
 handleFileInput(event: any) {
   this.fileToUpload = event.target.files;
-  console.log(this.fileToUpload);
 }
 
 delete(i:any){
   this.myValue=i;
-  console.log(this.myValue,"sss");
 }
 }

@@ -44,7 +44,6 @@ export class FooterComponent implements OnInit {
         minutes = minutes-(days*24*60)-(hours*60);
         seconds = seconds-(days*24*60*60)-(hours*60*60)-(minutes*60);
         this.remainingTime=days+"D"+" : "+hours+"H"+" : "+minutes+"M"+" : "+seconds+"S";
-        console.log(this.remainingTime);
       }
       else
       {

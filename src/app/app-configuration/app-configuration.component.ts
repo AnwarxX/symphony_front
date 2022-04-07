@@ -36,7 +36,6 @@ Enterprise:any;
     var originalText = bytes.toString(cryptoJS.enc.Utf8);
     this.data=JSON.parse(originalText)
     this.value =new Date(this.data[0].EndDate.split("GMT"))
-    console.log(this.value);
     
     this.proud =this.data[0].product
     this.LockRef =this.data[0].LockRef 

@@ -47,7 +47,6 @@ constructor(public apiService:APIsService) {
   }
   diss(event:any){
     this.dis=(<HTMLInputElement>event.target).value;
-    console.log(this.dis);
     if (this.dis=="day") {
       $(".sunEveryDay").removeAttr('disabled');
       $(".sunEveryMonth").attr('disabled', 'disabled');
@@ -86,9 +85,6 @@ authorization()
   var bytes  = cryptoJS.AES.decrypt(tok||"", 'lamiaa');
   var originalText = bytes.toString(cryptoJS.enc.Utf8);
   let x=JSON.parse(originalText)
-  console.log(x);
-
-  console.log(this.form2.get("lockRef")?.value ,x[0].LockRef,x[0].EnterpriseShortName ,this.form2.get("enterpriseShortName")?.value);
   
   if(x[0].LockRef == this.form2.get("lockRef")?.value && x[0].EnterpriseShortName == this.form2.get("enterpriseShortName")?.value){
 
@@ -96,7 +92,6 @@ authorization()
   //send a post request with the table name and column to this endpoit in the backend to retrive all the distinct values in that column
   this.apiService.postFun('authorization',this.form2.value).subscribe(data => {
   // this.authData=data;//data variable holds all the data retrived then asign them to a variable cold value
-  console.log(data);
   this.authData=""
   for (let i = 0; i < data.length; i++) {
     this.authData+=data[i]+" "

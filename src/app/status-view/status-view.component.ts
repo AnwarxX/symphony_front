@@ -17,7 +17,6 @@ export class StatusViewComponent implements OnInit {
   async statusData(){
     this.apiService.getFun('statusData').subscribe(data => {
       this.statData = data;
-      console.log(data);
 
     })
   }

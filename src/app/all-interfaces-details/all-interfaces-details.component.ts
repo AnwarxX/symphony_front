@@ -64,7 +64,6 @@ username: ""};
     date:new FormControl("",Validators.compose([Validators.required]))
   })
   constructor(public apiService:APIsService) { 
-    console.log(this.getDaysArray("2022-02-20","2022-02-23")[0].toISOString().split("T")[0]);
     this.imports()
     this.getInterfaceData()
     
@@ -124,18 +123,14 @@ username: ""};
     let date=(<HTMLInputElement>event.target).value
     $(".apiDate").attr("min",date)
     $(".apiDate").attr("max",new Date(new Date(date).setDate(new Date(date).getDate()+6)).toISOString().split("T")[0])
-    console.log(new Date(new Date(date).setDate(new Date(date).getDate()+6)).toISOString().split("T")[0]);
   }
   test2(event:any){
     let date=(<HTMLInputElement>event.target).value
-    console.log(date);
     
   }
   dissEdit(){
     this.apiDate = this.reviewInput.ApiSchedule.split(" ")
     this.sunDate = this.reviewInput.SunSchedule.split(" ")
-    console.log(this.reviewInput.SunScheduleStatue);
-    console.log(this.reviewInput.ApiScheduleStatue);
     if (this.reviewInput.SunScheduleStatue=="day") {
       $(".sunEveryDay").removeAttr('disabled');
       $(".sunEveryMonth").attr('disabled', 'disabled');
@@ -223,14 +218,12 @@ username: ""};
   getInterfaceData(){
     this.apiService.getFun("importInterface").subscribe(data => {
 
-        this.interfaceData=data;//data variable holds all the data retrived then asign them to a variable cold value      
-        console.log(this.interfaceData[1].BU);      
+        this.interfaceData=data;//data variable holds all the data retrived then asign them to a variable cold value   
   
       });//data variable holds all the data retrived then asign them to a variable cold value     
     // this.httpClient.get<any>('http://localhost:5000/importInterface').subscribe(data => {
 
-    //   this.interfaceData=data;//data variable holds all the data retrived then asign them to a variable cold value      
-    //   console.log(this.interfaceData[1].BU);      
+    //   this.interfaceData=data;//data variable holds all the data retrived then asign them to a variable cold value          
 
     // })
 
@@ -239,10 +232,8 @@ username: ""};
     this.interfaceCod=text;
   }
   importSun(){
-    console.log("asfujhasfikju");
     
     this.apiService.postFun('importSun',{interfaceCod:parseInt(this.interfaceCod),date:this.form3.get('date')?.value}).subscribe(data => {
-      console.log(data);      
     })
   }
   deleteBtn(row:any){
@@ -256,11 +247,8 @@ username: ""};
       delete data.refreshToken;
       delete data.token;
 
-    console.log(data);
-      
       this.form2.setValue(data);
       this.reviewInput=data;
-      console.log(this.reviewInput);
       this.dissEdit()
       
     })
@@ -270,7 +258,6 @@ username: ""};
     //send a post request with the table name and column to this endpoit in the backend to retrive all the distinct values in that column
     this.apiService.postFun('update',this.form2.value).subscribe(data => {
     // this.authData=data;//data variable holds all the data retrived then asign them to a variable cold value
-    console.log(data);
     this.authData=""
     for (let i = 0; i < data.length; i++) {
       this.authData+=data[i]+" "
@@ -282,13 +269,10 @@ username: ""};
   }
   confirmDelete(){
     this.apiService.postFun('deleteInterface',this.rowInput).subscribe(data => {
-      console.log(data);
       this.getInterfaceData()
     })
   }
   disableDate(event:any){
-    console.log((<HTMLInputElement>event.target).value);
-    console.log(this.dateDisable);
     if((<HTMLInputElement>event.target).value.includes("Daily")||(<HTMLInputElement>event.target).value.includes("all")||(<HTMLInputElement>event.target).value=="getGuestChecks"){
       this.dateDisable=true;
       this.form.get('startDate')?.setValidators([Validators.required])
@@ -308,7 +292,6 @@ username: ""};
   //send a post request with the table name and column to this endpoit in the backend to retrive all the distinct values in that column
   this.apiService.postFun('authorization',this.form2.value).subscribe(data => {
   // this.authData=data;//data variable holds all the data retrived then asign them to a variable cold value
-  console.log(data);
   this.authData=""
   for (let i = 0; i < data.length; i++) {
     this.authData+=data[i]+" "
@@ -322,8 +305,6 @@ username: ""};
     this.apiService.getFun('interfaceCode').subscribe(data => {
       this.apis=data.apidata;//data variable holds all the data retrived then asign them to a variable cold value
       this.interfaces=data.interfacedata;//data variable holds all the data retrived then asign them to a variable cold value
-      console.log(this.apis);
-      console.log(this.interfaces);
     })
   }
   start(BU:any){
@@ -345,14 +326,11 @@ username: ""};
     let start=this.form.get('startDate')?.value;
     let end=this.form.get('endDate')?.value;
     this.x=[]
-    console.log("ASfasf");
     for (let i = 0; i < this.getDaysArray(start,end).length; i++) {
-      console.log("asgasg");
       
       this.apiService.postFun("import",{interface:this.interfaceCod,date:this.getDaysArray(start,end)[i].toISOString().split("T")[0],api:this.form.get('api')?.value}).subscribe(data => {
         this.x.push(data)
         if (this.x.length==this.getDaysArray(start,end).length) {
-          console.log(this.x);
         }
         $('#liveToast').toast('show')
         $('.toast-body').text(data)

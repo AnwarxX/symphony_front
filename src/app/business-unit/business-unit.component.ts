@@ -44,8 +44,6 @@ export class BusinessUnitComponent implements OnInit {
       this.apiService.getFun('codes').subscribe(data => {
         this.mapp=data.mapping;//data variable holds all the data retrived then asign them to a variable cold value
         this.interfaces=data.intreface;//data variable holds all the data retrived then asign them to a variable cold value
-        console.log(this.mapp);
-        console.log(this.interfaces);
       })
     }
      ngOnInit(): void {

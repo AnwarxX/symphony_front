@@ -40,16 +40,13 @@ export class MappingViewComponent implements OnInit {
         )
       } 
       search(event:any){
-        console.log((<HTMLInputElement>event.target).value);
         if ((<HTMLInputElement>event.target).value=="") {
           this.all=true
-          console.log("true",this.all);
         }
         else {
           this.all=false
           this.seaMapping=[]
           for (let i = 0; i < this.mapping.length; i++) {
-            console.log(this.mapping[i].mappCode);
             if(this.mapping[i].MappingCode.toLowerCase().includes((<HTMLInputElement>event.target).value))
               this.seaMapping.push(this.mapping[i])
           }
@@ -57,12 +54,10 @@ export class MappingViewComponent implements OnInit {
       }
       delete(mapp:any){
         this.row=mapp;
-        console.log(this.row);
       }
       
       // edit(text:any){
       //   this.mappCode=text;
-      //   console.log(this.mappCode);
       //   let tbody=`  
       //   <form class="d-flex">
       //   <input class="MappingCode in form-control"  value="${this.mappCode.MappingCode}">
@@ -77,7 +72,6 @@ export class MappingViewComponent implements OnInit {
 
 del()
 {
-  console.log(this.row);
   this.all=true
   $(".searchInp").val("")
   //send a post request with the table name and column to this endpoit in the backend to retrive all the distinct values in that column
@@ -87,7 +81,6 @@ del()
   })
 }
 // ed(){
-//   console.log(this.row);
 
 // }
 

@@ -27,7 +27,7 @@ export class alwaysAuthGuard implements CanActivate{
   //     response => {
   //       this.data = response;//response variable holds all the data retrived then asign them to a variable cold data
   //       //loop that iterates over the objects in the data and returns only the table name then push it in an array called tableNames
-  //       console.log(this.data,"skjkjkjs",response);
+  
 
   //       if(this.data == null || this.data=="" || this.data == "please uplode license"){
   //         this.router.navigate(['/License']);
@@ -62,7 +62,6 @@ export class alwaysAuthGuard implements CanActivate{
     var bytes  = cryptoJS.AES.decrypt(tok||"", 'lamiaa');
     var originalText = bytes.toString(cryptoJS.enc.Utf8);
     let x=JSON.parse(originalText)
-    console.log(x);
     
     var date1 = new Date();
     var date2 = new Date(x[0].EndDate);
