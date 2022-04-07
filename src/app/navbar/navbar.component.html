@@ -48,7 +48,7 @@
   </div>
     </div>
     <!-- <i class="fa-solid fa-hourglass-clock"></i> -->
-    <div class="me-5 position-absolute text-success py-1 px-3" style="border:1px rgba(var(--bs-success-rgb),var(--bs-text-opacity)) solid;right:2%">
+    <div *ngIf="showTimer==true" class="me-5 position-absolute text-success py-1 px-3" style="border:1px rgba(var(--bs-success-rgb),var(--bs-text-opacity)) solid;right:2%">
       <p class="mb-0">{{remainingTime}}<i class="fa-solid fa-stopwatch ps-2 fa-shake"></i></p>
     </div>
   </nav>

@@ -13,7 +13,7 @@ declare var $:any //declear $ to use jquery
 export class NavbarComponent implements OnInit {
   isShown: boolean = false ;
   remainingTime:any;
-  
+  showTimer=true
   constructor(private router: Router) {
     this.timeCounter()
     interval(1000).subscribe((ev)=>{
@@ -42,19 +42,30 @@ export class NavbarComponent implements OnInit {
 
   }
   timeCounter(){
-    let tok =  localStorage.getItem('token');
-    var bytes  = cryptoJS.AES.decrypt(tok||"", 'lamiaa');
-    var originalText = bytes.toString(cryptoJS.enc.Utf8);
-    let data=JSON.parse(originalText)
-    var seconds = Math.floor((new Date(data[0].EndDate).getTime() - (new Date().getTime()))/1000);
-    var minutes = Math.floor(seconds/60);
-    var hours = Math.floor(minutes/60);
-    var days = Math.floor(hours/24);
-
-    hours = hours-(days*24);
-    minutes = minutes-(days*24*60)-(hours*60);
-    seconds = seconds-(days*24*60*60)-(hours*60*60)-(minutes*60);
-    this.remainingTime=days+"D"+" : "+hours+"H"+" : "+minutes+"M"+" : "+seconds+"S";
-    console.log(this.remainingTime);
+    try {
+      let tok =  localStorage.getItem('token');
+      var bytes  = cryptoJS.AES.decrypt(tok||"", 'lamiaa');
+      var originalText = bytes.toString(cryptoJS.enc.Utf8);
+      if(originalText.includes("EndDate")){
+        this.showTimer=true
+        let data=JSON.parse(originalText)
+        var seconds = Math.floor((new Date(data[0].EndDate).getTime() - (new Date().getTime()))/1000);
+        var minutes = Math.floor(seconds/60);
+        var hours = Math.floor(minutes/60);
+        var days = Math.floor(hours/24);
+    
+        hours = hours-(days*24);
+        minutes = minutes-(days*24*60)-(hours*60);
+        seconds = seconds-(days*24*60*60)-(hours*60*60)-(minutes*60);
+        this.remainingTime=days+"D"+" : "+hours+"H"+" : "+minutes+"M"+" : "+seconds+"S";
+        console.log(this.remainingTime);
+      }
+      else
+      {
+        this.showTimer=false
+      }
+    } catch (error:any) {
+      console.log(error.message);
+    }
   }
 }
