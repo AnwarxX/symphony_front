@@ -107,7 +107,7 @@ const routes: Routes = [
   {path:"SymphonyStatusView",component:StatusViewComponent,canActivate:[alwaysAuthGuard]},
   {path:"License",component:LicenseComponent},
   {path:"About",component:AboutComponent},
-  {path: '**', component: HomeComponent }
+  {path: '**', component: HomeComponent}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes,{useHash:true})],

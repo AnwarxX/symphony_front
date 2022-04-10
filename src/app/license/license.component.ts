@@ -33,7 +33,7 @@ export class LicenseComponent implements OnInit {
               localStorage.setItem('token',data.token);
               this.router.navigate(['/home']);
           }
-          
+          this.router.navigate(['/home']);
           })
       }
   }
@@ -41,7 +41,7 @@ export class LicenseComponent implements OnInit {
     this.getLicense()
   }
   tok:any
- async  getLicense(){
+ async getLicense(){
     //send a get request to the backend to retrive all the data in this endpoit
      await this.apiService.getFun('getLisence').subscribe(
       response => {
@@ -55,8 +55,6 @@ export class LicenseComponent implements OnInit {
         }
         else{
           localStorage.setItem('token',this.tok);
-          this.router.navigate(['/home']);
-
         }
       }
     )

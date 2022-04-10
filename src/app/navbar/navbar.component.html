@@ -12,17 +12,13 @@
         
       <div  class="collapse navbar-collapse " id="navbarSupportedContent">
         
-            <ul class="navbar-nav ms-auto  " *ngIf="isShown">
-              <li class="nav-item active">
+            <ul class="navbar-nav ms-auto  ">
 
-              <button class="btn btn-link navss " id="dropdownBasic1" ><a href="#/SymphonyAPPConfig" class="text-white">About</a></button>
-            </li>
-
-              <li class="nav-item active">
+              <li *ngIf="isShown" class="nav-item active">
 
                   <button class="btn btn-link navss w-100 " id="dropdownBasic1" ><a href="#/SymphonyBU" class="text-white ">BU Configuration</a></button>
                 </li>
-                <li class="nav-item dropdown">
+                <li *ngIf="isShown" class="nav-item dropdown">
                   <div ngbDropdown class="w-25 ">
                     <button class="btn btn-link dropdown-toggle navss" id="dropdownBasic1" ngbDropdownToggle>Mapping Details</button>
                     <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
@@ -31,7 +27,7 @@
                     </div>
                   </div>
                 </li>
-                <li class="nav-item dropdown">
+                <li *ngIf="isShown" class="nav-item dropdown">
                 <div ngbDropdown class="w-25 ms-0">
                   <button class="btn btn-link dropdown-toggle navss" id="dropdownBasic1" ngbDropdownToggle>API Configuration</button>
                   <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
@@ -39,6 +35,19 @@
                     <button ngbDropdownItem><a href="#/SymphonyallInterfacesDetails"> All interface detail</a></button>
                   </div>
                </div>
+              </li>
+
+              <li *ngIf="isShown" class="nav-item active">
+
+                  <button class="btn btn-link navss w-100 " id="dropdownBasic1" ><a href="#/SymphonyStatusView" class="text-white ">Status</a></button>
+                </li>
+                <li class="nav-item active">
+  
+                <button class="btn btn-link navss " id="dropdownBasic1" ><a href="#/License" class="text-white">License</a></button>
+              </li>
+                <li class="nav-item active">
+  
+                <button class="btn btn-link navss " id="dropdownBasic1" ><a href="#/SymphonyAPPConfig" class="text-white">About</a></button>
               </li>
 
               </ul>
