@@ -104,9 +104,14 @@ const routes: Routes = [
   {path:"SymphonyAPPConfig",component:AppConfigurationComponent,canActivate:[alwaysAuthGuard]},
   {path:"SymphonyhomeConfig",component:HomeConfigComponent,canActivate:[alwaysAuthGuard]},
   {path:"SymphonyNewInterface",component:NewInterfaceComponent,canActivate:[alwaysAuthGuard]},
+<<<<<<< Updated upstream
   {path:"SunNewInterface",component:SunInterfaceComponent,canActivate:[alwaysAuthGuard]},
   {path:"SymphonyCapsNewInterface",component:CapsInterfaceComponent,canActivate:[alwaysAuthGuard]},
 
+=======
+  {path:"SymphonySunNewInterface",component:SunInterfaceComponent,canActivate:[alwaysAuthGuard]},
+  {path:"SymphonyCapsNewInterface",component:CapsInterfaceComponent,canActivate:[alwaysAuthGuard]},
+>>>>>>> Stashed changes
   {path:"SymphonyallInterfacesDetails",component:AllInterfacesDetailsComponent,canActivate:[alwaysAuthGuard]},
   {path:"SymphonyMappingDetails",component:MappingDetailComponent,canActivate:[alwaysAuthGuard]},
   {path:"SymphonyMappingView",component:MappingViewComponent,canActivate:[alwaysAuthGuard]},
