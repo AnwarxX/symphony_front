@@ -12,7 +12,10 @@ import { LicenseComponent } from './license/license.component';
 import { MappingDetailComponent } from './mapping-detail/mapping-detail.component';
 import { MappingViewComponent } from './mapping-view/mapping-view.component';
 import { MappingComponent } from './mapping/mapping.component';
-import { NewInterfaceComponent } from './new-interface/new-interface.component';
+import { NewInterfaceComponent } from './API-INTERFACE/new-interface.component';
+import { SunInterfaceComponent } from './sun-interface/sun-interface.component';
+import { CapsInterfaceComponent } from './CAPS-INTERFACE/caps-interface.component';
+
 import { SympDbComponent } from './symp-db/symp-db.component';
 import * as cryptoJS from 'crypto-js';
 import { APIsService } from "./services/apis.service";
@@ -101,6 +104,9 @@ const routes: Routes = [
   {path:"SymphonyAPPConfig",component:AppConfigurationComponent,canActivate:[alwaysAuthGuard]},
   {path:"SymphonyhomeConfig",component:HomeConfigComponent,canActivate:[alwaysAuthGuard]},
   {path:"SymphonyNewInterface",component:NewInterfaceComponent,canActivate:[alwaysAuthGuard]},
+  {path:"SunNewInterface",component:SunInterfaceComponent,canActivate:[alwaysAuthGuard]},
+  {path:"CapsNewInterface",component:CapsInterfaceComponent,canActivate:[alwaysAuthGuard]},
+
   {path:"SymphonyallInterfacesDetails",component:AllInterfacesDetailsComponent,canActivate:[alwaysAuthGuard]},
   {path:"SymphonyMappingDetails",component:MappingDetailComponent,canActivate:[alwaysAuthGuard]},
   {path:"SymphonyMappingView",component:MappingViewComponent,canActivate:[alwaysAuthGuard]},

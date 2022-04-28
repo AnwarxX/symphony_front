@@ -2,7 +2,7 @@
 
     <div class="con mt-5">
         <div class="text-center py-3 mt-5">
-            <h2 class="header header-h4">New Interface Definition</h2>
+            <h2 class="header header-h4">New API Definition</h2>
         </div>
         <form action="" [formGroup]="form2" class=" mb-2  " (ngSubmit)="authorization()">
             <div class="text-center bg-dark">
@@ -163,126 +163,7 @@
                 </div>
 
             </div>
-            <div class="text-center  bg-dark">
-                <p class="text-white py-2">Sun Definition</p>
-            </div>
-            <div class="row ">
-                <div class="col-md-3">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroup-sizing-default">User</span>
-                        </div>
-                        <input formControlName="SunUser" name="" pattern="^[a-zA-Z0-9_ ]*$" class="form-control" value="" id="">
-
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
-                        </div>
-                        <input formControlName="SunPassword" name="" id="" class="form-control" value=""
-                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroup-sizing-default">Server</span>
-                        </div>
-                        <input formControlName="Sunserver" name="" id="" class="form-control" value=""
-                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroup-sizing-default">Database</span>
-                        </div>
-                        <input formControlName="SunDatabase" name="" class="form-control" value="" id="">
-
-                    </div>
-                </div>
-            </div>
-            <div class="row pt-2">
-                <div class="col-md-3 ">
-                    <div *ngIf="form2.get('SunUser')?.invalid && form2.get('SunUser')?.touched">
-                        <small class="btn btn-danger px-5 " *ngIf="form2.get('SunUser')?.errors?.required"> User is
-                            required</small>
-                            <small class="btn btn-danger px-5 " *ngIf="form2.get('SunUser')?.errors?.pattern"> Only Alphabet without spaces</small>
-                    </div>
-
-                </div>
-                <div class="col-md-3 ">
-                    <div *ngIf="form2.get('SunPassword')?.invalid && form2.get('SunPassword')?.touched">
-                        <small class="btn btn-danger px-5 " *ngIf="form2.get('SunPassword')?.errors?.required"> Password
-                            is
-                            required</small>
-
-                    </div>
-
-                </div>
-                <div class="col-md-3 ">
-                    <div *ngIf="form2.get('Sunserver')?.invalid && form2.get('Sunserver')?.touched">
-                        <small class="btn btn-danger px-5 " *ngIf="form2.get('Sunserver')?.errors?.required"> Server is
-                            required</small>
-
-                    </div>
-                </div>
-                <div class="col-md-3 ">
-                    <div *ngIf="form2.get('SunDatabase')?.invalid && form2.get('SunDatabase')?.touched">
-                        <small class="btn btn-danger px-5 " *ngIf="form2.get('SunDatabase')?.errors?.required"> Database
-                            is
-                            required</small>
-
-                    </div>
-
-                </div>
-            </div>
-            <div class="row pt-2 align-items-center text-center">
-                <div class="col-md-3 text-center ">
-                    <div class="input-group ">
-                        <div class="input-group-prepend w-100">
-                            <span class="input-group-text text-center py-3 w-100" id="inputGroup-sizing-default">Sun
-                                Schedule</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 text-center"> 
-                    <div class="form-check text-white bg-dark text-center w-100">
-                        <input class="form-check-input" type="radio" (click)="diss($event)" name="exampleRadios2" id="exampleRadios2"  formControlName="SunScheduleStatue" value="day" checked>
-                        <label class="form-check-label" for="exampleRadios2">
-                            Every day
-                         </label>
-                      </div> 
-                    <input name="everyDay" formControlName="SunSchedule" class="list-unstyled hiddenul2 form-control sunEveryDay" type="time">
-
-                </div>
-                <div class="col-md-3 ">
-                    <div class="form-check text-white bg-dark text-center w-100">
-                        <input class="form-check-input  " type="radio" (click)="diss($event)" name="exampleRadios2" formControlName="SunScheduleStatue"  id="exampleRadios2" value="month" checked>
-                        <label class="form-check-label" for="exampleRadios2">
-                            Every Month
-                        </label>
-                      </div> 
-                   
-                    <input name="everyMonth" formControlName="SunSchedule"   type="datetime-local" class="list-unstyled hiddenul2 form-control sunEveryMonth">
-                </div>
-                <div class="col-md-3">
-                    <div class="form-check text-white bg-dark text-center w-100">
-                        <input class="form-check-input  " type="radio" (click)="diss($event)" name="exampleRadios2" id="exampleRadios2" formControlName="SunScheduleStatue"  value="year" checked>
-                        <label class="form-check-label" for="exampleRadios2">
-                            Every Year
-                        </label>
-                      </div> 
-                    
-                    <input name="everyYear" type="datetime-local"  formControlName="SunSchedule" class="list-unstyled hiddenul2 form-control sunEveryYear">
-
-                </div>
-
-            </div>
+ 
             <div class="row justify-content-center">
 
                 <div class="col-md-12">

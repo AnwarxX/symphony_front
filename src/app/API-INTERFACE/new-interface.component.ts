@@ -22,12 +22,7 @@ export class NewInterfaceComponent implements OnInit {
   lockRef:new FormControl("",Validators.compose([Validators.required])),
   ApiSchedule:new FormControl("",Validators.compose([Validators.required])),
   ApiScheduleStatue:new FormControl("",Validators.compose([Validators.required])),
-  SunUser:new FormControl("",Validators.compose([Validators.required])),
-  SunPassword:new FormControl("",Validators.compose([Validators.required])),
-  Sunserver:new FormControl("",Validators.compose([Validators.required])),
-  SunDatabase:new FormControl("",Validators.compose([Validators.required])),
-  SunSchedule:new FormControl("",Validators.compose([Validators.required])),
-  SunScheduleStatue:new FormControl("",Validators.compose([Validators.required])),
+ 
 })
 authData:any;
 dis:any;
@@ -47,21 +42,7 @@ constructor(public apiService:APIsService) {
   }
   diss(event:any){
     this.dis=(<HTMLInputElement>event.target).value;
-    if (this.dis=="day") {
-      $(".sunEveryDay").removeAttr('disabled');
-      $(".sunEveryMonth").attr('disabled', 'disabled');
-      $(".sunEveryYear").attr('disabled', 'disabled');
-    }
-    else if(this.dis=="month"){
-      $(".sunEveryMonth").removeAttr('disabled');
-      $(".sunEveryYear").attr('disabled', 'disabled');
-      $(".sunEveryDay").attr('disabled', 'disabled');
-    }
-    else if(this.dis=="year"){
-      $(".sunEveryYear").removeAttr('disabled');
-      $(".sunEveryMonth").attr('disabled', 'disabled');
-      $(".sunEveryDay").attr('disabled', 'disabled');
-    }
+
     if (this.dis=="apiday") {
       $(".apiEveryDay").removeAttr('disabled');
       $(".apiEveryMonth").attr('disabled', 'disabled');

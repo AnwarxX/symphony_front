@@ -13,7 +13,10 @@ import { BusinessUnitComponent } from './business-unit/business-unit.component';
 import { AppConfigurationComponent } from './app-configuration/app-configuration.component';
 import { HomeConfigComponent } from './home-config/home-config.component';
 import { AllInterfacesComponent } from './all-interfaces/all-interfaces.component';
-import { NewInterfaceComponent } from './new-interface/new-interface.component';
+import { NewInterfaceComponent } from './API-INTERFACE/new-interface.component';
+import { SunInterfaceComponent } from './sun-interface/sun-interface.component';
+import { CapsInterfaceComponent } from './CAPS-INTERFACE/caps-interface.component';
+
 import { AllInterfacesDetailsComponent } from './all-interfaces-details/all-interfaces-details.component';
 import { NgxUiLoaderHttpModule, NgxUiLoaderModule, NgxUiLoaderService } from 'ngx-ui-loader';
 import { MappingViewComponent } from './mapping-view/mapping-view.component';
@@ -37,6 +40,8 @@ import { StatusViewComponent } from './status-view/status-view.component';
     HomeConfigComponent,
     AllInterfacesComponent,
     NewInterfaceComponent,
+    SunInterfaceComponent,
+    CapsInterfaceComponent,
     AllInterfacesDetailsComponent,
     MappingViewComponent,
     MappingDetailComponent,
