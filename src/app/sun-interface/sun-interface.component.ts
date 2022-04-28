@@ -19,6 +19,8 @@ export class SunInterfaceComponent implements OnInit {
   SunPassword:new FormControl("",Validators.compose([Validators.required])),
   Sunserver:new FormControl("",Validators.compose([Validators.required])),
   SunDatabase:new FormControl("",Validators.compose([Validators.required])),
+  SunlocRef:new FormControl("",Validators.compose([Validators.required])),
+
   SunSchedule:new FormControl("",Validators.compose([Validators.required])),
   SunScheduleStatue:new FormControl("",Validators.compose([Validators.required])),
 })
