@@ -105,7 +105,7 @@ const routes: Routes = [
   {path:"SymphonyhomeConfig",component:HomeConfigComponent,canActivate:[alwaysAuthGuard]},
   {path:"SymphonyNewInterface",component:NewInterfaceComponent,canActivate:[alwaysAuthGuard]},
   {path:"SunNewInterface",component:SunInterfaceComponent,canActivate:[alwaysAuthGuard]},
-  {path:"CapsNewInterface",component:CapsInterfaceComponent,canActivate:[alwaysAuthGuard]},
+  {path:"SymphonyCapsNewInterface",component:CapsInterfaceComponent,canActivate:[alwaysAuthGuard]},
 
   {path:"SymphonyallInterfacesDetails",component:AllInterfacesDetailsComponent,canActivate:[alwaysAuthGuard]},
   {path:"SymphonyMappingDetails",component:MappingDetailComponent,canActivate:[alwaysAuthGuard]},

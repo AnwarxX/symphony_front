@@ -6,93 +6,103 @@
         </div>
         <form action="" [formGroup]="form2" class=" mb-2  " (ngSubmit)="authorization()">
 
-            <div class="text-center  bg-dark">
-                <p class="text-white py-2">Sun Definition</p>
-            </div>
             <div class="row ">
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default">User</span>
                         </div>
-                        <input formControlName="SunUser" name="" pattern="^[a-zA-Z0-9_ ]*$" class="form-control" value="" id="">
+                        <input formControlName="CapsUser" name="" pattern="^[a-zA-Z0-9_ ]*$" class="form-control" value="" id="">
 
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
                         </div>
-                        <input formControlName="SunPassword" name="" id="" class="form-control" value=""
+                        <input formControlName="CapsPassword" name="" id="" class="form-control" value=""
                             aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default">Server</span>
                         </div>
-                        <input formControlName="Sunserver" name="" id="" class="form-control" value=""
+                        <input formControlName="Capsserver" name="" id="" class="form-control" value=""
                             aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="row pt-2">
+                    <div class="col-md-4 ">
+                        <div *ngIf="form2.get('CapsUser')?.invalid && form2.get('CapsUser')?.touched">
+                            <small class="btn btn-danger px-5 " *ngIf="form2.get('CapsUser')?.errors?.required"> User is
+                                required</small>
+                                <small class="btn btn-danger px-5 " *ngIf="form2.get('CapsUser')?.errors?.pattern"> Only Alphabet without spaces</small>
+                        </div>
+    
+                    </div>
+                    <div class="col-md-4 ">
+                        <div *ngIf="form2.get('CapsPassword')?.invalid && form2.get('CapsPassword')?.touched">
+                            <small class="btn btn-danger px-5 " *ngIf="form2.get('CapsPassword')?.errors?.required"> Password
+                                is
+                                required</small>
+    
+                        </div>
+    
+                    </div>
+                    <div class="col-md-4 ">
+                        <div *ngIf="form2.get('Capsserver')?.invalid && form2.get('Capsserver')?.touched">
+                            <small class="btn btn-danger px-5 " *ngIf="form2.get('Capsserver')?.errors?.required"> Server is
+                                required</small>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-4 mt-2">
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default">Database</span>
                         </div>
-                        <input formControlName="SunDatabase" name="" class="form-control" value="" id="">
+                        <input formControlName="CapsDatabase" name="" class="form-control" value="" id="">
 
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4 mt-2">
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default">locRef</span>
                         </div>
-                        <input formControlName="SunDatabase" name="" class="form-control" value="" id="">
+                        <input formControlName="Capslocref" name="" class="form-control" value="" id="">
 
                     </div>
                 </div>
+                <div class="row pt-2">
+                    <div class="col-md-4 ">
+                        <div *ngIf="form2.get('CapsDatabase')?.invalid && form2.get('CapsDatabase')?.touched">
+                            <small class="btn btn-danger px-5 " *ngIf="form2.get('CapsDatabase')?.errors?.required"> Database is
+                                required</small>
+                        </div>
+    
+                    </div>
+                    <div class="col-md-4 ">
+                        <div *ngIf="form2.get('Capslocref')?.invalid && form2.get('Capslocref')?.touched">
+                            <small class="btn btn-danger px-5 " *ngIf="form2.get('Capslocref')?.errors?.required"> locRef
+                                is
+                                required</small>
+    
+                        </div>
+    
+                    </div>
+
+
+                </div>
+
             </div>
-            <div class="row pt-2">
-                <div class="col-md-3 ">
-                    <div *ngIf="form2.get('SunUser')?.invalid && form2.get('SunUser')?.touched">
-                        <small class="btn btn-danger px-5 " *ngIf="form2.get('SunUser')?.errors?.required"> User is
-                            required</small>
-                            <small class="btn btn-danger px-5 " *ngIf="form2.get('SunUser')?.errors?.pattern"> Only Alphabet without spaces</small>
-                    </div>
 
-                </div>
-                <div class="col-md-3 ">
-                    <div *ngIf="form2.get('SunPassword')?.invalid && form2.get('SunPassword')?.touched">
-                        <small class="btn btn-danger px-5 " *ngIf="form2.get('SunPassword')?.errors?.required"> Password
-                            is
-                            required</small>
-
-                    </div>
-
-                </div>
-                <div class="col-md-3 ">
-                    <div *ngIf="form2.get('Sunserver')?.invalid && form2.get('Sunserver')?.touched">
-                        <small class="btn btn-danger px-5 " *ngIf="form2.get('Sunserver')?.errors?.required"> Server is
-                            required</small>
-
-                    </div>
-                </div>
-                <div class="col-md-3 ">
-                    <div *ngIf="form2.get('SunDatabase')?.invalid && form2.get('SunDatabase')?.touched">
-                        <small class="btn btn-danger px-5 " *ngIf="form2.get('SunDatabase')?.errors?.required"> Database
-                            is
-                            required</small>
-
-                    </div>
-
-                </div>
-            </div>
             <div class="row pt-2 align-items-center text-center">
                 <div class="col-md-3 text-center ">
                     <div class="input-group ">
@@ -104,33 +114,33 @@
                 </div>
                 <div class="col-md-3 text-center"> 
                     <div class="form-check text-white bg-dark text-center w-100">
-                        <input class="form-check-input" type="radio" (click)="diss($event)" name="exampleRadios2" id="exampleRadios2"  formControlName="SunScheduleStatue" value="day" checked>
+                        <input class="form-check-input" type="radio" (click)="diss($event)" name="exampleRadios2" id="exampleRadios2"  formControlName="CapsScheduleStatue" value="day" checked>
                         <label class="form-check-label" for="exampleRadios2">
                             Every day
                          </label>
                       </div> 
-                    <input name="everyDay" formControlName="SunSchedule" class="list-unstyled hiddenul2 form-control sunEveryDay" type="time">
+                    <input name="everyDay" formControlName="CapsSchedule" class="list-unstyled hiddenul2 form-control sunEveryDay" type="time">
 
                 </div>
                 <div class="col-md-3 ">
                     <div class="form-check text-white bg-dark text-center w-100">
-                        <input class="form-check-input  " type="radio" (click)="diss($event)" name="exampleRadios2" formControlName="SunScheduleStatue"  id="exampleRadios2" value="month" checked>
+                        <input class="form-check-input  " type="radio" (click)="diss($event)" name="exampleRadios2" formControlName="CapsScheduleStatue"  id="exampleRadios2" value="month" checked>
                         <label class="form-check-label" for="exampleRadios2">
                             Every Month
                         </label>
                       </div> 
                    
-                    <input name="everyMonth" formControlName="SunSchedule"   type="datetime-local" class="list-unstyled hiddenul2 form-control sunEveryMonth">
+                    <input name="everyMonth" formControlName="CapsSchedule"   type="datetime-local" class="list-unstyled hiddenul2 form-control sunEveryMonth">
                 </div>
                 <div class="col-md-3">
                     <div class="form-check text-white bg-dark text-center w-100">
-                        <input class="form-check-input  " type="radio" (click)="diss($event)" name="exampleRadios2" id="exampleRadios2" formControlName="SunScheduleStatue"  value="year" checked>
+                        <input class="form-check-input  " type="radio" (click)="diss($event)" name="exampleRadios2" id="exampleRadios2" formControlName="CapsScheduleStatue"  value="year" checked>
                         <label class="form-check-label" for="exampleRadios2">
                             Every Year
                         </label>
                       </div> 
                     
-                    <input name="everyYear" type="datetime-local"  formControlName="SunSchedule" class="list-unstyled hiddenul2 form-control sunEveryYear">
+                    <input name="everyYear" type="datetime-local"  formControlName="CapsSchedule" class="list-unstyled hiddenul2 form-control sunEveryYear">
 
                 </div>
 
