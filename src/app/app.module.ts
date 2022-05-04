@@ -26,6 +26,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AboutComponent } from './about/about.component';
 import { FooterComponent } from './footer/footer.component';
 import { StatusViewComponent } from './status-view/status-view.component';
+import { AllCAPSDetailsComponent } from './all-caps-details/all-caps-details.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { StatusViewComponent } from './status-view/status-view.component';
     LicenseComponent,
     AboutComponent,
     FooterComponent,
-    StatusViewComponent
+    StatusViewComponent,
+    AllCAPSDetailsComponent
   ],
   imports: [
     BrowserModule,

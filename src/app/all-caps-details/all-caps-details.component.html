@@ -1,0 +1,42 @@
+<section id="home">
+    <div class="con w-100">
+        <div class="row text-center mb-5">
+            <div class="Header">
+                <h1 class=" h2"> CAPS View</h1>
+            </div>
+        </div>
+     
+        <div  class="d-flex justify-content-between by-3 w-100">
+            <div class="card w-100 mx-2">
+                <table class="table mx-2 text-center mt-5 w-100 ">
+                <thead>
+                <tr>
+                    <th scope="col">Code </th>
+                    <th scope="col">User</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Server</th>
+                    <th scope="col">Database</th>
+                    <th scope="col">locRef</th>
+                    <th scope="col">Schedule</th>
+                    <th scope="col">Schedule Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let i of CAPS" >
+                        <td>{{i.capsCode}}</td>
+                        <td>{{i.user}}</td>
+                        <td>{{i.password}}</td>
+                        <td>{{i.server}}</td>
+                        <td>{{i.database}}</td>
+                        <td>{{i.locRef}}</td>
+                        <td>{{i.capsSchedule}}</td>
+                        <td>{{i.capsScheduleStatus}}</td>
+                </tr>     
+                </tbody> 
+                </table>
+            </div>
+        </div>
+       
+    </div>
+</section>
+

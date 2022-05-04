@@ -34,7 +34,6 @@ export class MappingViewComponent implements OnInit {
         await this.apiService.getFun('mapping').subscribe(
           response => {
             this.mapping = response;//response variable holds all the data retrived then asign them to a variable cold data
-
         
           }
         )

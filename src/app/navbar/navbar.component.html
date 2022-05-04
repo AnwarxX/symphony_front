@@ -21,18 +21,21 @@
                 <li *ngIf="isShown" class="nav-item dropdown">
                   <div ngbDropdown class="w-25 ">
                     <button class="btn btn-link dropdown-toggle navss" id="dropdownBasic1" ngbDropdownToggle>Mapping Details</button>
-                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                      <button ngbDropdownItem><a href="#/Symphonymapping"> New Mapping</a></button>
-                      <button ngbDropdownItem><a href="#/SymphonyMappingView">View Mapping details</a></button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="bg-dark">
+                      <button ngbDropdownItem><a href="#/Symphonymapping" class="  text-white"> New Mapping</a></button>
+                      <button ngbDropdownItem><a href="#/SymphonyMappingView" class="  text-white">View Mapping details</a></button>
                     </div>
                   </div>
                 </li>
-                <li *ngIf="isShown" class="nav-item dropdown">
-                <div ngbDropdown class="w-25 ms-0">
+                <li *ngIf="isShown" class="nav-item dropdown bg-dark">
+                <div ngbDropdown class="w-25 ms-0 bg-dark">
                   <button class="btn btn-link dropdown-toggle navss" id="dropdownBasic1" ngbDropdownToggle>API Configuration</button>
-                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                    <button ngbDropdownItem><a href="#/SymphonyNewInterface"> New Interface</a></button>
-                    <button ngbDropdownItem><a href="#/SymphonyallInterfacesDetails"> All interface detail</a></button>
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="bg-dark">
+                    <button ngbDropdownItem><a href="#/SymphonyNewInterface"  class="  text-white"> API Configuration</a></button>
+                    <button ngbDropdownItem><a href="#/SymphonySunNewInterface" class="  text-white"> SUN Configuration</a></button>
+                    <button ngbDropdownItem><a href="#/SymphonyCapsNewInterface" class="text-white"> CAPS Configuration</a></button>
+                    <button ngbDropdownItem><a href="#/SymphonyallInterfacesDetails" class="  text-white"> Interface Details</a></button>
+                    <button ngbDropdownItem><a href="#/SymphonyCapsDetalis" class=" text-white"> CAPS Details</a></button>
                   </div>
                </div>
               </li>
@@ -52,7 +55,8 @@
 
               </ul>
 
-
+               
+             
         <!-- <form class="d-flex">
           <input class="form-control me-2"  type="date" placeholder="Search" aria-label="Search">
         </form> -->

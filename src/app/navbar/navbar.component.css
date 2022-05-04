@@ -28,3 +28,9 @@ img{
 a{
     text-decoration: none !important;
 }
+
+.dropdown-item:focus, .dropdown-item:hover{
+    color:black;
+    background-color: rgb(144, 147, 147);
+   
+}
