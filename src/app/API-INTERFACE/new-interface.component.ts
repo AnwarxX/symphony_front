@@ -22,7 +22,6 @@ export class NewInterfaceComponent implements OnInit {
   lockRef:new FormControl("",Validators.compose([Validators.required])),
   ApiSchedule:new FormControl("",Validators.compose([Validators.required])),
   ApiScheduleStatue:new FormControl("",Validators.compose([Validators.required])),
- 
 })
 authData:any;
 dis:any;

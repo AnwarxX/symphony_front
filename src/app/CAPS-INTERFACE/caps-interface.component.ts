@@ -18,7 +18,7 @@ export class CapsInterfaceComponent implements OnInit {
   CapsPassword:new FormControl("",Validators.compose([Validators.required])),
   Capsserver:new FormControl("",Validators.compose([Validators.required])),
   CapsDatabase:new FormControl("",Validators.compose([Validators.required])),
-  Capslocref:new FormControl("",Validators.compose([Validators.required])),
+  CapslocRef:new FormControl("",Validators.compose([Validators.required])),
   CapsSchedule:new FormControl("",Validators.compose([Validators.required])),
   CapsScheduleStatue:new FormControl("",Validators.compose([Validators.required])),
 
@@ -52,7 +52,7 @@ constructor(public apiService:APIsService) {
       $(".CapsEveryDay").attr('disabled', 'disabled');
     }
     else if(this.dis=="year"){
-      $(".sunEveryYear").removeAttr('disabled');
+      $(".CapsEveryYear").removeAttr('disabled');
       $(".CapsEveryYear").attr('disabled', 'disabled');
       $(".CapsEveryDay").attr('disabled', 'disabled');
     }
@@ -66,11 +66,11 @@ authorization()
   var originalText = bytes.toString(cryptoJS.enc.Utf8);
   let x=JSON.parse(originalText)
   
-  if(x[0].LockRef == this.form2.get("lockRef")?.value && x[0].EnterpriseShortName == this.form2.get("enterpriseShortName")?.value){
+  if(x[0].LockRef == this.form2.get("CapslocRef")?.value){
 
    
   //send a post request with the table name and column to this endpoit in the backend to retrive all the distinct values in that column
-  this.apiService.postFun('authorization',this.form2.value).subscribe(data => {
+  this.apiService.postFun('addCaps',this.form2.value).subscribe(data => {
   // this.authData=data;//data variable holds all the data retrived then asign them to a variable cold value
   this.authData=""
   for (let i = 0; i < data.length; i++) {

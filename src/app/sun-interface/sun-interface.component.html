@@ -57,7 +57,32 @@
 
                     </div>
                 </div>
+
+                <div class="col-md-4 mt-2">
+                    <div class="input-group ">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text " id="inputGroup-sizing-default">Interface Code:</span>
+                        </div>
+                        <select class="d-block form-control" formControlName="interfaceCode" id="">
+                            <option *ngFor="let i of interfaces" [value]="i">{{i}}</option>
+    
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4 mt-2">
+                    <div class="input-group ">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text " id="inputGroup-sizing-default">Definition Type:</span>
+                        </div>
+                        <select class="d-block form-control" (change)="type($event)" formControlName="definitionType" id="">
+                            <option value="caps">CAPS</option>
+                            <option value="api">API</option>
+                        </select>
+                    </div>
+                </div>
             </div>
+
+
             <div class="row pt-2">
                 <div class="col-md-3 ">
                     <div *ngIf="form2.get('SunUser')?.invalid && form2.get('SunUser')?.touched">
