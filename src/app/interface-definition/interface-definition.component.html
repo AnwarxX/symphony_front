@@ -1,1 +1,134 @@
-<p>interface-definition works!</p>
+<section id="home">
+
+    <div class="con mt-5">
+        <div class="text-center py-3 mt-5">
+            <h2 class="header header-h4">New Interface Definition</h2>
+        </div>
+        <form action="" [formGroup]="form2" class=" mb-2  " (ngSubmit)="authorization()">
+
+            <div class="text-center  bg-dark">
+                <p class="text-white py-2">Interface Definition</p>
+            </div>
+            <div class="row ">
+
+                
+                <div class="col-md-6">
+                    <div class="input-group">
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Definition Type</span>
+                        </div>
+                        <select class="CN_S" formControlName="type" (change)="rows($event)" id="" class="form-control">
+                            
+                            <option value="CAPS">CAPS</option>
+                            <option value="API">API</option>
+                         </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6 ">
+                    <div class="input-group">
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Definition Codes</span>
+                        </div>
+                        <select formControlName="interfaceCode" id="" class="form-control">
+                            <option *ngFor="let i of DefinationCodes" [value]='i'>{{i}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-2">
+                    <div class="input-group">
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Sun Codes</span>
+                        </div>
+                        <select formControlName="sunCode" id="" class="form-control">
+                            <option *ngFor="let i of Combo.sun" [value]='i.SunCode'>{{i.SunCode}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-2">
+                    <div class="input-group">
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">BU</span>
+                        </div>
+                        <select formControlName="BUCode" id="" class="form-control">
+                            <option *ngFor="let i of Combo.BU" [value]='i.BU'>{{i.BU}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <div class="input-group"> 
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Mapping Codes</span>
+                        </div>
+                        <select formControlName="mappCode" id="" class="form-control">
+                            <option *ngFor="let i of Combo.mapp" [value]='i.MappingCode'>{{i.MappingCode}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row pt-2">
+                <div class="col-md-3 ">
+                    <div *ngIf="form2.get('SunUser')?.invalid && form2.get('SunUser')?.touched">
+                        <small class="btn btn-danger px-5 " *ngIf="form2.get('SunUser')?.errors?.required"> User is
+                            required</small>
+                            <small class="btn btn-danger px-5 " *ngIf="form2.get('SunUser')?.errors?.pattern"> Only Alphabet without spaces</small>
+                    </div>
+
+                </div>
+                <div class="col-md-3 ">
+                    <div *ngIf="form2.get('SunPassword')?.invalid && form2.get('SunPassword')?.touched">
+                        <small class="btn btn-danger px-5 " *ngIf="form2.get('SunPassword')?.errors?.required"> Password
+                            is
+                            required</small>
+
+                    </div>
+
+                </div>
+                <div class="col-md-3 ">
+                    <div *ngIf="form2.get('Sunserver')?.invalid && form2.get('Sunserver')?.touched">
+                        <small class="btn btn-danger px-5 " *ngIf="form2.get('Sunserver')?.errors?.required"> Server is
+                            required</small>
+
+                    </div>
+                </div>
+                <div class="col-md-3 ">
+                    <div *ngIf="form2.get('SunDatabase')?.invalid && form2.get('SunDatabase')?.touched">
+                        <small class="btn btn-danger px-5 " *ngIf="form2.get('SunDatabase')?.errors?.required"> Database
+                            is
+                            required</small>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-dark text-white w-100 "
+                        [disabled]="form2.status=='INVALID'">submit</button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+    <div class="position-fixed   text-white text-center right-0  " style="z-index: 5; right: 0; bottom: 39px;">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header ">
+                <button type="button" class="btn-close  m-0" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body btn-dark text-white">
+            </div>
+        </div>
+    </div>
+
+</section>

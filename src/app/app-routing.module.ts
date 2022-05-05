@@ -15,6 +15,8 @@ import { MappingComponent } from './mapping/mapping.component';
 import { NewInterfaceComponent } from './API-INTERFACE/new-interface.component';
 import { SunInterfaceComponent } from './sun-interface/sun-interface.component';
 import { CapsInterfaceComponent } from './CAPS-INTERFACE/caps-interface.component';
+import { InterfaceDefinitionComponent } from './interface-definition/interface-definition.component';
+
 
 import { SympDbComponent } from './symp-db/symp-db.component';
 import * as cryptoJS from 'crypto-js';
@@ -106,6 +108,9 @@ const routes: Routes = [
   {path:"SymphonyhomeConfig",component:HomeConfigComponent,canActivate:[alwaysAuthGuard]},
   {path:"SymphonyNewInterface",component:NewInterfaceComponent,canActivate:[alwaysAuthGuard]},
   {path:"SymphonySunNewInterface",component:SunInterfaceComponent,canActivate:[alwaysAuthGuard]},
+  {path:"SymphonyInterfaceDefination",component:InterfaceDefinitionComponent,canActivate:[alwaysAuthGuard]},
+
+  
   {path:"SymphonyCapsNewInterface",component:CapsInterfaceComponent,canActivate:[alwaysAuthGuard]},
   {path:"SymphonyallInterfacesDetails",component:AllInterfacesDetailsComponent,canActivate:[alwaysAuthGuard]},
   {path:"SymphonyMappingDetails",component:MappingDetailComponent,canActivate:[alwaysAuthGuard]},
