@@ -1,3 +1,23 @@
+
+    <!-- Delete Modal -->
+    <div class="modal " id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                <p>ARE YOU SURE YOU WANT TO DELETE THIS ROW ?</p>
+    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" (click)=confirmDelete() class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 <section id="home">
     <div class="con w-100">
         <div class="row text-center mb-5">
@@ -33,7 +53,7 @@
                         <td>{{i.locRef}}</td>
                         <td>{{i.capsSchedule}}</td>
                         <td>{{i.capsScheduleStatus}}</td>
-                        <td><button class="btn btn-danger" data-bs-toggle="modal"  data-bs-target="#delete">Delete</button></td>
+                        <td><button class="btn btn-danger" data-bs-toggle="modal" (click)="deleteBtn(i)" data-bs-target="#delete">Delete</button></td>
 
                 </tr>     
                 </tbody> 

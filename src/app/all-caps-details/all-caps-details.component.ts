@@ -8,6 +8,7 @@ declare var $:any
 })
 export class AllCAPSDetailsComponent implements OnInit {
   CAPS:any;
+  rowInput:any;
   capsDate:any;
   all=true;
 
@@ -57,4 +58,20 @@ export class AllCAPSDetailsComponent implements OnInit {
     }
     
   }
+  
+deleteBtn(row:any){
+  this.rowInput=row;
+  
+}
+
+confirmDelete(){
+  console.log(this.rowInput);
+  
+  this.apiService.postFun('deleteCaps',this.rowInput).subscribe(data => {
+    this.getCAPS()
+  })
+}
+
+
+
 }
