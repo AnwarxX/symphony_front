@@ -19,6 +19,8 @@
                     <th scope="col">locRef</th>
                     <th scope="col">Schedule</th>
                     <th scope="col">Schedule Status</th>
+                    <th scope="col"> Delete</th>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -31,6 +33,8 @@
                         <td>{{i.locRef}}</td>
                         <td>{{i.capsSchedule}}</td>
                         <td>{{i.capsScheduleStatus}}</td>
+                        <td><button class="btn btn-danger" data-bs-toggle="modal"  data-bs-target="#delete">Delete</button></td>
+
                 </tr>     
                 </tbody> 
                 </table>
