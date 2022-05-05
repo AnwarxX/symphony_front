@@ -27,38 +27,33 @@ export class AllCAPSDetailsComponent implements OnInit {
     await this.apiService.getFun('getCAPS').subscribe(
       response => {
         this.CAPS = response;//response variable holds all the data retrived then asign them to a variable cold data
+         for (let i = 0; i < this.CAPS.length; i++) {
+          this.CAPS[i].capsSchedule=this.dissEdit(this.CAPS[i].capsSchedule,this.CAPS[i].capsScheduleStatus)
+         }
          console.log(this.CAPS);
-         this.dissEdit(this.CAPS.capsSchedule,this.CAPS.capsScheduleStatus)
-  
       }
     )
   } 
 
   dissEdit(date:any,status:any){
     this.capsDate =date.split(" ")
-    if (status=="day") {
-      this.CAPS.patchValue({capsSchedule:
-        ((this.capsDate[2] < 10) ? "0" :'')+this.capsDate[2] + ":" + 
-        ((this.capsDate[1] < 10) ? "0" :'')+this.capsDate[1]})
-        $('.sunEveryMonth').val("yyyy-MM-ddThh:mm");
-        $('.sunEveryYear').val("yyyy-MM-ddThh:mm");
+    if (status=="day"){
+      return this.capsDate[2] + ":" + 
+      ((this.capsDate[1] < 10) ? "0" :'')+this.capsDate[1]
     }
     else if(status=="month"){
-      this.CAPS.patchValue({capsSchedule:new Date().getFullYear() + "-" +  
+      return new Date().getFullYear() + "-" +  
       (((new Date().getMonth()+1) < 10) ? "0" :'')  +(new Date().getMonth()+ 1)+ "-" + 
       ((this.capsDate[3] < 10) ? "0" :'')+this.capsDate[3] + "T" +  
-      ((this.capsDate[2] < 10) ? "0" :'')+this.capsDate[2] + ":" + 
-      ((this.capsDate[1] < 10) ? "0" :'')+this.capsDate[1]})
-    
-
+      this.capsDate[2] + ":" + 
+      ((this.capsDate[1] < 10) ? "0" :'')+this.capsDate[1]
     }
-    else if(status=="year"){
-      this.CAPS.patchValue({capsSchedule:new Date().getFullYear() + "-" +  
+    else{
+      return new Date().getFullYear() + "-" +  
       ((this.capsDate[4] < 10) ? "0" :'')+this.capsDate[4] + "-" + 
       ((this.capsDate[3] < 10) ? "0" :'')+this.capsDate[3] + "T" +  
-      ((this.capsDate[2] < 10) ? "0" :'')+this.capsDate[2] + ":" + 
-      ((this.capsDate[1] < 10) ? "0" :'')+this.capsDate[1]})
-    
+      this.capsDate[2] + ":" + 
+      ((this.capsDate[1] < 10) ? "0" :'')+this.capsDate[1]
     }
     
   }
