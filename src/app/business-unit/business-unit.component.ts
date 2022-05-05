@@ -19,8 +19,6 @@ export class BusinessUnitComponent implements OnInit {
     Currencycode:new FormControl("",Validators.compose([Validators.required])),
     LedgerImportDescription:new FormControl("",Validators.compose([Validators.required])),
     SuspenseAccount:new FormControl("",Validators.compose([Validators.required])),
-    interfaceCode:new FormControl("",Validators.compose([Validators.required])),
-    MappingCode:new FormControl("",Validators.compose([Validators.required])),
   })
   value:any;
   constructor(public apiService:APIsService) {

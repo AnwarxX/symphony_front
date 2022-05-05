@@ -18,9 +18,6 @@ export class SunInterfaceComponent implements OnInit {
   SunPassword:new FormControl("",Validators.compose([Validators.required])),
   Sunserver:new FormControl("",Validators.compose([Validators.required])),
   SunDatabase:new FormControl("",Validators.compose([Validators.required])),
-  SunlocRef:new FormControl("",Validators.compose([Validators.required])),
-  definitionType:new FormControl("",Validators.compose([Validators.required])),
-  interfaceCode:new FormControl("",Validators.compose([Validators.required])),
   SunSchedule:new FormControl("",Validators.compose([Validators.required])),
   SunScheduleStatue:new FormControl("",Validators.compose([Validators.required])),
 })
@@ -74,9 +71,6 @@ authorization()
   var bytes  = cryptoJS.AES.decrypt(tok||"", 'lamiaa');
   var originalText = bytes.toString(cryptoJS.enc.Utf8);
   let x=JSON.parse(originalText)
-  
-  if(x[0].LockRef == this.form2.get("SunlocRef")?.value){
-
    
   //send a post request with the table name and column to this endpoit in the backend to retrive all the distinct values in that column
   this.apiService.postFun('sunAuthorization',this.form2.value).subscribe(data => {
@@ -88,11 +82,6 @@ authorization()
   $('#liveToast').toast('show')
   $('.toast-body').html(this.authData)
   })
-}else{
-  $('#liveToast').toast('show')
-  $('.toast-body').html("License and configuration doesn't match")
-
-}
 }
 imports(typ:any){
   this.interfaces=[]

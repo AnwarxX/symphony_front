@@ -112,47 +112,9 @@
             </div>
             <div class="row justify-content-center pt-1">
 
-                <div class="col-md-6 ml-5">
-                    <div class="input-group ">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text " id="inputGroup-sizing-default">Mapping Code:</span>
-                        </div>
-                        <select class="d-block  pt-1  form-control" formControlName="MappingCode" id="">
-                            <option *ngFor="let i of mapp" [value]="i.MappingCode">{{i.MappingCode}}</option>
-
-                        </select>
-                    </div>
-                </div>
-              
-                <div class="col-md-6 ml-5">
-                    <div class="input-group ">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text " id="inputGroup-sizing-default">Interface Code:</span>
-                        </div>
-                        <select class="d-block form-control" formControlName="interfaceCode" id="">
-                            <option *ngFor="let i of interfaces" [value]="i.interfaceCode">{{i.interfaceCode}}</option>
-
-                        </select>
-                    </div>
-                </div>
-
 
             </div>
             <div class="row justify-content-center pt-1">
-                <div class="col-md-6 ">
-                    <div *ngIf="form2.get('MappingCode')?.invalid && form2.get('MappingCode')?.touched">
-                        <small class="btn btn-danger form-control" *ngIf="form2.get('MappingCode')?.errors?.required">
-                            Mapping Code is required</small>
-                    </div>
-
-                </div>
-                <div class="col-md-6 ">
-                    <div *ngIf="form2.get('interfaceCode')?.invalid && form2.get('interfaceCode')?.touched">
-                        <small class="btn btn-danger form-control  " *ngIf="form2.get('interfaceCode')?.errors?.required">interface Code is
-                            required</small>
-                    </div>
-
-                </div>
 
             </div>
             <div class="row justify-content-center pt-1">

@@ -27,6 +27,7 @@ import { AboutComponent } from './about/about.component';
 import { FooterComponent } from './footer/footer.component';
 import { StatusViewComponent } from './status-view/status-view.component';
 import { AllCAPSDetailsComponent } from './all-caps-details/all-caps-details.component';
+import { InterfaceDefinitionComponent } from './interface-definition/interface-definition.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { AllCAPSDetailsComponent } from './all-caps-details/all-caps-details.com
     AboutComponent,
     FooterComponent,
     StatusViewComponent,
-    AllCAPSDetailsComponent
+    AllCAPSDetailsComponent,
+    InterfaceDefinitionComponent
   ],
   imports: [
     BrowserModule,

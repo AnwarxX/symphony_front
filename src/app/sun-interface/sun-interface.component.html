@@ -48,38 +48,6 @@
 
                     </div>
                 </div>
-                <div class="col-md-4 mt-2">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroup-sizing-default">locRef</span>
-                        </div>
-                        <input formControlName="SunlocRef" name="" class="form-control" value="" id="">
-
-                    </div>
-                </div>
-
-                <div class="col-md-4 mt-2">
-                    <div class="input-group ">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text " id="inputGroup-sizing-default">Interface Code:</span>
-                        </div>
-                        <select class="d-block form-control" formControlName="interfaceCode" id="">
-                            <option *ngFor="let i of interfaces" [value]="i">{{i}}</option>
-    
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-4 mt-2">
-                    <div class="input-group ">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text " id="inputGroup-sizing-default">Definition Type:</span>
-                        </div>
-                        <select class="d-block form-control" (change)="type($event)" formControlName="definitionType" id="">
-                            <option value="caps">CAPS</option>
-                            <option value="api">API</option>
-                        </select>
-                    </div>
-                </div>
             </div>
 
 
