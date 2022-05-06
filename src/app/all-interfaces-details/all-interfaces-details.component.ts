@@ -154,7 +154,6 @@ username: ""};
       $("#exampleRadiosSun2").prop('checked',true);
       $('.sunEveryYear').val("yyyy-MM-ddThh:mm");
       $('.sunEveryDay').val("hh:mm");
-
     }
     else if(this.reviewInput.SunScheduleStatue=="year"){
       $(".sunEveryYear").removeAttr('disabled');
@@ -219,7 +218,8 @@ username: ""};
     this.apiService.getFun("importInterface").subscribe(data => {
 
         this.interfaceData=data;//data variable holds all the data retrived then asign them to a variable cold value   
-  
+      console.log(this.interfaceData);
+      
       });//data variable holds all the data retrived then asign them to a variable cold value     
     // this.httpClient.get<any>('http://localhost:5000/importInterface').subscribe(data => {
 
