@@ -54,6 +54,7 @@ username: ""};
   dateDisable=false;
   authData:any;
   dis:any;
+  importType:any;
   form = new FormGroup({
     startDate:new FormControl(""),
     endDate:new FormControl(""),
@@ -64,7 +65,7 @@ username: ""};
     date:new FormControl("",Validators.compose([Validators.required]))
   })
   constructor(public apiService:APIsService) { 
-    this.imports()
+    // this.imports()
     this.getInterfaceData()
     
   }
@@ -228,8 +229,10 @@ username: ""};
     // })
 
   }
-  importBtn(text:any){
+  importBtn(text:any,type:any){
     this.interfaceCod=text;
+    this.importType=type;
+    this.imports(type)
   }
   importSun(){
     
@@ -238,7 +241,6 @@ username: ""};
   }
   deleteBtn(row:any){
     this.rowInput=row;
-
   }
   editBtn(row:any){
     this.reviewInput=row;
@@ -268,7 +270,8 @@ username: ""};
     })
   }
   confirmDelete(){
-    this.apiService.postFun('deleteInterface',this.rowInput).subscribe(data => {
+    console.log(this.rowInput);
+    this.apiService.postFun('deleteInterface',{interfaceCode:this.rowInput}).subscribe(data => {
       this.getInterfaceData()
     })
   }
@@ -301,21 +304,33 @@ username: ""};
   
   })
 }
-  imports(){
-    this.apiService.getFun('interfaceCode').subscribe(data => {
-      this.apis=data.apidata;//data variable holds all the data retrived then asign them to a variable cold value
-      this.interfaces=data.interfacedata;//data variable holds all the data retrived then asign them to a variable cold value
-    })
-  }
-  start(BU:any){
-    this.apiService.postFun('startSun',{BU}).subscribe(data => {
+  imports(type:any){
+    if (type=='CAPS') {
+      this.apis=[
+        {name:'getTaxDailyTotals'},
+        {name:'getServiceChargeDailyTotals'},
+        {name:'getDiscountDailyTotals'},
+        {name:'getTenderMediaDimensions'},
+        {name:'getTaxDimensions'},
+        {name:'getMenuItemDimensions'},
+        {name:'getGuestChecks'}
+      ]
+    }
+    else
+      this.apiService.getFun('interfaceCode').subscribe(data => {
+        this.apis=data.apidata;//data variable holds all the data retrived then asign them to a variable cold value
+        this.interfaces=data.interfacedata;//data variable holds all the data retrived then asign them to a variable cold value
+      })
+  } 
+  start(connectionCode:any){
+    this.apiService.postFun('startSun',{connectionCode}).subscribe(data => {
     this.reply=data;//data variable holds all the data retrived then asign them to a variable cold value
     //this.getmapp()//then call this function again to render the new submitted data
     })
   }
   
-  stop(BU:any){
-    this.apiService.postFun('stopSun',{BU}).subscribe(data => {
+  stop(connectionCode:any){
+    this.apiService.postFun('stopSun',{connectionCode}).subscribe(data => {
     this.reply=data;//data variable holds all the data retrived then asign them to a variable cold value
     //this.getmapp()//then call this function again to render the new submitted data
     })
@@ -326,9 +341,16 @@ username: ""};
     let start=this.form.get('startDate')?.value;
     let end=this.form.get('endDate')?.value;
     this.x=[]
+    let endpoint=""
+    if (this.importType=='CAPS') 
+      endpoint='capsImport'
+    else
+      endpoint='import'
+    console.log(endpoint);
+    console.log(this.interfaceCod,this.getDaysArray(start,end),this.form.get('api')?.value);
     for (let i = 0; i < this.getDaysArray(start,end).length; i++) {
       
-      this.apiService.postFun("import",{interface:this.interfaceCod,date:this.getDaysArray(start,end)[i].toISOString().split("T")[0],api:this.form.get('api')?.value}).subscribe(data => {
+      this.apiService.postFun(endpoint,{interface:this.interfaceCod,date:this.getDaysArray(start,end)[i].toISOString().split("T")[0],api:this.form.get('api')?.value}).subscribe(data => {
         this.x.push(data)
         if (this.x.length==this.getDaysArray(start,end).length) {
         }

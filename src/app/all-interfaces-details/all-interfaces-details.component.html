@@ -429,6 +429,7 @@
             <thead class="">
                 <tr>
                     <th scope="col">Schedule</th>
+                    <th scope="col">Schedule Statues</th>
                     <th scope="col">Interface Type</th>
                     <th scope="col">Interface code</th>
                     <th scope="col">Sun code</th>
@@ -444,18 +445,19 @@
             <tbody id="">
                 <tr *ngFor="let i of interfaceData" >
                     <td><div class="startend w-100 text-center my-2 ">
-                        <button class="btn btn-success me-2" type="submit " (click)="start(i.BU)">start</button>
-                        <button class="me-4 btn btn-danger" type="submit" (click)="stop(i.BU)">Stop</button>
+                        <button class="btn btn-success me-2" type="submit " (click)="start(i.connectionCode)">start</button>
+                        <button class="me-4 btn btn-danger" type="submit" (click)="stop(i.connectionCode)">Stop</button>
                     </div></td>
+                    <td>{{i.type}}</td>
                     <td>{{i.type}}</td>
                     <td>{{i.interfaceCode}}</td>
                     <td>{{i.sunCode}}</td>
                     <td>{{i['BUCode']}}</td>
                     <td>{{i.mappCode}}</td>
-                    <td><button class="btn btn-success icBtn" data-bs-toggle="modal" (click)="importBtn(i.interfaceCode)" data-bs-target="#importmodal" >Import</button></td>
-                    <td><button class="btn btn-success icBtn" data-bs-toggle="modal" (click)="importBtn(i.interfaceCode)" data-bs-target="#sunPost" >Post</button></td>
+                    <td><button class="btn btn-success icBtn" data-bs-toggle="modal" (click)="importBtn(i.interfaceCode,i.type)" data-bs-target="#importmodal" >Import</button></td>
+                    <td><button class="btn btn-success icBtn" data-bs-toggle="modal" (click)="importBtn(i.interfaceCode,i.type)" data-bs-target="#sunPost" >Post</button></td>
                     <td><button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editmodal" (click)="editBtn(i)">Edit</button></td>
-                    <td><button class="btn btn-danger" data-bs-toggle="modal" (click)="deleteBtn(i)" data-bs-target="#delete">Delete</button></td>
+                    <td><button class="btn btn-danger" data-bs-toggle="modal" (click)="deleteBtn(i.interfaceCode)" data-bs-target="#delete">Delete</button></td>
                 </tr>
             </tbody>
         </table>
