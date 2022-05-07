@@ -42,3 +42,8 @@
 .b{
     color: #4392A4;
 }
+.form-switch .form-check-input{
+    width: 4em;
+    height: 105%;
+    margin-top:0;
+}

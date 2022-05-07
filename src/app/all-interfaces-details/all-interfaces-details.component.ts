@@ -34,6 +34,7 @@ export class AllInterfacesDetailsComponent implements OnInit {
   interfaceCod:any;
   rowInput:any;
   apiDate:any;
+  toggle:any;
   sunDate:any;
   reviewInput=
   {ApiSchedule: "",
@@ -128,6 +129,23 @@ username: ""};
   test2(event:any){
     let date=(<HTMLInputElement>event.target).value
     
+  }
+  startStop(event:any,connectionCode:any){
+    if ( event.target.checked ) {
+      this.apiService.postFun('startSun',{connectionCode}).subscribe(data => {
+      this.reply=data;//data variable holds all the data retrived then asign them to a variable cold value
+      //this.getmapp()//then call this function again to render the new submitted data
+      })
+      this.toggle=true
+    }
+    else{
+      this.apiService.postFun('stopSun',{connectionCode}).subscribe(data => {
+      this.reply=data;//data variable holds all the data retrived then asign them to a variable cold value
+      //this.getmapp()//then call this function again to render the new submitted data
+      })
+      this.toggle=false
+    }
+    console.log(this.toggle,connectionCode);
   }
   dissEdit(){
     this.apiDate = this.reviewInput.ApiSchedule.split(" ")
