@@ -5,6 +5,12 @@
                 <h1 class=" h2"> Status View</h1>
             </div>
         </div>
+        <div class="input-group px-2 w-25 mx-auto mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-dark text-white px-5" id="inputGroup-sizing-default">Search</span>
+            </div>
+            <input type="date" (input)="search($event)" class="form-control searchInp" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
         <div class="d-flex justify-content-between by-3 w-100">
 
         <div class="card w-100 mx-2">

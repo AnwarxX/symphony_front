@@ -10,21 +10,12 @@ declare var $:any //declear $ to use jquery
 })
 export class AllInterfacesDetailsComponent implements OnInit {
   form2 = new FormGroup({
-    username:new FormControl("",Validators.compose([Validators.required])),
-    password:new FormControl("",Validators.compose([Validators.required])),
-    email:new FormControl("",Validators.compose([Validators.required])),
-    enterpriseShortName:new FormControl("",Validators.compose([Validators.required])),
-    clientId:new FormControl("",Validators.compose([Validators.required])),
-    lockRef:new FormControl("",Validators.compose([Validators.required])),
-    ApiSchedule:new FormControl("",Validators.compose([Validators.required])),
-    ApiScheduleStatue:new FormControl("",Validators.compose([Validators.required])),
-    SunUser:new FormControl("",Validators.compose([Validators.required])),
-    SunPassword:new FormControl("",Validators.compose([Validators.required])),
-    Sunserver:new FormControl("",Validators.compose([Validators.required])),
-    SunDatabase:new FormControl("",Validators.compose([Validators.required])),
-    SunSchedule:new FormControl("",Validators.compose([Validators.required])),
-    SunScheduleStatue:new FormControl("",Validators.compose([Validators.required])),
-    interfaceCode:new FormControl(),
+    connectionCode:new FormControl("",Validators.compose([])),
+    interfaceCode:new FormControl("",Validators.compose([Validators.required])),
+    type:new FormControl("",Validators.compose([])),
+    sunCode:new FormControl("",Validators.compose([Validators.required])),
+    mappCode:new FormControl("",Validators.compose([Validators.required])),
+    BUCode:new FormControl("",Validators.compose([Validators.required])),
   })
   reply:any;
   x:any;
@@ -36,22 +27,7 @@ export class AllInterfacesDetailsComponent implements OnInit {
   apiDate:any;
   toggle:any;
   sunDate:any;
-  reviewInput=
-  {ApiSchedule: "",
-ApiScheduleStatue: "",
-SunDatabase: "",
-SunPassword: "",
-SunSchedule: "",
-SunScheduleStatue: "",
-SunUser: "",
-Sunserver: "",
-clientId: "",
-email: "",
-enterpriseShortName: "",
-interfaceCode: 0,
-lockRef: "",
-password: "",
-username: ""};
+  reviewInput:any;
   dateDisable=false;
   authData:any;
   dis:any;
@@ -65,10 +41,12 @@ username: ""};
   form3 = new FormGroup({
     date:new FormControl("",Validators.compose([Validators.required]))
   })
+  DefinationCodes: any;
+  Combo: any;
   constructor(public apiService:APIsService) { 
-    // this.imports()
+    this.importConnections()
     this.getInterfaceData()
-    
+    this.reviewInput=this.form2.value
   }
   diss(event:any){
     this.dis=(<HTMLInputElement>event.target).value;
@@ -262,19 +240,30 @@ username: ""};
   }
   editBtn(row:any){
     this.reviewInput=row;
-
-    this.apiService.postFun('reviewInterface',this.reviewInput).subscribe(data => {
-      delete data.refreshToken;
-      delete data.token;
-
-      this.form2.setValue(data);
-      this.reviewInput=data;
-      this.dissEdit()
-      
+    console.log(this.reviewInput);
+    this.form2.setValue({
+      connectionCode:this.reviewInput.connectionCode,
+      interfaceCode:this.reviewInput.interfaceCode,
+      type:this.reviewInput.type,
+      sunCode:this.reviewInput.sunCode,
+      mappCode:this.reviewInput.mappCode,
+      BUCode:this.reviewInput.BUCode,
     })
+    console.log(this.form2.value);
+    // this.apiService.postFun('reviewInterface',this.reviewInput).subscribe(data => {
+    //   delete data.refreshToken;
+    //   delete data.token;
+
+    //   this.form2.setValue(data);
+    //   this.reviewInput=data;
+    //   this.dissEdit()
+      
+    // })
+    console.log(this.reviewInput);
   }
   update()
   {
+    this.form2.setValue({connectionCode:this.reviewInput.connectionCode})
     //send a post request with the table name and column to this endpoit in the backend to retrive all the distinct values in that column
     this.apiService.postFun('update',this.form2.value).subscribe(data => {
     // this.authData=data;//data variable holds all the data retrived then asign them to a variable cold value
@@ -284,7 +273,6 @@ username: ""};
     }
     $('#liveToast').toast('show')
     $('.toast-body').html(this.authData)
-    
     })
   }
   confirmDelete(){
@@ -376,5 +364,17 @@ username: ""};
         $('.toast-body').text(data)
       })
     }
+  }
+  rows(event: any)
+  {
+    console.log((<HTMLInputElement>event.target).value);
+  }
+  importConnections(){
+    this.DefinationCodes=[]
+    this.apiService.getFun('getInterfaceDeinitionEdit').subscribe(data => {
+     this.Combo=data
+     console.log(this.Combo);
+     
+      })
   }
 }
