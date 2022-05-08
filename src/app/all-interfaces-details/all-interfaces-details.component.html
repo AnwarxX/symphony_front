@@ -181,18 +181,10 @@
             
                             </div>
                         </div>
-            
-                        <div class="row justify-content-center">
-            
-                            <div class="col-md-12">
-                                <button type="submit" class="btn btn-dark text-white w-100 "
-                                    [disabled]="form2.status=='INVALID'">submit</button>
-                            </div>
-                        </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Apply Edit</button>
+                    <button type="submit" class="btn btn-primary" [disabled]="form2.status=='INVALID'">Apply Edit</button>
                 </div>
             </div>
         </div>
@@ -290,7 +282,7 @@
                     <td>{{i['BUCode']}}</td>
                     <td>{{i.mappCode}}</td>
                     <td><button class="btn btn-success icBtn" data-bs-toggle="modal" (click)="importBtn(i.interfaceCode,i.type)" data-bs-target="#importmodal" >Import</button></td>
-                    <td><button class="btn btn-success icBtn" data-bs-toggle="modal" (click)="importBtn(i.interfaceCode,i.type)" data-bs-target="#sunPost" >Post</button></td>
+                    <td><button class="btn btn-success icBtn" data-bs-toggle="modal" (click)="importBtn(i.connectionCode,i.type)" data-bs-target="#sunPost" >Post</button></td>
                     <td><button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editmodal" (click)="editBtn(i)">Edit</button></td>
                     <td><button class="btn btn-danger" data-bs-toggle="modal" (click)="deleteBtn(i.interfaceCode)" data-bs-target="#delete">Delete</button></td>
                 </tr>

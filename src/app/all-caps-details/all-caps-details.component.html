@@ -17,6 +17,168 @@
             </div>
         </div>
     </div>
+    <!-- Edit Modal -->
+<form action="" [formGroup]="form2" class="" (ngSubmit)="update()">
+    <div class="modal " id="editmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center bg-dark">
+                        <p class="text text-white py-2">CAPS Definition</p>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">User</span>
+                                </div>
+                                <input formControlName="user" name="" pattern="^[a-zA-Z0-9_ ]*$" class="form-control" value="" id="">
+        
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+                                </div>
+                                <input formControlName="password" name="" id="" class="form-control" value=""
+                                    aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Server</span>
+                                </div>
+                                <input formControlName="server" name="" id="" class="form-control" value=""
+                                    aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        
+                            </div>
+                        </div>
+                        <div class="row pt-2">
+                            <div class="col-md-4 ">
+                                <div *ngIf="form2.get('user')?.invalid && form2.get('CapsUser')?.touched">
+                                    <small class="btn btn-danger px-5 " *ngIf="form2.get('CapsUser')?.errors?.required"> User is
+                                        required</small>
+                                        <small class="btn btn-danger px-5 " *ngIf="form2.get('CapsUser')?.errors?.pattern"> Only Alphabet without spaces</small>
+                                </div>
+            
+                            </div>
+                            <div class="col-md-4 ">
+                                <div *ngIf="form2.get('password')?.invalid && form2.get('CapsPassword')?.touched">
+                                    <small class="btn btn-danger px-5 " *ngIf="form2.get('CapsPassword')?.errors?.required"> Password
+                                        is
+                                        required</small>
+            
+                                </div>
+            
+                            </div>
+                            <div class="col-md-4 ">
+                                <div *ngIf="form2.get('server')?.invalid && form2.get('Capsserver')?.touched">
+                                    <small class="btn btn-danger px-5 " *ngIf="form2.get('Capsserver')?.errors?.required"> Server is
+                                        required</small>
+                                </div>
+                            </div>
+        
+                        </div>
+                        <div class="col-md-4 mt-2">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Database</span>
+                                </div>
+                                <input formControlName="database" name="" class="form-control" value="" id="">
+        
+                            </div>
+                        </div>
+                        <div class="col-md-4 mt-2">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">locRef</span>
+                                </div>
+                                <input formControlName="locRef" name="" class="form-control" value="" id="">
+        
+                            </div>
+                        </div>
+                        <div class="row pt-2">
+                            <div class="col-md-4 ">
+                                <div *ngIf="form2.get('database')?.invalid && form2.get('CapsDatabase')?.touched">
+                                    <small class="btn btn-danger px-5 " *ngIf="form2.get('CapsDatabase')?.errors?.required"> Database is
+                                        required</small>
+                                </div>
+            
+                            </div>
+                            <div class="col-md-4 ">
+                                <div *ngIf="form2.get('locref')?.invalid && form2.get('Capslocref')?.touched">
+                                    <small class="btn btn-danger px-5 " *ngIf="form2.get('Capslocref')?.errors?.required"> locRef
+                                        is
+                                        required</small>
+            
+                                </div>
+            
+                            </div>
+        
+        
+                        </div>
+        
+                    </div>
+        
+                    <div class="row pt-2 align-items-center text-center">
+                        <div class="col-md-3 text-center ">
+                            <div class="input-group ">
+                                <div class="input-group-prepend w-100">
+                                    <span class="input-group-text text-center py-3 w-100" id="inputGroup-sizing-default">Sun
+                                        Schedule</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 text-center"> 
+                            <div class="form-check text-white bg-dark text-center w-100">
+                                <input class="form-check-input" type="radio" (click)="diss($event)" name="exampleRadios2" id="exampleRadios2"  formControlName="CapsScheduleStatue" value="day" checked>
+                                <label class="form-check-label" for="exampleRadios2">
+                                    Every day
+                                 </label>
+                              </div> 
+                            <input name="everyDay" formControlName="CapsSchedule" class="list-unstyled hiddenul2 form-control CapsEveryDays" type="time">
+        
+                        </div>
+                        <div class="col-md-3 ">
+                            <div class="form-check text-white bg-dark text-center w-100">
+                                <input class="form-check-input  " type="radio" (click)="diss($event)" name="exampleRadios2" formControlName="CapsScheduleStatue"  id="exampleRadios2" value="month" checked>
+                                <label class="form-check-label" for="exampleRadios2">
+                                    Every Month
+                                </label>
+                              </div> 
+                           
+                            <input name="everyMonth" formControlName="CapsSchedule"   type="datetime-local" class="list-unstyled hiddenul2 form-control CapsEveryMonth">
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check text-white bg-dark text-center w-100">
+                                <input class="form-check-input  " type="radio" (click)="diss($event)" name="exampleRadios2" id="exampleRadios2" formControlName="CapsScheduleStatue"  value="year" checked>
+                                <label class="form-check-label" for="exampleRadios2">
+                                    Every Year
+                                </label>
+                              </div> 
+                            
+                            <input name="everyYear" type="datetime-local"  formControlName="CapsSchedule" class="list-unstyled hiddenul2 form-control CapsEveryYear">
+        
+                        </div>
+        
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" [disabled]="form2.status=='INVALID'">Apply Edit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+    
     
 <section id="home">
     <div class="con w-100">
@@ -39,6 +201,7 @@
                     <th scope="col">locRef</th>
                     <th scope="col">Schedule</th>
                     <th scope="col">Schedule Status</th>
+                    <th scope="col"> Edit</th>
                     <th scope="col"> Delete</th>
 
                 </tr>
@@ -53,6 +216,7 @@
                         <td>{{i.locRef}}</td>
                         <td>{{i.capsSchedule}}</td>
                         <td>{{i.capsScheduleStatus}}</td>
+                        <td><button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editmodal" (click)="editBtn(i)">Edit</button></td>
                         <td><button class="btn btn-danger" data-bs-toggle="modal" (click)="deleteBtn(i)" data-bs-target="#delete">Delete</button></td>
 
                 </tr>     

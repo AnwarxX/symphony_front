@@ -46,9 +46,11 @@ export class MappingViewComponent implements OnInit {
           this.all=false
           this.seaMapping=[]
           for (let i = 0; i < this.mapping.length; i++) {
-            if(this.mapping[i].MappingCode.toLowerCase().includes((<HTMLInputElement>event.target).value))
+            if(this.mapping[i].MappingCode.toLowerCase().includes((<HTMLInputElement>event.target).value.toLowerCase()))
               this.seaMapping.push(this.mapping[i])
           }
+          console.log(this.seaMapping);
+          
         }
       }
       delete(mapp:any){
