@@ -44,7 +44,7 @@ export class AllInterfacesDetailsComponent implements OnInit {
   DefinationCodes: any;
   Combo: any;
   constructor(public apiService:APIsService) { 
-    this.importConnections()
+    this.Combo=this.form2.value
     this.getInterfaceData()
     this.reviewInput=this.form2.value
   }
@@ -240,6 +240,7 @@ export class AllInterfacesDetailsComponent implements OnInit {
   }
   editBtn(row:any){
     this.reviewInput=row;
+    this.importConnections()
     console.log(this.reviewInput);
     this.form2.setValue({
       connectionCode:this.reviewInput.connectionCode,
@@ -263,7 +264,6 @@ export class AllInterfacesDetailsComponent implements OnInit {
   }
   update()
   {
-    this.form2.setValue({connectionCode:this.reviewInput.connectionCode})
     //send a post request with the table name and column to this endpoit in the backend to retrive all the distinct values in that column
     this.apiService.postFun('update',this.form2.value).subscribe(data => {
     // this.authData=data;//data variable holds all the data retrived then asign them to a variable cold value
@@ -271,6 +271,7 @@ export class AllInterfacesDetailsComponent implements OnInit {
     for (let i = 0; i < data.length; i++) {
       this.authData+=data[i]+" "
     }
+    this.getInterfaceData()
     $('#liveToast').toast('show')
     $('.toast-body').html(this.authData)
     })
@@ -371,7 +372,7 @@ export class AllInterfacesDetailsComponent implements OnInit {
   }
   importConnections(){
     this.DefinationCodes=[]
-    this.apiService.getFun('getInterfaceDeinitionEdit').subscribe(data => {
+    this.apiService.postFun('getInterfaceDeinitionEdit',{interfaceCode:this.reviewInput.interfaceCode}).subscribe(data => {
      this.Combo=data
      console.log(this.Combo);
      
