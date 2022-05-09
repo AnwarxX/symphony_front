@@ -41,24 +41,21 @@ constructor(public apiService:APIsService) {
   });
 
   }
-  diss(event:any){
+  
+   diss(event:any){
     this.dis=(<HTMLInputElement>event.target).value;
     if (this.dis=="day") {
       $(".sunEveryDay").removeAttr('disabled');
       $(".sunEveryMonth").attr('disabled', 'disabled');
-      $(".sunEveryYear").attr('disabled', 'disabled');
+      $('.sunEveryMonth').val("yyyy-MM-ddThh:mm");
+      
     }
     else if(this.dis=="month"){
       $(".sunEveryMonth").removeAttr('disabled');
-      $(".sunEveryYear").attr('disabled', 'disabled');
       $(".sunEveryDay").attr('disabled', 'disabled');
+      $('.sunEveryDay').val("hh:mm");
     }
-    else if(this.dis=="year"){
-      $(".sunEveryYear").removeAttr('disabled');
-      $(".sunEveryMonth").attr('disabled', 'disabled');
-      $(".sunEveryDay").attr('disabled', 'disabled');
-    }
-   
+  
   }
   type(event: any)
   {

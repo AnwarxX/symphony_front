@@ -41,21 +41,31 @@ constructor(public apiService:APIsService) {
   }
   diss(event:any){
     this.dis=(<HTMLInputElement>event.target).value;
-
     if (this.dis=="apiday") {
       $(".apiEveryDay").removeAttr('disabled');
       $(".apiEveryMonth").attr('disabled', 'disabled');
       $(".apiEveryYear").attr('disabled', 'disabled');
+      $('.apiEveryYear').val("yyyy-MM-ddThh:mm");
+      $('.apiEveryMonth').val("yyyy-MM-ddThh:mm");
+
+
+      
     }
     else if(this.dis=="apimonth"){
       $(".apiEveryMonth").removeAttr('disabled');
       $(".apiEveryYear").attr('disabled', 'disabled');
       $(".apiEveryDay").attr('disabled', 'disabled');
+      $('.apiEveryYear').val("yyyy-MM-ddThh:mm");
+      $('.apiEveryDay').val("hh:mm");
     }
     else if(this.dis=="apiyear"){
       $(".apiEveryYear").removeAttr('disabled');
       $(".apiEveryMonth").attr('disabled', 'disabled');
       $(".apiEveryDay").attr('disabled', 'disabled');
+      $('.apiEveryMonth').val("yyyy-MM-ddThh:mm");
+      $('.apiEveryDay').val("hh:mm");
+
+
     }
   }
 

@@ -124,7 +124,7 @@
                 </div>
             </div>
             <div class="row py-2 align-items-center  text-center">
-                <div class="col-md-3 ">
+                <div class="col-md-4 ">
                     <div class="input-group ">
                         <div class="input-group-prepend w-100">
                             <span class="input-group-text text-center py-3 " id="inputGroup-sizing-default">Api
@@ -133,34 +133,25 @@
                     </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="form-check text-white bg-dark text-center w-100">
-                        <input class="form-check-input  " type="radio" name="exampleRadios" (click)="diss($event)" id="exampleRadios1" formControlName="ApiScheduleStatue" value="apiday" checked>
+                        <input class="form-check-input  " type="radio" name="exampleRadios" (click)="diss($event)" id="exampleRadios1" formControlName="ApiScheduleStatue" value="apiday" >
                         <label class="form-check-label" for="exampleRadios1">
                             Every day
                          </label>
                       </div>
                     <input name="everyDay" formControlName="ApiSchedule" class="list-unstyled hiddenul2 form-control apiEveryDay" type="time">
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="form-check text-white bg-dark text-center w-100">
-                        <input class="form-check-input  "  type="radio" name="exampleRadios" (click)="diss($event)" id="exampleRadios1"  formControlName="ApiScheduleStatue" value="apimonth" checked>
+                        <input class="form-check-input  "  type="radio" name="exampleRadios" (click)="diss($event)" id="exampleRadios1"  formControlName="ApiScheduleStatue" value="apimonth" >
                         <label class="form-check-label" for="exampleRadios1">
                             Every Month
                         </label>
                     </div> 
                     <input name="everyMonth" type="datetime-local"  formControlName="ApiSchedule"  class="list-unstyled hiddenul2 form-control apiEveryMonth">
                 </div>
-                <div class="col-md-3">
-                    <div class="form-check text-white bg-dark text-center w-100">
-                        <input class="form-check-input  "  type="radio" name="exampleRadios" (click)="diss($event)" formControlName="ApiScheduleStatue" id="exampleRadios1" value="apiyear" checked>
-                        <label class="form-check-label" for="exampleRadios1">
-                            Every Year
-                        </label>
-                    </div> 
-                    <input name="everyYear" type="datetime-local"   formControlName="ApiSchedule" class="list-unstyled hiddenul2 form-control apiEveryYear">
-
-                </div>
+               
 
             </div>
  

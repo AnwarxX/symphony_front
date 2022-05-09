@@ -37,26 +37,29 @@ constructor(public apiService:APIsService) {
   });
 
   }
+
   diss(event:any){
     this.dis=(<HTMLInputElement>event.target).value;
     if (this.dis=="day") {
-      $(".CapsEveryDay").removeAttr('disabled');
+      $(".CapsEveryDays").removeAttr('disabled');
       $(".CapsEveryMonth").attr('disabled', 'disabled');
       $(".CapsEveryYear").attr('disabled', 'disabled');
+      $('.CapsEveryMonth').val("yyyy-MM-ddThh:mm");
+
     }
     else if(this.dis=="month"){
       $(".CapsEveryMonth").removeAttr('disabled');
       $(".CapsEveryYear").attr('disabled', 'disabled');
-      $(".CapsEveryDay").attr('disabled', 'disabled');
-    }
-    else if(this.dis=="year"){
-      $(".CapsEveryYear").removeAttr('disabled');
-      $(".CapsEveryYear").attr('disabled', 'disabled');
-      $(".CapsEveryDay").attr('disabled', 'disabled');
+      $(".CapsEveryDays").attr('disabled', 'disabled');
+      $('.CapsEveryYear').val("yyyy-MM-ddThh:mm");
+      $('.CapsEveryDays').val("hh:mm");
     }
    
-  }
 
+    }
+ 
+   
+  
 authorization()
 {
   let tok =  localStorage.getItem('token');

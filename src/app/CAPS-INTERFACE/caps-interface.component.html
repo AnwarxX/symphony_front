@@ -64,7 +64,7 @@
                     </div>
 
                 </div>
-                <div class="col-md-4 mt-2">
+                <div class="col-md-6 mt-2">
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default">Database</span>
@@ -73,7 +73,7 @@
 
                     </div>
                 </div>
-                <div class="col-md-4 mt-2">
+                <div class="col-md-6 mt-2">
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default">locRef</span>
@@ -83,14 +83,14 @@
                     </div>
                 </div>
                 <div class="row pt-2">
-                    <div class="col-md-4 ">
+                    <div class="col-md-6 ">
                         <div *ngIf="form2.get('CapsDatabase')?.invalid && form2.get('CapsDatabase')?.touched">
                             <small class="btn btn-danger px-5 " *ngIf="form2.get('CapsDatabase')?.errors?.required"> Database is
                                 required</small>
                         </div>
     
                     </div>
-                    <div class="col-md-4 ">
+                    <div class="col-md-6 ">
                         <div *ngIf="form2.get('Capslocref')?.invalid && form2.get('Capslocref')?.touched">
                             <small class="btn btn-danger px-5 " *ngIf="form2.get('Capslocref')?.errors?.required"> locRef
                                 is
@@ -106,7 +106,7 @@
             </div>
 
             <div class="row pt-2 align-items-center text-center">
-                <div class="col-md-3 text-center ">
+                <div class="col-md-4 text-center ">
                     <div class="input-group ">
                         <div class="input-group-prepend w-100">
                             <span class="input-group-text text-center py-3 w-100" id="inputGroup-sizing-default">Sun
@@ -114,9 +114,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 text-center"> 
+                <div class="col-md-4 text-center"> 
                     <div class="form-check text-white bg-dark text-center w-100">
-                        <input class="form-check-input" type="radio" (click)="diss($event)" name="exampleRadios2" id="exampleRadios2"  formControlName="CapsScheduleStatue" value="day" checked>
+                        <input class="form-check-input" type="radio" (click)="diss($event)" name="exampleRadios2" id="exampleRadios2"  formControlName="CapsScheduleStatue" value="day" >
                         <label class="form-check-label" for="exampleRadios2">
                             Every day
                          </label>
@@ -124,9 +124,9 @@
                     <input name="everyDay" formControlName="CapsSchedule" class="list-unstyled hiddenul2 form-control CapsEveryDays" type="time">
 
                 </div>
-                <div class="col-md-3 ">
+                <div class="col-md-4 ">
                     <div class="form-check text-white bg-dark text-center w-100">
-                        <input class="form-check-input  " type="radio" (click)="diss($event)" name="exampleRadios2" formControlName="CapsScheduleStatue"  id="exampleRadios2" value="month" checked>
+                        <input class="form-check-input  " type="radio" (click)="diss($event)" name="exampleRadios2" formControlName="CapsScheduleStatue"  id="exampleRadios2" value="month" >
                         <label class="form-check-label" for="exampleRadios2">
                             Every Month
                         </label>
@@ -134,17 +134,7 @@
                    
                     <input name="everyMonth" formControlName="CapsSchedule"   type="datetime-local" class="list-unstyled hiddenul2 form-control CapsEveryMonth">
                 </div>
-                <div class="col-md-3">
-                    <div class="form-check text-white bg-dark text-center w-100">
-                        <input class="form-check-input  " type="radio" (click)="diss($event)" name="exampleRadios2" id="exampleRadios2" formControlName="CapsScheduleStatue"  value="year" checked>
-                        <label class="form-check-label" for="exampleRadios2">
-                            Every Year
-                        </label>
-                      </div> 
-                    
-                    <input name="everyYear" type="datetime-local"  formControlName="CapsSchedule" class="list-unstyled hiddenul2 form-control CapsEveryYear">
-
-                </div>
+               
 
             </div>
             <div class="row justify-content-center">
