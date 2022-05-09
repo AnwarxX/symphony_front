@@ -18,7 +18,6 @@ export class AllCAPSDetailsComponent implements OnInit {
     locRef:new FormControl("",Validators.compose([Validators.required])),
     capsScheduleStatus:new FormControl("",Validators.compose([Validators.required])),
     capsSchedule:new FormControl("",Validators.compose([Validators.required])),
-  
   })
 
   CAPS:any;
@@ -49,7 +48,7 @@ export class AllCAPSDetailsComponent implements OnInit {
       response => {
         this.CAPS = response;//response variable holds all the data retrived then asign them to a variable cold data
          for (let i = 0; i < this.CAPS.length; i++) {
-          this.CAPS[i].capsSchedule=this.dissEdit(this.CAPS[i].capsSchedule,this.CAPS[i].capsScheduleStatus)
+          this.CAPS[i].capsSchedule=this.dissEdit2(this.CAPS[i].capsSchedule,this.CAPS[i].capsScheduleStatus)
          }
          console.log(this.CAPS);
       }
@@ -58,43 +57,90 @@ export class AllCAPSDetailsComponent implements OnInit {
   diss(event:any){
     this.dis=(<HTMLInputElement>event.target).value;
     if (this.dis=="day") {
-      $(".CapsEveryDay").removeAttr('disabled');
+      $(".CapsEveryDays").removeAttr('disabled');
       $(".CapsEveryMonth").attr('disabled', 'disabled');
       $(".CapsEveryYear").attr('disabled', 'disabled');
+      $('.CapsEveryMonth').val("yyyy-MM-ddThh:mm");
+      $('.CapsEveryYear').val("yyyy-MM-ddThh:mm");
+
     }
     else if(this.dis=="month"){
       $(".CapsEveryMonth").removeAttr('disabled');
       $(".CapsEveryYear").attr('disabled', 'disabled');
-      $(".CapsEveryDay").attr('disabled', 'disabled');
+      $(".CapsEveryDays").attr('disabled', 'disabled');
+      $('.CapsEveryYear').val("yyyy-MM-ddThh:mm");
+      $('.CapsEveryDays').val("hh:mm");
     }
     else if(this.dis=="year"){
       $(".CapsEveryYear").removeAttr('disabled');
-      $(".CapsEveryYear").attr('disabled', 'disabled');
-      $(".CapsEveryDay").attr('disabled', 'disabled');
+      $(".CapsEveryMonth").attr('disabled', 'disabled');
+      $(".CapsEveryDays").attr('disabled', 'disabled');
+      $('.CapsEveryMonth').val("yyyy-MM-ddThh:mm");
+      $('.CapsEveryDays').val("hh:mm");
     }
-   
+    if (this.dis=="apiday") {
+      $(".apiEveryDay").removeAttr('disabled');
+      $(".apiEveryMonth").attr('disabled', 'disabled');
+      $(".apiEveryYear").attr('disabled', 'disabled');
+      $('.apiEveryYear').val("yyyy-MM-ddThh:mm");
+      $('.apiEveryMonth').val("yyyy-MM-ddThh:mm");
+
+
+      
+    }
+    else if(this.dis=="apimonth"){
+      $(".apiEveryMonth").removeAttr('disabled');
+      $(".apiEveryYear").attr('disabled', 'disabled');
+      $(".apiEveryDay").attr('disabled', 'disabled');
+      $('.apiEveryYear').val("yyyy-MM-ddThh:mm");
+      $('.apiEveryDay').val("hh:mm");
+    }
+    else if(this.dis=="apiyear"){
+      $(".apiEveryYear").removeAttr('disabled');
+      $(".apiEveryMonth").attr('disabled', 'disabled');
+      $(".apiEveryDay").attr('disabled', 'disabled');
+      $('.apiEveryMonth').val("yyyy-MM-ddThh:mm");
+      $('.apiEveryDay').val("hh:mm");
+
+
+    }
   }
-  dissEdit(date:any,status:any){
+  dissEdit(){
+    let capsDate = this.reviewInput.capsSchedule
+    
+    if (this.reviewInput.capsScheduleStatus=="day") {
+      this.form2.patchValue({capsSchedule:capsDate})
+      $(".CapsEveryDays").removeAttr('disabled');
+      $(".CapsEveryDays").val(capsDate);
+      $(".CapsEveryMonth").attr('disabled', 'disabled');
+      $(".CapsEveryYear").attr('disabled', 'disabled');
+      $("#exampleRadios1").prop('checked',true);
+      $('.CapsEveryMonth').val("yyyy-MM-ddThh:mm");
+      $('.CapsEveryYear').val("yyyy-MM-ddThh:mm");
+      console.log(this.form2.value);
+    }
+    else if(this.reviewInput.capsScheduleStatus=="month"){
+      this.form2.patchValue({capsSchedule:capsDate})
+      $(".CapsEveryMonth").removeAttr('disabled');
+      $(".CapsEveryMonth").val(capsDate);
+      $(".CapsEveryYear").attr('disabled', 'disabled');
+      $(".CapsEveryDays").attr('disabled', 'disabled');
+      $("#exampleRadios2").prop('checked',true);
+      $('.CapsEveryYear').val("yyyy-MM-ddThh:mm");
+      $('.CapsEveryDays').val("hh:mm");
+    }
+  }
+  dissEdit2(date:any,status:any){
     this.capsDate =date.split(" ")
     if (status=="day"){
-      return this.capsDate[2] + ":" + 
-      ((this.capsDate[1] < 10) ? "0" :'')+this.capsDate[1]
+      return this.capsDate[2] + ":" +this.capsDate[1]
     }
-    else if(status=="month"){
+    else {
       return new Date().getFullYear() + "-" +  
       (((new Date().getMonth()+1) < 10) ? "0" :'')  +(new Date().getMonth()+ 1)+ "-" + 
       ((this.capsDate[3] < 10) ? "0" :'')+this.capsDate[3] + "T" +  
-      this.capsDate[2] + ":" + 
-      ((this.capsDate[1] < 10) ? "0" :'')+this.capsDate[1]
+      this.capsDate[2] + ":"+this.capsDate[1]
     }
-    else{
-      return new Date().getFullYear() + "-" +  
-      ((this.capsDate[4] < 10) ? "0" :'')+this.capsDate[4] + "-" + 
-      ((this.capsDate[3] < 10) ? "0" :'')+this.capsDate[3] + "T" +  
-      this.capsDate[2] + ":" + 
-      ((this.capsDate[1] < 10) ? "0" :'')+this.capsDate[1]
-    }
-    
   }
   
 deleteBtn(row:any){
@@ -110,7 +156,7 @@ editBtn(row:any){
     server:this.reviewInput.server,
     database:this.reviewInput.database,
     locRef:this.reviewInput.locRef,
-    capsScheduleStatus:this.reviewInput.database,
+    capsScheduleStatus:this.reviewInput.capsScheduleStatus,
     capsSchedule:this.reviewInput.locRef,
   })
   // this.apiService.postFun('reviewInterface',this.reviewInput).subscribe(data => {
@@ -119,15 +165,15 @@ editBtn(row:any){
 
   //   this.form2.setValue(data);
   //   this.reviewInput=data;
-  //   this.dissEdit()
+    this.dissEdit()
     
   // })
-  console.log(this.reviewInput);
 }
 update()
 {
   //send a post request with the table name and column to this endpoit in the backend to retrive all the distinct values in that column
-  this.apiService.postFun('update',this.form2.value).subscribe(data => {
+  console.log(this.form2.value);
+  this.apiService.postFun('updateCaps',this.form2.value).subscribe(data => {
   // this.authData=data;//data variable holds all the data retrived then asign them to a variable cold value
   this.getCAPS()
   $('#liveToast').toast('show')
