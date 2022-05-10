@@ -315,6 +315,7 @@ export class AllInterfacesDetailsComponent implements OnInit {
     if (type=='CAPS') {
       this.apis=[
         {name:'getTaxDailyTotals'},
+        {name:'getTenderMediaDailyTotals'},
         {name:'getServiceChargeDailyTotals'},
         {name:'getDiscountDailyTotals'},
         {name:'getTenderMediaDimensions'},
