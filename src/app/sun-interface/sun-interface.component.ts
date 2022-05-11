@@ -20,6 +20,7 @@ export class SunInterfaceComponent implements OnInit {
   SunDatabase:new FormControl("",Validators.compose([Validators.required])),
   SunSchedule:new FormControl("",Validators.compose([Validators.required])),
   SunScheduleStatue:new FormControl("",Validators.compose([Validators.required])),
+  type:new FormControl("",Validators.compose([Validators.required]))
 })
 authData:any;
 dis:any;

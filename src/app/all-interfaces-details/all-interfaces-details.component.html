@@ -1,5 +1,3 @@
-
-
 <!-- Button trigger modal -->
 
 <!-- Import Modal -->
@@ -11,48 +9,50 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="" [formGroup]="form" (ngSubmit)="import()" class=" pb-3 ">
-            <div class="modal-body">
-                <div class="row py-1 d-flex ">
-                    <div class="col-md-6 ">
-                        <div class="input-group">
+                <div class="modal-body">
+                    <div class="row py-1 d-flex ">
+                        <div class="col-md-6 ">
+                            <div class="input-group">
 
-                            <div class="input-group-prepend">
-                                <span class="input-group-text " id="inputGroup-sizing-default">Api</span>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text " id="inputGroup-sizing-default">Api</span>
+                                </div>
+                                <select formControlName="api" id="" (click)="disableDate($event)" class="form-control">
+                                    <option value="all">All</option>
+                                    <option *ngFor="let i of apis" [value]="i.name">{{i.name}}</option>
+                                </select>
                             </div>
-                            <select formControlName="api" id="" (click)="disableDate($event)" class="form-control">
-                                <option value="all">All</option>
-                                <option *ngFor="let i of apis"  [value]="i.name">{{i.name}}</option>
-                            </select>
                         </div>
-                    </div>
-                    <div class="col-md-6"  *ngIf="dateDisable==true">
-                        <div class="input-group">
+                        <div class="col-md-6" *ngIf="dateDisable==true">
+                            <div class="input-group">
 
-                            <div class="input-group-prepend">
-                                <span class="input-group-text " id="inputGroup-sizing-default">Date</span>
-                            </div>
-                            <div class="row w-75 align-items-center">
-                                <div class="col-6">
-                                    <input formControlName="startDate" (change)="test($event)" type="date" class="w-100">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text " id="inputGroup-sizing-default">Date</span>
                                 </div>
-                                <div class="col-6">
-                                    <input formControlName="endDate" (change)="test2($event)" type="date" class="w-100 apiDate">
+                                <div class="row w-75 align-items-center">
+                                    <div class="col-6">
+                                        <input formControlName="startDate" (change)="test($event)" type="date"
+                                            class="w-100">
+                                    </div>
+                                    <div class="col-6">
+                                        <input formControlName="endDate" (change)="test2($event)" type="date"
+                                            class="w-100 apiDate">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-12 ">
-                        <div *ngIf="form.get('startDate')?.invalid && form.get('startDate')?.touched">
-                            <small class="btn btn-danger px-5 w-100" > please enter all input</small>
+                        <div class="col-md-12 ">
+                            <div *ngIf="form.get('startDate')?.invalid && form.get('startDate')?.touched">
+                                <small class="btn btn-danger px-5 w-100"> please enter all input</small>
+                            </div>
                         </div>
                     </div>
+
                 </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" [disabled]="form.status=='INVALID'" class="btn btn-primary">IMPORT</button>
-            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" [disabled]="form.status=='INVALID'" class="btn btn-primary">IMPORT</button>
+                </div>
             </form>
         </div>
     </div>
@@ -67,130 +67,141 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-            
-                        <div class="text-center  bg-dark">
-                            <p class="text-white py-2">Interface Definition</p>
-                        </div>
-                        <div class="row ">
-            
-                            
-                            <div class="col-md-6">
-                                <div class="input-group">
-            
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Definition Type</span>
-                                    </div>
-                                    <select class="CN_S" formControlName="type" (change)="rows($event)" id="" class="form-control"   [attr.disabled]='true' >
-                                        <option value="CAPS">CAPS</option>
-                                        <option value="API">API</option>
-                                     </select>
+
+                    <div class="text-center  bg-dark">
+                        <p class="text-white py-2">Interface Definition</p>
+                    </div>
+                    <div class="row ">
+
+
+                        <div class="col-md-6">
+                            <div class="input-group">
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Definition Type</span>
                                 </div>
-                            </div>
-            
-                            <div class="col-md-6 " *ngIf="reviewInput.type=='API'">
-                                <div class="input-group">
-            
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Definition Codes</span>
-                                    </div>
-                                    <select formControlName="interfaceCode" id="" class="form-control">
-                                        <option *ngFor="let i of  Combo.api" [value]='i.interfaceCode'>{{i.interfaceCode}}</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6 " *ngIf="reviewInput.type=='CAPS'">
-                                <div class="input-group">
-            
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Definition Codes</span>
-                                    </div>
-                                    <p></p>
-                                    <select formControlName="interfaceCode" id="" class="form-control">
-                                        <option *ngFor="let i of Combo.caps" [value]='i.capsCode'>{{i.capsCode}}</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6 mt-2">
-                                <div class="input-group">
-            
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Sun Codes</span>
-                                    </div>
-                                    <select formControlName="sunCode" id="" class="form-control">
-                                        <option *ngFor="let i of Combo.sun" [value]='i.SunCode'>{{i.SunCode}}</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6 mt-2">
-                                <div class="input-group">
-            
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">BU</span>
-                                    </div>
-                                    <select formControlName="BUCode" id="" class="form-control">
-                                        <option *ngFor="let i of Combo.BU" [value]='i.BU'>{{i.BU}}</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-12 mt-2">
-                                <div class="input-group"> 
-            
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Mapping Codes</span>
-                                    </div>
-                                    <select formControlName="mappCode" id="" class="form-control">
-                                        <option *ngFor="let i of Combo.mapp" [value]='i.MappingCode'>{{i.MappingCode}}</option>
-                                    </select>
-                                </div>
+                                <select class="CN_S" formControlName="type" (change)="rows($event)" id=""
+                                    class="form-control" [attr.disabled]='true'>
+                                    <option value="CAPS">CAPS</option>
+                                    <option value="API">API</option>
+                                </select>
                             </div>
                         </div>
-            
-            
-                        <div class="row pt-2">
-                            <div class="col-md-3 ">
-                                <div *ngIf="form2.get('SunUser')?.invalid && form2.get('SunUser')?.touched">
-                                    <small class="btn btn-danger px-5 " *ngIf="form2.get('SunUser')?.errors?.required"> User is
-                                        required</small>
-                                        <small class="btn btn-danger px-5 " *ngIf="form2.get('SunUser')?.errors?.pattern"> Only Alphabet without spaces</small>
+
+                        <div class="col-md-6 " *ngIf="reviewInput.type=='API'">
+                            <div class="input-group">
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Definition
+                                        Codes</span>
                                 </div>
-            
-                            </div>
-                            <div class="col-md-3 ">
-                                <div *ngIf="form2.get('SunPassword')?.invalid && form2.get('SunPassword')?.touched">
-                                    <small class="btn btn-danger px-5 " *ngIf="form2.get('SunPassword')?.errors?.required"> Password
-                                        is
-                                        required</small>
-            
-                                </div>
-            
-                            </div>
-                            <div class="col-md-3 ">
-                                <div *ngIf="form2.get('Sunserver')?.invalid && form2.get('Sunserver')?.touched">
-                                    <small class="btn btn-danger px-5 " *ngIf="form2.get('Sunserver')?.errors?.required"> Server is
-                                        required</small>
-            
-                                </div>
-                            </div>
-                            <div class="col-md-3 ">
-                                <div *ngIf="form2.get('SunDatabase')?.invalid && form2.get('SunDatabase')?.touched">
-                                    <small class="btn btn-danger px-5 " *ngIf="form2.get('SunDatabase')?.errors?.required"> Database
-                                        is
-                                        required</small>
-            
-                                </div>
-            
+                                <select formControlName="interfaceCode" id="" class="form-control">
+                                    <option *ngFor="let i of  Combo.api" [value]='i.interfaceCode'>{{i.interfaceCode}}
+                                    </option>
+                                </select>
                             </div>
                         </div>
+                        <div class="col-md-6 " *ngIf="reviewInput.type=='CAPS'">
+                            <div class="input-group">
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Definition
+                                        Codes</span>
+                                </div>
+                                <p></p>
+                                <select formControlName="interfaceCode" id="" class="form-control">
+                                    <option *ngFor="let i of Combo.caps" [value]='i.capsCode'>{{i.capsCode}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            <div class="input-group">
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Sun Codes</span>
+                                </div>
+                                <select formControlName="sunCode" id="" class="form-control">
+                                    <option *ngFor="let i of Combo.sun" [value]='i.SunCode'>{{i.SunCode}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            <div class="input-group">
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">BU</span>
+                                </div>
+                                <select formControlName="BUCode" id="" class="form-control">
+                                    <option *ngFor="let i of Combo.BU" [value]='i.BU'>{{i.BU}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <div class="input-group">
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Mapping Codes</span>
+                                </div>
+                                <select formControlName="mappCode" id="" class="form-control">
+                                    <option *ngFor="let i of Combo.mapp" [value]='i.MappingCode'>{{i.MappingCode}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row pt-2">
+                        <div class="col-md-3 ">
+                            <div *ngIf="form2.get('SunUser')?.invalid && form2.get('SunUser')?.touched">
+                                <small class="btn btn-danger px-5 " *ngIf="form2.get('SunUser')?.errors?.required"> User
+                                    is
+                                    required</small>
+                                <small class="btn btn-danger px-5 " *ngIf="form2.get('SunUser')?.errors?.pattern"> Only
+                                    Alphabet without spaces</small>
+                            </div>
+
+                        </div>
+                        <div class="col-md-3 ">
+                            <div *ngIf="form2.get('SunPassword')?.invalid && form2.get('SunPassword')?.touched">
+                                <small class="btn btn-danger px-5 " *ngIf="form2.get('SunPassword')?.errors?.required">
+                                    Password
+                                    is
+                                    required</small>
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-3 ">
+                            <div *ngIf="form2.get('Sunserver')?.invalid && form2.get('Sunserver')?.touched">
+                                <small class="btn btn-danger px-5 " *ngIf="form2.get('Sunserver')?.errors?.required">
+                                    Server is
+                                    required</small>
+
+                            </div>
+                        </div>
+                        <div class="col-md-3 ">
+                            <div *ngIf="form2.get('SunDatabase')?.invalid && form2.get('SunDatabase')?.touched">
+                                <small class="btn btn-danger px-5 " *ngIf="form2.get('SunDatabase')?.errors?.required">
+                                    Database
+                                    is
+                                    required</small>
+
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" [disabled]="form2.status=='INVALID'">Apply Edit</button>
+                    <button type="submit" class="btn btn-primary" [disabled]="form2.status=='INVALID'">Apply
+                        Edit</button>
                 </div>
             </div>
         </div>
     </div>
-    </form>
-    
+</form>
+
 <!-- PostSun Modal -->
 <div class="modal " id="sunPost" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
@@ -200,30 +211,54 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="" [formGroup]="form3" (ngSubmit)="importSun()" class=" pb-3 ">
-            <div class="modal-body">
-                <div class="row py-1 d-flex ">
-                    <div class="col-md-12 ">
-                        <div class="input-group justify-content-center align-items-center">
+                <div class="modal-body">
+                    <div class="row py-1 d-flex ">
+                        <div class="col-md-6 ">
+                            <div class="input-group justify-content-center align-items-center">
 
-                            <div class="input-group-prepend ">
-                                <span class="input-group-text " id="inputGroup-sizing-default">Date</span>
-                            </div>
-                            <div class="row w-50 ">
-                                <div class="col-12">
-                                    <input formControlName="date" type="date" class="w-100">
+                                <div class="input-group-prepend px-2 ">
+                                    <span class="input-group-text  px-5 " id="inputGroup-sizing-default">Date</span>
+                                </div>
+                                <div class="row w-75 ">
+                                    <div class="col-12">
+                                        <input formControlName="date" type="date" class="w-100">
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-6  ">
+                            <div class="input-group  d-flex justify-content-center align-items-center ">
+
+                                <div class="input-group-prepend px-3">
+                                    <span class="input-group-text px-5" id="inputGroup-sizing-default">Type</span>
+                                </div>
+
+                                <div class="form-check px-4 ">
+                                    <input class="form-check-input" type="radio" formControlName="Types" name="Type"
+                                        id="flexRadioDefault1" value="Net">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                         Net Revenue
+                                    </label>
+                                </div>
+                                <div class="form-check px-4">
+                                    <input class="form-check-input" type="radio" formControlName="Types" name="Type"
+                                        id="flexRadioDefault2" value="Gross">
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Gross Revenue
+                                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
+
                 </div>
-
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">POST</button>
-            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary"  [disabled]="form3.status=='INVALID'">POST</button>
+                </div>
             </form>
         </div>
     </div>
@@ -237,11 +272,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body text-center">
-            <p>ARE YOU SURE YOU WANT TO DELETE THIS ROW ?</p>
-</div>
+                <p>ARE YOU SURE YOU WANT TO DELETE THIS ROW ?</p>
+            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" (click)=confirmDelete() class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
+                <button type="submit" (click)=confirmDelete() class="btn btn-danger"
+                    data-bs-dismiss="modal">Delete</button>
             </div>
         </div>
     </div>
@@ -268,29 +304,38 @@
                 </tr>
             </thead>
             <tbody id="">
-                <tr *ngFor="let i of interfaceData" >
-                    <td><div class="startend w-100 text-center d-flex my-2 ">
-                        <div class="form-check form-switch mx-auto">
-                            <input class="form-check-input" type="checkbox" (change)="startStop($event,i.connectionCode)" role="switch" id="flexSwitchCheckChecked" [checked]="i.scheduleStatus" />
-                          </div>
-                        <!-- <button class="btn btn-success me-2" type="submit " (click)="start(i.connectionCode)">start</button>
+                <tr *ngFor="let i of interfaceData">
+                    <td>
+                        <div class="startend w-100 text-center d-flex my-2 ">
+                            <div class="form-check form-switch mx-auto">
+                                <input class="form-check-input" type="checkbox"
+                                    (change)="startStop($event,i.connectionCode)" role="switch"
+                                    id="flexSwitchCheckChecked" [checked]="i.scheduleStatus" />
+                            </div>
+                            <!-- <button class="btn btn-success me-2" type="submit " (click)="start(i.connectionCode)">start</button>
                         <button class="me-4 btn btn-danger" type="submit" (click)="stop(i.connectionCode)">Stop</button> -->
-                    </div></td>
+                        </div>
+                    </td>
                     <td>{{i.type}}</td>
                     <td>{{i.interfaceCode}}</td>
                     <td>{{i.sunCode}}</td>
                     <td>{{i['BUCode']}}</td>
                     <td>{{i.mappCode}}</td>
-                    <td><button class="btn btn-success icBtn" data-bs-toggle="modal" (click)="importBtn(i.interfaceCode,i.type)" data-bs-target="#importmodal" >Import</button></td>
-                    <td><button class="btn btn-success icBtn" data-bs-toggle="modal" (click)="importBtn(i.connectionCode,i.type)" data-bs-target="#sunPost" >Post</button></td>
-                    <td><button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editmodal" (click)="editBtn(i)">Edit</button></td>
-                    <td><button class="btn btn-danger" data-bs-toggle="modal" (click)="deleteBtn(i.interfaceCode)" data-bs-target="#delete">Delete</button></td>
+                    <td><button class="btn btn-success icBtn" data-bs-toggle="modal"
+                            (click)="importBtn(i.interfaceCode,i.type)" data-bs-target="#importmodal">Import</button>
+                    </td>
+                    <td><button class="btn btn-success icBtn" data-bs-toggle="modal"
+                            (click)="importBtn(i.connectionCode,i.type)" data-bs-target="#sunPost">Post</button></td>
+                    <td><button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editmodal"
+                            (click)="editBtn(i)">Edit</button></td>
+                    <td><button class="btn btn-danger" data-bs-toggle="modal" (click)="deleteBtn(i.interfaceCode)"
+                            data-bs-target="#delete">Delete</button></td>
                 </tr>
             </tbody>
         </table>
     </div>
 
-  
+
 
 </div>
 

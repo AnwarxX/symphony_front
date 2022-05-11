@@ -39,7 +39,8 @@ export class AllInterfacesDetailsComponent implements OnInit {
     api:new FormControl("",Validators.compose([Validators.required]))
   })
   form3 = new FormGroup({
-    date:new FormControl("",Validators.compose([Validators.required]))
+    date:new FormControl("",Validators.compose([Validators.required])),
+    Types:new FormControl("",Validators.compose([Validators.required]))
   })
   DefinationCodes: any;
   Combo: any;
@@ -232,7 +233,7 @@ export class AllInterfacesDetailsComponent implements OnInit {
   }
   importSun(){
     
-    this.apiService.postFun('importSun',{interfaceCod:parseInt(this.interfaceCod),date:this.form3.get('date')?.value}).subscribe(data => {
+    this.apiService.postFun('importSun',{interfaceCod:parseInt(this.interfaceCod),Types:this.form3.get('Types')?.value,date:this.form3.get('date')?.value},).subscribe(data => {
     })
   }
   deleteBtn(row:any){

@@ -73,7 +73,7 @@
             </div>
             <div class="row pt-2">
 
-            <div class="col-md-12 mt-2">
+            <div class="col-md-4 mt-2">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-default">Database</span>
@@ -82,19 +82,51 @@
 
                 </div>
             </div>
+            <div class="col-md-8 mt-2   ">
+                <div class="input-group  d-flex  align-items-center bg-dark text-white ">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text px-5" id="inputGroup-sizing-default">Type</span>
+                    </div>
+                    
+                    <div class="form-check px-5 ">
+                        <input class="form-check-input" type="radio" formControlName="type" name="Type"
+                            id="flexRadioDefault1" value="Net">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                             Net Revenue
+                        </label>
+                    </div>
+                    <div class="form-check px-5">
+                        <input class="form-check-input" type="radio" formControlName="type" name="Type"
+                            id="flexRadioDefault2" value="Gross">
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Gross Revenue
+                        </label>
+
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="row pt-2">
 
-            <div class="col-md-12 ">
+            <div class="col-md-6 ">
                 <div *ngIf="form2.get('SunDatabase')?.invalid && form2.get('SunDatabase')?.touched">
                     <small class="btn btn-danger px-5 w-100" *ngIf="form2.get('SunDatabase')?.errors?.required"> Database
                         is
                         required</small>
 
                 </div>
-
-
             </div>
+
+                <div class="col-md-6 ">
+                    <div *ngIf="form2.get('type')?.invalid && form2.get('type')?.touched">
+                        <small class="btn btn-danger px-5 w-100" *ngIf="form2.get('type')?.errors?.required"> Type
+                            is
+                            required</small>
+    
+                    </div>
+           </div>
+        
         </div>
 
             <div class="row pt-2 align-items-center text-center">
