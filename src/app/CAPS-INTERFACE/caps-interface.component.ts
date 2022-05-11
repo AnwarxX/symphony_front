@@ -14,12 +14,13 @@ declare var $:any //declear $ to use jquery
 export class CapsInterfaceComponent implements OnInit {
  //this is the form group that contains all the property setting inputs with its validation
  form2 = new FormGroup({
-  connection:new FormControl("",Validators.compose([Validators.required])),
+  CapsUser:new FormControl("",Validators.compose([Validators.required])),
   CapsPassword:new FormControl("",Validators.compose([Validators.required])),
   Capsserver:new FormControl("",Validators.compose([Validators.required])),
   CapsDatabase:new FormControl("",Validators.compose([Validators.required])),
   CapslocRef:new FormControl("",Validators.compose([Validators.required])),
-
+  CapsScheduleStatue:new FormControl("",Validators.compose([Validators.required])),
+  CapsSchedule:new FormControl("",Validators.compose([Validators.required])),
 })
 authData:any;
 dis:any;
