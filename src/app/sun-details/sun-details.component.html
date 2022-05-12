@@ -28,7 +28,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="text-center bg-dark">
-                        <p class="text text-white py-2">CAPS Definition</p>
+                        <p class="text text-white py-2">Sun Definition</p>
                     </div>
                     <div class="row ">
                         <div class="col-md-4">
@@ -95,13 +95,28 @@
         
                             </div>
                         </div>
-                        <div class="col-md-4 mt-2">
-                            <div class="input-group">
+                        <div class="col-md-8 mt-2   ">
+                            <div class="input-group  d-flex  align-items-center bg-dark text-white ">
+            
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">locRef</span>
+                                    <span class="input-group-text px-5" id="inputGroup-sizing-default">Type</span>
                                 </div>
-                                <input formControlName="locRef" name="" class="form-control" value="" id="">
-        
+                                
+                                <div class="form-check px-5 ">
+                                    <input class="form-check-input" type="radio" formControlName="type" name="type"
+                                        id="flexRadioDefault1" value="Net">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                         Net Revenue
+                                    </label>
+                                </div>
+                                <div class="form-check px-5">
+                                    <input class="form-check-input" type="radio" formControlName="type" name="type"
+                                        id="flexRadioDefault2" value="Gross">
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Gross Revenue
+                                    </label>
+            
+                                </div>
                             </div>
                         </div>
                         <div class="row pt-2">
@@ -113,8 +128,8 @@
             
                             </div>
                             <div class="col-md-4 ">
-                                <div *ngIf="form2.get('locref')?.invalid && form2.get('locref')?.touched">
-                                    <small class="btn btn-danger px-5 " *ngIf="form2.get('locref')?.errors?.required"> locRef
+                                <div *ngIf="form2.get('type')?.invalid && form2.get('type')?.touched">
+                                    <small class="btn btn-danger px-5 " *ngIf="form2.get('type')?.errors?.required"> type
                                         is
                                         required</small>
             
@@ -138,23 +153,23 @@
                         </div>
                         <div class="col-md-4 text-center"> 
                             <div class="form-check text-white bg-dark text-center w-100">
-                                <input class="form-check-input" type="radio" (click)="diss($event)" name="exampleRadios2" id="exampleRadios1"  formControlName="capsScheduleStatus" value="day" >
+                                <input class="form-check-input" type="radio" (click)="diss($event)" name="exampleRadios2" id="exampleRadios1"  formControlName="sunScheduleStatus" value="day" >
                                 <label class="form-check-label" for="exampleRadios2">
                                     Every day
                                  </label>
                               </div> 
-                            <input name="everyDay" formControlName="capsSchedule" class="list-unstyled hiddenul2 form-control CapsEveryDays" type="time">
+                            <input name="everyDay" formControlName="sunSchedule" class="list-unstyled hiddenul2 form-control CapsEveryDays" type="time">
         
                         </div>
                         <div class="col-md-4 ">
                             <div class="form-check text-white bg-dark text-center w-100">
-                                <input class="form-check-input  " type="radio" (click)="diss($event)" name="exampleRadios2" formControlName="capsScheduleStatus"  id="exampleRadios2" value="month" >
+                                <input class="form-check-input  " type="radio" (click)="diss($event)" name="exampleRadios2" formControlName="sunScheduleStatus"  id="exampleRadios2" value="month" >
                                 <label class="form-check-label" for="exampleRadios2">
                                     Every Month
                                 </label>
                               </div> 
                            
-                            <input name="everyMonth" formControlName="capsSchedule"   type="datetime-local" class="list-unstyled hiddenul2 form-control CapsEveryMonth">
+                            <input name="everyMonth" formControlName="sunSchedule"   type="datetime-local" class="list-unstyled hiddenul2 form-control CapsEveryMonth">
                         </div>
                         <!-- <div class="col-md-3">
                             <div class="form-check text-white bg-dark text-center w-100">
@@ -184,7 +199,7 @@
     <div class="con w-100">
         <div class="row text-center mb-5">
             <div class="Header">
-                <h1 class=" h2"> CAPS View</h1>
+                <h1 class=" h2">Sun View</h1>
             </div>
         </div>
      
@@ -198,7 +213,7 @@
                     <th scope="col">Password</th>
                     <th scope="col">Server</th>
                     <th scope="col">Database</th>
-                    <th scope="col">locRef</th>
+                    <th scope="col">Type</th>
                     <th scope="col">Schedule</th>
                     <th scope="col">Schedule Status</th>
                     <th scope="col"> Edit</th>
@@ -207,15 +222,15 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let i of CAPS" >
-                        <td>{{i.capsCode}}</td>
-                        <td>{{i.user}}</td>
-                        <td>{{i.password}}</td>
-                        <td>{{i.server}}</td>
-                        <td>{{i.database}}</td>
-                        <td>{{i.locRef}}</td>
-                        <td>{{i.capsSchedule}}</td>
-                        <td>{{i.capsScheduleStatus}}</td>
+                    <tr *ngFor="let i of sun" >
+                        <td>{{i.SunCode}}</td>
+                        <td>{{i.SunUser}}</td>
+                        <td>{{i.SunPassword}}</td>
+                        <td>{{i.Sunserver}}</td>
+                        <td>{{i.SunDatabase}}</td>
+                        <td>{{i.type}}</td>
+                        <td>{{i.SunSchedule}}</td>
+                        <td>{{i.SunScheduleStatue}}</td>
                         <td><button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editmodal" (click)="editBtn(i)">Edit</button></td>
                         <td><button class="btn btn-danger" data-bs-toggle="modal" (click)="deleteBtn(i)" data-bs-target="#delete">Delete</button></td>
 

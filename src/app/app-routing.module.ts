@@ -24,6 +24,7 @@ import { APIsService } from "./services/apis.service";
 import { AboutComponent } from './about/about.component';
 import { StatusViewComponent } from './status-view/status-view.component';
 import { AllCAPSDetailsComponent } from './all-caps-details/all-caps-details.component';
+import { SunDetailsComponent } from './sun-details/sun-details.component';
 @Injectable()
 export class alwaysAuthGuard implements CanActivate{
   // data:any
@@ -117,6 +118,7 @@ const routes: Routes = [
   {path:"SymphonyMappingView",component:MappingViewComponent,canActivate:[alwaysAuthGuard]},
   {path:"SymphonyStatusView",component:StatusViewComponent,canActivate:[alwaysAuthGuard]},
   {path:"SymphonyCapsDetalis",component:AllCAPSDetailsComponent,canActivate:[alwaysAuthGuard]},
+  {path:"SymphonySunDetalis",component:SunDetailsComponent,canActivate:[alwaysAuthGuard]},
   {path:"License",component:LicenseComponent},
   {path:"About",component:AboutComponent},
   {path: '**', component: HomeComponent}

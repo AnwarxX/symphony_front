@@ -28,6 +28,7 @@ import { FooterComponent } from './footer/footer.component';
 import { StatusViewComponent } from './status-view/status-view.component';
 import { AllCAPSDetailsComponent } from './all-caps-details/all-caps-details.component';
 import { InterfaceDefinitionComponent } from './interface-definition/interface-definition.component';
+import { SunDetailsComponent } from './sun-details/sun-details.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { InterfaceDefinitionComponent } from './interface-definition/interface-d
     FooterComponent,
     StatusViewComponent,
     AllCAPSDetailsComponent,
-    InterfaceDefinitionComponent
+    InterfaceDefinitionComponent,
+    SunDetailsComponent
   ],
   imports: [
     BrowserModule,
