@@ -15,6 +15,7 @@ export class NewInterfaceComponent implements OnInit {
  //this is the form group that contains all the property setting inputs with its validation
  form2 = new FormGroup({
   username:new FormControl("",Validators.compose([Validators.required])),
+  name:new FormControl("",Validators.compose([Validators.required])),
   password:new FormControl("",Validators.compose([Validators.required])),
   email:new FormControl("",Validators.compose([Validators.required])),
   enterpriseShortName:new FormControl("",Validators.compose([Validators.required])),

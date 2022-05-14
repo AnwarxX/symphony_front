@@ -15,6 +15,7 @@ export class CapsInterfaceComponent implements OnInit {
  //this is the form group that contains all the property setting inputs with its validation
  form2 = new FormGroup({
   CapsUser:new FormControl("",Validators.compose([Validators.required])),
+  name:new FormControl("",Validators.compose([Validators.required])),
   CapsPassword:new FormControl("",Validators.compose([Validators.required])),
   Capsserver:new FormControl("",Validators.compose([Validators.required])),
   CapsDatabase:new FormControl("",Validators.compose([Validators.required])),

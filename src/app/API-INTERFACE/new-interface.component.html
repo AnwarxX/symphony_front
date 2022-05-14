@@ -91,7 +91,6 @@
                         </div>
                         <input formControlName="lockRef" name="" id="" class="form-control" value=""
                             aria-label="Sizing example input" pattern="^[a-zA-Z0-9_ ]*$" aria-describedby="inputGroup-sizing-default">
-
                     </div>
                 </div>
             </div>
@@ -119,6 +118,24 @@
                         <small class="btn btn-danger px-5 " *ngIf="form2.get('lockRef')?.errors?.required"> LockRef is
                             required</small>
                             <small class="btn btn-danger px-5 " *ngIf="form2.get('lockRef')?.errors?.pattern"> Only Alphabet</small>
+                    </div>
+
+                </div>
+                <div class="col-md-12 my-2">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">name</span>
+                        </div>
+                        <input formControlName="name" name="" id="" class="form-control" value=""
+                            aria-label="Sizing example input" pattern="^[a-zA-Z0-9_ ]*$" aria-describedby="inputGroup-sizing-default">
+
+                    </div>
+                </div>
+                <div class="col-md-12 ">
+                    <div *ngIf="form2.get('name')?.invalid && form2.get('name')?.touched">
+                        <small class="btn btn-danger px-5 " *ngIf="form2.get('name')?.errors?.required"> name is
+                            required</small>
+                            <small class="btn btn-danger px-5 " *ngIf="form2.get('name')?.errors?.pattern"> Only Alphabet</small>
                     </div>
 
                 </div>

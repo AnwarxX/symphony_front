@@ -15,6 +15,7 @@ export class SunInterfaceComponent implements OnInit {
  //this is the form group that contains all the property setting inputs with its validation
  form2 = new FormGroup({
   SunUser:new FormControl("",Validators.compose([Validators.required])),
+  name:new FormControl("",Validators.compose([Validators.required])),
   SunPassword:new FormControl("",Validators.compose([Validators.required])),
   Sunserver:new FormControl("",Validators.compose([Validators.required])),
   SunDatabase:new FormControl("",Validators.compose([Validators.required])),

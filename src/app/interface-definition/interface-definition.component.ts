@@ -82,13 +82,13 @@ imports(typ:any){
    if(typ=='CAPS')
    {
     for (let i = 0; i < data.caps.length; i++) {
-      this.DefinationCodes.push(data.caps[i].capsCode)
+      this.DefinationCodes.push(data.caps[i].capsCode+" "+data.caps[i].name)
     }
    }
    else
    {
     for (let i = 0; i < data.api.length; i++) {
-      this.DefinationCodes.push(data.api[i].interfaceCode)
+      this.DefinationCodes.push(data.api[i].interfaceCode+" "+data.api[i].name)
     }
    }
    this.Combo=data

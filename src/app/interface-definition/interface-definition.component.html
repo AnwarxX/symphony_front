@@ -33,7 +33,7 @@
                             <span class="input-group-text" id="inputGroup-sizing-default">Definition Codes</span>
                         </div>
                         <select formControlName="interfaceCode" id="" class="form-control">
-                            <option *ngFor="let i of DefinationCodes" [value]='i'>{{i}}</option>
+                            <option *ngFor="let i of DefinationCodes" [value]='i'>{{i}} {{i.name}}</option>
                         </select>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
                             <span class="input-group-text" id="inputGroup-sizing-default">Sun Codes</span>
                         </div>
                         <select formControlName="sunCode" id="" class="form-control">
-                            <option *ngFor="let i of Combo.sun" [value]='i.SunCode'>{{i.SunCode}}</option>
+                            <option *ngFor="let i of Combo.sun" [value]='i.SunCode'>{{i.SunCode}} {{i.name}}</option>
                         </select>
                     </div>
                 </div>

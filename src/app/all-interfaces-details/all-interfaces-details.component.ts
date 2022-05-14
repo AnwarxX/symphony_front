@@ -356,11 +356,25 @@ export class AllInterfacesDetailsComponent implements OnInit {
     else
       endpoint='import'
     console.log(endpoint);
-    console.log(this.interfaceCod,this.getDaysArray(start,end),this.form.get('api')?.value);
-    for (let i = 0; i < this.getDaysArray(start,end).length; i++) {
-      
-      this.apiService.postFun(endpoint,{interface:this.interfaceCod,date:this.getDaysArray(start,end)[i].toISOString().split("T")[0],api:this.form.get('api')?.value}).subscribe(data => {
+    console.log(this.getDaysArray(start,end).length);
+    if (this.getDaysArray(start,end).length==0) {
+      length=1
+    }
+    else {
+      length=this.getDaysArray(start,end).length
+    }
+    for (let i = 0; i < length; i++) {
+      let date;
+      if (length==1) {
+        date=new Date()
+      }
+      else{
+        date=this.getDaysArray(start,end)[i].toISOString().split("T")[0]
+      }
+      this.apiService.postFun(endpoint,{interface:this.interfaceCod,date,api:this.form.get('api')?.value}).subscribe(data => {
         this.x.push(data)
+        console.log(data);
+        
         if (this.x.length==this.getDaysArray(start,end).length) {
         }
         $('#liveToast').toast('show')
