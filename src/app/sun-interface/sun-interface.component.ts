@@ -74,12 +74,8 @@ authorization()
   //send a post request with the table name and column to this endpoit in the backend to retrive all the distinct values in that column
   this.apiService.postFun('sunAuthorization',this.form2.value).subscribe(data => {
   // this.authData=data;//data variable holds all the data retrived then asign them to a variable cold value
-  this.authData=""
-  for (let i = 0; i < data.length; i++) {
-    this.authData+=data[i]+" "
-  }
   $('#liveToast').toast('show')
-  $('.toast-body').html(this.authData)
+  $('.toast-body').html(data)
   })
 }
 imports(typ:any){
