@@ -208,7 +208,8 @@
                 <table class="table mx-2 text-center mt-5 w-100 ">
                 <thead>
                 <tr>
-                    <th scope="col">Sun Server Connection </th>
+                    <th scope="col">Connection </th>
+                    <th scope="col">Name </th>
                     <th scope="col">User</th>
                     <th scope="col">Password</th>
                     <th scope="col">Server</th>
@@ -224,6 +225,7 @@
                 <tbody>
                     <tr *ngFor="let i of sun" >
                         <td>{{i.SunCode}}</td>
+                        <td>{{i.name}}</td>
                         <td>{{i.SunUser}}</td>
                         <td>{{i.SunPassword}}</td>
                         <td>{{i.Sunserver}}</td>

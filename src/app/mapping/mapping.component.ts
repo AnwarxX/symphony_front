@@ -121,6 +121,8 @@ export class MappingComponent implements OnInit {
     this.tbvalue=[]
     $('#liveToast').toast('show')
     $('.toast-body').text(data)
+    this.form.setValue({MappingCode:"",Description:"",locRef:'',mapp:'',table:'',column:'',value:'',level:'',Revenue:'',input:''})
+
       })
       
     this.form.reset;
@@ -139,10 +141,17 @@ export class MappingComponent implements OnInit {
   }
   switch(event:any){
     if (this.toggle) {
+      this.removeValidators(this.form,'table')
+      this.removeValidators(this.form,'column')
+   
       this.toggle=false;
+
     }
     else{
+      this.form.get('table')?.setValidators([Validators.required])
+      this.form.get('column')?.setValidators([Validators.required])
       this.toggle=true;
+
     }
     
   }

@@ -12,6 +12,7 @@ declare var $:any
 export class SunDetailsComponent implements OnInit {
   form2 = new FormGroup({
     sunCode:new FormControl("",Validators.compose([Validators.required])),
+    name:new FormControl("",Validators.compose([Validators.required])),
     user:new FormControl("",Validators.compose([Validators.required])),
     password:new FormControl("",Validators.compose([Validators.required])),
     server:new FormControl("",Validators.compose([Validators.required])),
