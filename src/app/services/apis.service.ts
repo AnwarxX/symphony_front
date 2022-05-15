@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class APIsService {
   
-  baseURL="http://localhost:5000/";
+  baseURL="http://192.168.1.78:5000/";
   constructor(private http:HttpClient) {}
   getFun(endPoint:any){
     return this.http.get<any>(this.baseURL+endPoint)
