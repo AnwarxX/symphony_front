@@ -21,7 +21,6 @@ export class InterfaceDefinitionComponent implements OnInit {
   sunCode:new FormControl("",Validators.compose([Validators.required])),
   mappCode:new FormControl("",Validators.compose([Validators.required])),
   BUCode:new FormControl("",Validators.compose([Validators.required])),
-
 })
 authData:any;
 dis:any;
@@ -36,12 +35,10 @@ DefinationCodes:any;
 DefinationTypes:any;
 Combo:any;
 
- 
-
   constructor(public apiService:APIsService) { 
-    this.imports('API')
+  
+    this.imports('')
   }
-
   ngOnInit(): void {
     $('#home').particleground({
       dotColor: 'cadetblue',
@@ -54,7 +51,6 @@ Combo:any;
     this.input=(<HTMLInputElement>event.target).value;//retrive the value choosen from theb dropdown
     this.imports(this.input)
   }
-
   rows(event: any)
   {
     console.log((<HTMLInputElement>event.target).value);
@@ -67,6 +63,9 @@ authorization()
   var bytes  = cryptoJS.AES.decrypt(tok||"", 'lamiaa');
   var originalText = bytes.toString(cryptoJS.enc.Utf8);
   let x=JSON.parse(originalText)
+  this.form2.value.sunCode = this.form2.value.sunCode.split(",")[0]
+  this.form2.value.interfaceCode = this.form2.value.interfaceCode.split(",")[0]
+   console.log(this.form2.value.interfaceCode.split(",")[0]);
    
   //send a post request with the table name and column to this endpoit in the backend to retrive all the distinct values in that column
   this.apiService.postFun('setInterfaceDeinition',this.form2.value).subscribe(data => {
@@ -74,23 +73,32 @@ authorization()
   this.authData=data
   $('#liveToast').toast('show')
   $('.toast-body').html(this.authData)
+  // this.form2.setValue({interfaceCode:"",type:"",sunCode:'',mappCode:'',BUCode:''})
+
   })
 }
 imports(typ:any){
   this.DefinationCodes=[]
   this.apiService.postFun('getInterfaceDeinition','').subscribe(data => {
-   if(typ=='CAPS')
+    if(typ=='CAPS')
    {
     for (let i = 0; i < data.caps.length; i++) {
-      this.DefinationCodes.push(data.caps[i].capsCode+" "+data.caps[i].name)
+      this.DefinationCodes.push(data.caps[i].capsCode+','+data.caps[i].name)
     }
    }
-   else
+   else if(typ=='API')
    {
     for (let i = 0; i < data.api.length; i++) {
-      this.DefinationCodes.push(data.api[i].interfaceCode+" "+data.api[i].name)
+      this.DefinationCodes.push(data.api[i].interfaceCode+','+data.api[i].name)
     }
    }
+   else if(typ==""){
+    this.DefinationCodes = []
+
+   }
+
+  console.log(typ ,this.DefinationCodes ,"ss");
+  
    this.Combo=data
    
     })

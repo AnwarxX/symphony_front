@@ -132,6 +132,7 @@ editBtn(row:any){
     server:this.reviewInput.Sunserver,
     database:this.reviewInput.SunDatabase,
     type:this.reviewInput.type,
+    name:this.reviewInput.name,
     sunScheduleStatus:this.reviewInput.SunScheduleStatue,
     sunSchedule:this.reviewInput.SunSchedule,
   })

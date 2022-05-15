@@ -11,6 +11,7 @@ declare var $:any
 export class AllCAPSDetailsComponent implements OnInit {
   form2 = new FormGroup({
     capsCode:new FormControl("",Validators.compose([Validators.required])),
+    name:new FormControl("",Validators.compose([Validators.required])),
     user:new FormControl("",Validators.compose([Validators.required])),
     password:new FormControl("",Validators.compose([Validators.required])),
     server:new FormControl("",Validators.compose([Validators.required])),
@@ -151,6 +152,7 @@ editBtn(row:any){
   this.reviewInput=row;
   this.form2.setValue({
     capsCode:this.reviewInput.capsCode,
+    name:this.reviewInput.name,
     user:this.reviewInput.user,
     password:this.reviewInput.password,
     server:this.reviewInput.server,

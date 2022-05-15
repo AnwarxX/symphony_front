@@ -19,7 +19,6 @@
                             <span class="input-group-text" id="inputGroup-sizing-default">Definition Type</span>
                         </div>
                         <select class="CN_S" formControlName="type" (change)="rows($event)" id="" class="form-control">
-                            
                             <option value="CAPS">CAPS</option>
                             <option value="API">API</option>
                          </select>
@@ -33,7 +32,7 @@
                             <span class="input-group-text" id="inputGroup-sizing-default">Definition Codes</span>
                         </div>
                         <select formControlName="interfaceCode" id="" class="form-control">
-                            <option *ngFor="let i of DefinationCodes" [value]='i'>{{i}} {{i.name}}</option>
+                            <option *ngFor="let i of DefinationCodes" [value]='i'>{{i}}{{i.name}}</option>
                         </select>
                     </div>
                 </div>
@@ -44,7 +43,7 @@
                             <span class="input-group-text" id="inputGroup-sizing-default">Sun Server Connection</span>
                         </div>
                         <select formControlName="sunCode" id="" class="form-control">
-                            <option *ngFor="let i of Combo.sun" [value]='i.SunCode'>{{i.SunCode}} {{i.name}}</option>
+                            <option *ngFor="let i of Combo.sun" [value]='i.SunCode'>{{i.SunCode}},{{i.name}}</option>
                         </select>
                     </div>
                 </div>
