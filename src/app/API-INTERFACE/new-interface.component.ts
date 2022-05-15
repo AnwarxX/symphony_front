@@ -76,6 +76,7 @@ authorization()
   var bytes  = cryptoJS.AES.decrypt(tok||"", 'lamiaa');
   var originalText = bytes.toString(cryptoJS.enc.Utf8);
   let x=JSON.parse(originalText)
+  console.log(this.form2.value,x[0]);
   
   if(x[0].LockRef == this.form2.get("lockRef")?.value && x[0].EnterpriseShortName == this.form2.get("enterpriseShortName")?.value){
 
@@ -83,12 +84,8 @@ authorization()
   //send a post request with the table name and column to this endpoit in the backend to retrive all the distinct values in that column
   this.apiService.postFun('authorization',this.form2.value).subscribe(data => {
   // this.authData=data;//data variable holds all the data retrived then asign them to a variable cold value
-  this.authData=""
-  for (let i = 0; i < data.length; i++) {
-    this.authData+=data[i]+" "
-  }
   $('#liveToast').toast('show')
-  $('.toast-body').html(this.authData)
+  $('.toast-body').html(data)
   })
 }else{
   $('#liveToast').toast('show')

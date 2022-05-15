@@ -365,7 +365,7 @@ export class AllInterfacesDetailsComponent implements OnInit {
     }
     for (let i = 0; i < length; i++) {
       let date;
-      if (length==1) {
+      if (length==0) {
         date=new Date()
       }
       else{
