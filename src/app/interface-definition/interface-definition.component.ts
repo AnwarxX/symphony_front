@@ -78,7 +78,7 @@ authorization()
 }
 imports(typ:any){
   this.DefinationCodes=[]
-  this.apiService.getFun('getInterfaceDeinition').subscribe(data => {
+  this.apiService.postFun('getInterfaceDeinition','').subscribe(data => {
    if(typ=='CAPS')
    {
     for (let i = 0; i < data.caps.length; i++) {

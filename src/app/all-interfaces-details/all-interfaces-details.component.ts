@@ -388,7 +388,7 @@ export class AllInterfacesDetailsComponent implements OnInit {
   }
   importConnections(){
     this.DefinationCodes=[]
-    this.apiService.postFun('getInterfaceDeinitionEdit',{interfaceCode:this.reviewInput.interfaceCode}).subscribe(data => {
+    this.apiService.postFun('getInterfaceDeinition',{interfaceCode:this.reviewInput.interfaceCode}).subscribe(data => {
      this.Combo=data
      console.log(this.Combo);
      
