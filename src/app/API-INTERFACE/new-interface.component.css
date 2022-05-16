@@ -6,7 +6,7 @@
     left: 0;
     right: 0;
     z-index: -1;
-    overflow-y: scroll;
+    overflow-y: hidden;
     overflow-x: hidden;
 }
 .con
