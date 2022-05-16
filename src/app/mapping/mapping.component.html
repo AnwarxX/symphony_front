@@ -146,8 +146,8 @@
                                 id="flexSwitchCheckDefault" value="Data">
                         </div>
                         
-                        <input [hidden]="toggle" formControlName="value" value="" class="form-control">
-                        <select [hidden]="!toggle" class="D_S form-control" formControlName="value" id="">
+                        <input *ngIf="!toggle" formControlName="value" value="" class="form-control">
+                        <select *ngIf="toggle" class="D_S form-control" formControlName="value" id="">
                             <option *ngFor="let i of values" [value]="i[input2]">{{i[input2]}}</option>
                         </select>
                     </div>

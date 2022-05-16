@@ -160,14 +160,18 @@ export class MappingComponent implements OnInit {
       // this.form.get('column')?.setValidators([Validators.required])
       // this.form.get('column')?.clearValidators
       // this.form.get('table')?.clearValidators
-      this.form.controls['column'].setErrors({'incorrect': true});
-      this.form.controls['table'].setErrors({'incorrect': true});
+      this.form.controls['column'].setErrors({'required': true});
+      this.form.controls['table'].setErrors({'required': true});
+      this.form.patchValue({table:this.form.get('table')?.value,column:this.form.get('column')?.value,value:undefined})
       this.form.get('column')?.updateValueAndValidity
       this.form.get('table')?.updateValueAndValidity
 
       this.toggle=true;
 
     }
+    // console.log(this.form.get('value')?.value);
+    // this.form.patchValue({data:undefined})
+    console.log(this.form.get('value')?.value);
     
   }
   //this function is only called when you change the value from the table names dropdown and retrive all the column names for the choosen table name

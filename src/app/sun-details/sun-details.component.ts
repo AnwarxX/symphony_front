@@ -67,23 +67,12 @@ export class SunDetailsComponent implements OnInit {
       $(".CapsEveryDays").attr('disabled', 'disabled');
       $('.CapsEveryDays').val("hh:mm");
     }
-      if (this.dis=="apiday") {
-      $(".apiEveryDay").removeAttr('disabled');
-      $(".apiEveryMonth").attr('disabled', 'disabled');
-      $('.apiEveryMonth').val("yyyy-MM-ddThh:mm");
-      
-    }
-    else if(this.dis=="apimonth"){
-      $(".apiEveryMonth").removeAttr('disabled');
-      $(".apiEveryDay").attr('disabled', 'disabled');
-      $('.apiEveryDay').val("hh:mm");
-    }
-  
   }
   dissEdit(){
     let sunDate = this.reviewInput.SunSchedule
-    
+    console.log(sunDate);
     if (this.reviewInput.SunScheduleStatue=="day") {
+      
       this.form2.patchValue({sunSchedule:sunDate})
       $(".CapsEveryDays").removeAttr('disabled');
       $(".CapsEveryDays").val(sunDate);
