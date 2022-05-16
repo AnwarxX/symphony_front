@@ -63,9 +63,10 @@ authorization()
   var bytes  = cryptoJS.AES.decrypt(tok||"", 'lamiaa');
   var originalText = bytes.toString(cryptoJS.enc.Utf8);
   let x=JSON.parse(originalText)
-  this.form2.value.sunCode = this.form2.value.sunCode.split(",")[0]
-  this.form2.value.interfaceCode = this.form2.value.interfaceCode.split(",")[0]
-   console.log(this.form2.value.interfaceCode.split(",")[0]);
+  console.log(this.form2.value);
+  // this.form2.value.sunCode = this.form2.value.sunCode.split(",")[0]
+  // this.form2.value.interfaceCode = this.form2.value.interfaceCode.split(",")[0]
+   console.log(this.form2.value.interfaceCode);
    
   //send a post request with the table name and column to this endpoit in the backend to retrive all the distinct values in that column
   this.apiService.postFun('setInterfaceDeinition',this.form2.value).subscribe(data => {

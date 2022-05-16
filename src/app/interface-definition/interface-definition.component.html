@@ -32,7 +32,7 @@
                             <span class="input-group-text" id="inputGroup-sizing-default">Definition Codes</span>
                         </div>
                         <select formControlName="interfaceCode" id="" class="form-control">
-                            <option *ngFor="let i of DefinationCodes" [value]='i'>{{i}}{{i.name}}</option>
+                            <option *ngFor="let i of DefinationCodes" [value]="i.split(',')[0]">{{i}}</option>
                         </select>
                     </div>
                 </div>

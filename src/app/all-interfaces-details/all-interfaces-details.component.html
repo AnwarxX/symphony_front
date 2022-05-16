@@ -51,7 +51,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" [disabled]="form.status=='INVALID'" class="btn btn-primary">IMPORT</button>
+                    <button type="submit" [disabled]="form.status=='INVALID'" class="btn btn-primary"  >IMPORT</button>
                 </div>
             </form>
         </div>
@@ -96,7 +96,7 @@
                                         Codes</span>
                                 </div>
                                 <select formControlName="interfaceCode" id="" class="form-control">
-                                    <option *ngFor="let i of  Combo.api" [value]='i.interfaceCode'>{{i.interfaceCode}}
+                                    <option *ngFor="let i of  Combo.api" [value]='i.interfaceCode'>{{i.interfaceCode+" "+i.name}}
                                     </option>
                                 </select>
                             </div>
@@ -110,7 +110,7 @@
                                 </div>
                                 <p></p>
                                 <select formControlName="interfaceCode" id="" class="form-control">
-                                    <option *ngFor="let i of Combo.caps" [value]='i.capsCode'>{{i.capsCode}}</option>
+                                    <option *ngFor="let i of Combo.caps" [value]='i.capsCode'>{{i.capsCode+" "+i.name}}</option>
                                 </select>
                             </div>
                         </div>
@@ -121,7 +121,7 @@
                                     <span class="input-group-text" id="inputGroup-sizing-default">Sun Server Connection</span>
                                 </div>
                                 <select formControlName="sunCode" id="" class="form-control">
-                                    <option *ngFor="let i of Combo.sun" [value]='i.SunCode'>{{i.SunCode}}</option>
+                                    <option *ngFor="let i of Combo.sun" [value]='i.SunCode'>{{i.SunCode+" "+i.name}}</option>
                                 </select>
                             </div>
                         </div>
@@ -194,7 +194,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" [disabled]="form2.status=='INVALID'">Apply
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="form2.status=='INVALID'">Apply
                         Edit</button>
                 </div>
             </div>
