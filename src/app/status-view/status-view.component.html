@@ -29,12 +29,22 @@
                   <td class="w-25">{{i.ApiName}}</td>
                   <td class="w-25">{{i.Date}}</td>
                   <td class="w-25">{{i.Status}}</td>
-                  <td class="w-25"><button class="btn btn-primary" (click)="importFailed(i.ApiName,i.Date,i.interfaceCode)" [disabled]="i.Status=='Successful'">import</button></td>
+                  <td class="w-25"><button class="btn btn-primary" (click)="importFailed(i)" [disabled]="i.Status=='Successful'">import</button></td>
               </tr>     
             </tbody> 
           </table>
         </div>
     </div>
     </div>
+    <div class="position-fixed   text-white text-center right-0  " style="z-index: 5; right: 0;bottom: 39px;">
+      <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header ">
+              <button type="button" class="btn-close  m-0" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body bg-dark text-white">
+              Submitted successfully <i class=" pl-2 fa-solid fa-circle-check"></i>
+          </div>
+      </div>
+  </div>
 </section>
 
