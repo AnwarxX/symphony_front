@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { APIsService } from "../services/apis.service";
 import { FormGroup,FormControl,Validators } from '@angular/forms';
 import { log } from 'console';
+
 declare var $:any //declear $ to use jquery
 
 @Component({
@@ -16,8 +17,8 @@ export class MappingComponent implements OnInit {
     Description:new FormControl("",Validators.compose([Validators.required])),
     locRef:new FormControl("",Validators.compose([Validators.required])),
     mapp: new FormControl("",Validators.compose([Validators.required])),
-    table:new FormControl("",Validators.compose([Validators.required])),
-    column:new FormControl("",Validators.compose([Validators.required])),
+    table:new FormControl(""),
+    column:new FormControl(""),
     value:new FormControl("",Validators.compose([Validators.required])),
      level:new FormControl("",Validators.compose([Validators.required])),
      Revenue:new FormControl("",Validators.compose([Validators.required])),
@@ -139,17 +140,31 @@ export class MappingComponent implements OnInit {
 
 
   }
+  
   switch(event:any){
     if (this.toggle) {
-      this.removeValidators(this.form,'table')
-      this.removeValidators(this.form,'column')
-   
+      // this.removeValidators(this.form,'table')
+      // this.removeValidators(this.form,'column')
+      // this.form.get('column')?.setValidators([Validators.required])
+      // this.form.get('table')?.setValidators([Validators.required])
+      this.form.controls['column'].setErrors(null);
+      this.form.controls['table'].setErrors(null);
+      this.form.get('column')?.updateValueAndValidity
+      this.form.get('table')?.updateValueAndValidity
+      
       this.toggle=false;
 
     }
     else{
-      this.form.get('table')?.setValidators([Validators.required])
-      this.form.get('column')?.setValidators([Validators.required])
+      // this.form.get('table')?.setValidators([Validators.required])
+      // this.form.get('column')?.setValidators([Validators.required])
+      // this.form.get('column')?.clearValidators
+      // this.form.get('table')?.clearValidators
+      this.form.controls['column'].setErrors({'incorrect': true});
+      this.form.controls['table'].setErrors({'incorrect': true});
+      this.form.get('column')?.updateValueAndValidity
+      this.form.get('table')?.updateValueAndValidity
+
       this.toggle=true;
 
     }
