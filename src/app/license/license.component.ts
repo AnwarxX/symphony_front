@@ -39,6 +39,8 @@ export class LicenseComponent implements OnInit {
   }
   constructor(public router:Router,public apiService:APIsService) { 
     this.getLicense()
+    this.createDB()
+    this.createViews()
   }
   tok:any
  async getLicense(){
@@ -59,7 +61,31 @@ export class LicenseComponent implements OnInit {
       }
     )
   }
-
+  async createDB(){
+    //send a get request to the backend to retrive all the data in this endpoit
+     await this.apiService.getFun('createDatabase').subscribe(
+      response => { 
+        if(response.includes("already")){}
+        else {
+          $('#liveToast').toast('show')
+          $('.toast-body').html(response)
+          }
+      }
+    )
+  }
+  
+  async createViews(){
+    //send a get request to the backend to retrive all the data in this endpoit
+     await this.apiService.getFun('createViews').subscribe(
+      response => { 
+        if(response.includes("already exists")){}
+        else {
+          $('#liveToast').toast('show')
+          $('.toast-body').html(response)
+          }
+      }
+    )
+  }
   ngOnInit(): void {
     $('#home').particleground({
       dotColor: 'cadetblue',
