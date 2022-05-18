@@ -61,32 +61,51 @@ export class LicenseComponent implements OnInit {
       }
     )
   }
+
   async createDB(){
     //send a get request to the backend to retrive all the data in this endpoit
+    try {
+      let tok =  localStorage.getItem('token');
+      if(tok==null|| tok==""){
+      
      await this.apiService.getFun('createDatabase').subscribe(
       response => { 
-        if(response.includes("already")){}
-        else {
           $('#liveToast').toast('show')
           $('.toast-body').html(response)
-          }
       }
     )
+      }
   }
+  catch(error:any){
+    $('#liveToast').toast('show')
+    $('.toast-body').html(error.message)
+  }
+}
   
   async createViews(){
     //send a get request to the backend to retrive all the data in this endpoit
-     await this.apiService.getFun('createViews').subscribe(
-      response => { 
-        if(response.includes("already exists")){}
-        else {
-          $('#liveToast').toast('show')
-          $('.toast-body').html(response)
+    try {
+      let tok =  localStorage.getItem('token');
+      if(tok==null|| tok==""){
+      await this.apiService.getFun('createViews').subscribe(
+       response => { 
+         if(response.includes("already exists")){}
+         else {
+           $('#liveToast').toast('show')
+           $('.toast-body').html(response)
+           }
           }
+        )
       }
-    )
+    } 
+    catch(error:any){
+      $('#liveToast').toast('show')
+      $('.toast-body').html(error.message)
+    }
   }
-  ngOnInit(): void {
+
+ 
+ ngOnInit(): void {
     $('#home').particleground({
       dotColor: 'cadetblue',
       lineColor: 'white'
