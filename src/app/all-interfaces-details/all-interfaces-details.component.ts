@@ -32,6 +32,7 @@ export class AllInterfacesDetailsComponent implements OnInit {
   authData:any;
   dis:any;
   importType:any;
+  allNames:any;
   form = new FormGroup({
     startDate:new FormControl(""),
     endDate:new FormControl(""),
@@ -396,13 +397,25 @@ export class AllInterfacesDetailsComponent implements OnInit {
       })
   }
   getAllNames(){
-    this.apiService.postFun('getInterfaceDeinition','').subscribe(data => {
+    this.apiService.getFun('getAllNames').subscribe(data => {
+      this.allNames=data
      console.log(data);
     })
   }
-  getSunNames(){
-    this.apiService.postFun('getInterfaceDeinition','').subscribe(data => {
-     console.log(data);
-    })
+  getSunNames(code:any){
+    let name;
+    for (let i = 0; i < this.allNames.sun.length; i++) {
+      if (code==this.allNames.sun[i].SunCode) 
+        name=this.allNames.sun[i].name
+    }
+    return name
+  }
+  getInterfaceNames(code:any){
+    let name;
+    for (let i = 0; i < this.allNames[code.type.toLowerCase()].length; i++) {
+      if (code.interfaceCode==this.allNames[code.type.toLowerCase()][i].code) 
+        name=this.allNames[code.type.toLowerCase()][i].name
+    }
+    return name
   }
 }
