@@ -48,6 +48,7 @@ export class AllInterfacesDetailsComponent implements OnInit {
     this.Combo=this.form2.value
     this.getInterfaceData()
     this.reviewInput=this.form2.value
+    this.getAllNames()
   }
   diss(event:any){
     this.dis=(<HTMLInputElement>event.target).value;
@@ -393,5 +394,15 @@ export class AllInterfacesDetailsComponent implements OnInit {
      console.log(this.Combo);
      
       })
+  }
+  getAllNames(){
+    this.apiService.postFun('getInterfaceDeinition','').subscribe(data => {
+     console.log(data);
+    })
+  }
+  getSunNames(){
+    this.apiService.postFun('getInterfaceDeinition','').subscribe(data => {
+     console.log(data);
+    })
   }
 }
