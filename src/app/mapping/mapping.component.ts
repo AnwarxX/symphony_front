@@ -90,12 +90,13 @@ export class MappingComponent implements OnInit {
     //     <td><button class="btn btn-danger" data-bs-target="#delete" data-bs-toggle="modal" (click)="delete(${value})" >Delete</button></td>
     // </tr>
     // `
-    
+    console.log('add');
     this.tbvalue.push({MappingCode:value.MappingCode,Description:value.Description,locRef:value.locRef,MappingType:value.mapp,Source:value.value,RevenuCenter:value.Revenue,Level:value.level,input:value.input});
     // $("#mappingData").html($("#mappingData").html()+tbody);
     
     $(".sub").removeClass("d-none")
     this.disable=true;
+    console.log(this.tbvalue);
   }
   subm(){
     var arrlocRef = $('.locRef').map((i:any, e:any) => e.value).get();
@@ -123,7 +124,6 @@ export class MappingComponent implements OnInit {
     $('#liveToast').toast('show')
     $('.toast-body').text(data)
     this.form.setValue({MappingCode:"",Description:"",locRef:'',mapp:'',table:'',column:'',value:'',level:'',Revenue:'',input:''})
-
       })
       
     this.form.reset;
@@ -132,9 +132,6 @@ export class MappingComponent implements OnInit {
     // this.tbvalue=[]
     // this.form.setValue({MappingCode:"",Description:"",mapp:'',table:'',column:'',value:'',level:'',Revenue:'',input:''})
     // // this.form.value['value']=""
-   
-    
-    $("#mappingData").html('');
     $(".sub").addClass("d-none")
     this.tbvalue=[];
 
