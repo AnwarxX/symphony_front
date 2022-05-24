@@ -27,9 +27,9 @@
             <tbody>
               <tr *ngFor="let i of statData">
                   <td class="w-25">{{i.ApiName}}</td>
-                  <td class="w-25">{{i.Date}}</td>
+                  <td class="w-25">{{i.Date.split('T')[0]}}</td>
                   <td class="w-25">{{i.Status}}</td>
-                  <td class="w-25"><button class="btn btn-primary" (click)="importFailed(i)" [disabled]="i.Status=='Successful'">import</button></td>
+                  <td class="w-25"><button class="btn btn-primary" (click)="importFailed(i)" [disabled]="i.Status.toLowerCase().includes('succ')">import</button></td>
               </tr>     
             </tbody> 
           </table>
