@@ -25,11 +25,12 @@ export class SunDetailsComponent implements OnInit {
  sun:any;
  rowInput:any;
   dis:any;
+  toggle:any;
 
   sunDate:any;
   reviewInput:any;
   all=true;
-
+  reply:any;
 
   constructor(public apiService:APIsService) { 
     this.getSun();
@@ -142,6 +143,7 @@ update()
   })
 
 }
+
 confirmDelete(){
   console.log(this.rowInput);
   

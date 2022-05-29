@@ -111,17 +111,34 @@ export class AllInterfacesDetailsComponent implements OnInit {
     let date=(<HTMLInputElement>event.target).value
     
   }
-  startStop(event:any,connectionCode:any){
-    if ( event.target.checked ) {
+
+  startStopCaps(event:any,connectionCode:any){
+    console.log(connectionCode,"mmksl");
+  
+    if (event.target.checked ) {
+      this.apiService.postFun('startCaps',{interfaceCode:connectionCode.interfaceCode}).subscribe(data => {
+      this.reply=data;//data variable holds all the data retrived then asign them to a variable cold value
+      //this.getmapp()//then call this function again to render the new submitted data
+      })
+      this.toggle=true
+    }
+    else{
+      this.apiService.postFun('stopCaps',{interfaceCode:connectionCode.interfaceCode}).subscribe(data => {
+      this.reply=data;//data variable holds all the data retrived then asign them to a variable cold value
+      //this.getmapp()//then call this function again to render the new submitted data
+      })
+      this.toggle=false
+  
+    }
+  }
+  startStopSun(event:any,connectionCode:any){
+    console.log(connectionCode,"mmksl");
+  
+    if (event.target.checked ) {
       this.apiService.postFun('startSun',{connectionCode:connectionCode.connectionCode}).subscribe(data => {
       this.reply=data;//data variable holds all the data retrived then asign them to a variable cold value
       //this.getmapp()//then call this function again to render the new submitted data
       })
-      let endpoint= 'start';
-      if (connectionCode.type.toLowerCase()=='caps') {
-        endpoint= 'startCaps'
-      }
-      this.apiService.postFun(endpoint,{interfaceCode:connectionCode.interfaceCode}).subscribe(data => {})
       this.toggle=true
     }
     else{
@@ -129,15 +146,37 @@ export class AllInterfacesDetailsComponent implements OnInit {
       this.reply=data;//data variable holds all the data retrived then asign them to a variable cold value
       //this.getmapp()//then call this function again to render the new submitted data
       })
-      let endpoint= 'stop';
-      if (connectionCode.type.toLowerCase()=='caps') {
-        endpoint= 'stopCaps'
-      }
-      this.apiService.postFun(endpoint,{interfaceCode:connectionCode.interfaceCode}).subscribe(data => {})
       this.toggle=false
+  
     }
-    console.log(this.toggle,connectionCode);
   }
+  // startStop(event:any,connectionCode:any){
+  //   console.log(connectionCode,"kkkjkjk");
+    
+  //   if ( event.target.checked ) {
+  //     this.apiService.postFun('startSun',{connectionCode:connectionCode.connectionCode}).subscribe(data => {
+  //     this.reply=data;//data variable holds all the data retrived then asign them to a variable cold value
+  //     })
+  //     let endpoint= 'start';
+  //     if (connectionCode.type.toLowerCase()=='caps') {
+  //       endpoint= 'startCaps'
+  //     }
+  //     this.apiService.postFun(endpoint,{interfaceCode:connectionCode.interfaceCode}).subscribe(data => {})
+  //     this.toggle=true
+  //   }
+  //   else{
+  //     this.apiService.postFun('stopSun',{connectionCode:connectionCode.connectionCode}).subscribe(data => {
+  //     this.reply=data;//data variable holds all the data retrived then asign them to a variable cold value
+  //     })
+  //     let endpoint= 'stop';
+  //     if (connectionCode.type.toLowerCase()=='caps') {
+  //       endpoint= 'stopCaps'
+  //     }
+  //     this.apiService.postFun(endpoint,{interfaceCode:connectionCode.interfaceCode}).subscribe(data => {})
+  //     this.toggle=false
+  //   }
+  //   console.log(this.toggle,connectionCode);
+  // }
   dissEdit(){
     this.apiDate = this.reviewInput.ApiSchedule.split(" ")
     this.sunDate = this.reviewInput.SunSchedule.split(" ")
