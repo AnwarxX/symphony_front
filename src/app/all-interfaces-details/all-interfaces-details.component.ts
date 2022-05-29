@@ -18,6 +18,7 @@ export class AllInterfacesDetailsComponent implements OnInit {
     BUCode:new FormControl("",Validators.compose([Validators.required])),
   })
   reply:any;
+  reply2:any
   x:any;
   interfaces:any;
   apis:any;
@@ -26,18 +27,21 @@ export class AllInterfacesDetailsComponent implements OnInit {
   rowInput:any;
   apiDate:any;
   toggle:any;
+  toggl:any;
   sunDate:any;
   reviewInput:any;
   dateDisable=false;
   authData:any;
   dis:any;
   importType:any;
+  interfaceDataca:any;
   allNames:any;
   form = new FormGroup({
     startDate:new FormControl(""),
     endDate:new FormControl(""),
     interfaceCode: new FormControl(""),
-    api:new FormControl("",Validators.compose([Validators.required]))
+    api:new FormControl("",Validators.compose([Validators.required])),
+    type:new FormControl("",Validators.compose([Validators.required]))
   })
   form3 = new FormGroup({
     date:new FormControl("",Validators.compose([Validators.required])),
@@ -136,17 +140,17 @@ export class AllInterfacesDetailsComponent implements OnInit {
   
     if (event.target.checked ) {
       this.apiService.postFun('startSun',{connectionCode:connectionCode.connectionCode}).subscribe(data => {
-      this.reply=data;//data variable holds all the data retrived then asign them to a variable cold value
+      this.reply2=data;//data variable holds all the data retrived then asign them to a variable cold value
       //this.getmapp()//then call this function again to render the new submitted data
       })
-      this.toggle=true
+      this.toggl=true
     }
     else{
       this.apiService.postFun('stopSun',{connectionCode:connectionCode.connectionCode}).subscribe(data => {
-      this.reply=data;//data variable holds all the data retrived then asign them to a variable cold value
+      this.reply2=data;//data variable holds all the data retrived then asign them to a variable cold value
       //this.getmapp()//then call this function again to render the new submitted data
       })
-      this.toggle=false
+      this.toggl=false
   
     }
   }
@@ -269,7 +273,18 @@ export class AllInterfacesDetailsComponent implements OnInit {
         this.interfaceData=data;//data variable holds all the data retrived then asign them to a variable cold value   
       console.log(this.interfaceData);
       
-      });//data variable holds all the data retrived then asign them to a variable cold value     
+      });
+      this.apiService.getFun("importInterfaceCaps").subscribe(data => {
+        // for (let i = 0; i <this.interfaceData.length; i++) {
+        //   if (this.interfaceData.type == "CAPS"){
+        //   }
+        // }
+        this.interfaceDataca=data;//data variable holds all the data retrived then asign them to a variable cold value   
+      console.log(this.interfaceDataca,"dd");
+      
+      });
+    
+      //data variable holds all the data retrived then asign them to a variable cold value     
     // this.httpClient.get<any>('http://localhost:5000/importInterface').subscribe(data => {
 
     //   this.interfaceData=data;//data variable holds all the data retrived then asign them to a variable cold value          
@@ -409,28 +424,34 @@ export class AllInterfacesDetailsComponent implements OnInit {
     console.log(endpoint);
     console.log(this.getDaysArray(start,end).length);
     if (this.getDaysArray(start,end).length==0) {
-      length=1
+      start=new Date()
+      end=new Date()
     }
-    else {
-      length=this.getDaysArray(start,end).length
-    }
-    for (let i = 0; i < length; i++) {
-      let date;
-      if (length==1) {
-        date=new Date()
+    for (let i = 0; i < this.getDaysArray(start,end).length; i++) {
+      if(this.form.get('type')?.value == "Delete"){
+        endpoint ="deleteCapsData"
+        this.apiService.postFun(endpoint,{interface:this.interfaceCod,date:this.getDaysArray(start,end)[i].toISOString().split("T")[0],api:this.form.get('api')?.value}).subscribe(data => {
+          this.x.push(data)
+          console.log(data);
+          
+          if (this.x.length==this.getDaysArray(start,end).length) {
+          }
+          $('#liveToast').toast('show')
+          $('.toast-body').text(data)
+        })
       }
-      else{
-        date=this.getDaysArray(start,end)[i].toISOString().split("T")[0]
+      else if (this.form.get('type')?.value == "Import"){
+        this.apiService.postFun(endpoint,{interface:this.interfaceCod,date:this.getDaysArray(start,end)[i].toISOString().split("T")[0],api:this.form.get('api')?.value}).subscribe(data => {
+          this.x.push(data)
+          console.log(data);
+          
+          if (this.x.length==this.getDaysArray(start,end).length) {
+          }
+          $('#liveToast').toast('show')
+          $('.toast-body').text(data)
+        })
       }
-      this.apiService.postFun(endpoint,{interface:this.interfaceCod,date,api:this.form.get('api')?.value}).subscribe(data => {
-        this.x.push(data)
-        console.log(data);
-        
-        if (this.x.length==this.getDaysArray(start,end).length) {
-        }
-        $('#liveToast').toast('show')
-        $('.toast-body').text(data)
-      })
+     
     }
   }
   rows(event: any)

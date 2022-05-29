@@ -5,7 +5,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">import</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Import-Delete</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="" [formGroup]="form" (ngSubmit)="import()" class=" pb-3 ">
@@ -41,17 +41,49 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-8 mt-2   ">
+                            <div class="input-group  d-flex  align-items-center  text-white ">
+            
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text " id="inputGroup-sizing-default">Type</span>
+                                </div>
+                                
+                                <div class="form-check px-5 ">
+                                    <input class="form-check-input" type="radio" formControlName="type" name="Type"
+                                        id="flexRadioDefault1" value="Import">
+                                    <label class="form-check-label text-dark" for="flexRadioDefault1">
+                                        Import
+                                    </label>
+                                </div>
+                                <div class="form-check px-5">
+                                    <input class="form-check-input" type="radio" formControlName="type" name="Type"
+                                        id="flexRadioDefault2" value="Delete">
+                                    <label class="form-check-label text-dark" for="flexRadioDefault2">
+                                        Delete
+                                    </label>
+            
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-md-12 ">
                             <div *ngIf="form.get('startDate')?.invalid && form.get('startDate')?.touched">
                                 <small class="btn btn-danger px-5 w-100"> please enter all input</small>
                             </div>
                         </div>
+                        <div class="col-md-12 ">
+                            <div *ngIf="form2.get('type')?.invalid && form2.get('type')?.touched">
+                                <small class="btn btn-danger px-5 w-100" *ngIf="form2.get('type')?.errors?.required"> Type
+                                    is
+                                    required</small>
+            
+                            </div>
+                   </div>
                     </div>
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" [disabled]="form.status=='INVALID'" class="btn btn-primary"  >IMPORT</button>
+                    <button type="submit" [disabled]="form.status=='INVALID'" class="btn btn-primary"  >Submit</button>
                 </div>
             </form>
         </div>
@@ -290,7 +322,6 @@
         <table class="table mx-2 text-center mt-5">
             <thead class="">
                 <tr>
-                    <th scope="col">Schedule</th>
                     <th scope="col">Schedule caps</th>
                     <th scope="col">Schedule Sun</th>
                     <th scope="col">Interface Type</th>
@@ -298,7 +329,7 @@
                     <th scope="col">Sun Server Connection</th>
                     <th scope="col">BU Code </th>
                     <th scope="col">Mapping Code</th>
-                    <th scope="col"> import</th>
+                    <th scope="col"> Import-Delete</th>
                     <th scope="col"> Sun Post</th>
                     <th scope="col"> Edit</th>
                     <th scope="col"> Delete</th>
@@ -306,7 +337,7 @@
                 </tr>
             </thead>
             <tbody id="">
-                <tr *ngFor="let i of interfaceData">
+                <tr *ngFor="let i of interfaceData  " >
                     <!-- <td>
                         <div class="startend w-100 text-center d-flex my-2 ">
                             <div class="form-check form-switch mx-auto">
@@ -318,13 +349,13 @@
                         <button class="me-4 btn btn-danger" type="submit" (click)="stop(i.connectionCode)">Stop</button>
                         </div>
                     </td> -->
-                    <td>
+                    <td   >
 
                         <div class="startend w-100 text-center d-flex my-2 ">
                             <div class="form-check form-switch mx-auto">
                                 <input class="form-check-input" type="checkbox"
                                     (change)="startStopCaps($event,i)" role="switch"
-                                    id="flexSwitchCheckChecked" [checked]="i.scheduleStatus" />
+                                    id="flexSwitchCheckChecked" [checked]="i.scheduleStatusCaps" />
                             </div>
                             <!-- <button class="btn btn-success me-2" type="submit " (click)="start(i.connectionCode)">start</button>
                         <button class="me-4 btn btn-danger" type="submit" (click)="stop(i.connectionCode)">Stop</button> -->
@@ -348,7 +379,7 @@
                     <td>{{i['BUCode']}}</td>
                     <td>{{i.mappCode}}</td>
                     <td><button class="btn btn-success icBtn" data-bs-toggle="modal"
-                            (click)="importBtn(i.interfaceCode,i.type)" data-bs-target="#importmodal">Import</button>
+                            (click)="importBtn(i.interfaceCode,i.type)" data-bs-target="#importmodal">Import-Delete</button>
                     </td>
                     <td><button class="btn btn-success icBtn" data-bs-toggle="modal"
                             (click)="importBtn(i.connectionCode,i.type)" data-bs-target="#sunPost">Post</button></td>
