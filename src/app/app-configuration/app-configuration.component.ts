@@ -49,10 +49,10 @@ Enterprise:any;
   }
  
   ngOnInit(): void {
-    $('#home').particleground({
-      dotColor: 'cadetblue',
-      lineColor: 'white'
-  });
+  //   $('#home').particleground({
+  //     dotColor: 'cadetblue',
+  //     lineColor: 'white'
+  // });
 
   }
 

@@ -37,10 +37,10 @@ export class AllCAPSDetailsComponent implements OnInit {
   
 
   ngOnInit(): void {
-    $('#home').particleground({
-      dotColor: 'cadetblue',
-      lineColor: 'white'
-  });
+  //   $('#home').particleground({
+  //     dotColor: 'cadetblue',
+  //     lineColor: 'white'
+  // });
   }
   async getCAPS(){
     

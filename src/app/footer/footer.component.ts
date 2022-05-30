@@ -20,10 +20,10 @@ export class FooterComponent implements OnInit {
 
   ngOnInit(): void {
     //add the  background to home id
-    $('#home').particleground({
-      dotColor: 'cadetblue',
-      lineColor: 'white'
-  });
+  //   $('#home').particleground({
+  //     dotColor: 'cadetblue',
+  //     lineColor: 'white'
+  // });
 
   }
   

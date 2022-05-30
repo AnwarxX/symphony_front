@@ -117,8 +117,6 @@ export class AllInterfacesDetailsComponent implements OnInit {
   }
 
   startStopCaps(event:any,connectionCode:any){
-    console.log(connectionCode,"mmksl");
-  
     if (event.target.checked ) {
       this.apiService.postFun('startCaps',{interfaceCode:connectionCode.interfaceCode}).subscribe(data => {
       this.reply=data;//data variable holds all the data retrived then asign them to a variable cold value
@@ -132,25 +130,23 @@ export class AllInterfacesDetailsComponent implements OnInit {
       //this.getmapp()//then call this function again to render the new submitted data
       })
       this.toggle=false
-  
+
     }
   }
   startStopSun(event:any,connectionCode:any){
-    console.log(connectionCode,"mmksl");
-  
     if (event.target.checked ) {
       this.apiService.postFun('startSun',{connectionCode:connectionCode.connectionCode}).subscribe(data => {
       this.reply2=data;//data variable holds all the data retrived then asign them to a variable cold value
       //this.getmapp()//then call this function again to render the new submitted data
       })
-      this.toggl=true
+      this.toggle=true
     }
     else{
       this.apiService.postFun('stopSun',{connectionCode:connectionCode.connectionCode}).subscribe(data => {
       this.reply2=data;//data variable holds all the data retrived then asign them to a variable cold value
       //this.getmapp()//then call this function again to render the new submitted data
       })
-      this.toggl=false
+      this.toggle=false
   
     }
   }
@@ -261,10 +257,10 @@ export class AllInterfacesDetailsComponent implements OnInit {
     }
   }
     ngOnInit(): void {
-      $('#home').particleground({
-        dotColor: 'cadetblue',
-        lineColor: 'white '
-    });
+    //   $('#home').particleground({
+    //     dotColor: 'cadetblue',
+    //     lineColor: 'white '
+    // });
     
   }
   getInterfaceData(){
@@ -272,17 +268,16 @@ export class AllInterfacesDetailsComponent implements OnInit {
 
         this.interfaceData=data;//data variable holds all the data retrived then asign them to a variable cold value   
       console.log(this.interfaceData);
+      this.apiService.getFun("importInterfaceCaps").subscribe(data2 => {
+        for (let i = 0; i <data.length; i++) {
+         this.interfaceData[i]['scheduleStatusCaps']=data2[i]['scheduleStatusCaps']
+        }
+        console.log(this.interfaceData);
+        
+      });
       
       });
-      this.apiService.getFun("importInterfaceCaps").subscribe(data => {
-        // for (let i = 0; i <this.interfaceData.length; i++) {
-        //   if (this.interfaceData.type == "CAPS"){
-        //   }
-        // }
-        this.interfaceDataca=data;//data variable holds all the data retrived then asign them to a variable cold value   
-      console.log(this.interfaceDataca,"dd");
-      
-      });
+     
     
       //data variable holds all the data retrived then asign them to a variable cold value     
     // this.httpClient.get<any>('http://localhost:5000/importInterface').subscribe(data => {

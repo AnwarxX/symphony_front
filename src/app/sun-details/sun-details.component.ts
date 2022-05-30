@@ -39,10 +39,10 @@ export class SunDetailsComponent implements OnInit {
   
 
   ngOnInit(): void {
-    $('#home').particleground({
-      dotColor: 'cadetblue',
-      lineColor: 'white'
-  });
+  //   $('#home').particleground({
+  //     dotColor: 'cadetblue',
+  //     lineColor: 'white'
+  // });
   }
   async getSun(){
         //send a get request to the backend to retrive all the mapping data from the database

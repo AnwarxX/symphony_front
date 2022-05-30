@@ -53,10 +53,10 @@ export class MappingComponent implements OnInit {
    this.revenueCenter();//returns all the data for the revenue center dropdown
   }
   ngOnInit(): void {
-    $('#home').particleground({
-      dotColor: 'cadetblue',
-      lineColor: 'white'
-  });
+  //   $('#home').particleground({
+  //     dotColor: 'cadetblue',
+  //     lineColor: 'white'
+  // });
 
   }
   

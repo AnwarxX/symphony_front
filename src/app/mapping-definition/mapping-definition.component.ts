@@ -18,10 +18,10 @@ value:any;
   constructor(public httpClient:HttpClient) { }
 
   ngOnInit(): void {
-    $('#home').particleground({
-      dotColor: 'cadetblue',
-      lineColor: 'white'
-  });
+  //   $('#home').particleground({
+  //     dotColor: 'cadetblue',
+  //     lineColor: 'white'
+  // });
   }
 
 }
